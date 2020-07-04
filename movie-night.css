@@ -1,0 +1,81 @@
+body {
+    text-align:center;
+    color: black;
+    font-family:'Permanent Marker', Arial Black;
+    background-color:#E0E0E0;
+    background: linear-gradient(#E0E0E0,#1ab86e);
+     }
+
+.intro {
+    font-family: 'Permanent Marker', Comic sans-serif;
+    font-size: 75px;
+    text-align: center;
+    color: black;
+    padding-top: 40px;
+    padding-bottom:30px;
+    display:inline;
+    text-shadow: green;
+   
+}
+.container {
+    vertical-align: left;
+
+}
+  
+
+p {
+    font-size: 30px;
+    text-align:center;
+    display:inline;
+    font-style: oblique;
+
+}
+
+.choice {
+    border: thick;
+    color:red;
+    font-size: 28px;
+    padding-top: 30px;
+}
+.boxed {
+    color: black;
+    border: 5px solid black;
+    font-size: 20px;
+    width:350px;
+    margin: 0 auto;
+    text-align:left;
+   margin-left:center;
+   margin-right:center;
+   vertical-align:center;
+   border-color:green;
+}
+.poster {
+    width:265px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.list {
+    color:black;
+    font-size: 35px;
+    padding-top: 32px;
+    font-style: oblique;
+}
+.table {
+    margin: 0 auto;
+}
+
+.images2 {
+    display:inline-block;
+    justify-content: right;
+    position: center;
+   
+}
+.column {
+    flex: 20%;
+    padding: 20px;
+}
+.reel {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    
+}
