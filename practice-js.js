@@ -1,3 +1,5 @@
+// CODE PRACTICE AND NOTES
+
 var name = "riva"
 console.log(name);
 
