@@ -112,7 +112,7 @@ console.log("The total is: " + total);
 
 //HOW TO LOOP THROUGH ARRAY
 var fruits = ["mango" ,"banana", "apple"];
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 3; i++) { // BAD FORM! Use array.length
     console.(fruits[i]);//adding fruits in will return "mango", etc..
 } //we would have numbers print out, 0, 1, 2 //stops at 2 because 3 is not less than 3
 //WE USE AN INDEX OF THE ELEMENT TO GET ELEMENT OF ARRAY

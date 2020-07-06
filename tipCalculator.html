@@ -6,35 +6,50 @@
     <h1>Tip Calculator</h1>
 <hr />
 <p>Bill Amount</p>
-    <input type="text" name="Bill Amount"/>
+    <input 
+        type="text" 
+        id="billAmount" 
+        name="Bill Amount"
+    />
 <p> Tax Rate</p>
-    <input type="text" name="Tax Rate" />
+    <input 
+        type="text" 
+        id="taxRate" 
+        name="Tax Rate" 
+    />
 <br />
 <p> Service Quality</p>
-    <input type="radio" name="quality" value="Excellent(25%)" checked="checked"/> Excellent(25%)
-    <input type="radio" name="quality" value="Good(20%)"/> Good(20%)
-    <input type="radio" name="quality" value="Okay(15%)"/> Okay(15%)
-    <input type="radio" name="quality" value="NotGreat(10%)"/> Not Great(10%)
+    <input type="radio" name="quality" value="0.25" checked="checked"/> Excellent(25%)
+    <input type="radio" name="quality" value="0.20"/> Good(20%)
+    <input type="radio" name="quality" value="0.15"/> Okay(15%)
+    <input type="radio" name="quality" value="0.10"/> Not Great(10%)
 <br />
-    <input type="submit" name="Calculate" value="Calculate" />
+    <input 
+        type="submit" 
+        id="calculate" 
+        name="calculate" 
+        value="calculate" 
+        onClick="calculateTip()"
+    />
     <br />
 <table>
     <tr> 
         <td> Bill Amount:</td>
-        <td> $ 45.00</td>
+        <td id="outputBillAmount"></td>
     </tr>
     <tr>
         <td> Tax:</td>
-        <td>$ 4.35</td>
+        <td id="outputTax"></td>
     </tr>
     <tr>
         <td>Tip:</td>
-        <td>$ 10.03</td>
+        <td id="outputTip"></td>
     </tr>
     <tr>
         <td>Total:</td>
-        <td>$ 60.18</td>
+        <td id="outputTotal"></td>
     </tr>
 <table>
+    <script src="tipCalculator.js" type="text/javascript"></script>
 </body>
 </html>

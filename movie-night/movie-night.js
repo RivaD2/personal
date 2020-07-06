@@ -29,8 +29,9 @@ var ul=document.getElementById("movielist");
 console.log("looping through movies");
 var genre = "comedy";
 for (let i = 0; i < movies.length;i++) {
-    // line below loops through var "movies" 
-    /*any change related to specific movie has to 
+    /* line below loops through const "movies" 
+    which is an array of objects with multipel props */
+    /*any business related to specific movie has to 
     take place inside loop" */
     const movie = movies[i];
     console.log("found a movie!", movie);
@@ -39,7 +40,7 @@ for (let i = 0; i < movies.length;i++) {
     /*if movie genre matches the genre (comedy, action etc.)
     we want to do add it to the HTML. IF NOT, do nothing.*/
 
-    if (genre === movie.genre) {
+    if (genre === movie.genre) { //accesing prop of obj using dot notation
         //create an HTML element <li>  
         const li = document.createElement("li");
         // specifying content of element
