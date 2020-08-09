@@ -4,8 +4,13 @@ body {
     font-family:'Permanent Marker', Arial Black;
     background-color:#E0E0E0;
     background: linear-gradient(#E0E0E0,#1ab86e);
-     }
-
+ }
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.divider-one {
+    border: 4px solid black;
+}
 .intro {
     font-family: 'Permanent Marker', Comic sans-serif;
     font-size: 75px;
@@ -62,6 +67,8 @@ p {
 }
 .table {
     margin: 0 auto;
+    border: thick 5px;
+    color:black;
 }
 
 .images2 {
@@ -74,8 +81,38 @@ p {
     flex: 20%;
     padding: 20px;
 }
-.reel {
+#containerBox {
     padding-top: 0px;
     padding-bottom: 10px;
-    
+    position: relative;
+    display: inline-block;   
+}
+
+.text-box {   
+    position: absolute; 
+    height: 300%;
+    text-align: center;  
+    width: 100%;
+    vertical-align: middle;
+}
+
+.text-box:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 20px; 
+}
+.img-responsive {
+    width: 100%;
+}
+
+#buff {
+    font-size: 10px;
+}
+#divider-two {
+    border: 1px dashed black;
 }
