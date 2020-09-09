@@ -150,3 +150,5 @@ const anotherAnimalList = animals.join(' - ');
 const euros = [25, 35, 82, 96];
 const sum = euros.reduce((total, curr)=> total + curr);
 return sum;
+
+

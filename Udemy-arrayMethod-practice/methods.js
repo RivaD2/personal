@@ -107,3 +107,64 @@ const vowels  = ['a','e','i','o','u'];
 vowels.splice(2,1,'r');
 // this log returns ['a','e','r','o','u']
 console.log(vowels);
+
+let days = ['Sun', 'Mon', 'Tues', 'Wed'];
+//this will return an array of Monday - Saturday 
+// We started at index four because we wanted to add elements and put nothing to delete.
+days.splice(4, 0, 'Thurs', 'Fri', 'Sat');
+
+//flat(): used to flat the sub-arrays in an array
+// a sub- array is this: [[]]-the sub-array is inside
+
+const opposites = [['good','bad'], ['easy', 'hard']];
+//the flat method will remove the sub-array and return a single array with four elements
+const newArray = console.log(opposites.flat());
+
+//what if you have another sub-array in a sub-array
+let foodsTwo = [['good','bad'], [['easy', 'hard']]];
+// this log will remove only the first layer of sub-arrays
+console.log(opposite.flat);
+//to remove all sub-arrays, you have to mention layers of arrays to be flattened
+//In this case, I need to flatten two sub-arrays:
+console.log(opposites.flat(2));
+
+//toString(): converts itemsto a string and is similar to join()
+// However, in join() we pass separator as arg
+
+let integers = ['12','466', '76', '3', '6'];
+// this log will return "12, 466, 76, 3, 6"
+//all items are separated by commas by default
+console.log(integers.toString());
+// This will return a string with whitespace in between each number
+console.log(numbers.join(" ")); 
+
+//indexOf(); returns the first index at which a given element is present
+// It will return -1 if it is NOT present
+
+let daysOfWeek = ['sun', 'mon', 'tues', 'wed'];
+// This console log will return 2
+console.log(daysOfWeek.indexOf('tues'));
+
+//what if we want to find a specific element at a particular index
+// To find something that is not in array, it will return -1 in console.log
+console.log(days.indexOf('tues', 0))
+
+//ITERATION METHOD: entries, keys and values
+//Entries: this method returns an ovject of arrays and each array contains key value pairs
+var yummyFruits = ['pineapple', 'kiwi','starfruit', 'watermelon'];
+for(let everyItem of yummyFruits.entries()) {
+  /* this log returns:
+    [0, 'pineapple']
+    [1, 'Kiwi'] The array is now key/value pairs*/
+  console.log(everyItem)
+};
+
+//keys(): this method returns keys of items
+//values()- this method returns values of items
+var yummyFruits = ['pineapple', 'kiwi','starfruit', 'watermelon'];
+for(let everyItem of yummyFruits.values()) {
+  /* this log returns:
+    'pineapple'
+    'Kiwi' The array is now just values */
+  console.log(everyItem)
+};
