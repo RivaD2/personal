@@ -130,4 +130,77 @@ console.log(`${objPerson.fName}'s full name is ${objPerson.fullName}`);
 //We created an object within a function and returned an object inside function
 
 /*********************************************** */
+//Arrays of Objects
+//Arrays make it easy to hold props of multiple objects
+
+let person = [
+  {name:'Susan', age:35, height: 160, hair: 'blonde'},
+  {name:'Gary', age:40, height: 180, hair: 'blonde', eyeColor:'blue'},
+];
+//access arrays using indexes
+console.log(person[1].eyeColor);
+console.log(person[1]['eyeColor']); //first is index second is prop
+
+/***************************************** */
+//Object Basics- objects and const
+//anything that is declared with const can't be modified
+
+const person1 = {
+  fName: "jon",
+  lName: "Doe"
+};
+person1.fName = "Jane"; //there is no error if we were to console.log it
+/*why do we not get an error even though we redclared const?
+- Only the object is fixed, the props and values are not 
+- using const, we could not declare Person1 again*/
+
+/************************************************ */
+//Using vars as props while creating objects
+//Using computed properties: the prop name can be dynamic!
+
+let person = 'Jane Doe';
+//we want to use person var as property
+//by changing the var name, the object prop of name will change
+let voting = {
+  //the square brackets make the person prop dynamic  
+  //now we can put anything in there
+  [person]: 'Can Vote'
+};
+console.log(voting);//this will return Jane Doe can vote
+
+//What happens if we change person value after objct declaration?
+person = 'Jon Murray';
+console.log(voting);//there willbe no change
+//the object takes in the value from var declaration and assignment before the object was created
+
+//How do you access variables?
+console.log(`${person} ${voting[person]}`);
+//this will return Jane Doe can vote
+//no quotes inside brackets because we are using variable
+//we can not use dot notation
+/**************************************************** */
+
+//Naming properties, DO's and Don'ts
+/*if proper naming conventions are not followed, we can not use dot notation*/
+let person = prompt('What is the name of the person', 'Jane Doe');
+let voting = {
+  [person + " " + 1]: 'Can vote',
+  1: 'Number One',
+  'likes Food': 'yes'
+};
+//can numbers and keywords be accessed by dot notation?
+//dot notation will not work on numbers but it will with keywords
+
+/****************************************************** */
+//Object methods: Things that an object does
+
+
+
+
+
+
+
+
+
+
 
