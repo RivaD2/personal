@@ -61,7 +61,7 @@ console.log(person1[prop]);
 // will not be able to use dot notation like person1.prop
 //square brackets allows us to use variable correctly
 //we might need to to change the value of prop at some point or another
-//decalring a var allows us to use it ON ANY object as seen below:
+//declaring a var allows us to use it ON ANY object as seen below:
 person2[prop] = 'brown';
 //the var prop does not have to be a string, it can be a prompt, an input text box
 //WE could get the value from the user
