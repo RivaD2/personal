@@ -193,14 +193,105 @@ let voting = {
 
 /****************************************************** */
 //Object methods: Things that an object does
+//functions become methods with objects 
 
+let person = {
+  fName: 'Jane',
+  lName: 'Doe',
+  fullName: function() {
+    return person.fName + " " + person.lName;
 
+  }
+};
+//When we access method, we get error
+//the method thinks fName is a variable and can't find the prop of fName
+console.log(person.fullName());
+//if you want to access prop inside object, you have to name object SO in the above example we use objName.property
 
+//With ES6 shorthand:
+/*fullName() { <----
+  return person.fName + " " + person.lName;*/
 
+// We can also create methods outside of object
+let person = {
+  fName: 'jane'
+};
+//create method that creates fullname of person and receive last name of person in function call:
+person.fullName = function(lName) {
+  return person.fName + " " + lName;
+}
+//in function call, we can send last name as arg
+//this function call will return Jane Doe
+console.log(person.fullName('Doe'));
 
+//If you are creating method outside of object, do not use short notation
 
+//ECMA script update
+let fName = 'Susan';
+let lName = 'Doe';
+let person = {
+  fName: 'Jane',
+  //within object, use colon and then arrow function
+  fullName: lName => { //<----with one arg, no parens are needed
+    return person.fName + " " + lName;
+  }
+};
+console.log(person.fullName('Doe'))
 
+//OR ANOTHER WAY TO WRITE IT WITH FUNCTION OUTSIDE OBJ:
 
+let fName = 'Susan';
+let lName = 'Doe';
+let person = {
+  fName: 'Jane',
+};
+person.fullName = (lName) => { //<----with one arg, no parens are needed
+  return person.fName + " " + lName;
+}
+console.log(person.fullName('Doe'))
+//if we do not pass arg in fullName() call, we will just get function definition
 
+/*************************************************** */
+//Object methods using the 'this' keyword
+let person = {
+  fName: 'Mary',
+  lName: 'Contrary',
+  fullName() {
+    //this is the same as person.fName
+    return this.fName + " " + this.lName;
+  }
+};
+console.log(person.fullName()); //this will return the fullName
 
+//OR:
+let person = {
+  fName: 'Mary',
+  lName: 'Contrary'
+}
+person.fullName = function() {
+  return this.fName + " " + this.lName;
+}
+console.log(person.fullName());
 
+//USING the this keyword helps us to keep objects dynamic!! 
+//Using the this keyword makes methods dynamic and NOT BOUND TO ONE OBJECT!
+//this keyword does not work with arrow functions
+//creating objects using constructors is important when using the this keyword
+
+/******************************************** */
+
+//In Operator and for in loop for objects
+let person = {
+  fName: 'Jane',
+  lname: 'Doe',
+}
+console.log('lName' in person); //console will return true
+console.log('name' in person); //console will return false
+
+//what if we have a prop called name with value undefined
+let person = {
+  fName: 'Jane',
+  lname: 'Doe',
+  name: undefined
+}
+console.log(person.name === undefined);//
