@@ -286,6 +286,7 @@ let person = {
   lname: 'Doe',
 }
 console.log('lName' in person); //console will return true
+//this checks to see if lName is prop of person obj
 console.log('name' in person); //console will return false
 
 //what if we have a prop called name with value undefined
@@ -294,4 +295,111 @@ let person = {
   lname: 'Doe',
   name: undefined
 }
-console.log(person.name === undefined);//
+console.log(person.name === undefined);
+
+let prop;
+for(prop in person) {
+  console.log(person[prop]);
+}
+// we can say for(key in prop)
+
+/*Objects - advanced topics
+ - object referencing
+ ex: let str = 'Hello World';
+ let str1 = str;
+ memory boxes were made for each var as 
+ the value for str was made then value for str1
+ */
+let person = {
+  fName ='Riva',
+  lName: 'Davidowski'
+};
+let person1 = person;
+//we would get the object back inside person
+//BUT, in the background, they don't store the values in a separate memory box. They both point to the same memory box.
+
+person1.fName = 'Susan';
+//if props and values of person1 were stored in separate memory box, then it should not change values of person object
+
+// In the above example, this will change the values of person object. The reason this happens is because both have a common memory location
+
+let obj = {};
+let obj1 = {};
+console.log(obj=== obj1)//this will return false
+//anytime a new object is created, a new memory location is created. This is different from the person and person1 objects
+
+/******************************************* */
+// Cloning and merging Objects
+//cloning
+let person = {
+  name: 'Ted',
+  lName: 'Jones'
+};
+let person1 = {};
+for(let prop in person) {
+  person1[prop]= person[prop];
+  //copying prop and value of person
+}
+console.log(person1); //we will have name and lName properties and values
+
+//object.assign()
+//can be used to clone and merge objects into route object
+
+let people = {
+  person1: 'John',
+  person2: 'Mary' 
+};
+let person1 = Object.assign({},person);
+//we are creating an empty object with person1
+//this method will pass through object and copy all props into new object one by one
+
+
+
+let voting = {
+  canVote: true,
+  gender: 'female'
+};
+
+let career = {
+  graduate: true,
+  hasJob: true
+};
+//we want to merge the above props into people object
+Object.assign({},person,voting, career);
+Object.assign(person, voting, career);
+//this would put all properties into people object
+
+/*********************************** */
+
+/*CONSTRUCTORS!! THEY FORM THE BASIS FOR EVERYTHING
+- set initial props of the object it creates
+- constructors hold a  template and multiple objects out of the template that the constructor holds
+*/
+//constructor function
+function Projects(student, personal, professional, fun) {
+  this.student = student;
+  this.personal = personal;
+  this.professional = professional;
+  //we can create props inside too
+  this.fun = fun;
+}
+//the 'this' keyword would change depending on particular object
+
+//Calling  the object
+let funProject = new Projects('artshop','drawingProject','Portfolio','foodcalc');
+
+//let funProjectTwo = new Project(//more projects here);
+
+/* - The new keyword does two things
+  - it creates empty object assigned to object name 
+  - it calls constructor function with args given and replaces the this value with new object name that is used
+  - it assigns attribute values to new props and automatically return the new object with new props and values
+*/
+// we could create a method inside object but it is best to keep those outside.
+
+this.fun = function() {
+  return `${this.fun} ${this.professional}`;
+}
+/*************************************** */
+//PROTOTYPES
+//the new keyword makes a normal function into constructor

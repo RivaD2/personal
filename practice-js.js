@@ -214,6 +214,14 @@ if (num > 10) {
 return "The number is small" // The code stops executing at the return statement
 }
 }
+
+var favoriteCharacterAnswer = prompt("Do you like Buffy, Giles or Willow Better?");
+  alert('Oh, I love' + favoriteCharacterAnswer + ' so much');
+  console.log('favoriteCharacterAnswer: ' + favoriteCharacterAnswer);
+
+  varFavoriteCharacterAnswer = prompt ('What is your favorite thing about') + favoriteCharacterAnswer;
+
+  alert('favoriteCharacterAnswer' + 'Is super cool' + favoriteCharacterAnswer + ' She\'s a hip lady')
 // ELSE IF using ALERT FUNCTION
 if (num > 0) {
     alert("The number is large")  //alert will give us A pop up on screen! (Think pancake code I made)
@@ -343,4 +351,749 @@ let person1 = new Person("Daniel", "Blue", 27); // inside parenthesis here, we w
  // this way allows us to create many copies of different objects
 
  
+//ADDING UPPERCASE/LOWERCASE to prompts
+// var username = prompt('what is your name?');
 
+// console.log(username);
+
+// console.log(username.toLowerCase());
+
+// console.log('ASDF'.toLowerCase());
+
+// var shortNicholas = username.toLowerCase();
+
+
+// console.log('afterwards username', username);
+// console.log('afterwards shortNich', shortNicholas);
+// // console.log(2.toLowerCase());
+
+// if(username.toLowerCase() === 'nicholas'){
+//   console.log('!!!it matched lowercase!!!');
+// } else {
+//   console.log('it did not');
+// }
+
+
+//How to make usability normalized for user
+var yOrN = prompt('y or n?');
+
+if(yOrN === 'y' || yOrN === 'Y' || yOrN === 'Yes' || yOrN === 'yEs' || yOrN === 'yeS' || yOrN === 'YEs' || yOrN === 'yES' || yOrN === yOrN === 'YES'){
+  console.log('they said yes!!!!')
+}
+
+var yOrNLowercase = yOrN.toLowerCase();
+
+if(yOrNLowercase === 'y' || yOrNLowercase === 'yes'){
+  console.log('they said yeeeeeesssssss!!!')
+}
+
+var ys = prompt('y or n').toLowerCase();
+console.log(ys);
+
+var longerYes = prompt('longer y or n');
+var longerYesToLowercase = longerYes.toLowerCase();
+
+var anotherYes = prompt('y or no');
+anotherYes = anotherYes.toLowerCase();
+
+
+if(anotherYes === 'y' || anotherYes === 'yes'){
+  console.log('yay');
+}
+
+
+
+
+
+// LAB 3
+// Truthy falsy 
+// Logical Operators
+// Loops
+// Conditional is a statement that evaluates to true or false
+
+3 === 3;
+3 === 2;
+3 == 3;
+3 == 2;
+3 == '3';
+3 !== 3;
+3 !== 1; // not strictly equal
+3 !== '3';
+3 != '3'; // not loosely equal
+3 > 2;
+3 > 3;
+3 > 4
+3 < 2;
+3 < 3;
+2 < 3;
+3 >= 3;
+3 >= 2;
+3 <= 3;
+
+// Logical operators
+// have short circuit logic- they do not convert to true or false, they STOP at the first value that meets their condition
+
+// || `or` checks if either thing is truthy
+if(1 === false || 9 || false){
+  console.log('9 exists');
+}
+
+1 === false || 9;
+
+var x = 1 === false || 9;
+console.log('x?', x);
+
+// logical or `||` stops at the first truthy thing, otherwise it ends on the last thing
+
+false || 'asdf' || true || 9 || [1,2,3];
+
+false || null || '' || undefined || NaN;
+
+// logical && `and
+// && short circuits on the first false thing
+
+true && false && 9;
+true && true && 0 && NaN && undefined;
+
+true && 9 && 'something';
+
+// `not`  `!` operator
+// ! turns a truthy thing into false, and a falsey into true
+!0;
+!9;
+console.log(!'undefined');
+console.log('this is the truthiness of the string of "undefined"', !!'undefined');
+!['asdfklasd;lfkj;asldkfj', 'asd;j'];
+
+
+// Truthy falsy
+//falsey things 
+0; // number
+undefined; // undefined
+null; // ?
+NaN; // number
+''; // string
+false // boolean
+
+
+// Control flow - idea of directing the way your app flows other than reading every line once top to bottom
+
+if(true || false){
+  console.log(' I happened');
+} else {
+  console.log('I did not');
+}
+
+// loops
+
+
+var x = 0;
+for(var i =0; i < 5; i++){
+  x = x + 1;
+  console.log('I happened ' + x + ' time');
+
+}
+
+// for loops 
+// - the thing in them can repeat
+// for loops have similar syntax to this, where the 10 is the amount of times it runs
+for(var i = 0; i < 10; i++){
+
+}
+// the pieces of the for loops
+// for(`variable declaration`, `condition`, `iterator`)
+
+for(var potato = 20; potato >= 5; potato = potato - 3){
+  console.log('potato', potato);
+}
+
+
+// while loop - a loop that goes until a condition is meets
+
+while(false){
+  console.log('not again...');
+}
+
+var countdown = 2; // variable
+while(countdown > 0){ // conditional
+  console.log(countdown + ' bottles of water on the wall');
+  console.log(countdown + ' bottles of water');
+  if(countdown % 9 === 0){
+    countdown = countdown - 7; //iterator
+    console.log('take seven down pass them around');
+
+  } else {
+    console.log('take one down pass it around');
+    countdown--; // iterator
+  }
+
+  console.log(countdown + ' bottles of water on the wall');
+
+
+}
+
+while(false){
+  console.log('I happen at least once');
+}
+
+// convert to do while by moving while to the end and putting a do in the front
+
+// do {
+//   console.log('I happen at least once');
+// } while(false);
+
+// var yOrNo = prompt('am I cool');
+
+// while(yOrNo === 'n'){
+//   yOrNo = prompt('am I cool- you were wrong, try again');
+// }
+
+
+// do {
+//   var lovesGinger = prompt('do I love Ginger?');
+// } while(lovesGinger.toLowerCase() !== 'y');
+
+// var whereIveBeen = prompt('where have I visited (States)');
+
+// switch, if elses, logical or
+
+// Array is a container for more than one thing
+// in concept they are similar to unordered lists
+// we should try to keep similar things in array most of the times
+
+var potatoArray = ['russet', 'golden', 'sweet'];
+potatoArray[0] === 'russet';
+potatoArray[0];
+
+potatoArray[1] === 'golden';
+potatoArray[1];
+
+potatoArray[2] === 'sweet';
+potatoArray[2];
+
+// var aPotatoILike = prompt('which potato do I like?');
+
+// if(aPotatoILike === potatoArray[0] || aPotatoILike === potatoArray[1]){
+//   console.log('yep');
+// }
+
+for(var index = 0; index < 3; index++){
+  console.log('index :', index);
+  console.log('potatoArray[index]', potatoArray[index]);
+}
+
+//FOR LOOPS AND ARRAYS
+//FOR LOOPS NESTED IN FOR LOOPS
+//LECTURE CLASS 4
+/* Things to cover:
+looping through an array- ++
+if an array was different sized
+ending a for loop or while loop early
+for in while +++
+for loop in a switch
+*/
+
+// Pick a color that I like, I like 4 colors
+// seafoam green, green, navy blue, black purple
+// get an array of the anwers,
+// 0. check if their answer === 'potato', to see if my if works
+// 1. check if their answer === array[0] - yay, else 'sadface'
+// 2. do it 6 times until they get it right
+// 2.0 - write a loop that goes 6 times
+// 2.5 - put my code asks and checks the answer in the loop
+// 2.75 - end the loop with a `break`
+// 3. validate against all the colors, not just seafoam green
+
+// when they are done, check if they were never right, let them know
+// or let them know all the answers cause they probably didnt get them all
+// alert after the loop
+
+for(var i = 0; i < 6; i++){
+    //7 begins
+    var colorsILikeCorrectAnswers = ['seafoam green', 'green', 'navy blue', 'black purple', 'orange', 'purple', 'black'];
+  
+    var colorILikeResponse = prompt('Name a color I like, there are 4');
+  
+    for (var answerIndex = 0; answerIndex < colorsILikeCorrectAnswers.length; answerIndex++) {
+      //Start checking
+      if (colorILikeResponse === colorsILikeCorrectAnswers[answerIndex]) {
+        console.log('it worked');
+        i = 1000000;
+        break;
+      }
+      // End Checking
+    }
+    // 7 ends
+  
+  
+  }
+  
+  
+  // for (var i = 0; i < 6; i++) {
+  //   //7 begins
+  //   var colorsILikeCorrectAnswers = ['seafoam green', 'green', 'navy blue', 'black purple', 'orange'];
+  
+  //   var colorILikeResponse = prompt('Name a color I like, there are 4');
+  
+  //   var theyGotTheRightAnswer = false;
+  
+  //   for (var answerIndex = 0; answerIndex < 5; answerIndex++) {
+  //     //Start checking
+  //     if (colorILikeResponse === colorsILikeCorrectAnswers[answerIndex]) {
+  //       console.log('it worked');
+  //       theyGotTheRightAnswer = true;
+  //       break;
+  //     }
+  //     // End Checking
+  //   }
+  //   // 7 ends
+  
+  //   if (theyGotTheRightAnswer === true) {
+  //     break;
+  //   }
+  // }
+  // var i = 0;
+  // var theyGotTheRightAnswer = false;
+  // while ( i < 6 && theyGotTheRightAnswer === false ) {
+  //   //7 begins
+  //   var colorsILikeCorrectAnswers = ['seafoam green', 'green', 'navy blue', 'black purple', 'orange'];
+  
+  //   var colorILikeResponse = prompt('Name a color I like, there are 4');
+  
+  
+  
+  //   for (var answerIndex = 0; answerIndex < 5; answerIndex++) {
+  //     //Start checking
+  //     if (colorILikeResponse === colorsILikeCorrectAnswers[answerIndex]) {
+  //       console.log('it worked');
+  //       theyGotTheRightAnswer = true;
+  //       break;
+  //     }
+  //     // End Checking
+  //   }
+  //   // 7 ends
+  
+  //   i++;
+  // }
+  
+  
+  // || colorILikeResponse === colorsILikeCorrectAnswers[1] || colorILikeResponse === colorsILikeCorrectAnswers[2] || colorILikeResponse === colorsILikeCorrectAnswers[3] || colorILikeResponse === colorsILikeCorrectAnswers[4]
+  
+  // console.log('answer index', answerIndex);
+  // console.log('colorsILikeCorrectAnswers[0]', colorsILikeCorrectAnswers[answerIndex]);
+  // console.log('colorILikeResponse', colorILikeResponse);
+ 
+
+  
+  
+  //FUNCTIONS -Basic functions syntax
+  //math.random always returns random number less than one //used to return random integers
+  //this returns random number from 0 to 10
+  // we will need math.floor to take floating point number and reutnr a whoile number
+// function functionNamePotato() {
+//     //here is where code goes
+// }
+// function pickRandomNumber() {
+//     var aRandomNumber = Math.random() * 10;
+//   console.log('your number is!... + aRandomNumber');
+// }
+//     pickRandomNumber(); //this will run the code inside braces
+//purpose of a function is to define a code block for later use, every once in a while immediate use
+//we will need to call the function to run the code, function call will run code inside curly braces
+// we're invoking the function by calling it
+
+//Let's write a function that says good bye to someone
+
+var username = 'nicholas';
+
+function sayHello() {
+//console.log('hello there' + 'Riva');
+}
+sayHello();
+//We want to make this function more dynamic using parameters
+//to do this we define variable inside parenthesis of function
+var username = 'nicholas';
+
+function sayHello(name) {
+//console.log('hello there' + 'name');
+}
+sayHello();
+//this would not work very well because we have not put value into parenthesis of called function
+var username = 'nicholas';
+
+function sayHello() {
+//console.log('hello there' + 'name');
+}
+sayHello('Tif'); //the arg will concatenate whatever is passed as arg into message
+sayHello('Nicholas'); 
+
+//functions without args
+ doSomething(); //same as NOT defining variable
+ //will return NaN
+ //order MATTERS when dealing with parameters
+ 
+
+ //PASSING PARAMETERS IN FUNCTIONS
+
+ function generateRandomNumber {
+     var someNumber = Math.random() * 10;
+     //the return keyword turns the function call into the value after the keyword return
+     return someNumber;
+ }
+
+generateRandomNumber(); //this === 9.75
+ 
+var x = generateRandomNumber();
+ var y = generateRandomNumber();
+ console.log(x,y);
+
+ function divide(a,b) {
+     var divided = a / b;
+     return divided;
+ }
+ var c = divide(9,3);
+ var d =divide(12,3);
+ //when we call the function, we get a return value
+ console.log('divided', c, d);
+
+ function cookBurger(bun,protein, vegetables) {
+     var burger = '';
+     burger += bun;
+     for (var i = 0; 1 < vegetables.length; i++) {
+         burger += vegetables[i] + ' ,';
+     }
+     burger +=  protein + ' , ';
+     burger += bun; //takes variable and reassigns it to plus bun
+     //The addition assignment operator (+=) adds a value to a variable.
+ } //we have to use return to save the variable and expose it outside of the function
+return burger;
+}
+
+ cookBurger('wheat', 'impossible patty', ['tomato', 'lettuce', 'onion', 'pickle']);
+
+ function simpleSum (a,b) {
+     return a + b; //pauses on returns evaluates things on right 
+ }
+ console.log (simpleSum(2,5));
+
+ var y = simpleSum(2,4);
+var z = simpleSum(10,20);     //Here these variable names are no good
+var zz = simpleSum (y,z);
+console.log(zz);
+
+// ICE CREAM CONE ASSIGN
+
+
+function chooseACone()  {
+    var flav1 = prompt('pick a ice cream');
+    var flav2 = prompt('pick a ice cream');   // right here we can just define variables = flavors[0]
+    var flav3 = prompt('pick a ice cream');
+
+    return [flav1, flav2 ,flav3]; //put items in array
+ //a return can only ever return one thing (there is no way to return)
+ // it can't return a bag
+ //if you surround multiple variables in a container of some kind (an array, an object), then it can return diff values
+}
+console.log(chooseSomeFlavors());
+
+//take more than one thing and stick it in array
+//can only have one return in a function, the first return will be the opnly return that happens but it will end the code
+//return exits the code
+// if you have a for loop in another loop, in another loop for ex, if I know I am done, then we can RETURN
+
+//a function that uses another function that uses and array
+// this function will choose som flabors
+function buildCone() {
+//have to store it in a variable
+//goal list the type of cone with the three flavors
+// if flavors === ['chocolate' , 'a', 'b'] chocolate lives at flavors index 0
+var flavors = chooseSomeFlavors();
+var cone = 'waffle';                     // Here would just make var firstFlavor = flavors[0];
+cone += flavors[0];                     // then secondFlavor = flavors[1];
+cone += flavors[1];                     // we don't have to do it the way to the left
+cone += flavors[2];
+console.log(cones);
+}
+buildCone();
+//if you see that an array is returned to you, then you access those values in the array using the index number
+
+   
+Store.prototype.listOfTimes = function() {
+  var seattleObject = document.getElementById(this.name + 'Cookies');
+  var seattleHeader = document.getElementById(this.name + 'Header');
+    seattleHeader.textContent = this.name;
+  for (var i = 0; i < this.storeHrs.length; i++) {
+    var custThisHour = getRandomNum(this.minCust,this.maxCust); 
+    // rounding cookies per hour total
+    //could take line 24 -26 into a function instead and then call the custPerHr function
+    var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+    this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+    // add new number to the total
+    this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+    var timesList = document.createElement('li');
+    timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+    seattleObject.appendChild(timesList);
+    
+  } 
+   var totalList = document.createElement('li');
+   totalList.textContent = 'Total: ' + this.totalCookies;
+   seattleObject.appendChild(totalList);
+
+  }
+
+SECOND, 5 DIFFERENT INSTANCES OF THE STORE OBJECT ARE CREATED
+Below each instance are the render method calls/function calls for each location using listOfTimes
+
+
+
+
+Create object with properties
+var seattle = {         //Create function at the top(separate function list of times 19-37 and put it outside of object)
+  name: 'seattle', // by giving the object a property of name, we can use the this.name to reference the object, making it easier to create copies
+  minCust: 23,          
+  maxCust: 65,          // there needs to be five neat objects with their properties and ONE FUNCTION that does everything
+  totalCookies: 0,         //this way, we can write function and just pass in the props 
+  cookieSalesPerHr: [],   
+  avgCustSale: 6.3,
+ storeHrs: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
+  listOfTimes: function() {
+    var seattleObject = document.getElementById(this.name + 'Cookies');
+    var seattleHeader = document.getElementById(this.name + 'Header');
+      seattleHeader.textContent = this.name;
+    for (var i = 0; i < this.storeHrs.length; i++) {
+      var custThisHour = getRandomNum(this.minCust,this.maxCust); 
+      // rounding cookies per hour total
+      //could take line 24 -26 into a function instead and then call the custPerHr function
+      var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+      this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+      // add new number to the total
+      this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+      var timesList = document.createElement('li');
+      timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+      seattleObject.appendChild(timesList);
+      
+    } 
+     var totalList = document.createElement('li');
+     totalList.textContent = 'Total: ' + this.totalCookies;
+     seattleObject.appendChild(totalList);
+
+
+// //   }
+
+// }
+// seattle.listOfTimes();
+
+
+
+var tokyo = {
+  name: 'tokyo',
+  minCust: 3,
+  maxCust: 24,
+  totalCookies: 0,
+  cookieSalesPerHr: [],
+  avgCustSale: 1.2,
+  storeHrs: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
+  listOfTimes: function() {
+    var seattleObject = document.getElementById(this.name + 'Cookies');
+    var seattleHeader = document.getElementById(this.name + 'Header');
+      seattleHeader.textContent = this.name;
+    for (var i = 0; i < this.storeHrs.length; i++) {
+      var custThisHour = getRandomNum(this.minCust,this.maxCust);
+      // rounding cookies per hour total
+      var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+      this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+      // add new number to the total
+      this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+      var timesList = document.createElement('li');
+      timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+      seattleObject.appendChild(timesList);
+      
+    } 
+     var totalList = document.createElement('li');
+     totalList.textContent = 'Total: ' + this.totalCookies;
+     seattleObject.appendChild(totalList);
+
+
+  }
+
+}
+tokyo.listOfTimes();
+
+var dubai = {
+  name: 'dubai',
+  minCust:11,
+  maxCust: 38,
+  totalCookies: 0,
+  cookieSalesPerHr: [],
+  avgCustSale: 3.7,
+  storeHrs: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
+  listOfTimes: function() {
+    var seattleObject = document.getElementById(this.name + 'Cookies');
+    var seattleHeader = document.getElementById(this.name + 'Header');
+      seattleHeader.textContent = this.name;
+    for (var i = 0; i < this.storeHrs.length; i++) {
+      var custThisHour = getRandomNum(this.minCust,this.maxCust);
+      // rounding cookies per hour total
+      var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+      this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+      // add new number to the total
+      this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+      var timesList = document.createElement('li');
+      timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+      seattleObject.appendChild(timesList);
+      
+    } 
+     var totalList = document.createElement('li');
+     totalList.textContent = 'Total: ' + this.totalCookies;
+     seattleObject.appendChild(totalList);
+
+
+  }
+
+}
+dubai.listOfTimes();
+
+var paris = {
+  name: 'paris',
+  minCust:20,
+  maxCust: 38,
+  totalCookies: 0,
+  cookieSalesPerHr: [],
+  avgCustSale: 2.3,
+  storeHrs: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
+  listOfTimes: function() {
+    var seattleObject = document.getElementById(this.name + 'Cookies');
+    var seattleHeader = document.getElementById(this.name + 'Header');
+      seattleHeader.textContent = this.name;
+    for (var i = 0; i < this.storeHrs.length; i++) {
+      var custThisHour = getRandomNum(this.minCust,this.maxCust);
+      // rounding cookies per hour total
+      var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+      this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+      // add new number to the total
+      this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+      var timesList = document.createElement('li');
+      timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+      seattleObject.appendChild(timesList);
+      
+    } 
+     var totalList = document.createElement('li');
+     totalList.textContent = 'Total: ' + this.totalCookies;
+     seattleObject.appendChild(totalList);
+
+
+  }
+
+}
+paris.listOfTimes();
+
+
+var lima = {
+  name: 'lima',
+  minCust:2,
+  maxCust: 16,
+  totalCookies: 0,
+  cookieSalesPerHr: [],
+  avgCustSale: 4.7,
+  storeHrs: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
+  listOfTimes: function() {
+    var seattleObject = document.getElementById(this.name + 'Cookies');
+    var seattleHeader = document.getElementById(this.name + 'Header');
+      seattleHeader.textContent = this.name;
+    for (var i = 0; i < this.storeHrs.length; i++) {
+      var custThisHour = getRandomNum(this.minCust,this.maxCust);
+      // rounding cookies per hour total
+      var cookiesPerHr = Math.round(this.avgCustSale * custThisHour);
+      this.cookieSalesPerHr.push(cookiesPerHr); //use push method to add cookie sales per hr onto array
+      // add new number to the total
+      this.totalCookies = this.totalCookies + cookiesPerHr; //create array for cookie sales each hr
+      var timesList = document.createElement('li');
+      timesList.textContent = this.storeHrs[i] + cookiesPerHr + 'cookies';
+      seattleObject.appendChild(timesList);
+      
+    } 
+     var totalList = document.createElement('li');
+     totalList.textContent = 'Total: ' + this.totalCookies;
+     seattleObject.appendChild(totalList);
+
+
+  }
+
+}
+lima.listOfTimes()
+
+//CODE REVIEW AND REVIEW ON HOW TO GET TOTAL COOKIES
+// var sea = {
+//   //         6am 7am
+//   cookies : [5, 6, 7 ,8 ,9]
+// }
+
+// var paris = {
+//   //         6am, 7am
+//   cookies : [50, 60, 70 ,80 ,90]
+// }
+
+// var lima = {
+//   //         6am, 7am
+//   cookies : [500, 600, 700 ,800 ,900]
+// }
+
+// var a = {
+//   //         6am, 7am
+//   cookies : [500, 600, 700 ,800 ,900]
+// }
+
+// var b = {
+//   //         6am, 7am
+//   cookies : [500, 600, 700 ,800 ,900]
+// }
+
+// var c = {
+//   //         6am, 7am
+//   cookies : [500, 600, 700 ,800 ,900]
+// }
+
+
+// // lets get 6am's cookies sold
+// sixAm = 5 + 50 + 500
+
+// sixAm = sea.cookies[0] + paris.cookies[0] + lima.cookies[0] + a.cookies[0] + b.cookies[0] + c.cookies[0];
+
+// var sevenAm = sea.cookies[1] + paris.cookies[1] + lima.cookies[1] + a.cookies[1] + b.cookies[1] + c.cookies[1]
+
+// for(var hour = 0; hour < 5; hour++){
+//   var total = sea.cookies[hour] + paris.cookies[hour] + lima.cookies[hour] + a.cookies[hour] + b.cookies[hour] + c.cookies[hour];
+//   console.log(hour +'am', total);
+// }
+
+
+// var stores = [sea, paris, lima, a, b, c, sea, paris, lima, a, b, c, sea, paris, lima, a, b, c, sea, paris, lima, a, b, c];
+
+
+// // make six am
+// sixAm = 0;
+// for(var i = 0; i < stores.length; i++){
+//   sixAm += stores[i].cookies[0];
+// }
+
+
+// for(var hour = 0; hour < 5; hour++){
+
+//   // make six am
+//   sixAm = 0;
+//   for(var storeNumber = 0; storeNumber < stores.length; storeNumber++){
+//     var aStore = stores[storeNumber];
+//     var cookieArray = aStore.cookies;
+//     var cookiesSoldThatHour = cookieArray[hour]
+//     sixAm += cookiesSoldThatHour;
+
+//     // sixAm += stores[storeNumber].cookies[hour];
+//   }
+
+// }
+
+
+
+
+
+// console.log('should be 555 : ', sixAm);
