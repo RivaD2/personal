@@ -401,5 +401,84 @@ this.fun = function() {
   return `${this.fun} ${this.professional}`;
 }
 /*************************************** */
-//PROTOTYPES
+//NEW.TARGET
 //the new keyword makes a normal function into constructor
+//How to make sure that you don't miss the new keyword is where the new.target comes into PLAY!
+
+/* The new.target returns empty called without new (false)
+- it returns function(true) when called with new
+- We can test the function call 
+*/
+
+if(!new.target) {
+  return new Projects(student, personal, professional, fun)
+};
+//what if we return something after we create object after the constructor?
+
+return {
+  name : 'Riva',
+  age: 34
+};
+//the object will be overriden by rest of the code
+//if we return a string, then nothing happens. It will be ignored by the constructor function as it is a primitive
+
+
+
+//CREATING A FUNCTION EXPRESSION
+
+//let Project = function(student, personal, professional, fun);
+
+/*********************************** */
+
+//PRIVATE PROPS WITH CLOSURES
+//any prop can be accessed from the outside of the constructor
+
+
+function Cats(firstName, lastName) {
+  this.firstName =firstName;
+  this.lastName = lastName;
+}
+
+let myCat = new Cats ('King', 'Ragnar');
+console.log(myCat.firstName);
+//we could access this name prop outside
+
+
+//what if WE WANT THINGS TO PRIVATE OR HIDDEN?!!!
+//we can create closures, setters and getters and inner variables
+
+/*1) Set the args in constructor 
+2) add _ in front of args
+*/
+
+function Car() {
+  let _type, _color;//declared outside
+  this.setName = function(type, color) {
+    _type = type;
+    _color = color;
+  }
+  this.getName = function() {
+    return `${_type} ${_color}`;
+  }
+}
+
+let carOne = new Car();
+console.log(carOne);
+//NOW we will set by calling carOne.setName
+carOne.setName('Subaru','blue');
+console.log(carOne);
+//even now, the prop is private
+//so we have to call getName
+carOne.getName();
+//now we will get Subaru blue
+carTwo.setName('Ford', 'black');
+carTwo.getName();
+//we will receive the property
+
+//getOwnPropertyNames
+//we pass instance of object into this method
+console.log(Object.getOwnPropertyNames(carTwo));//we would only see setName and getName
+
+
+
+
