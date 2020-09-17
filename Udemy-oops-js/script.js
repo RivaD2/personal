@@ -479,6 +479,37 @@ carTwo.getName();
 //we pass instance of object into this method
 console.log(Object.getOwnPropertyNames(carTwo));//we would only see setName and getName
 
+/***************************************** */
+
+//PROPERTY FLAGS AND DESCRIPTORS
+/*THERE ARE 4 DESCRIPTORS WHEN PROPS ARE CREATED
+ - value
+ - writable: read only descriptor-when true, the value can be changed of prop
+ -enumerable: takes visibility for property in loops (any loop)and gets or takes visibility. 
+ -configurable: Can the descriptors be modified? if true, then yes if false, then no. If configurable value is false, it can't be changed. Also, the prop can't be deleted if the descriptor is false
+ //by default, they are all true
+ */
+
+ //getOwnPropertyDescriptor(Obj ,'propertyName');
+ // this method lets us look at prop descriptor of any project we want
+
+ function Couches(color, age) {
+   this.color = color;
+   this.age = age;
+   }
+let myCouch = new Couches('blue', '2');
+console.log(Object.getOwnPropertyDescriptor(myCouch, 'color'));//this would return value, writeable, enumerable, and configurable
+
+//TO CHANGE THESE PROPS, we will use 
+//Object.defineProperty(obj, 'prop', {descriptor:value});
+
+//let's say I want to change color in my Couch
+
+Object.defineProperty(myCouch,'color',
+{ value: 'seafoam'});
+console.log(myCouch);
+//I should see that the value is now seafoam
+
 
 
 
