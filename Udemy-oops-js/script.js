@@ -595,6 +595,103 @@ alert(id);//symbol values can't be converted to string!
 //person.id will alert us to that particular num assigned to id
 alert(id.toString()); //WE HAVE TO CONVERT SYMBOLS TO STRINGS 
 
+Object.keys(names);
+//this will return all our keys of prop names
+
+//Object.assign is used for cloning. This does not ignore symbols.
+let names2 = Object.assign({}, names); //this would clone the names object
+
+//GLOBAL SYMBOLS
+let sym = Symbol.for('id');
+let sym1 = Symbol.for('id');
+console.log(sum === sym1);
+//this log would return true which means I created a global symbol
+
+Symbol.keyFor(sym);
+//this returns the key for the GLOBAL SYMBOLS
+
+/************************************************* */
+//PROTOTYPES AND PROTOTYPE INHERITANCE
+
+function Name (first, last) {
+  this.first = first;
+  this.last = last;
+  
+}
+let name1 = new Name('Jeremy', 'Rankin');
+let name2 = new Name('Brit', 'Jelly');
+console.log(name1); //this would show us the Name object with values above
+/*in the console, we will see that a proto has been created with constructor inside
+  -There is another proto with all the methods
+  -All of these come from the global object
+  -Every object has the prototypes
+  - Arrays are objects (like everything) and we can see all the array methods
+  under proto in the console window.
+  */
+ //PROTOTYPES are for functions, dates, strings, numbers
+
+ let str = new String('Hello');
+ //a console log will bring up all methods under proto
+
+ /* - Null is at the top
+    - Global object is at the top
+  - Then the array object, string object etc.
+  - We also have user defined objects (arr, strings that we create)
+*/
+
+//WHY USE PROTOTYPE:
+// the prototype holds all methods that can be used multiple times
+// Every time the constructor is created
+
+//FOr constructor above:
+//this is how we would use the prototype
+Name.prototype.entireName = function() {
+  return `${this.first} ${this.last}`
+};
+//we use these to save space while creating methods
+
+/************************************************* */
+
+//MORE ON PROTOTYPES and PROTO CHAIN
+
+console.log(name1.__proto__ === names.prototype)
+/*the first proto is for object istance created from constructor
+-the prototype is for object constructor as such or the global obj
+-the object instance inherits from the constructor
+-the proto inherits from the object.prototype*/
+name.__proto__.hello = function () {
+  console.log('Hello There');
+  //
+}
+console.log(name1);
+//we would see that inside the proto object, would be the hello
+/*instead of creating particular function in side the constructor, we
+can create it for one obj instance (name1) inside the proto*/
+
+console.log(arr.proto__ === Array.prototype);
+//this is true 
+//there is a hierarchy --null, global object, string, array etc. 
+
+//PROTOTYPE CHAIN: -instance of obj, array object, global obj, null
+//it goes from the bottom to the top
+//global object is always at top along with null
+//String.prototype(), Number.prototype(), Boolean.prototype()
+
+//we can actually change the proto methods built in
+//Array.prototype.reverse = function()
+arr.__proto__.reverse = function() {
+  console.log('Hello There');
+
+}
+arr.reverse(); // this would not return the normal reverse method results
+//this would return Hello There! I changed the functionality using a proto
+// This is not usually something we want to do, but it can be used
+
+/************************************************ */
+//PROTOTYPE INHERITANCE
+
+
+
 
 
 
