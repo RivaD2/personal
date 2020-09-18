@@ -568,6 +568,32 @@ person.age =40; //this will go and call the setter and return value
 
 /******************************************************** */
 
+//SYMBOLS - ANOTHER DATA TYPE
+//these are immtable, and can't be changed!
+//inside, we will give a label
+let sym = Symbol('id');
+//this label is used for debugging
+//every symbol is unique even if it has the same label
+let sym1 = Symbol('id');
+console.log(sym === sym1);
+//this will return false
+
+//WHY USE SYMBOLS?
+// They are used to create identifiers : social security numbers, identity numbers etc
+//We don't want proprietary information compromised
+let id = Symbol('id');
+let names = {
+  name: 'Riva Davidowski',
+  [id] : 411-298-0989 //made up number
+};
+person.id1 = 566;
+console.log(names);
+//id1 is created separately 
+//Symbols ARE HIDDEN PROPS THAT CAN BE USED FOR UNIQUE VALUE STORAGE
+
+alert(id);//symbol values can't be converted to string!
+//person.id will alert us to that particular num assigned to id
+alert(id.toString()); //WE HAVE TO CONVERT SYMBOLS TO STRINGS 
 
 
 
