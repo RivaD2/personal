@@ -509,6 +509,65 @@ Object.defineProperty(myCouch,'color',
 { value: 'seafoam'});
 console.log(myCouch);
 //I should see that the value is now seafoam
+Object.defineProperties(myCouch, {
+  color: {value: 'blue', configurable: false},
+  age: {value: 50}
+});
+console.log(myCouch);
+//the props should have been updated. This is another way to write it
+
+/****************************** */
+//GETTERS AND SETTERS
+/*data method - usual & accessor methods. The getter access the property 
+and the setter changes or assigns value to property
+*/
+
+//getPropertyName() {return}, setPropertyName (f) {this.prop = prop}
+
+let person = {
+  //f is the value we want to receive
+  set FName(f) {
+    this.f = f;
+  },
+  get fName() {
+    return this.f;
+  },
+  set lName(l) {
+    this.l = l;
+  },
+  get lName() {
+    return this.l;
+  }
+};
+//this is an empty object
+//the value has to be set first before we can access it
+/*the setter is triggered when dot notation or square brackets are used
+to assign value or change value of prop*/
+person.fName = 'Riva';
+person.lName = 'Davidowski';
+console.log(person.fName);
+//we will receive Riva
+//This is another way of creating props by using accessor method
+//The accessor method DOES NOT CREATE PRIVATE PROPS
+
+/************************************************************** */
+//Object.degine() with getters and setters
+Object.defineProperty(person, 'age', {
+  //we don't have to include it in setter and getter since we defined it above
+  set(a) { //var is used to receive value of prop
+    this.a = a;
+  },
+  get() {
+    return this.a
+  }
+});
+person.age =40; //this will go and call the setter and return value
+//we would receive 40 in the browser after logging
+
+//we use this to create props!
+
+/******************************************************** */
+
 
 
 
