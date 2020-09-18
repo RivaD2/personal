@@ -689,7 +689,40 @@ arr.reverse(); // this would not return the normal reverse method results
 
 /************************************************ */
 //PROTOTYPE INHERITANCE
+/*inherit props and methods of another constructor or proto or object into 
+another object*/
+//There is a lot of time saved with proto inheritance
 
+/*-an object can only inherit from one object
+  Objeect1 => Object2 => Object3
+  object one has props and methods and object2 has own props and method
+  However, object2 will inherit props and methods from object 1 as well
+  Object3 will also be inheriting from Object1 and Object 2
+  You can't make Object1 inherit from Object 3 
+*/
+
+function Movies(title, yearReleased) {
+  this.title = title;
+  this.yearReleased = yearReleased;
+};
+
+Movies.prototype.movieRating = function() {
+  return `${this.title} ${this.yearReleased}`
+}
+//this is how we use inheritance
+Show.prototype = Movies.prototype;
+function Show(genre) {
+  this.genre = genre;
+}
+
+Show.prototype.drama = function() {
+  if(this.genre === 'sci-fi') {
+    //taking prop from Movies Object
+    return `${this.title}`;
+  }
+}
+/*we assigned the methods of new object to the Movies
+but what about the values?*/
 
 
 
