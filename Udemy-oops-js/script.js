@@ -724,6 +724,73 @@ Show.prototype.drama = function() {
 /*we assigned the methods of new object to the Movies
 but what about the values?*/
 
+//the apply() method can be used on parent constructor
+/*before I do anything, I have to use it on parent
+   -send 'this' the instance that was created and 'args'
+   */
+/*************************************** */
+
+//ES6 INTRODUCTION
+
+/*classes and class inheritance
+  -an easier way of creating objects
+  -"syntatic sugar"
+  -'class' keyword is wokring with prototypes and the proto 
+    does all the work
+  */
+//HOW TO CREATE THEM
+
+class Cat {
+  //the constructor will get called first!
+  constructor(type, color) {
+    this.type = type;
+    this.color = color;
+  }//can also end this with semicolon instead of braces
+  //this would be the method created
+  //method needs to be inside class
+   catBreed() {
+     return this.type + this.color;
+   }
+}
+let catOne = new Cat('calico','orange');
+let catTwo = new Cat('siamese','white');
+/*the constructor is called and whatever is sent inside
+of parens above is accepted inside of the constructor 
+and props are created and values are intialized*/
+//in the console, the values would now be calico and orange etc.
+/*WHAT DO WE DO FOR METHODS?
+ - methods are created after constructor*/
+
+ // TO ACCESS PROPS:
+ catOne.type;
+ catTwo.color;
+ //CAN ACCESS METHODS LIKE THIS:
+ catOne.color();
+
+ /*classes are higher form of constructors and protos
+  -The methods are automatically assigned to protos with ES6
+  - Whenever we call method from object created with 
+    class, it takes that method from proto
+  - classes are functions in the background
+  - the class is the constructor
+  */
+  
+//GET ALL PROP NAMES OF PARTICULAR OBJ
+// CAN GET NAMES OF METHODS INSIDE OF PROTO
+Object.getOwnPropertyNames(Cat.prototype);
+//this would return the constructor and that includes the methods
+
+/*PROOF THAT classes ARE IMPROVEMENT
+ -class methods are nonenumerable by default
+ */
+for(let key in catOne) {
+  console.log(key);
+  //this would not return any methods
+}
+
+//CLASSES USE STRICT MODE BY DEFAULT!!
+
+
 
 
 
