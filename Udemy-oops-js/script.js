@@ -10,6 +10,7 @@
 //This method is most commonly used
 /* The way these objects are written, this is called encapsulation:
 - everything releated to the obj is encapsulated within the braces*/
+
 let person1 = {
   name: 'Susan',
   age: 35,
@@ -40,8 +41,10 @@ alert(`${person.name} 's height is ${person1.height}.`); //this will return the 
 /*Adding, updating and deleting properties: we can use bracket and dot notation*/
 //Adding properties to an obj:
 person1.gender = 'female';
-console.log(person1); //we should see the new property added
-person2['canVote'] = true; //property added using brackets needs to be in quotes
+//we should see the new property added
+console.log(person1); 
+//property added using brackets needs to be in quotes
+person2['canVote'] = true; 
 
 // Update properties on an obj
 person1.age = 40;
@@ -87,10 +90,12 @@ let person2 = {
 };
 //if it is a multiword property, it has to be in quotes
 // we can access these properties in the same way
-person2["can vote"] = true; //this will add new property can vote to person2 object
+person2["can vote"] = true; 
+//this will add new property can vote to person2 object
 // dot notation will not work: ex: person1.can vote = false
 
 /********************************************* */
+
 //Property Shorthand
 
 let fName = 'John';
@@ -110,7 +115,8 @@ let person1 = {
   lName,
    age
 };
-console.log(person1.fName); // this would return 'John'
+// this would return 'John'
+console.log(person1.fName); 
 //this works with functions as well
 function createPerson (fName, lName, age) {
   let fullName = `${fName} ${lName}`;
@@ -121,7 +127,8 @@ function createPerson (fName, lName, age) {
     fullName : fullName
   };
 }
-console.log(createPerson('John', 'Doe', 35)); // this function call will return an object in the return statement
+console.log(createPerson('John', 'Doe', 35)); 
+// this function call will return an object in the return statement
 // I can even do the function call within the object like so:
 let objPerson = 
 createPerson('John', 'Doe', 35);
@@ -130,6 +137,7 @@ console.log(`${objPerson.fName}'s full name is ${objPerson.fullName}`);
 //We created an object within a function and returned an object inside function
 
 /*********************************************** */
+
 //Arrays of Objects
 //Arrays make it easy to hold props of multiple objects
 
@@ -142,6 +150,7 @@ console.log(person[1].eyeColor);
 console.log(person[1]['eyeColor']); //first is index second is prop
 
 /***************************************** */
+
 //Object Basics- objects and const
 //anything that is declared with const can't be modified
 
@@ -149,12 +158,14 @@ const person1 = {
   fName: "jon",
   lName: "Doe"
 };
-person1.fName = "Jane"; //there is no error if we were to console.log it
-/*why do we not get an error even though we redclared const?
+//there is no error if we were to console.log it
+person1.fName = "Jane"; 
+/*why do we not get an error even though we redeclared const?
 - Only the object is fixed, the props and values are not 
 - using const, we could not declare Person1 again*/
 
 /************************************************ */
+
 //Using vars as props while creating objects
 //Using computed properties: the prop name can be dynamic!
 
@@ -170,14 +181,15 @@ console.log(voting);//this will return Jane Doe can vote
 
 //What happens if we change person value after objct declaration?
 person = 'Jon Murray';
-console.log(voting);//there willbe no change
+//there willbe no change
+console.log(voting);
 //the object takes in the value from var declaration and assignment before the object was created
 
 //How do you access variables?
 console.log(`${person} ${voting[person]}`);
-//this will return Jane Doe can vote
-//no quotes inside brackets because we are using variable
-//we can not use dot notation
+/*this will return Jane Doe can vote
+  -no quotes inside brackets because we are using variable
+  -we can not use dot notation*/
 /**************************************************** */
 
 //Naming properties, DO's and Don'ts
@@ -192,6 +204,7 @@ let voting = {
 //dot notation will not work on numbers but it will with keywords
 
 /****************************************************** */
+
 //Object methods: Things that an object does
 //functions become methods with objects 
 
@@ -252,6 +265,8 @@ console.log(person.fullName('Doe'))
 //if we do not pass arg in fullName() call, we will just get function definition
 
 /*************************************************** */
+
+
 //Object methods using the 'this' keyword
 let person = {
   fName: 'Mary',
@@ -261,7 +276,8 @@ let person = {
     return this.fName + " " + this.lName;
   }
 };
-console.log(person.fullName()); //this will return the fullName
+//this will return the fullName
+console.log(person.fullName()); 
 
 //OR:
 let person = {
@@ -273,10 +289,10 @@ person.fullName = function() {
 }
 console.log(person.fullName());
 
-//USING the this keyword helps us to keep objects dynamic!! 
-//Using the this keyword makes methods dynamic and NOT BOUND TO ONE OBJECT!
-//this keyword does not work with arrow functions
-//creating objects using constructors is important when using the this keyword
+/*USING the this keyword helps us to keep objects dynamic!! 
+  -Using the this keyword makes methods dynamic and NOT BOUND TO ONE OBJECT!
+  -'this' keyword does not work with arrow functions
+  -creating objects using constructors is important when using the this keyword
 
 /******************************************** */
 
@@ -285,7 +301,9 @@ let person = {
   fName: 'Jane',
   lname: 'Doe',
 }
-console.log('lName' in person); //console will return true
+
+//console will return true
+console.log('lName' in person); 
 //this checks to see if lName is prop of person obj
 console.log('name' in person); //console will return false
 
@@ -319,16 +337,19 @@ let person1 = person;
 //BUT, in the background, they don't store the values in a separate memory box. They both point to the same memory box.
 
 person1.fName = 'Susan';
-//if props and values of person1 were stored in separate memory box, then it should not change values of person object
+/*if props and values of person1 were stored in separate memory box, then it should not change values of person object
+    -In the above example, this will change the values of person object. 
+      The reason this happens is because both have a common memory location*/
 
-// In the above example, this will change the values of person object. The reason this happens is because both have a common memory location
-
-let obj = {};
-let obj1 = {};
-console.log(obj=== obj1)//this will return false
-//anytime a new object is created, a new memory location is created. This is different from the person and person1 objects
+      let obj = {};
+      let obj1 = {};
+      console.log(obj=== obj1)
+      //this will return false
+      /*anytime a new object is created, a new memory location is created. 
+      This is different from the person and person1 objects*/
 
 /******************************************* */
+
 // Cloning and merging Objects
 //cloning
 let person = {
@@ -372,9 +393,9 @@ Object.assign(person, voting, career);
 /*********************************** */
 
 /*CONSTRUCTORS!! THEY FORM THE BASIS FOR EVERYTHING
-- set initial props of the object it creates
-- constructors hold a  template and multiple objects out of the template that the constructor holds
-*/
+    - set initial props of the object it creates
+    - constructors hold a  template and multiple objects out of the template that the constructor holds
+    */
 //constructor function
 function Projects(student, personal, professional, fun) {
   this.student = student;
@@ -391,17 +412,18 @@ let funProject = new Projects('artshop','drawingProject','Portfolio','foodcalc')
 //let funProjectTwo = new Project(//more projects here);
 
 /* - The new keyword does two things
-  - it creates empty object assigned to object name 
-  - it calls constructor function with args given and replaces the this value with new object name that is used
-  - it assigns attribute values to new props and automatically return the new object with new props and values
-*/
-// we could create a method inside object but it is best to keep those outside.
+    - it creates empty object assigned to object name 
+    - it calls constructor function with args given and replaces the this value with new object name that is used
+    - it assigns attribute values to new props and automatically return the new object with new props and values
+  */
+  // we could create a method inside object but it is best to keep those outside.
 
 this.fun = function() {
   return `${this.fun} ${this.professional}`;
 }
 /*************************************** */
-//NEW.TARGET
+
+//new.target
 //the new keyword makes a normal function into constructor
 //How to make sure that you don't miss the new keyword is where the new.target comes into PLAY!
 
@@ -413,15 +435,17 @@ this.fun = function() {
 if(!new.target) {
   return new Projects(student, personal, professional, fun)
 };
+
+
 //what if we return something after we create object after the constructor?
 
 return {
   name : 'Riva',
   age: 34
 };
+
 //the object will be overriden by rest of the code
 //if we return a string, then nothing happens. It will be ignored by the constructor function as it is a primitive
-
 
 
 //CREATING A FUNCTION EXPRESSION
@@ -498,10 +522,11 @@ console.log(Object.getOwnPropertyNames(carTwo));//we would only see setName and 
    this.age = age;
    }
 let myCouch = new Couches('blue', '2');
-console.log(Object.getOwnPropertyDescriptor(myCouch, 'color'));//this would return value, writeable, enumerable, and configurable
+//this would return value, writeable, enumerable, and configurable
+console.log(Object.getOwnPropertyDescriptor(myCouch, 'color'));
 
-//TO CHANGE THESE PROPS, we will use 
-//Object.defineProperty(obj, 'prop', {descriptor:value});
+/*TO CHANGE THESE PROPS, we will use:
+-Object.defineProperty(obj, 'prop', {descriptor:value});*/
 
 //let's say I want to change color in my Couch
 
@@ -517,6 +542,7 @@ console.log(myCouch);
 //the props should have been updated. This is another way to write it
 
 /****************************** */
+
 //GETTERS AND SETTERS
 /*data method - usual & accessor methods. The getter access the property 
 and the setter changes or assigns value to property
@@ -551,7 +577,9 @@ console.log(person.fName);
 //The accessor method DOES NOT CREATE PRIVATE PROPS
 
 /************************************************************** */
+
 //Object.degine() with getters and setters
+
 Object.defineProperty(person, 'age', {
   //we don't have to include it in setter and getter since we defined it above
   set(a) { //var is used to receive value of prop
@@ -561,11 +589,11 @@ Object.defineProperty(person, 'age', {
     return this.a
   }
 });
-person.age =40; //this will go and call the setter and return value
+//this will go and call the setter and return value
 //we would receive 40 in the browser after logging
-
 //we use this to create props!
 
+person.age =40; 
 /******************************************************** */
 
 //SYMBOLS - ANOTHER DATA TYPE
@@ -586,13 +614,16 @@ let names = {
   name: 'Riva Davidowski',
   [id] : 411-298-0989 //made up number
 };
+
 person.id1 = 566;
 console.log(names);
+
 //id1 is created separately 
 //Symbols ARE HIDDEN PROPS THAT CAN BE USED FOR UNIQUE VALUE STORAGE
-
-alert(id);//symbol values can't be converted to string!
+//symbol values can't be converted to string!
 //person.id will alert us to that particular num assigned to id
+alert(id);
+
 alert(id.toString()); //WE HAVE TO CONVERT SYMBOLS TO STRINGS 
 
 Object.keys(names);
@@ -611,6 +642,7 @@ Symbol.keyFor(sym);
 //this returns the key for the GLOBAL SYMBOLS
 
 /************************************************* */
+
 //PROTOTYPES AND PROTOTYPE INHERITANCE
 
 function Name (first, last) {
@@ -620,7 +652,8 @@ function Name (first, last) {
 }
 let name1 = new Name('Jeremy', 'Rankin');
 let name2 = new Name('Brit', 'Jelly');
-console.log(name1); //this would show us the Name object with values above
+//this would show us the Name object with values above
+console.log(name1); 
 /*in the console, we will see that a proto has been created with constructor inside
   -There is another proto with all the methods
   -All of these come from the global object
@@ -773,6 +806,7 @@ and props are created and values are intialized*/
     class, it takes that method from proto
   - classes are functions in the background
   - the class is the constructor
+  -CLASSES USE STRICT MODE BY DEFAULT!!
   */
   
 //GET ALL PROP NAMES OF PARTICULAR OBJ
@@ -788,10 +822,154 @@ for(let key in catOne) {
   //this would not return any methods
 }
 
-//CLASSES USE STRICT MODE BY DEFAULT!!
+//CLASS EXPRESSIONS-RETURNING CLASS INSIDE FUNCTION
+
+let Book = class {
+  constructor(title, about) {
+    this.title = title;
+    this.about = about;
+  }
+};
+let bookOne = new Book('Eloquent JS', "Book about JS");
 
 
+//returning class inside function:
+// This dynamically create classes:
+
+function createBooks(title, about){
+  return class {
+    /*constructor has no params as they are listed
+    above*/
+    constructor() {
+      this.title = title;
+      this.about = about;
+    }
+    //method here
+    
+  }
+}
 
 
+//dynamically creating class
+let Books = createBooks('Eloquent JS', 'Coding book');
+
+/* TO ACCESS SOMETHING IN CLASS, A NEW OBJ HAS
+TO BE CREATED*/
+    let firstBook = new Book().title;
+    
+    let bookTwo = new Book('Russian','Russian for beginners');
+    /*one class was created, but that class
+    can be used to access props
+    - or a new instance can be created with new values
+    - we can access anything inside*/
+
+/********************************************** */
+//CLASS FIELDS
+//props can be created outside class constructor
+//we can use it to get info from user etc.
+
+let People = class {
+  age = prompt("What is the person's age?", 18);
+  constructor(fName, lName) {
+     this.fName =fName;
+     this.lName = lName;
+  }
+  fullName() {
+    return this.fName + " " + this.lName;
+  }
+  isMajor() {
+    if(this.age > 18) {
+      return `${this.fullName()} is a major`;
+    } 
+    else {
+      return `${this.fullName()} is a minor`;
+    }
+  }
+}
+let person1 = new People('John','Wayne');
+console.log(person1.age); 
+//this how prop is created outside method
+
+/************************************ */
+//GETTERS AND SETTERS WITH CLASSES
+//the constructor has to be created first
+//the constructor invokes the getter and setter
+
+let People = class {
+  constructor(fName, lName) {
+    /*invokes fName setter for the prop fName*/
+     this.fName =fName; 
+     this.lName = lName;
+}
+set fName(f) {
+  this.f = f;
+}
+get fName() {
+  return this.f;
+}
+set lName(l) {
+  this.l = l;
+}
+get lName() {
+  return this.l;
+}
+fullName() {
+  return `${this.f} ${this.l}`;
+  }
+}
+
+let person1 = newPeople('Riva', 'Davidowski');
+console.log(person1.fName); //this will access getter
+
+/************************************** */
+//CLASSES (ES6)
+//class inheritance
+// WE USE keyword extends
+
+//here we want Major to inherit from Person
+//BUT, Person can't inherit from Major
+class Major extends Person {
+  isMajor() {
+    if(this.age > 18) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+}
+//we have to set all props of parent
+let person1 = new Major('Riva', 'Davidowski', 34);
+console.log(person1.isMajor());
+//this console would return true
+
+
+/****************************************** */
+//OVERRIDING METHODS AND PROPS IN CLASSES
+
+//what if child class has same props/methods of parent?
+
+let People = class {
+  constructor(fName, lName) {
+     this.fName =fName;
+     this.lName = lName;
+  }
+  fullName() {
+    return this.fName + " " + this.lName;
+  }
+  isMajor() {
+    return (this.age > 18) ? `Major` : `Minor`;
+  }
+}
+class Major extends Person {
+  isMajor() {
+    console.log((this.age > 18) ? `true` : `false`);
+    return super.isMajor();
+    }
+  }
+
+  /*keyword Super: Super calls parent method from 
+  child method*/
+//our child classes don't have a constructor
 
 
