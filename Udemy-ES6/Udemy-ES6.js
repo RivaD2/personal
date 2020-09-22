@@ -153,3 +153,42 @@ let obj3 = {...obj1,...obj2};
 console.log(obj3);
 //this would give us new obj with keys from obj1 and obj 2
 //if I added in a new value to obj1, the new obj would hold all values from each obj
+
+/****************************************** */
+/*DESTRUCTURING
+    - it allows us to unpack arrays or objects into a bunch of
+    variables which makes working with them more convenient
+    - SYNTAX:
+        let[a,b] = [1,2,3,4,5];
+        let{name,age} = {firstName: 'John, lastname:'Wick', age:30};
+        */
+
+//object are in curlies and arrays are in brackets
+
+const name = 'Ragnar NMN Lothbrok';
+const nameArray = name.split(' ');
+//this would split the string into three parts of name
+// what if we wanted first name and middle name section
+
+let firstName = nameArray[0];
+let middleName = nameArray[1];
+//there is a better way...destructuring!
+
+let [firstName, middleName] = nameArray;
+//Here the first and second element were selected
+//Sequence does matter when writing vars
+
+//if we wanted firstName lastName:
+let [firstName, , lastName] = nameArray;
+
+
+const laCroix = {
+    flavor:'Razzberry Deliciousness',
+    canColor: 'Pink',
+    yummy: true
+}
+let {flavor,yummy} = laCroix;
+
+//to create a new object
+
+let
