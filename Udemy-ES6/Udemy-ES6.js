@@ -112,4 +112,44 @@ mSumThree(1, 2, 4, 5, 6, 7)
 //the rest operator needs to be at the end of the args list
 
 //MORE ON SPREAD OPERATOR:
+/* Spread syntax allows arrays and objects to be expanded into:
+    - elements in case of an array
+    - key-value pairs in case of object
+    */
 
+let newArray = [1, 2, 3, 4,5];
+let newArrayTwo = [...newArray];
+newArray.push(6);
+console.log([...newArray]);
+/*this prints 5 elements that were in array
+    - created a new array with the same elements with spread operator
+    - For the second array, we still get the same result
+    - A copy of the original is made
+    - the spread operator creates copies of arrays or concantenate multiple arrays
+    - if I push on a value to newArray, only that array will take the new value;
+*/
+let jamArray = ['strawberry', 'lingonberry', 'marionberry'];
+let toastArray = ['brioche', 'wheat', 'white', 'rye'];
+
+let breakfastToast = jamArray.concat(toastArray);
+let breakfastToast = [...jamArray,...toastArra];
+// both of these ways concat and combine the values in each earray together
+//SEQUENCE MATTERS WHEN USING SPREAD
+
+//we can also add new elements to start and end of array
+
+letpersonEatingAllToast = ['Riva', ...jamArray, ...toastArray,'french'];
+
+//Spread can be used on objects as well
+
+let obj1 = {
+    name ='Riva'
+}
+
+let obj2 = {
+    age: 34
+}
+let obj3 = {...obj1,...obj2};
+console.log(obj3);
+//this would give us new obj with keys from obj1 and obj 2
+//if I added in a new value to obj1, the new obj would hold all values from each obj
