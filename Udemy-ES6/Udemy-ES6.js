@@ -302,3 +302,29 @@ let newArray = namesArray.map((data, pos) => {
     //This is syntax-sugar bedhind the scenes everything works the same
     */
 
+function Person(name, birthYear) {
+    this.name = name;
+    this.yearOfBirth = birthYear;
+
+    this.getDetails = function() {
+        return "Name: " + this.name +
+        "and Age: " + (2020 - this.yearOfBirth);
+
+    }
+}
+var riva = new Person('riva', 34);
+
+//NOW LETS USE CLASSES:
+
+class Plants {
+    constructor(type, name) {
+        this.type = type;
+        this.name = name;
+    }
+    getPlantDetails = () => {
+        return `Name: ${this.name} and Age: ${type}`;
+    }
+}
+const plant1 = new Plants('africanMilkTree', 'succulent');
+// whatever values are passed above are sent to constructor
+// the constructor defines props and intializes with the values
