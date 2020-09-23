@@ -328,3 +328,47 @@ class Plants {
 const plant1 = new Plants('africanMilkTree', 'succulent');
 // whatever values are passed above are sent to constructor
 // the constructor defines props and intializes with the values
+
+/************************************************* */
+//INHERITANCE
+/* ES6 provides us with a keyword called 'extends' to inherit classes
+SYNTAX:
+class ChildClass {
+    //Classbody
+}
+class ChildClass extends ParentClass {
+    //Classbody
+}
+*/
+
+// create class followed by classname
+
+class Plants {
+    constructor(type, name, easyCare) {
+        this.type = type;
+        this.name = name;
+        this.easyCare = easyCare;
+    }
+    getPlantDetails = () => {
+        return `Name: ${this.name} and Age: ${type}`;
+    }
+}
+
+class PlantsTwo extends Plants {
+    constructor(type, name, color) {
+        //super calls constructor of previous class
+        super('tropical','zZ');
+        this.type = type;
+        this.name = name;
+        this.color = color;
+    }
+    getData = () => {
+        console.log(`This plant is a ${this.type} and it is a ${this.name} and it's ${this.color}`)
+    }
+}
+const zigZag = new PlantsTwo ('cactus', 'zizZag', 'green');
+zigZag.getData();
+
+const snakePlant = new Plants('mother in law tongue', 'sanseveria', 'various');
+snakePlant.getData();
+//this would return details of first and second objects
