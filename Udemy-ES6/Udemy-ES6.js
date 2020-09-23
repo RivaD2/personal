@@ -191,4 +191,114 @@ let {flavor,yummy} = laCroix;
 
 //to create a new object
 
-let
+let firstName = 'Anthony';
+let lastName = "van Winkle";
+let age = 36;
+
+const personObj = {
+    firstName, // this pulls the variable value in
+    lastName,
+    age
+
+}
+//This creates a key and gives it a value
+//It is still the same object, but it works if you want the keys with same variable name
+
+/********************************** */
+//ARRAY METHODS IN ES6 -reduce, map, filter, find
+
+/*reduce()
+ - iterates through array and accepts callback function to perform
+ some action on the array
+ - reduce PASSES the RESULT of the callback from one iteration to the next
+ - the callback result is the acc
+ - the acc can be pretty much anything (integer, string, object etc.)
+ - the acc must be instantiated and passed when calling reduce()
+ SYNTAX:
+ arr.reduce((acc, item) => {
+     //callback function body
+ }, acc_default_value);
+ */
+
+const newArray = [1.2, 3, 4, 5, 6];
+
+newArray.reduce((acc, item) => {
+    console.log(item);
+    console.log(acc);
+    return acc + 1
+}, 0);
+//I take the acc value and add one and pass it to next iteration;
+
+//to add all nums in array
+const numbersArray = [1.2, 3, 4, 5, 6];
+
+const result = numbersArray.reduce((acc, item) => {
+    return acc + item;
+}, 0);
+
+
+/*map()
+ - map iterates through array to create a new array
+ - I can decide which elements should be added to array based off conditions
+ SYNTAX: arr.filter(item => {
+     //return true/false to add
+ })*/
+
+const catsArray = ['ragnar', 'kittenMitten', 'simba'];
+const newArray =[];
+
+const doubleValues = item => {
+    return item * 2;
+}
+catsArray.forEach(cat => {
+    newArray.push(doubleValues(cat[i]));
+});
+
+//lets use map
+let newArray = catsArray.map((item) => {
+    return item * 2;
+    //we iterate through list and double the names
+});
+//the arg can be named anything
+//only the new array has the doubled values
+
+
+
+//if this was an object, we can access the obj
+
+const namesArray = [
+    {
+        name: 'John',
+        age: 33,
+        career: 'engineer'
+    },
+    {
+    name: 'Mary',
+    age: 44,
+    career: 'travelWriter'
+    }
+];
+let newArray = namesArray.map((data, pos) => {
+    //return new array with only name and career props
+    return {
+        name: data.name,
+        career = data.career
+    }
+});
+
+/************************************* */
+/*Classes in ES6:
+    - to create obj factories we can use the class keyword
+    - SYNTAX:
+    class ClassName {
+        constructor() {
+            //intialize the props here
+        }
+        //Methods outside constructor
+        methods1 = () => {
+            //method body
+        }
+    }
+    //This is syntax-sugar bedhind the scenes everything works the same
+    */
+
