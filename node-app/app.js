@@ -41,6 +41,9 @@
 const log = require('./logger');
 const path = require('path');
 const os = require('os');
+const fs = require('fs');//filesystem
+
+
 
 const totalMemory = os.totalmem();
 const freeMemory = os.freemem();
@@ -65,6 +68,26 @@ console.log(pathObj);
   name: 'app'
 } this is the path obj, with some useful properties
 */
+
+
+//this is the synchronous form
+const files = fs.readdirSync('./');
+console.log(files);
+/* This console will return all files and folders in current
+folder in the form of array: [ 'app.js', 'logger.js' ]*/
+
+/*BELOW IS THE ASYNCHRONOUS FORM AND IS PREFERRED:
+    -all async methods require a callback function as last arg
+    -Node will call function when asynch function completes
+    -To work with files, we will need to require 'fs' module
+    - then use one of the methods, which come in pairs (async or sync)
+    - ALWAYS USE asynchronous methods or non- blocking methods
+    */
+fs.readdir('./', function(err, files) {
+    if(err) console.log('Error', err);
+    else console.log('Result', files);
+});
+
 
 //this returns  an obj and a single method of log
 //we can call this method in app.js
