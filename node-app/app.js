@@ -39,6 +39,32 @@
 //loading logger module:
 //this require function returns the obj that is exported from target module
 const log = require('./logger');
+const path = require('path');
+const os = require('os');
+
+const totalMemory = os.totalmem();
+const freeMemory = os.freemem();
+console.log(`Total Memory: ${totalMemory}`);
+console.log(`Free Memory: ${freeMemory}`);
+/*
+the logs above return:
+Total Memory: 8589934592
+Free Memory: 71032832
+- We can get info about OS using Node
+- Our JS is executed on the server or outside of the browser
+{*/
+
+const pathObj = path.parse(__filename);
+console.log(pathObj);
+/*this returns:
+{
+  root: '/',
+  dir: '/Users/riva/repos/personal-projects-and-practice/node-app',
+  base: 'app.js', //name of file
+  ext: '.js', name of extension
+  name: 'app'
+} this is the path obj, with some useful properties
+*/
 
 //this returns  an obj and a single method of log
 //we can call this method in app.js
@@ -48,4 +74,3 @@ log('message'); //we are calling the log function from logger.js
 //when we define a module, we export one or more members
 // We then load the module by using the require function
 //jshint will scan js code for errors
-

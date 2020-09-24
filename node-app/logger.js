@@ -1,8 +1,13 @@
-//we will image that we are using remote login message to log message
-//they give us a url and we can send http request to log messages to cloud
-
+//(function (exports, require, module, __filename, __dirname) {
+    //the require function is local to each module
+    // this function is the module wrapper function
+    //node does not execute code directly, but wraps code inside function
+console.log(__filename);
+console.log(__dirname);
 const url = 'http://mylogger.io/log';
 
+//we will image that we are using remote login message to log message
+//they give us a url and we can send http request to log messages to cloud
 function log(message) {
     //Send an HTTP request
     console.log(message);
@@ -33,3 +38,6 @@ is exported from the module and avail outside of this module.
 
 //Sometimes we may only want to export a function:
 module.exports = log;
+
+//exports.log = log;
+//can't write exports = log because exports is a reference to module.exports
