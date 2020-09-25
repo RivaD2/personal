@@ -43,6 +43,37 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs');//filesystem
 
+/*************************************** */
+//In the real world, we will  not use http module to build back end service
+// as we add more routes, the code will be too complex
+// instead we use express which gives app clean structure
+// The express framework is built on top of http module in NODE
+const http = require('http');
+
+//this is an EventEmitter as well
+// the server object raises events that we can respond to
+const server = http.createServer((req, res) => {
+    if(req.url === '/') {
+        res.write('Hello World');
+        res.end();
+    }
+
+    /*- to build back end service, we will have to handle
+    various routes
+    - here, we want to return list of courses from database
+    - here, we want to return an array of objects using JSON
+    */
+    if(req.url === '/api/courses') {
+        //pass array to JSON
+        res.write(JSON.stringify([1, 2, 3]))
+        res.end();
+    }
+});
+
+server.listen(3002);
+console.log('Listening on port 3002...');
+/****************************************************** */
+
 //EventEmitter is caps bec it is in an indicator that EventEmitter is a class
 // a class is a container for properties and methods
 //to use EventEmitter, I need to create an instance of this class
@@ -78,7 +109,7 @@ const logger = new Logger();
 
 logger.log('message');
 
-
+/*********************************************************** */
 
 const totalMemory = os.totalmem();
 const freeMemory = os.freemem();
@@ -104,7 +135,7 @@ console.log(pathObj);
 } this is the path obj, with some useful properties
 */
 
-
+/************************************************** */
 //this is the synchronous form
 const files = fs.readdirSync('./');
 console.log(files);
@@ -128,7 +159,7 @@ fs.readdir('./', function(err, files) {
 
 
 //we are calling the log function from logger.js
-log('message');
+// log('message');
 
 //when we define a module, we export one or more members
 // We then load the module by using the require function
