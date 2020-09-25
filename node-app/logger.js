@@ -4,14 +4,38 @@
     //node does not execute code directly, but wraps code inside function
 console.log(__filename);
 console.log(__dirname);
-const url = 'http://mylogger.io/log';
 
-//we will image that we are using remote login message to log message
-//they give us a url and we can send http request to log messages to cloud
-function log(message) {
-    //Send an HTTP request
-    console.log(message);
-}
+
+const EventEmitter = require('events');
+
+var url = 'http://mylogger.io/log';
+
+/* We want to create a class that has all capabilites of EventEmitter
+    - but it will have additional capabilites
+    - We want to create a class called Logger that thas the method of log*/
+
+    /*Logger still needs all capabilites of EventEmitter Class
+        - so we will use the keyword of 'extends'*/
+class Logger extends EventEmitter {
+     log(message) {
+        //Send an HTTP request
+        console.log(message);
+
+    /*signaling that event has happened by passing arg which is the name of event
+        - typically with an event, we want to send some sort of data
+        - To send multiple values in event, encapuslate those values in an obj.
+        - In the event listner, the function would receive the arg used in event
+        - Typically the arg is called arg, or eventArg
+        - Because we used 'extends' we can use the keyword 'this'
+        - In this class, we can directly emit or raise events
+        */
+      this.emit('messageLogged', {id:1,  url:'http://'});
+     }
+
+};
+//exporting logger class
+module.exports = Logger;
+
 
 /*
 - both of these are scoped to this module (they are 'private');
@@ -37,7 +61,9 @@ is exported from the module and avail outside of this module.
 
 
 //Sometimes we may only want to export a function:
-module.exports = log;
+//module.exports = log;
 
 //exports.log = log;
 //can't write exports = log because exports is a reference to module.exports
+
+

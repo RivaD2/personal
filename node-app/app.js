@@ -43,6 +43,41 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs');//filesystem
 
+//EventEmitter is caps bec it is in an indicator that EventEmitter is a class
+// a class is a container for properties and methods
+//to use EventEmitter, I need to create an instance of this class
+const EventEmitter = require('events');
+
+    /*emitter is an object (an instance of a class)
+    - However, we don't want to work this directly
+    - We want to work with Logger object*/
+//const emitter = new EventEmitter();
+
+
+//Here I need to load logger module and call log function
+// When requiring logger module, we get a class so I add 'Logger'
+const Logger = require('./logger');
+/* Create the object
+    -We are using of instance of custom class we defined rather
+    than EventEmitter instance*/
+const logger = new Logger();
+//log the message by calling method
+
+/*Here I register the listener and it takes two args
+    - the first arg is the name of the event
+    - the second arg is the callback function or actual listener
+    - if listener is registered after calling emit method, it will not work
+    - The order does matter so it needs be listener then the event raised
+    - This event listener is ONLY registered to the emitter above!
+    - However, after the logger class is made, we say 'Hey logger, when we
+    raised message log event, execute this code! and it is registered to logger obj"
+    */
+   logger.on('messageLogged', (arg)  => {
+    console.log('Listener called', arg);
+});
+
+logger.log('message');
+
 
 
 const totalMemory = os.totalmem();
@@ -87,12 +122,13 @@ fs.readdir('./', function(err, files) {
     if(err) console.log('Error', err);
     else console.log('Result', files);
 });
-
-
 //this returns  an obj and a single method of log
 //we can call this method in app.js
 
-log('message'); //we are calling the log function from logger.js
+
+
+//we are calling the log function from logger.js
+log('message');
 
 //when we define a module, we export one or more members
 // We then load the module by using the require function
