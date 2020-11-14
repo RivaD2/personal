@@ -29,4 +29,22 @@ function addUpTo(n) {
 console.log(addUpTo(6))
 // See notes on how we compare these first two functions on notes.md file
 
+//Two more examples of How Big O works
+function logAtLeast5(n) {
+    for (var i = 1; i <= Math.max(5, n); i++) {
+        console.log(i);
+    }
+}
+//if I pass in 10, it prints 10
+// What is the Big O here?
+// This loop will either go to 5 or n, whichever is larger
+// What I care about is what happens as n grows larger
+// If n is 10,000 the loop runs that amount of tie
+// BIG O here is O(n)
 
+// Big O here is O(1)
+function logAtLeast5(n) {
+    for (var i = 1; i <= Math.min(5, n); i++) {
+        console.log(i);
+    }
+}

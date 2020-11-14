@@ -1,4 +1,4 @@
-**Intro to Big O Notation**
+## Intro to Big O Notation**
 
 - Why do we care about it, what is it?
 - What is 'time complexity' and 'space complexity'?
@@ -19,6 +19,7 @@ HOW can we determine which one is BEST?
 - With Big O, we can get a numeric representation of how well our code works
 
 **WHO CARES?**
+
 - Sometimes the best solution to get to work is the best, that's true
 - HOWEVER, code challenges, working with huge data sets etc. performance matters at that point
 - It is important to understand how our solution works in comparison to others
@@ -26,15 +27,17 @@ HOW can we determine which one is BEST?
       - It helps if we understand Big O because we can identify inefficient points
 
 
-// SO, HOW DO WE COMPARE THE first two FUNCTIONS? 
-    - Does better mean faster, less memory, more readability, brevity??
-    -  All of the above are valid concerns
-    - Faster code and less memory used are often more important than the others
-    - We need to focus on speed
-    - We could use timers, like performance.now()
-    - Using this, we can see that the second function is faster, however this isn't the best way to compare
+**SO, HOW DO WE COMPARE THE first two FUNCTIONS?**
 
-/* The problem with TIME:
+- Does better mean faster, less memory, more readability, brevity??
+-  All of the above are valid concerns
+- Faster code and less memory used are often more important than the others
+- We need to focus on speed
+- We could use timers, like performance.now()
+- Using this, we can see that the second function is faster, however this isn't the best way to compare
+
+### The problem with TIME:
+
   - Different machines run different times
   - The same machine will also record different times!
   - For fast algorithms, speed may not be the most precise measurement
@@ -50,3 +53,47 @@ HOW can we determine which one is BEST?
     - As n grows, even more assignments are added
     - If n is 10, there 10 additions and 10 assignments
 - What we care about here is that as n grows, number of operations grow with n
+
+### Offical Intro to Big O
+
+- It is a way to formalize fuzzy counting
+- It is how to talk about how the runtime of an algorithm grows as the input grows
+- It is a way to describe relationship of input to a function and time relative to that input
+- We really only care about trends here, how the runtime grows
+
+**We say that an algorithm is O9f(n)) if the number of simple operations the computer has to do is eventually less that a constant times(f(n), as n increases**
+    - f(n) means a function with input of n and then an output
+    - f(n) could be linear (f(n) = n)
+    - f(n) could be quadratic (f(n) = nsquared)
+    - f(n) could be constant (f(n) =1)
+    - f(n) could be something entirely different!
+  
+O(1) = as n grows, in this case, there is no change in the runtime
+O(n) = Number of operations is eventually bounded by a multiple of n
+O(nsquared) = (think nested for loops)
+
+### Simplifying Big O Expressions
+
+- Counting all the operations is tricky and the exact count doesn't matter, the trend matters
+- Constants don't matter
+      - O(2n) -----> is simplified to O(n)
+      - O(500) -----> is now O(1);
+      - O(13nSquared) -------> is simplified to O(nsquared)
+      - O(1) is the fastest then O(n)
+- Smaller terms don't matter either
+     - O(nsquared + 5n + 8) -----> O(nsquared)
+
+1. Arithmetic operations are constant
+    - Adding, subtracting etc. is constant and computer takes roughly the same amount of time here
+    - Variable assignment is also constant 
+2. Accessing elements in an array (by index) or an object(by key) is also constant
+3. In a loop, the time complexity is the length of the loop times the complexity of whatever happens inside the loop
+
+### Space Complexity
+
+Whereas **time complexity** involves analyzing the runtime of analgorithm as the size input increases,
+**space complexity** involves how much memory do we need to allocate in order to run the code in our algorithm
+
+
+
+  
