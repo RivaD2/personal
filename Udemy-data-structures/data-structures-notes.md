@@ -1,4 +1,4 @@
-## Intro to Big O Notation**
+## Intro to Big O Notation
 
 - Why do we care about it, what is it?
 - What is 'time complexity' and 'space complexity'?
@@ -6,7 +6,7 @@
 - Understanding what a logarithm is
   
 **Let's say we have multiple implementations of the same function...**
-HOW can we determine which one is BEST?
+**HOW can we determine which one is BEST?**
 
 - Both ways work as far as approaches, and both accomplish the task
 - Big O allows us to compare code and its performance in relation to other partsof code
@@ -42,7 +42,7 @@ HOW can we determine which one is BEST?
   - The same machine will also record different times!
   - For fast algorithms, speed may not be the most precise measurement
   
-** OK, so if I'm not using time as a measurement, then what?**
+**OK, so if I'm not using time as a measurement, then what?**
 
 - We can use the number of operations taken as a measurement of which function takes up less space
 - For the second function: there are less operations taken to get the result
@@ -94,6 +94,67 @@ O(nsquared) = (think nested for loops)
 Whereas **time complexity** involves analyzing the runtime of analgorithm as the size input increases,
 **space complexity** involves how much memory do we need to allocate in order to run the code in our algorithm
 
-
-
+- Space complexity now refers to **auxiliary space**
+- Space complexity is about the algorithm itself
+- As n grows, we assume the input, n, will grow
   
+**Rules of Thumb:**
+- Most primatives (booleans, nums, undefined and null) are constant space
+- Strings require O(n) space where *n* is the string length
+- Reference types are generally O(n), where *n* is the length(for arrays) or the number of keys(for objects)
+
+## Algorithms and Problem Solving Patterns
+
+**What is an algorithm**
+
+- A process or set of steps to accomplish a certain task
+- Everything in programming involves algorithms
+
+**How to improve**
+
+- Devise a plan for solving problems 
+- Master common problem solving patterns
+- A lot of problems in interviews are broken up into categories
+- If you can identify these categories, you can solve them
+  
+**What are the steps**
+- Understand the problem
+- Explore concrete examples
+- Break it down
+- Solve/Simplify
+- Look back and refactor
+
+**STEP 1: UNDERSTANDING THE PROBLEM**
+
+**It can be tempting to dive in and just get started. However, there is a better way to do this:**
+
+- Take a step back and understand the task ahead of you, before even whiteboarding
+- **Ask these questions:**
+    - Can I restate the problem in my own words?
+    - What are the inputs that go into the problems?
+    - What are the outputs that should come from the solution? What should be returned?
+    - Can the outputs be determined from the inputs? In other words, do I have enough information to solve the problem?(Even If I can't answer this early on, it is good to think about it ahead of time)
+    - HOW should I label the important pieces of data that are a part of the problem?
+
+**STEP 1: UNDERSTANDING THE PROBLEM**
+
+Imagine I am in an interview setting and the interviewer asks me to:
+- Write a function which takes two numbers and returns their sum**
+  
+  **STEPS TO SOLVE IT:**
+     - **Can I restate the problem in my own words?**
+     (Use addition to add two nums)
+    - **What are the inputs that go into the problems?**
+      - It would seem simple right? NO...
+      - I should ask how large are the nums, are they integers or floating points?
+      - If we just think about it, there are some important distinctions between inputs
+    - **What are the outputs that should come from the solution? What should be returned?**
+      - Should it be an integer or a float?
+      - It has to be a sum
+    - **Can the outputs be determined from the inputs? In other words, do I have enough information to solve the problem?**(Even If I can't answer this early on, it is good to think about it ahead of time)
+      - What happens if someone only passes in one num?
+      - Do I return undefined or null etc.
+    - **HOW should I label the important pieces of data that are a part of the problem?**
+       - What matters? Inputs and outputs for sure.
+       - How do I name my function?
+

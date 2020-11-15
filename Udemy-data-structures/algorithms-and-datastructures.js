@@ -35,7 +35,7 @@ function logAtLeast5(n) {
         console.log(i);
     }
 }
-//if I pass in 10, it prints 10
+// If I pass in 10, it prints 10
 // What is the Big O here?
 // This loop will either go to 5 or n, whichever is larger
 // What I care about is what happens as n grows larger
@@ -48,3 +48,44 @@ function logAtLeast5(n) {
         console.log(i);
     }
 }
+
+// Ex: 1: Focusing on Space Complexity, NOT time complexity
+function sum(arr) {
+    // Sums all items in array
+    let total = 0;
+    // Loop goes from 0 to end of array
+    // Add value of each item in array to total
+    for(let i = 0; i < arr.length; i++) {
+        total += arr[i];
+    }
+    return total;
+}
+/* What parts of this function take up space?
+  - One number, the variable total
+  - Another number, i
+  - THAT's it, for SPACE
+  - No matter what the size is of arr, it doesn't have an impact on space
+  - The two variables, i and total will always exist
+  - So, the example above is O(1)
+*/
+
+//Ex: 2:: Focusing on Space Complexity, NOT time complexity
+function double(arr) {
+    // Takes an array and doubles values
+    // This function makes a new array
+    let newArr = [];
+    //loops over length of first array and multiplies items
+    for(let i = 0; i < arr.length; i++) {
+        newArr.push(2 * arr[i]);
+    }
+    return newArr;
+}
+
+/* What parts of this function take up space?
+    - The array gets longer, and longer, and longer directly in proportion to the  input
+    - The space taken up is proportionate to input
+    - So, it is O(n) space!!
+*/
+
+
+
