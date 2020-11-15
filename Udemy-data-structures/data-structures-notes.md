@@ -158,3 +158,45 @@ Imagine I am in an interview setting and the interviewer asks me to:
        - What matters? Inputs and outputs for sure.
        - How do I name my function?
 
+**STEP 2: CONCRETE EXAMPLES**
+
+- Come up with concrete examples as they can help us understand problems better**
+- Examples provide sanity checks that your eventual solution works how ti should
+- For example, user stories (given our input, a user action, what should happen?)
+
+**In this scenario, the interviewer asks me to:**
+**Write a function which takes in a string, and returns counts of each character in the string**
+    - I should ask, do I take into consideration spaces?
+    - Do I need to track the entire alphabet to make it easier?
+    - What if the function doesn't receive any params, what should I return?
+    - What if someone passes in something that isn't a string or an object? These are edge cases
+  
+**STEPS TO FOLLOW:**
+    - Start with simple examples
+    - Progress to more complex examples
+    - Explore examples with empty inputs(Edge cases)
+    - Explore examples with invalid inputs
+
+**STEP 3: BREAK DOWN THE PROBLEM**
+
+- Write down the steps of the problem
+- It doesn't have to be pseudo code either
+- Communicate, talk about what you are doing and your steps
+
+**STEPS TO TAKE:**
+    - Explicitely write out the steps I need to take to solve the problem
+    - This forces me to think about the code I'll write and catch any problems I may not understand
+  
+**Write a function which takes in a string, and returns counts of each character in the string**
+
+- Ok, so I need to break it down:
+    - declare function name, charCount("My name is Riva");
+    - do something, return an object with keys that are alphanumeric characters
+    - Step 1, make object to return at the end
+    - Step 2, Loop over string for each character...
+      - IF char is a num/letter AND is a key in object, add 1 to count
+      - IF char is a num/letter AND NOT in object, add it to object and set value to 1
+      - If character is something else (a space, period etc.), don't do anything
+    - Step 4, return object at end
+
+

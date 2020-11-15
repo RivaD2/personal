@@ -87,5 +87,30 @@ function double(arr) {
     - So, it is O(n) space!!
 */
 
+// STEP 3: Break Down the problem:
+//Write a function which takes in a string, and returns counts of each character in the string
+/*
+ declare function name, charCount("My name is Riva");
+    - do something, return an object with keys that are alphanumeric characters
+    - Step 1, make object to return at the end
+    - Step 2, Loop over string for each character...
+      - IF char is a num/letter AND is a key in object, add 1 to count
+      - IF char is a num/letter AND NOT in object, add it to object and set value to 1
+      - If character is something else (a space, period etc.), don't do anything
+    - Step 4, return object at end
+*/
 
-
+const countString = string => {
+    const splitStringChars = string.split("");
+   const result = splitStringChars.reduce((acc, curr) => {
+        if(curr in acc) {
+            acc[curr]++
+        }
+        else {
+            acc[curr] = 1;
+        }
+        return acc;
+    }, {})
+    return result;
+}
+console.log(countString('Riva'));
