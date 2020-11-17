@@ -190,8 +190,8 @@ Imagine I am in an interview setting and the interviewer asks me to:
 **Write a function which takes in a string, and returns counts of each character in the string**
 
 - Ok, so I need to break it down:
-    - declare function name, charCount("My name is Riva");
-    - do something, return an object with keys that are alphanumeric characters
+    - Declare function name, charCount("My name is Riva");
+    - Do something, return an object with keys that are alphanumeric characters
     - Step 1, make object to return at the end
     - Step 2, Loop over string for each character...
       - IF char is a num/letter AND is a key in object, add 1 to count
@@ -199,4 +199,29 @@ Imagine I am in an interview setting and the interviewer asks me to:
       - If character is something else (a space, period etc.), don't do anything
     - Step 4, return object at end
 
+**STEP 4: Solve/Simplify**
+- Don't try and solve the problem 100% before writing code
+- Write code only for what I know how to do within a problem
 
+**STEPS TO TAKE**
+   - Find the core difficulty in what you are trying to do
+   - Temporarily ignore that difficulty
+   - Write a simplified solution
+   - Then incorporate that difficulty back in
+
+**STEP 5: Look back and Refactor**
+
+- Once you have a solution, you're not done!
+- Sometimes, getting by with something code that is scrappy and works is ok. 
+- However, taking the time to look back at your code and see how it can 
+  be refactored is a missed opportunity. Efficiency matters.
+
+**Refactoring Questions**
+
+- Can you check the result?
+- Can you derive the result differently? (More than one way to solve a problem)
+- Can you understand your code at a glance? (Is it messy, can others read it?)
+- Can you use the problem or method for some other problem?
+- Can you improve the performance of your solution?
+- Can you think of other ways to refactor?
+- How have other people solved this problem?(Ask the interviewer this!)

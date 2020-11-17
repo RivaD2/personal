@@ -114,3 +114,44 @@ const countString = string => {
     return result;
 }
 console.log(countString('Riva'));
+
+/*
+- Looking at this function above, one could start by creating an object
+and focusing on handling one character in a string at time. This would
+simplify the problem.
+- Starting with the main logic first and dealing with uppercase/lowercase later
+Point being, if a problem trips you up, go with what you know and write what you can
+*/
+
+//STEP 5: LOOK BACK AND REFACTOR
+// Using the example below, how can this be refactored?
+// Well, this can be done using reduce
+//The problem could also be solved with a for in loop
+//Reduce is above and for in is below
+function charCount(str) {
+    var obj = {};
+    for(let i = 0; i < str.length; i++) {
+        let char = str[i].toLowerCase();
+        if(/[a-z0-9]/.test(char)) {
+            if(obj[char] > 0) {
+                obj[char]++;
+            }else {
+                obj[char] = 1;
+            }
+        }
+    }
+    return obj;
+}
+// This is a better version of the problem directly above
+// How else can it be improved?
+// How efficient is Regex?
+function charCount(str) {
+    let obj= {};
+    for(var char of str) {
+        char = char.toLowerCase();
+        if(/[a-z0-9]/.test(char)) {
+            obj[char] = ++obj[char] || 1;
+        }
+    }
+    return obj;
+}
