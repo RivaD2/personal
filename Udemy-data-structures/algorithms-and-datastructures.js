@@ -155,3 +155,19 @@ function charCount(str) {
     }
     return obj;
 }
+
+//Another version of the above problem is to create a function 
+// This function works with a single character at a time, getting a code at index 0
+// Then we could pass this function into the above problem and get rid of the Regex
+// if(isAlphaNumeric(char) instead of the Regex)
+// Another question to ask, is when to use Lowercase()?
+function isAlphaNumeric(char) {
+    let code = char.charCodeAt(0);
+    if(!(code > 47 && code < 58) &&
+        !(code > 64 && code < 91) &&
+        !(code > 96 && code < 123)) {
+     return false;
+    }
+    return true;
+}
+charCode(0);
