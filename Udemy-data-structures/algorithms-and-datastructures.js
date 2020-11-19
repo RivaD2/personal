@@ -170,4 +170,82 @@ function isAlphaNumeric(char) {
     }
     return true;
 }
-charCode(0);
+
+
+// Ex 1 of Problem Solving Pattern: Frequency Counter
+/* Write a function called `Same` which accepts two arrays. 
+The function should return true if every value in the array has 
+it's corresponding value squared in the second array. T
+he frequency of values must be the same.*/
+
+// Less efficient solution: 0(n^2) Quadratic Relationship: Nested loop
+function same(arr1, arr2) {
+    // If the arrays are different lengths, we're done! No way to be true
+    if(arr1.length !== arr2.length) {
+        return false;
+    }
+    //Loop over first array and call indexOf where we pass in square of each value
+    for(let i = 0; i< arr1.length; i++) {
+        // Using arrays below, start at 1, and ask, what is the index of 1^2 in array 2?
+        
+        let correctIndex = arr2.indexOf(arr1[i] **2)
+        // If correctIndex is -1 means index of element does not match other array
+        if (correctIndex === -1) {
+            return false;
+        }
+        // If there is a match it removes the element from arr2
+        arr2.splice(correctIndex, 1)
+    }
+    return true;
+}
+//Ex: first array below is arr1, second is arr2
+// As I loop, I check values, if element from arr1 is squared in arr2, remove element from arr2
+same([1, 2, 3, 2], [9, 1, 4, 4]) //true 1st iteration
+                   [9, 4, 4] // 2nd iteration 
+                   [9, 4] // 3rd iteration
+                   [4] // 4th iteration
+
+
+// REFACTOR of same()
+/* Instead of looping over arr1 and checking for each value in subloop
+ over arr2, I can loop over each array separately.
+ - Two separate loops is much better than nested loops
+ - 0(n) time
+ - Main idea, use an object to construct a way to break down contents of array or string
+ - Compare the objects allowing us to improve our code
+ */
+function same(arr1, arr2) {
+    if(arr1.length !== arr2.length) {
+        return false;
+    }
+    // Each object will count frequency of individual values in arrays
+    // I will end up with two objects in the end
+    // The key is the value and the value is the frequency
+    let counter1 = {};
+    let counter2 = {};
+    // Loop over value in arr1
+    // Val is placeholder for each element array
+    for(let val of arr1) {
+        // Add 1 to counter1 if it is already in there, or initialize it to 1
+        counter1[val] = (counter1[val] || 0) + 1;
+    }
+    for(let val of arr2) {
+        counter2[val] = (counter2[val] || 0) + 1;
+    }
+    // Is the key in the arr2, also check the values
+    console.log(counter1);
+    console.log(counter2);
+    for(let key in counter1) {
+        // Using arrays below, is key 2 of first objc
+        if(!(key ** 2 in counter2)) {
+            return false;
+        }
+        if(counter2[key ** 2] !== counter1[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+same([1, 2, 3, 2], [9, 1, 4, 4]);
+//{ '1': 1, '2': 2, '3': 1 }
+//{ '1': 1, '4': 2, '9': 1 }

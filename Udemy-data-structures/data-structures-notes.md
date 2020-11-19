@@ -64,13 +64,13 @@
 **We say that an algorithm is O9f(n)) if the number of simple operations the computer has to do is eventually less that a constant times(f(n), as n increases**
     - f(n) means a function with input of n and then an output
     - f(n) could be linear (f(n) = n)
-    - f(n) could be quadratic (f(n) = nsquared)
+    - f(n) could be quadratic (f(n) = n^2)
     - f(n) could be constant (f(n) =1)
     - f(n) could be something entirely different!
   
 O(1) = as n grows, in this case, there is no change in the runtime
 O(n) = Number of operations is eventually bounded by a multiple of n
-O(nsquared) = (think nested for loops)
+O(n^2) = (think nested for loops)
 
 ### Simplifying Big O Expressions
 
@@ -78,10 +78,10 @@ O(nsquared) = (think nested for loops)
 - Constants don't matter
       - O(2n) -----> is simplified to O(n)
       - O(500) -----> is now O(1);
-      - O(13nSquared) -------> is simplified to O(nsquared)
+      - O(13n^2) -------> is simplified to O(n^2)
       - O(1) is the fastest then O(n)
 - Smaller terms don't matter either
-     - O(nsquared + 5n + 8) -----> O(nsquared)
+     - O(n^2 + 5n + 8) -----> O(nsquared)
 
 1. Arithmetic operations are constant
     - Adding, subtracting etc. is constant and computer takes roughly the same amount of time here
@@ -225,3 +225,15 @@ Imagine I am in an interview setting and the interviewer asks me to:
 - Can you improve the performance of your solution?
 - Can you think of other ways to refactor?
 - How have other people solved this problem?(Ask the interviewer this!)
+
+## Problem Solving Patterns
+
+1. **Frequency Counter Pattern:** It is not officially called this. This pattern uses an object to collect values/frequencies of values. This can avoid:
+    - The need for nested loops or O(N^2) operations with arrays or strings
+    - Useful when there are multiple inputs to compare to see if they consists of similar values
+    - Usually O(n) time
+
+Ex 1: Write a function called `Same` which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same
+     - same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)
+     - same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.
+     - (see js file to view two ways of solving this)
