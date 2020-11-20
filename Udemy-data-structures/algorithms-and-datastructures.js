@@ -249,3 +249,19 @@ function same(arr1, arr2) {
 same([1, 2, 3, 2], [9, 1, 4, 4]);
 //{ '1': 1, '2': 2, '3': 1 }
 //{ '1': 1, '4': 2, '9': 1 }
+
+// Anagram Solution
+/*Write a function called `Same` which accepts two arrays. 
+The function should return true if every value in the array has it's 
+corresponding value squared in the second array. The frequency of values must be the same*/
+
+//O(n) time
+// function takes two args
+// Edge case: if the lengths of two strings don't match, it can't be true, I return false right away
+
+const validAnagram = ((first, second)=> {
+    //immediately know that I have to return if first and second strings are not equal in length
+    if(first.length !== second.length) {
+        return
+    }
+})

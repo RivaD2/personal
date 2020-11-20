@@ -237,3 +237,18 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
      - same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)
      - same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.
      - (see js file to view two ways of solving this)
+
+1. Anagrams: Given two strings, write a function to determine if the second string is an anagram of the first. 
+   Ex: cinema -----> iceman
+   - Compare the occurrance of characters
+   - If letters are in there, what are the frequencies?
+   - validAnangram('','')----true
+   - validAnangram('aaz', 'zza')----false
+   - validAnangram('rat', 'car')----false
+   - validAnangram('texttwisttime', 'timetwisttext')---true
+
+- I will need more than one loop
+- Create the object
+- Any punction goes in this example
+- See code in js file
+  
