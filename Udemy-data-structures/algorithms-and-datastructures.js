@@ -250,18 +250,43 @@ same([1, 2, 3, 2], [9, 1, 4, 4]);
 //{ '1': 1, '2': 2, '3': 1 }
 //{ '1': 1, '4': 2, '9': 1 }
 
-// Anagram Solution
+
+// Anagram Solution: Solving by using frequency counter pattern
 /*Write a function called `Same` which accepts two arrays. 
 The function should return true if every value in the array has it's 
 corresponding value squared in the second array. The frequency of values must be the same*/
 
 //O(n) time
-// function takes two args
+// Function takes two args
 // Edge case: if the lengths of two strings don't match, it can't be true, I return false right away
+// Create an object first as frequency counter
 
 const validAnagram = ((first, second)=> {
-    //immediately know that I have to return if first and second strings are not equal in length
+    // Immediately know that I have to return if first and second strings are not equal in length
     if(first.length !== second.length) {
         return
     }
+    // Created an object, as I loop through I will create an object as a breakdown of first string
+    const lookup = {};
+
+    // Loop over the first string (first)
+    for(let i = 0; i < first.length; i ++) {
+        // Take first character first time through (letter) and check if lookup object has character inside it
+        let letter = first[i];
+        // If letter exists, increment, otherwise set to 1
+        lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+    }
+    for(let i = 0; i < second.length; i++) {
+        // Compare each character to the lookup object based off first string
+        let letter = second[i];
+        // Can't find letter or letter is zero then it is NOT in anagram, otherwise, substract 1
+        if(!lookup[letter]) {
+            return false;
+        } else {
+            lookup[letter] -=1;
+        }
+    }
+    return true;
 })
+
+validAnagram('cinema', 'iceman');
