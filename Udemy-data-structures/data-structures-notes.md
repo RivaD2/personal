@@ -234,21 +234,33 @@ Imagine I am in an interview setting and the interviewer asks me to:
     - Usually O(n) time
 
 Ex 1: Write a function called `Same` which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same
-     - same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)
-     - same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.
+     - `same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)`
+     - `same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.`
      - (see js file to view two ways of solving this)
 
-1. Anagrams: Given two strings, write a function to determine if the second string is an anagram of the first. 
+2. **Anagrams: Given two strings, write a function to determine if the second string is an anagram of the first.** 
    Ex: cinema -----> iceman
    - Compare the occurrance of characters
    - If letters are in there, what are the frequencies?
-   - validAnangram('','')----true
-   - validAnangram('aaz', 'zza')----false
-   - validAnangram('rat', 'car')----false
-   - validAnangram('texttwisttime', 'timetwisttext')---true
+   - `validAnangram('','')----true`
+   - `validAnangram('aaz', 'zza')----false`
+   - `validAnangram('rat', 'car')----false`
+   - `validAnangram('texttwisttime', 'timetwisttext')---true`
 
 - I will need more than one loop
 - Create the object
 - Any punction goes in this example
 - See code in js file
-  
+
+3. **Multiple Pointers**
+
+- Creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
+- This is very efficient for solving problems with minimal space complexity
+- We will have some sort of linear structure (string, array or even a singly or doubly linked list)
+- We use two variables, or references (think of the mergeSort or quickSort challenges)
+- In a mergeSort or quickSort, we had an unsorted array and could use pointers. We use pointers for sorted arrays or strings as well.
+
+**Ex: Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero OR undefined if a pair does not exist.**
+    - `sumZero([-3, -2, -1, 0, 1, 2, 3]) // [-3, 3]`
+    - `sumZero([-2, 0, 1, 3]) // undefined`
+    - See js file for solution
