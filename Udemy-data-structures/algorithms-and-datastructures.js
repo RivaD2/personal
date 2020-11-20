@@ -297,6 +297,7 @@ The function should find the first pair where the sum is 0.
 Return an array that includes both values that sum to zero OR undefined if a pair does not exist.*/
 
 // This solution is NOT the best. It is the naive solution:
+// O(n^2) time comlexity
  const sumZero = arr => {
      for(let i = 0; i < arr.length; i++) {
         for(let j = i +1; j < arr.length; j++) {
@@ -312,3 +313,26 @@ Return an array that includes both values that sum to zero OR undefined if a pai
 sumZero([-4, -3, -2, -1, 0, 1, 2, 5])
 
 // Multiple Pointers: The Better Solution
+// O(n) time complexity, linear
+const sumZero = arr => {
+    let left = 0;
+    let right = arr.length - 1;
+    // -4 is left and right is 10 in the array below
+    while(left < right) {
+        // So, check -4 and 10 sum? That gives us 6
+        let sum = arr[left] + arr[right];
+        // So, -4 and 10 is 6, which is greater than 0, so we subtract one and move the pointer to 3 in the array.
+        // Then we start the loop again and -4 is checked against 3. The sum is -1. The else statement runs now.
+        // When the else statement runs, we move left pointer up one.
+        if(sum === 0) {
+            return [arr[left], arr[right]];
+        } else if (sum > 0){
+            //moves right pointer down the array
+            right--;
+        } else {
+            //moves left pointer up the array
+            left++
+        }
+    }
+}
+sumZero([-4, -3, -2, -1, 0, 1, 2, 3, 10]);
