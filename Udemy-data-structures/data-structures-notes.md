@@ -228,7 +228,9 @@ Imagine I am in an interview setting and the interviewer asks me to:
 
 ## Problem Solving Patterns
 
-1. **Frequency Counter Pattern:** It is not officially called this. This pattern uses an object to collect values/frequencies of values. This can avoid:
+1. **Frequency Counter Pattern:**
+
+It is not officially called this. This pattern uses an object to collect values/frequencies of values. This can avoid:
     - The need for nested loops or O(N^2) operations with arrays or strings
     - Useful when there are multiple inputs to compare to see if they consists of similar values
     - Usually O(n) time
@@ -238,7 +240,8 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
      - `same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.`
      - (see js file to view two ways of solving this)
 
-2. **Anagrams: Given two strings, write a function to determine if the second string is an anagram of the first.** 
+2. **Anagrams: 
+  Given two strings, write a function to determine if the second string is an anagram of the first.** 
    Ex: cinema -----> iceman
    - Compare the occurrance of characters
    - If letters are in there, what are the frequencies?
@@ -264,3 +267,23 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
     - `sumZero([-3, -2, -1, 0, 1, 2, 3]) // [-3, 3]`
     - `sumZero([-2, 0, 1, 3]) // undefined`
     - See js file for solution
+
+**Ex2: Implement a function called `countUniqueValues` which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted. Use two pointers pattern.
+    - `countUniqueValues(][1, , 1, 1, 1, 2]) //2` ----> only two unique nums, 1 and 2
+    - `countUniqueValues([1, ,2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) //7` -----> 7 unique values 1, 2, 3, 4, 7, 12, 13
+    - `countUniqueValues([ ]) //0`
+    - `countUniqueValues([-2, -1, -1, 0, 1]) //4`
+    - Here I will have two pointers moving some direction based off condition
+
+**To solve the problem**
+
+- Create a variable to count how many times there is a different value
+- Or, build the unique values at the beginning of the array
+
+   i  j---> j moves forward while i stays still
+   1 is compared to 1 so j moves to 1, then 1, then 2. 2 is different. So i moves forward and 2 is in the place of i
+- [1, 1, 1, 2, 3, 3, 4, 4, 5, 6 ]
+      i        j
+- [1, 2, 1, 2, 3, 3, 4, 4, 5, 6]
+- At the end, we will have all unique values at beginning of array
+- Basically we are updating the pointer when we find two unique values that don't match

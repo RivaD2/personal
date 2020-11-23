@@ -317,7 +317,7 @@ sumZero([-4, -3, -2, -1, 0, 1, 2, 5])
 const sumZero = arr => {
     let left = 0;
     let right = arr.length - 1;
-    // -4 is left and right is 10 in the array below
+    // -4 is left pointer and right pointer is 10 in the array below
     while(left < right) {
         // So, check -4 and 10 sum? That gives us 6
         let sum = arr[left] + arr[right];
@@ -336,3 +336,36 @@ const sumZero = arr => {
     }
 }
 sumZero([-4, -3, -2, -1, 0, 1, 2, 3, 10]);
+
+// Multiple Pointers Pattern cont...
+/* Implement a function called `countUniqueValues` which accepts a sorted array, 
+and counts the unique values in the array. There can be negative numbers in the array, 
+but it will always be sorted. Use two pointers pattern.*/
+
+//O(n) time
+const countUniqueValues = arr => {
+    // Means there are 0 unique digits
+    if(arr.length === 0) return 0;
+    let i = 0;
+    for(let j = 1; j < arr.length; j++) {
+       if(arr[i] !== arr[j]) {
+         i++;
+         arr[i] = arr[j];
+       }
+    }
+    return i + 1;
+}
+countUniqueValues([1, 1, 2, 3, 3, 4, 5, 6, 6, 7]);
+
+ /*
+ i  j---------------------->
+[1, 1, 2, 3, 3, 4, 5, 6, 6, 7]
+// if i is not equal to j, move i up by one
+    i++
+[1, 1, 2, 3, 3, 4, 5, 6, 6, 7]
+    i     j-----they don't match, so i++
+[1, 2, 2, 3, 3, 4, 5, 6, 6, 7]
+       i     j -----_now they do match, so we don't do anything
+[1, 2, 3, 3, 3, 4, 5, 6, 6, 7]
+*/
+    
