@@ -369,3 +369,32 @@ countUniqueValues([1, 1, 2, 3, 3, 4, 5, 6, 6, 7]);
 [1, 2, 3, 3, 3, 4, 5, 6, 6, 7]
 */
     
+//Sliding Window Pattern
+/*
+Write a function called maxSubarraySum which accepts an array of integers and a number n.
+This function should calculate the max sum of n consecutive elements in the array.*/
+ 
+//naive approach: Time Complexity of O(N^2)
+const maxSubarraySum = ((arr, sum) => {
+    // Edge case
+    if( num > arr.length) {
+        return null;
+    }
+    // Account for if there is an array with all negative nums
+    // Starting at 0 won't help unless we are dealing with all positive nums
+    let max = -Infinity;
+    //loop goes to almost the end of the array
+    for(let i = 0; i < arr.length - num + 1; i++) {
+        // Temp stores sum each time through, 3 nums at a time
+        temp = 0;
+        for(let j = 0; j < num; j++) {
+            temp += arr[ i + j ];
+        }
+        if(temp > max) {
+            max = temp;
+        }
+    }
+    return max;
+});
+// looking for 3 digits with max sum in array
+maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)

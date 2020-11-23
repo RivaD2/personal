@@ -287,3 +287,18 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
 - [1, 2, 1, 2, 3, 3, 4, 4, 5, 6]
 - At the end, we will have all unique values at beginning of array
 - Basically we are updating the pointer when we find two unique values that don't match
+
+4. **Sliding Window Pattern:**
+
+- This pattern involves creating a **window** which can either be an array or number from one position to another.
+- Depending on a certain condition, the window either increases or closes(and a new window is created)
+- This pattern is very useful for keeping track of a subset of data in an array or string etc.
+
+Ex: "hellothere" ----> Find longest sequence of unique characters
+Ex: Write a function called maxSubarraySum which accepts an array of integers and a number n.
+    This function should calculate the max sum of n consecutive elements in the array.
+    
+- `maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2) //2` ----> two digits next to one another with largest sum are 8 and 2
+- `maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4) //17`  ------> What is the largest sum of 4 nums, so it is 2, 5, 2, 8
+- `maxSubArraySum([ ], 4) // null` ---> if empty, return null (edge case)
+- `n` is the amount of nums that we look at to see largest sum in array
