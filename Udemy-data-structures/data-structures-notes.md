@@ -302,3 +302,16 @@ Ex: Write a function called maxSubarraySum which accepts an array of integers an
 - `maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4) //17`  ------> What is the largest sum of 4 nums, so it is 2, 5, 2, 8
 - `maxSubArraySum([ ], 4) // null` ---> if empty, return null (edge case)
 - `n` is the amount of nums that we look at to see largest sum in array
+  
+5. **Divide and Conquer**
+   
+- This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
+- This pattern can tremendously decrease time complexity
+- Sorting algorithms can use divide and conquer, such as a quick sort and merge sort
+- Binary search trees are another example of when we could use divide and conquer
+
+Ex: Given a **sorted** array of integers, write a function called search that accepts a value and returns the index where the value passed to the function is located. If the value is NOT found, return -1.
+// Here we are look for 4, and 4 is at index 3
+`search([1, 2, 3, 4, 5, 6], 4) // 3`
+// Here we are looking for 11 and it is not found so I return -1
+`search([1, 2, 3, 4, 5, 6], 11) // -1`

@@ -429,3 +429,49 @@ const maxSubarraySum = ((arr, num) => {
     return maxSum;
 })
 maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
+
+// Divide and Conquer Pattern
+/* Given a **sorted** array of integers, write a function called search that accepts a value and 
+returns the index where the value passed to the function is located. 
+If the value is NOT found, return -1.*/
+
+// Naive Approach
+// O(n) linear
+// Moving from left to right checking values until we find the one we want
+
+const search = ((arr, val) => {
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === val) {
+            return i;
+        }
+    }
+    return -1;
+})
+
+// Better Solution, using a binary search as this is a divide and conquer algorithm
+// Here I can pick a point, a middle point and check if value I am looking for is greater than or less than the midpoint
+// I then look at subarray, and pick middle element and do the same thing
+// It chops off the amount of values I have to search for
+
+const search = ((arr, value) => {
+    let min = 0;
+    let max = arr.length - 1;
+
+    while(min <= max) {
+        let mid = Math.floor((min + max)/ 2);
+        let currentElement = arr[mid];
+
+        if(arr[mid] < val) {
+            min = mid + 1;
+        }
+        else if(arr[mid] > val) {
+            max = mid - 1;
+        }
+        else {
+            return mid;
+        }
+    }
+    return -1;
+})
+
+
