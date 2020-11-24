@@ -374,8 +374,10 @@ countUniqueValues([1, 1, 2, 3, 3, 4, 5, 6, 6, 7]);
 Write a function called maxSubarraySum which accepts an array of integers and a number n.
 This function should calculate the max sum of n consecutive elements in the array.*/
  
-//naive approach: Time Complexity of O(N^2)
-const maxSubarraySum = ((arr, sum) => {
+// Naive approach: Time Complexity of O(N^2)
+// Each time we loop we sum digits so this is really inefficient
+// I can say this is N^2 any time there are nested loops
+const maxSubarraySum = ((arr, num) => {
     // Edge case
     if( num > arr.length) {
         return null;
@@ -397,4 +399,33 @@ const maxSubarraySum = ((arr, sum) => {
     return max;
 });
 // looking for 3 digits with max sum in array
+maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
+
+
+// Efficient Solution for maxSubarraySum
+// O(n) linear complexity, as I only go over array once
+// Here I keep a variable with total and to get sum of next set of digits, I create a sum that goes up to a certain point
+// I move the window up by subtracting a num instead
+const maxSubarraySum = ((arr, num) => {
+    let maxSum = 0;
+    let tempSum = 0;
+    // Edge case
+    if(arr.length < num) return null;
+    // Create a first sum (let's say I pass in 3 from array below to sum first 3 digits. I then store that in maxSum)
+    // That is it, I don't keep looping
+    for(let i = num; Infinity, arr.length; i++) {
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    // Start another loop, but this time, I start after the first 3 nums that I summed above. 
+    // For example, using array below, I would start loop here at index 3.
+    // I am gonna take tempSum and add index 3 and then subtract index 0.
+    for(let i = num; i < arr.length; i++) {
+        // MaxSum is what I return but I start
+        // I subtract one array value and then add another value in and that is the sliding window
+        tempSum = tempSum - arr[i - num] + arr[i];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum;
+})
 maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
