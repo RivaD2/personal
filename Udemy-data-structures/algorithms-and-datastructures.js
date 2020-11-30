@@ -268,27 +268,28 @@ const validAnagram = ((first, second)=> {
     }
     // Created an object, as I loop through I will create an object as a breakdown of first string
     const lookup = {};
-
+    console.log('lookup object',lookup);
     // Loop over the first string (first)
     for(let i = 0; i < first.length; i ++) {
         // Take first character first time through (letter) and check if lookup object has character inside it
         let letter = first[i];
+        console.log('first character in first string', letter);
         // If letter exists, increment, otherwise set to 1
         lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
     }
     for(let i = 0; i < second.length; i++) {
         // Compare each character to the lookup object based off first string
         let letter = second[i];
+        console.log('letter in second string', letter)
         // Can't find letter or letter is zero then it is NOT in anagram, otherwise, substract 1
         if(!lookup[letter]) {
             return false;
         } else {
-            lookup[letter] -=1;
+            lookup[letter] -= 1;
         }
     }
     return true;
 })
-
 validAnagram('cinema', 'iceman');
 
 // Multiple Pointers Pattern
@@ -452,7 +453,7 @@ const search = ((arr, val) => {
 // Here I can pick a point, a middle point and check if value I am looking for is greater than or less than the midpoint
 // I then look at subarray, and pick middle element and do the same thing
 // It chops off the amount of values I have to search for
-
+// Log(N) time
 const search = ((arr, value) => {
     let min = 0;
     let max = arr.length - 1;
@@ -474,4 +475,13 @@ const search = ((arr, value) => {
     return -1;
 })
 
-
+//Linear Search Soltution from using PseudoCode
+// Best case for linear is O(1)
+// Worst case is O(n)
+const linearSearch = ((arr, val) => {
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === val) return i;
+    }
+    return -1
+})
+linearSearch([1, 3, 4, 6, 7, 8], 8)

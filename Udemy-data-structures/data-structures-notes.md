@@ -315,3 +315,20 @@ Ex: Given a **sorted** array of integers, write a function called search that ac
 `search([1, 2, 3, 4, 5, 6], 4) // 3`
 // Here we are looking for 11 and it is not found so I return -1
 `search([1, 2, 3, 4, 5, 6], 11) // -1`
+
+## Searching Algorithms
+
+1. **Linear Search:**
+In an array, this involves checking every single value to see if it is what I want.
+This is not a bad approach, but if I have sorted data, there are better ways to sort.
+There are many different search methods on arrays in JS:
+    - indexOf()
+    - includes()
+    - find()
+    - findIndex()
+    - All of these methods check one element at a time 
+
+**BUT HOW DO THESE METHODS WORK?**
+    - They work through using a linear search
+    - Ex: [5, 8, 1, 100] // We are looking for 1
+    - So, we would start the beginning and continue until we find 1
