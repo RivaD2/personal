@@ -332,3 +332,34 @@ There are many different search methods on arrays in JS:
     - They work through using a linear search
     - Ex: [5, 8, 1, 100] // We are looking for 1
     - So, we would start the beginning and continue until we find 1
+
+2. **Binary Search Algorithm**
+   - It's faster
+   - Rather than eliminating one element at a time, we element HALF of remaining elements at any given time
+   - However, binary searches ONLY work on SORTED data
+   - We can find a midpoint and then check if what we are looking for is before or after mid
+   - Then we can cut the next portion of data in half and repeat
+   - The idea is dividing an conquering
+   - Pick a pivot point and check the left or right side
+   - We can then change the window of where we are searching by having two pointers
+   - We then update our left or right pointers depending on what data we have chopped off
+   - We can use this for numbers or strings
+
+
+## Data Structures
+
+1. **Singly Linked Lists: Each node is connected one directional to the next node**
+    - A linked list is a list of data (like an array)
+    - A linked list consists of elements with NO indexes pointing to the next element
+    - Linked lists contain a head, tail and length property
+    - Linked lists consists of nodes, and each node has a value and a pointer to another node or null
+    - Each element is a node and node store data
+    - Head is the beginning of the list and tail is the end
+    - To get to another item, we have to ask for the NEXT item
+
+**Comparison to Arrays**
+    - Linked Lists do not have indexes
+    - They are connected via nodes with a **next** pointer
+    - Random access is not allowed, we have to traverse from the beginning
+    - Insertion and deletion are easier and more efficient in lists
+  

@@ -485,3 +485,20 @@ const linearSearch = ((arr, val) => {
     return -1
 })
 linearSearch([1, 3, 4, 6, 7, 8], 8)
+
+// Binary Search Algorithm 
+
+const binarySearch = ((arr, val) => {
+    const start = 0;
+    const end = arr.length - 1;
+    const mid = Math.floor(start + end) / 2;
+    while(arr[mid] !== val) {
+        if(val < arr[mid]) {
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+        mid = Math.floor(start + end) / 2;
+    }
+})
+binarySearch([1, 2, 4, 10, 80, 88, 100, 102], 88)
