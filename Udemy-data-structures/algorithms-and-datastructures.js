@@ -502,3 +502,64 @@ const binarySearch = ((arr, val) => {
     }
 })
 binarySearch([1, 2, 4, 10, 80, 88, 100, 102], 88)
+
+// Singly Linked List 
+// Node stores data and a reference to the next node
+
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList {
+    constructor() {
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+    }
+    push(val) {
+        // Should create a new node and assign to head and tail of list
+        let newNode = new Node(val);
+        if(!this.head) {
+            // Both head and tail are the same thing
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            this.tail.next = newNode;
+            // Update the tail
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    // Removing val from end of list
+    // To remove it, we have to assign a new tail and that involves going through list from the beginning
+    // Have to find second to last item and then update the tail
+    // We have to traverse using a while loop, while there is next
+    pop() {
+        if(!this.head) return undefined;
+        // Will have two vars, a current and a previous or a newTail
+        let current = this.head;
+        let newTail = current;
+        while(current.next) {
+            newTail = current;
+            current = current.next;
+            // Keep going until current can't move forward
+        }
+        this.tail = newTail;
+        // Severing the connection, so there is no pointer
+        this.tail.next = null;
+        // Decrement the length
+        this.length--;
+        if(this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
+        return current;
+    }
+}
+let list = new SinglyLinkedList();
+list.push('Hello');
+list.push('Goodbye');
