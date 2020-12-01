@@ -629,6 +629,28 @@ class SinglyLinkedList {
             }
             return false;
         }
+        // Insert: Similar to set, method takes an index and a value
+        // However, insert adds a node to list at a specific position
+        // If index is less than zero or greater than length , return false
+        // (If index is the same as the length, push a new node to the end of the list)
+        // If the index is 0, unshift a new node to the start of the list
+        // Otherwise, using get method, access the node at the index -1 (I WANT THE NODE BEFORE)
+        // Once I have previous node of where I am trying to insert, set next property to be the new node
+        // Then set the next property on the new node to be the PREV next
+        // Increment length and return true
+        insert(index, val) {
+            if(index < 0 || index > this.length) return false;
+             // Using double bangs on push and unshift as it will convert the returns to booleans
+            if(index === this.length) return !!this.push(val);
+            if(index === 0) return !!this.unshift(val);
+            let newNode = new Node(val);
+            let previous = this.get(index -1);
+            let temp = previous.next;
+            previous.next = newNode;
+            newNode.next = temp;
+            this.length++
+            return true;
+        }
     }
 
 
