@@ -576,7 +576,7 @@ class SinglyLinkedList {
             return currentHead;
         }
         // Unshift: Add node to beginning
-        // Function accepts val
+        // Method accepts val
         // Create a new node using val passed into function
         // If there is no head property on list, set the head and tail to be newly created node
         // Otherwise, set newly created node's next property to be current head property on list
@@ -588,11 +588,46 @@ class SinglyLinkedList {
             if(!this.head) {
                 this.head = newNode;
                 this.tail = this.head;
-            } 
+            } else {
                 newNode.next = this.head;
                 this.head = newNode;
-                this.length++
-                return this;
+            }
+            this.length++
+            return this;
+        }
+        // Get: Retrieving a node by it's position in the linked list
+        // It takes in a number and I traverse the list that many times (.next over and over) and add one to counter
+        // There are no indexes, I have to manually count in a linked list
+        // Method accepts and index
+        // If index is less than zero or greater than or equal to the length of list, return null
+        // Loop through list until I reach the index and return the node at specific index
+        get(index) {
+            if(index < 0 || index >= this.length) return null;
+            let counter  = 0;
+            // This keeps track of current position while I traverse
+            let current = this.head;
+            // At beginning, for ex, if index was 3, counter is not equal, I add one to counter and change current to current.next
+            // This is the traversal
+            while(counter != index) {
+                current = current.next;
+                counter++
+            }
+            return current;
+        }
+        // Set: Changing the value of a node based on position 
+        // Method accepts index and a val
+        // Use get method to find specific node
+        // If the node IS NOT found, return false
+        // If node is found, set tehe value of the node to be value passed into function and return true
+        set(index, val) {
+            // this will return to us the actual node or null
+            let foundNode = this.get(index);
+            // If I've found the node, set the new value
+            if(foundNode) {
+                foundNode.val = val;
+                return true;
+            }
+            return false;
         }
     }
 
