@@ -538,6 +538,7 @@ class SinglyLinkedList {
     // To remove it, we have to assign a new tail and that involves going through list from the beginning
     // Have to find second to last item and then update the tail
     // We have to traverse using a while loop, while there is next
+    // We can use an auxiallary method for pop...
     pop() {
         if(!this.head) return undefined;
         // Will have two vars, a current and a previous or a newTail
@@ -553,13 +554,53 @@ class SinglyLinkedList {
         this.tail.next = null;
         // Decrement the length
         this.length--;
+        // Is the list empty now? If so, reset head and tail
         if(this.length === 0) {
             this.head = null;
             this.tail = null;
         }
         return current;
     }
-}
+    // Shift---removing from the head
+    // Store haed in a variable
+    // Set head property to be the current head's next property
+    // Decrement the length by 1
+    // Return the value of the node removed
+    shift() {
+        if(this.length === 0) return undefined;
+            let currentHead = this.head;
+            // Making new head
+            this.head = currentHead.next;
+            this.length--
+            // This is what we took off the list
+            return currentHead;
+        }
+        // Unshift: Add node to beginning
+        // Function accepts val
+        // Create a new node using val passed into function
+        // If there is no head property on list, set the head and tail to be newly created node
+        // Otherwise, set newly created node's next property to be current head property on list
+        // Set the head property on the list to be that newly created node
+        // Increment length of list by 1
+        // Return the linked list
+        unshift(val) {
+            let newNode = new Node(val);
+            if(!this.head) {
+                this.head = newNode;
+                this.tail = this.head;
+            } 
+                newNode.next = this.head;
+                this.head = newNode;
+                this.length++
+                return this;
+        }
+    }
+
+
+
+
+
+
 let list = new SinglyLinkedList();
 list.push('Hello');
 list.push('Goodbye');
