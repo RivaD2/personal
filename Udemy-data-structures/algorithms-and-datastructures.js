@@ -680,7 +680,32 @@ class SinglyLinkedList {
         // Set next property on the node to be whatever the previous one was
         // Set node variable to be the value of the next variable
         reverse() {
-            
+            let node = this.head;
+            //swap head and tail
+            this.head = this.tail;
+            // will use node variable in the loop
+            this.tail = node;
+            let next;
+            // Setting to null to make sure end of list, the tail is null
+            let previous = null;
+            for(let i = 0;i < this.length; i++) {
+                next = node.next;
+                node.next = previous;
+                // previous is now what current used to be
+                previous = node;
+                node = next;
+            }
+            return this;
+        }
+        // Help me to see reverse method
+        print() {
+            let arr = [];
+            let current = this.head;
+            while(current) {
+                arr.push(current.val)
+                current = current.next
+            }
+            console.log(arr);
         }
     }
 
