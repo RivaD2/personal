@@ -643,6 +643,7 @@ class SinglyLinkedList {
              // Using double bangs on push and unshift as it will convert the returns to booleans
             if(index === this.length) return !!this.push(val);
             if(index === 0) return !!this.unshift(val);
+
             let newNode = new Node(val);
             let previous = this.get(index -1);
             let temp = previous.next;
@@ -650,6 +651,36 @@ class SinglyLinkedList {
             newNode.next = temp;
             this.length++
             return true;
+        }
+        // Removes node from a specific position
+        // Function takes in an index
+        // If index is less than zero or greater than length, return undefined
+        // If index is the same as length -1, use pop()
+        // If index is 0, use shift method
+        // Otherwise, use get method to access node at index - 1
+        // Set next property on that node to be the next of the next node
+        // Decrement the length
+        // Return value of node removed
+        remove(index) {
+            if(index < 0 || index >= this.length) return undefined;
+            if(index === 0) return this.shift();
+            if(index === this.length -1) return this.pop();
+
+            let previousNode = this.get(index -1);
+            let removed = previousNode.next;
+            this.length--
+            previousNode.next = removed.next
+        }
+        // Reverse reverses the linkedlist in place!
+        // As I traverse, I reverse
+        // Swap head and tail
+        // Create a variable called next and another called previous
+        // Create a variable called node and initialize it to start head
+        // Loop through list and set next property to be th next property on whatever current node is
+        // Set next property on the node to be whatever the previous one was
+        // Set node variable to be the value of the next variable
+        reverse() {
+            
         }
     }
 
@@ -659,5 +690,7 @@ class SinglyLinkedList {
 
 
 let list = new SinglyLinkedList();
-list.push('Hello');
-list.push('Goodbye');
+list.push(1);
+list.push(4);
+list.push(10);
+list.push(15);
