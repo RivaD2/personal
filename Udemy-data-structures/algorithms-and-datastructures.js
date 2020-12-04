@@ -735,13 +735,55 @@ class DoublyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    // adds node to end of doubly linked list
+    // Adds node to end of doubly linked list
     // Create a new node with value passed in
     // Check if head is null or length is 0, basically if list is empty
     // If list is not empty, set the next property on the tail to be that node
     // Set the prev property  on the newly created node to be the tail
     // Set tail to be newly created node and incement, then return list
     push(val) {
-
+        let newNode = new Node(val);
+        if(this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            // this is creating the pointer to the node ahead and node behind, hence doubly linked list
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+        }
+        this.length++;
+        return this;
+    }
+    // Popping is easier in doubly linked list vs singly linked list
+    // If there is no tail, or head, or length is 0, return undefined (nothing to pop)
+    // Otherwise, store current tail in a variable to return later
+    // If length is 1, set the had and tail to be null
+    // Update the tail to be the previous Node
+    // Set the newTail's next to be null
+    // Subtract 1 from length(as we popped something off) and return value popped
+    pop() {
+      if(!this.head) return undefined;
+      let poppedNode = this.tail;
+      if(this.length === 1) {
+          this.head = null;
+          this.tail = null;
+      } else {
+          // Set new tail to be the one right before 
+          this.tail = poppedNode.prev;
+          // This is the new tail and .next is empty
+          this.tail.next = null;
+          // Chopping off the second connection
+          poppedNode.prev = null;
+      }
+      this.length--;
+      return poppedNode;
     }
 }
+
+
+
+list = new DoublyLinkedList();
+list.push(99);
+list.push(100);
+list.push("Last item");
+list.pop();
