@@ -505,7 +505,7 @@ binarySearch([1, 2, 4, 10, 80, 88, 100, 102], 88)
 
 // Singly Linked List 
 // Node stores data and a reference to the next node
-
+// Big O: Insertion: O(1); Removal depoends, O(1) front front or O(N) if from end;
 class Node {
     constructor(val) {
         this.val = val;
@@ -708,14 +708,40 @@ class SinglyLinkedList {
             console.log(arr);
         }
     }
-
-
-
-
-
-
 let list = new SinglyLinkedList();
 list.push(1);
 list.push(4);
 list.push(10);
 list.push(15);
+
+
+// Doubly LinkedList: All that I do is add a pointer to prev node and next node
+// Each node points in two directions...
+// Almost identical to singly linked list, no indexes, random access etc
+// There is a head and tail, BUT every node in list points to next node ahead of it and node behind it!
+
+class SinglyNode {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+        // only difference in the Node class compared to singly linked list
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    // adds node to end of doubly linked list
+    // Create a new node with value passed in
+    // Check if head is null or length is 0, basically if list is empty
+    // If list is not empty, set the next property on the tail to be that node
+    // Set the prev property  on the newly created node to be the tail
+    // Set tail to be newly created node and incement, then return list
+    push(val) {
+
+    }
+}
