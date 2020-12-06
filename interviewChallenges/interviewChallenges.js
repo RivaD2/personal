@@ -137,11 +137,17 @@ postOrder(node){
    - Traverse the right subtree by recursively calling inOrder function
    */
 
-let nodes =[];
-const inOrder = root => {
-    if(root.left) inOrder(root.left)
-    nodes.push(root.value);
-    if(root.right) inOrder(root.right);
+
+inOrder(node) {
+    if(node !== null) {
+        this.inOrder(node.left);
+        this.inOrder(node.right);
+    }
 }
-inOrder(root);
-return nodes;
+preOrder(node) {
+    if(node !== null) {
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+    }
+}
+
