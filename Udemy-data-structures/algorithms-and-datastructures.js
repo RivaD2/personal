@@ -454,7 +454,7 @@ const search = ((arr, val) => {
 // I then look at subarray, and pick middle element and do the same thing
 // It chops off the amount of values I have to search for
 // Log(N) time
-const search = ((arr, value) => {
+const search = ((arr, val) => {
     let min = 0;
     let max = arr.length - 1;
 
