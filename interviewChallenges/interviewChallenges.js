@@ -1,3 +1,5 @@
+const { node } = require("prop-types");
+
 // Credit to https://dev.to/zchtodd/binary-tree-interview-questions-hpi for solutions
 class Tree {
     constructor(data, left = null, right = null) {
@@ -86,3 +88,60 @@ const invertTree =  root => {
     return root;
 }
 console.log(invertTree(treeBuild([1, 2, 3, 4, 5, 6, 7])))
+
+// Tree Traversal
+// I can use breadth first, Inorder, PreOrder, or postOrder methods
+// Breadth first: visiting nodes level by level of tree, the search widens
+/* Depth-First: Goes deep, once it has not further nodes to visit on subtree, it backtracks to latest point
+   - In a binary tree, this is done in a left to right order.
+   - Evaluate the left-most branch /sub tree of the tree and then proceed to the one to the right of it
+*/
+
+// In Order: left----> root ------> right
+// In Order Depth traversal will always print nodes in a sorted order
+
+//For binary search tree
+
+// InOrder: left----> root ---> right
+inOrder(root) {
+    root.left && inOrder(root.left);
+    root.right && inOrder(root.right)
+}
+// PreOrder: root ----> left----> right
+preOrder(node) {
+    node.left && this.preOrder(node.left);
+    node.right && this.preOrder(node.right);
+}
+
+//PostOrder: left----> right----> root
+// traverse left subtree recursively
+// traverse right subtree recursively
+// access current node value and print
+
+postOrder(node){
+    node.left && this.postOrder(node.left);
+    node.right && this.postOrder(node.right)
+}
+
+// BINARY TREES
+//PreOrder: root is visited first before left or right nodes
+// inOrder: left, root, right (the root is IN the middle) (left to right, bottom to top)
+   // inOrder is helpful for printing out list of visited nodes
+   // if inOrder is used on a BST, output is often list of increasing values
+// postOrder: left, right, root (root is visited LAST)
+
+
+/*InOrder Traversal: 
+   - Traverse the left subtree by recursively calling inOrder function
+   - Process the root value by pushing it into nodes
+   - Traverse the right subtree by recursively calling inOrder function
+   */
+
+let nodes =[];
+const inOrder = root => {
+    if(root.left) inOrder(root.left)
+    nodes.push(root.value);
+    if(root.right) inOrder(root.right);
+}
+inOrder(root);
+return nodes;
