@@ -778,6 +778,29 @@ class DoublyLinkedList {
       this.length--;
       return poppedNode;
     }
+    // Removing a node from beginning of list
+    // If length is 0, return undefined
+    // Otherwise, store current head property in variable
+    // If length is one, set the head to be null and tail to be null
+    // Set head to be the next of the old head
+    // Set the heads previous property to null
+    // Set the old head's next to null
+    // Decrement length
+    // Return old head
+    shift() {
+        if(length === 0) return undefined;
+        let shiftedNode = this.head;
+        if(this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = shiftedNode.next;
+            this.head.prev = null;
+            shiftedNode.next = null;
+        }
+        this.length--
+        return shiftedNode;
+    }
 }
 
 
