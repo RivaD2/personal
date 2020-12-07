@@ -803,8 +803,6 @@ class DoublyLinkedList {
     }
 }
 
-
-
 list = new DoublyLinkedList();
 list.push(99);
 list.push(100);
