@@ -236,7 +236,7 @@ function same(arr1, arr2) {
     console.log(counter1);
     console.log(counter2);
     for(let key in counter1) {
-        // Using arrays below, is key 2 of first objc
+        // Using arrays below, is key 2 of first object
         if(!(key ** 2 in counter2)) {
             return false;
         }
@@ -460,7 +460,7 @@ const search = ((arr, val) => {
 
     while(min <= max) {
         let mid = Math.floor((min + max)/ 2);
-        let currentElement = arr[mid];
+        let val = arr[mid];
 
         if(arr[mid] < val) {
             min = mid + 1;

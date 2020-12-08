@@ -61,7 +61,7 @@
 - It is a way to describe relationship of input to a function and time relative to that input
 - We really only care about trends here, how the runtime grows
 
-**We say that an algorithm is O9f(n)) if the number of simple operations the computer has to do is eventually less that a constant times(f(n), as n increases**
+**We say that an algorithm is Of(n)) if the number of simple operations the computer has to do is eventually less that a constant times(f(n), as n increases**
     - f(n) means a function with input of n and then an output
     - f(n) could be linear (f(n) = n)
     - f(n) could be quadratic (f(n) = n^2)
@@ -91,7 +91,7 @@ O(n^2) = (think nested for loops)
 
 ### Space Complexity
 
-Whereas **time complexity** involves analyzing the runtime of analgorithm as the size input increases,
+Whereas **time complexity** involves analyzing the runtime of algorithm as the size input increases,
 **space complexity** involves how much memory do we need to allocate in order to run the code in our algorithm
 
 - Space complexity now refers to **auxiliary space**
