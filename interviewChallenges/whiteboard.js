@@ -1,5 +1,5 @@
 'use strict'
-
+// Practice with Dynamic Coding with Alvin Zablan from Coderbyte
 /* Challenge 1: Fibonacci Pattern
 Write a function fib(n) that takes in a number as an argument.
 The function should return the nth number in the Fibonacci sequence.
@@ -35,6 +35,8 @@ Write a function gridTraveler(m,n) that calculates this.
 // I will still memoize this function so that time complexity is better
 // Memoization allows us to store keys in memo and shorten recursive calls
 // We pass down memo object to recursive calls
+// Keys of object are args to fn, and values are values from function calls
+// Big O time: O(m * n), space: O(n + m)
 const gridTraveler = (m, n, memo = {}) =>{
   // Making sure nums don't get mixed
   const key = m + ',' + n;
@@ -51,5 +53,36 @@ const gridTraveler = (m, n, memo = {}) =>{
   memo[key] = gridTraveler(m - 1, n, memo) + gridTraveler(m, n - 1, memo);
   return memo[key];
 }
-gridTraveler(1, 1);
-gridTraveler(2, 3);
+console.log(gridTraveler(1, 1));
+console.log(gridTraveler(2, 3));
+
+//Challenge 3: canSum
+/* Write a function canSum(targetSum, nums) that takes in a targetSum and an 
+arr of nums as args.
+The function should return a boolean indicating whether or not it is possible to generate
+the targetSum using the nums from the arr.
+   - I can use an element of the arr as many times as needed
+   - I can assume that all input nums are not negative
+*/
+// m = target sum, n = arr length
+// Big O time: O(m * n), space: O(m)
+const canSum = (targetSum, nums, memo ={}) => {
+    if(targetSum in memo) return memo[targetSum];
+    // Base cases: If targetSum reaches value 0 (in my tree) then I can always generate 0 by taking no nums from array
+    if(targetSum === 0) return true;
+    if(targetSum < 0) return false;
+    // Iterating through every element of nums arr
+    for(let num of nums) {
+        // I need branching logic (transiting from one node of tree to next)
+        const remainder = targetSum - num;
+        // I can resuse nums of arr as many times as I like
+        // This function should return boolean 
+        // If it is possible to generate reminder with nums of arr, then return true for targetSum
+        if(canSum(remainder,nums, memo) === true) {
+            memo[targetSum] = true;
+            return true;
+        }
+    }
+    memo[targetSum] = false;
+    return false;
+}
