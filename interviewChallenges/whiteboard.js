@@ -87,7 +87,7 @@ const canSum = (targetSum, nums, memo ={}) => {
     }
     memo[targetSum] = false;
     return false;
-}
+};
 
 // Challenge 4: howSum
 /* Write a function howSum(targetSum, nums) that takes in a targetSum and an arr of nums as args.
@@ -121,7 +121,7 @@ const howSum = (targetSum, nums, memo = {}) => {
     }
     memo[targetSum] = null;
     return null;
-}
+};
 
 //Challenge 5: howSum
 /* Write a function bestSum(targetSum, nums) that takes in a targetSum and an arr
@@ -131,6 +131,9 @@ If there is a tie for the shortest combo, return one of those*/
 
 
 // This challenge is similar to howSum and canSum, but now I have to consider the shortest way
+// Target sum is key in memo object
+// Big O: time is O(m * n^2) and space is O(m^2)
+// m = targetSum and n is length of arr
 const bestSum = (targetSum, nums, memo = {}) => {
   if(targetSum in memo) return memo[targetSum];
   if(targetSum === 0) return [];
@@ -152,11 +155,50 @@ const bestSum = (targetSum, nums, memo = {}) => {
             shortestCombo = combination;
         }
       }
-  }
+ }
 
   memo[targetSum] = shortestCombo;
   return shortestCombo;
-}
+};
 
 console.log(bestSum(7, [5, 3, 4,7]));
 console.log(bestSum(8, [2, 3, 5]));
+
+// howSum = Combinatoric problem/ How will you do it?
+// canSum = Decision problem/ Can you do it? Ye sor no?
+// bestSum = Optimization Problem/ What is the best way to di it?
+
+/*************************************************************** */
+// Inputs are not always nums in dynamic programming
+
+// Challenge 6: canConstruct
+/* Write a function canConstruct(target, wordBank) that accepts a target string and an array of strings.
+   The function should return a boolean indicating whether or not the target can be constructed
+   by concatenating elements of the wordBank arr. I can resuse as many elements in wordBank as needed.
+   
+   Ex: canConstruct(abcdef, [ab, abc, cd, def, abcd])----> true;*/
+
+//m = target.length and n= wordBank.length, m is target
+// Big O: time is O(n * m^2) as I don't have to explore duplicate subtrees
+// Big O space is O(m^2)
+const canConstruct = (target, wordBank, memo = {}) => {
+    if(target in memo) return memo[target];
+    if(target === '') return true;
+
+    // Iterating through wordBank
+    for(let word of wordBank) {
+      // When is ok to make recursive call using that word
+      // Have to make sure word is a prefix of target (I have a prefix, use it to shrink target)
+      if(target.indexOf(word === 0)) {
+        const suffix = target.slice(word.length);
+        // Make recursive call on suffix, can I construct the suffix?
+        // If suffix can be made and word is in wordBank, then target can be made
+        if(canConstruct(suffix, wordBank, memo) === true) {
+            memo[target] = true;
+            return true;
+        }
+     }
+  }
+  memo[target] = false;
+  return false;
+};
