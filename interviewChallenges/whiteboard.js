@@ -94,8 +94,11 @@ If there is no combo that adds up to targetSum, return null.
 If there are multiple combinations, just return a single one.
 */
 
-// This is similar to the canSum. I am not returning a boolean.
-const howSum = (targetSum, nums) => {
+// This is similar to the canSum. I am not returning a boolean
+// Big O: Time is O(n^m * m) brute force without memo, space is O(m) 
+// With memo: Time is O(n * m^2), space is O(m^2)(m keys and each key has a value)
+const howSum = (targetSum, nums, memo = {}) => {
+    if(targetSum in memo) return memo[targetSum]
     // Base cases
     // 0 means that it is possible to generate targetSum
     if(targetSum === 0) return [];
@@ -106,12 +109,14 @@ const howSum = (targetSum, nums) => {
         const remainder = targetSum - num;
         // Recursive call on howSum
         // Assigned to variable as we can return two different results
-        const remainderResult = howSum(remainder, nums);
+        const remainderResult = howSum(remainder, nums, memo);
         // In the tree, we wanted to return as soon as it is possible to generate remainder
         if(remainderResult !== null) {
             // The nums are the edges from the tree diagram(which are the nums in arr)
-            return [...remainderResult, num];
+            memo[targetSum] = [...remainderResult, num];
+            return memo[targetSum]
         }
     }
+    memo[targetSum] = null;
     return null;
 }
