@@ -86,3 +86,32 @@ const canSum = (targetSum, nums, memo ={}) => {
     memo[targetSum] = false;
     return false;
 }
+
+// Challenge 4: howSum
+/* Write a function howSum(targetSum, nums) that takes in a targetSum and an arr of nums as args.
+The function should return an arr containing any combination of elements that add up to exactly the targetSum.
+If there is no combo that adds up to targetSum, return null.
+If there are multiple combinations, just return a single one.
+*/
+
+// This is similar to the canSum. I am not returning a boolean.
+const howSum = (targetSum, nums) => {
+    // Base cases
+    // 0 means that it is possible to generate targetSum
+    if(targetSum === 0) return [];
+    // Nums are only positive in this challenge
+    if(targetSum < 0) return null;
+    // Recursive call for every num in array
+    for(let num of nums) {
+        const remainder = targetSum - num;
+        // Recursive call on howSum
+        // Assigned to variable as we can return two different results
+        const remainderResult = howSum(remainder, nums);
+        // In the tree, we wanted to return as soon as it is possible to generate remainder
+        if(remainderResult !== null) {
+            // The nums are the edges from the tree diagram(which are the nums in arr)
+            return [...remainderResult, num];
+        }
+    }
+    return null;
+}
