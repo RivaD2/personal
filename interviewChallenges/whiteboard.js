@@ -120,3 +120,38 @@ const howSum = (targetSum, nums, memo = {}) => {
     memo[targetSum] = null;
     return null;
 }
+
+//Challenge 5: howSum
+/* Write a function bestSum(targetSum, nums) that takes in a targetSum and an arr
+of nums as args. The function should return an arr containing the shortest combination of nums
+that add up to exactly the targetSum.
+If there is a tie for the shortest combo, return one of those*/
+
+
+// This challenge is similar to howSum and canSum, but now I have to consider the shortest way
+const bestSum = (targetSum, nums) => {
+  if(targetSum === 0) return [];
+  if(targetSum < 0) return null;
+
+  // Create variable to compare recursive calls to see which is shorter
+  let shortestCombo = null;
+
+  for(let num in nums) {
+      const remainder = targetSum - num;
+      // Reminder combo is shortest way to generate remainder
+      const remainderCombo = bestSum(remainder, nums);
+      if(remainderCombo !== null) {
+          // Created combo that gives me targetSum
+        const combination = [...remainderCombo, num];
+        // If combination is shorter than current shortest combo
+        if(shortestCombo === null || combination.length < shortestCombo.length) {
+            // The shorter combination wins out and can stay
+            shortestCombo = combination;
+        }
+      }
+  }
+  return shortestCombo;
+}
+
+console.log(bestSum(7, [5, 3, 4,7]));
+console.log(bestSum(8, [2, 3, 5]));
