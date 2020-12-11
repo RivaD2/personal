@@ -1,5 +1,7 @@
 'use strict'
 // Practice with Dynamic Coding with Alvin Zablan from Coderbyte
+
+
 /* Challenge 1: Fibonacci Pattern
 Write a function fib(n) that takes in a number as an argument.
 The function should return the nth number in the Fibonacci sequence.
@@ -7,7 +9,7 @@ The first number in the sequence is always one.
 To generate the next number in the sequence, we sum the previous two nums
 */
 
-//Big O: time: O(n) and Space of O(n) using Recursion
+// Big O: time: O(n) and Space of O(n) using Recursion
 // Implementing memoization by using a fast acting data structure
 // Use an object where the keys will be argument to our fn and value will be return value
 // Memoization can help us solve dynamic JS problems
@@ -129,17 +131,18 @@ If there is a tie for the shortest combo, return one of those*/
 
 
 // This challenge is similar to howSum and canSum, but now I have to consider the shortest way
-const bestSum = (targetSum, nums) => {
+const bestSum = (targetSum, nums, memo = {}) => {
+  if(targetSum in memo) return memo[targetSum];
   if(targetSum === 0) return [];
   if(targetSum < 0) return null;
 
   // Create variable to compare recursive calls to see which is shorter
   let shortestCombo = null;
 
-  for(let num in nums) {
+  for(let num of nums) {
       const remainder = targetSum - num;
       // Reminder combo is shortest way to generate remainder
-      const remainderCombo = bestSum(remainder, nums);
+      const remainderCombo = bestSum(remainder, nums, memo);
       if(remainderCombo !== null) {
           // Created combo that gives me targetSum
         const combination = [...remainderCombo, num];
@@ -150,6 +153,8 @@ const bestSum = (targetSum, nums) => {
         }
       }
   }
+
+  memo[targetSum] = shortestCombo;
   return shortestCombo;
 }
 
