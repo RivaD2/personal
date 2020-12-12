@@ -202,3 +202,34 @@ const canConstruct = (target, wordBank, memo = {}) => {
   memo[target] = false;
   return false;
 };
+
+// Challenge 6: countConstruct
+/* Write a function countConstruct(target, wordBank) that accepts a target string and an arr of strings.
+This function should return the number of ways that the target can be constructed by concatenating elements of the 
+wordBank array. I can reuse elements of the wordBank as many times as needed.
+
+// So similar to above problem, but instead of returning a boolean, I am returning the
+number of ways I can construct the target.
+*/
+
+const countConstruct = (target, wordBank, memo = {}) => {
+    if(target in memo) return memo[target];
+    if(target === '') return 1;
+    
+    // Whenever I get a way to construct the word, I add it to the count
+    let totalCount = 0;
+    for(let word of wordBank) {
+        // Check if word is a prefix
+        // If if statement is never true, then the count will be 0, so I just return it
+        if(target.indexOf(word) === 0) {
+            // Take suffix and call recursively on it
+            // Num of ways I can construct suffix 
+            const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
+            totalCount += numWaysForRest;
+        }
+    }
+    memo[target] = totalCount;
+    return totalCount;
+}
+console.log('avenger',countConstruct('avenger', ['aven', 'a', 'ven', 'ger', 'er']));
+console.log('string enter pot',countConstruct('enterapotentpot', ['a', 'p', 'ent', 'enter', 'ot', 'o', 't']));
