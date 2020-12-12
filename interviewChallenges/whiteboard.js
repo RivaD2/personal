@@ -212,6 +212,8 @@ wordBank array. I can reuse elements of the wordBank as many times as needed.
 number of ways I can construct the target.
 */
 
+// m = target.length, n = wordBank.length
+// Big O time: O(n * m^2), and space: O(m^2)
 const countConstruct = (target, wordBank, memo = {}) => {
     if(target in memo) return memo[target];
     if(target === '') return 1;
@@ -225,7 +227,7 @@ const countConstruct = (target, wordBank, memo = {}) => {
             // Take suffix and call recursively on it
             // Num of ways I can construct suffix 
             const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
-            totalCount += numWaysForRest;
+            totalCount += numWaysForRest; 
         }
     }
     memo[target] = totalCount;
@@ -233,3 +235,66 @@ const countConstruct = (target, wordBank, memo = {}) => {
 }
 console.log('avenger',countConstruct('avenger', ['aven', 'a', 'ven', 'ger', 'er']));
 console.log('string enter pot',countConstruct('enterapotentpot', ['a', 'p', 'ent', 'enter', 'ot', 'o', 't']));
+
+//Challenge 8: Find max depth of a BST from Terrible WhiteBoard Youtube
+// max Depth is num of nodes along the shortest path from root node down to the leaf node(node without children)
+// Basically, how far down can I go?
+
+/* Algorithm:
+1. Use BFS to traverse tree level by level
+2. Keep track of depth as I go with count variable
+3. Implement a queue 
+4. Create a variable to keep track of parent nodes popped off as I traverse
+5. Add root node to the queue 
+6. Check if it has children, if it does, add its children and pop it off queue
+7. That would be one traversal, 
+8. So I do this logic for each node
+9. Once I hit a leaf node, return count
+*/
+
+const minDepth = root => {
+    if(root === null) return 0;
+
+    let queue = [];
+    queue.push(root);
+    // Instiantiate depth var
+    let depthCount = 0;
+    
+    while(queue.length !== 0) {
+        let numOfNodes = queue.length;
+        while(numOfNodes > 0) {
+            // Grab nodes that are in queue
+            // FIFO
+            let currentNode = queue.shift();
+            // Checking if node has children
+            if(currentNode.left === null && currentNode.right === null) {
+                depthCount++
+                return depthCount;
+            }
+            if(currentNode.left !== null) {
+                queue.push(currentNode.left);
+            }
+            if(currentNode.right !== null) {
+                queue.push(currentNode.right);
+        }
+        return numOfNodes--
+     }
+     depth++
+   }
+}
+
+// Second way to solve find Max depth of binary tree using recursion
+// BFS
+// Assuming I am given a tree with a root node that represents tree
+const maxDepth = root => {
+    const depth = 0;
+
+    let BFS = (node, level) => {
+        if(node === null) return 0;
+        if(level > maxDepth) maxDepth = level;
+        BFS(node.left, level +1);
+        BFS(node.right, level +1);
+    }
+    BFS(root, 1);
+    return depth;
+}
