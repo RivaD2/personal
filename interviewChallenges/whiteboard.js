@@ -1,4 +1,7 @@
 'use strict'
+
+const { node } = require("prop-types");
+
 // Practice with Dynamic Coding with Alvin Zablan from Coderbyte
 
 
@@ -390,4 +393,42 @@ const getRow = (rowIndex) => {
   return row;
 };
 
+// Insert val into BST
+/* Given the root node of a binary search tree(BST) and a value to be inserted, 
+insert the value into the BST. Return the root node of the BST after the insertion.
+It is guaranteed that the new value does not exist in the original BST.
+*/
+
+// Traverse tree and check each node
+// If value is greater, traverse down right side 
+// If value is less than, traverse down left side
+// If there is no node, create one
+// Iterative solution might be better
+const insertIntoBST = function(root, val) {
+    node = root;
+    // While true... (that is while(1) as 1 is truthy)
+    // Loop will run forever until something calls break;
+    // InOrder Traversal left --root---right
+    while(1) {
+        if(val >= node.val) {
+            if(node.right) {
+                node = node.right;
+                continue;
+            } else {
+                node.right = new TreeNode(val);
+                break;
+            }
+        } else {
+            if(node.left) {
+                node = node.left;
+                continue;
+            } else {
+                node.left = newTreeNode(val);
+                break;
+            }
+        }
+    }
+    return root;
+}
+  
 
