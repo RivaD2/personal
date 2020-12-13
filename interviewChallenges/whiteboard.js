@@ -16,7 +16,6 @@ To generate the next number in the sequence, we sum the previous two nums
 // If I don't pass in a second arg in fn call, by default a memo with a new JS object will be created
 // Memoization cuts down our recursive calls
 
-
 const fib = (n, memo = {}) => {
     // Is arg in memo?
     if(n in memo) return memo(n);
@@ -319,18 +318,18 @@ function inOrderTraversal(root) {
                 // Walk to rightmost point
                 guide = guide.right
             }
+            // Create a bridge to tourist
+            if(guide.right === null) {
+                guide.right = tourist;
+                tourist = tourist.left;
+            } else {
+                // What if rightmost element is bridge? Destroy the bridge as that means tourist has traveled there.
+                guide.right = null;
+                solution.push(tourist.val);
+                tourist = tourist.right;
+            }
         }
-        // Create a bridge to tourist
-        if(guide.right === null) {
-            guide.right = tourist;
-            tourist = tourist.left;
-        } else {
-            // What if rightmost element is bridge? Destroy the bridge as that means tourist has traveled there.
-            guide.right = null;
-            solution.push(tourist.val);
-            tourist = tourist.right;
-            
-        } else {
+         else {
             solution.push(tourist.val);
             tourist = tourist.right;
         }
@@ -338,7 +337,7 @@ function inOrderTraversal(root) {
     return solution;
 };
 
-// twoSum Challenge
+// twoSum Challenge (Web Dev Simplified Youtube)
 /* Challenge: Given an array of integers, return the indices of the two nums
 such that they add up to a specific target.
 I can assume that each input has exactly one solution and I may not use the same element twice
@@ -364,5 +363,31 @@ const twoSum = (nums, target) => {
       }
     }
 }
+
+// TechLead Youtube LeetCode Challenges
+// Pascals Triangle:
+/* Given a non-negative index k, where k < 33, return the kth index row 
+of the Pascal's Triangle. The r  ow index starts from 0.
+*/
+
+const getItem = (row, j) =>{
+    if(j< 0 || j>= row.length) {
+        return 0;
+    }
+    return row[j];
+}
+
+const getRow = (rowIndex) => {
+    let row = [1];
+    for(let i = 0; i<= rowIndex; i++) {
+        let newRow = new Array(i + 1);
+        for(let j = 0; j<= i + 1; j++) {
+            let digit = getItem(row, j -1) + getItem(row, j);
+            newRow[j] = digit;
+        }
+    row = newRow;
+  }   
+  return row;
+};
 
 
