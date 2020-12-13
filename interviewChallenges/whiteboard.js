@@ -252,7 +252,7 @@ console.log('string enter pot',countConstruct('enterapotentpot', ['a', 'p', 'ent
 9. Once I hit a leaf node, return count
 */
 
-const minDepth = root => {
+const BFSDepth = root => {
     if(root === null) return 0;
 
     let queue = [];
@@ -298,3 +298,53 @@ const maxDepth = root => {
     BFS(root, 1);
     return depth;
 }
+
+
+// Morris Traversal (inOrder Traversal) from ThinkFWD onYoutube /Leetcode Challange
+// Essentially Using two pointers
+// Assumes I am given a root
+function inOrderTraversal(root) {
+    // Tourist pointer starts at root
+    let tourist = root;
+    let solution = [];
+
+    while(tourist !== null) {
+        // Create guide to look at tourists left subtree
+        let guide = tourist.left;
+
+        // This all runs as long as tourist is not on the edge
+        // As long as guide has a right to go to and that right is not null or equal to tourist
+        if(tourist.left !== null) {
+            while(guide.right !== null && guide.right !== tourist) {
+                // Walk to rightmost point
+                guide = guide.right
+            }
+        }
+        // Create a bridge to tourist
+        if(guide.right === null) {
+            guide.right = tourist;
+            tourist = tourist.left;
+        } else {
+            // What if rightmost element is bridge? Destroy the bridge as that means tourist has traveled there.
+            guide.right = null;
+            solution.push(tourist.val);
+            tourist = tourist.right;
+            
+        } else {
+            solution.push(tourist.val);
+            tourist = tourist.right;
+        }
+    }
+    return solution;
+};
+
+// twoSum Challenge
+/* Challenge: Given an array of integers, return the indices of the two nums
+such that they add up to a specific target.
+I can assume that each input has exactly one solution and I may not use the same element twice
+
+Ex: [2, 7, 11, 15], target = 9
+// return only one solution which is an arr of indices
+*/
+
+
