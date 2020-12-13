@@ -347,4 +347,22 @@ Ex: [2, 7, 11, 15], target = 9
 // return only one solution which is an arr of indices
 */
 
+// Store array inside a hash instead
+// No nested for loops
+const twoSum = (nums, target) => {
+    let previousValues = {};
+    for(let i = 0; i< nums.length; i++) {
+      const currentNum = nums[i];
+      const neededValue = target - currentNum;
+      // Check object to see if it has something for the key at neededValue
+      const index2 = previousValues[neededValue];
+      // This means I have something for that object
+      if(index2 !== null) {
+          return [index2, index]
+      } else {
+          previousValues[currentNum] = i;
+      }
+    }
+}
+
 
