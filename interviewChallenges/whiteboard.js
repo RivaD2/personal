@@ -168,7 +168,7 @@ console.log(bestSum(8, [2, 3, 5]));
 
 // howSum = Combinatoric problem/ How will you do it?
 // canSum = Decision problem/ Can you do it? Ye sor no?
-// bestSum = Optimization Problem/ What is the best way to di it?
+// bestSum = Optimization Problem/ What is the best way to do it?
 
 /*************************************************************** */
 // Inputs are not always nums in dynamic programming
@@ -189,7 +189,7 @@ const canConstruct = (target, wordBank, memo = {}) => {
 
     // Iterating through wordBank
     for(let word of wordBank) {
-      // When is ok to make recursive call using that word
+      // When is it ok to make recursive call using that word
       // Have to make sure word is a prefix of target (I have a prefix, use it to shrink target)
       if(target.indexOf(word === 0)) {
         const suffix = target.slice(word.length);
@@ -370,7 +370,7 @@ const twoSum = (nums, target) => {
 // TechLead Youtube LeetCode Challenges
 // Pascals Triangle:
 /* Given a non-negative index k, where k < 33, return the kth index row 
-of the Pascal's Triangle. The r  ow index starts from 0.
+of the Pascal's Triangle. The row index starts from 0.
 */
 
 const getItem = (row, j) =>{
@@ -380,7 +380,7 @@ const getItem = (row, j) =>{
     return row[j];
 }
 
-const getRow = (rowIndex) => {
+const getRow = rowIndex => {
     let row = [1];
     for(let i = 0; i<= rowIndex; i++) {
         let newRow = new Array(i + 1);
@@ -402,8 +402,7 @@ It is guaranteed that the new value does not exist in the original BST.
 // Traverse tree and check each node
 // If value is greater, traverse down right side 
 // If value is less than, traverse down left side
-// If there is no node, create one
-// Iterative solution might be better
+// If there is no node, create one/insert the value
 const insertIntoBST = function(root, val) {
     node = root;
     // While true... (that is while(1) as 1 is truthy)
@@ -431,4 +430,42 @@ const insertIntoBST = function(root, val) {
     return root;
 }
   
+// Longest Palindrome from TechLead Youtube LeetCode challenges
+/* Given a string which consists of lowercase and uppercase letters, find the
+length of the longest palindromes that can be built with those letters.
 
+This is case sensitive, for example, "Aa" is not considered a palindrome.
+Assume the length of the string will not exceed 1,010
+Ex: input: "abccccdd" ---> output: 7
+One of the longest palindromes is "dccaccd" with a length of 7
+*/
+
+// Order of letters doesn't matter here
+// Create a hashmap indicating for each letter, how many characters do I have
+// Go through each character and for each pair I have, count the pairs
+// For each pair I have, that is a palindrome
+// Big O: 2 passes given length of passes O(n^2) and time is same
+const longestPalindrome = s => {
+ let letters = {};
+ // Create hashmap
+ for(let i = 0; i < s.length; i++) {
+     let si = s[i];
+     if(letters[si]) {
+         letters[si]++;
+     } else {
+         letters[si] = 1;
+     }
+  }
+  // Scan hashmap for pairs
+  let totalPairs = 0;
+  let hasOdd = false;
+  for(let l in letters) {
+      let c = letters[l];
+      let pairs = Math.floor(c/2);
+      if(!hasOdd && c - pairs * 2 >=1) {
+          hasOdd = true;
+      }
+      totalPairs += pairs;
+  }
+  return totalPairs * 2 + (hasOdd ? 1:0);
+}
