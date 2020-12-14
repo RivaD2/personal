@@ -403,6 +403,7 @@ It is guaranteed that the new value does not exist in the original BST.
 // If value is greater, traverse down right side 
 // If value is less than, traverse down left side
 // If there is no node, create one/insert the value
+// BIG O: time is O(log(n)) space, worst case is O(n)
 const insertIntoBST = function(root, val) {
     node = root;
     // While true... (that is while(1) as 1 is truthy)
@@ -429,7 +430,27 @@ const insertIntoBST = function(root, val) {
     }
     return root;
 }
-  
+
+// Insert into BST recursive solution (not as efficient)
+const bstInsert = function(root, val) {
+    if(val >= root.val) {
+        if(root.right) {
+            bstInsert(root.right, val);
+        } else {
+            if(root.left) {
+                bstInsert(root.left, val)
+            } else {
+                root.left = new TreeNode(val);
+            }
+        }
+    }
+    return root;
+}
+
+
+
+
+
 // Longest Palindrome from TechLead Youtube LeetCode challenges
 /* Given a string which consists of lowercase and uppercase letters, find the
 length of the longest palindromes that can be built with those letters.
@@ -469,3 +490,35 @@ const longestPalindrome = s => {
   }
   return totalPairs * 2 + (hasOdd ? 1:0);
 }
+
+// Check if a string is a palindrome (esssentially reversing a str)
+/* Let's say I have an arr of strings, arr, and for each string, I want to determine if
+it is a palindrome. Return true or false each time.
+
+arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo", "Carla loves chocolate"];
+*/
+
+// I can tell the one in the middle is palindrome
+// First thing to ask, is there going to be punctuation?
+/* Steps:
+    Use loop, or forEach
+    Once I am there, put everything in lowercase using .toLowercase()
+    Remove all spaces using .replace() (giving me one solid string)
+    Create new variable and reverse it
+    */
+
+function palindromChecker(arr){
+    arr.forEach(element => {
+        element =  element.toLowerCase();
+        element = element.replace(/\s/g,'');
+        // creating an array then turn it back to string
+        const newElement = element.split('').reverse().join('');
+        if(newElement == element) {
+            console.log('this is a palindrome')
+            return true;
+        } else {
+            return false;
+        }
+    })
+}
+console.log(palindromChecker(["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo", "Carla loves chocolate"]));
