@@ -1,9 +1,6 @@
 'use strict'
 
-const { node } = require("prop-types");
-
 // Practice with Dynamic Coding with Alvin Zablan from Coderbyte
-
 
 /* Challenge 1: Fibonacci Pattern
 Write a function fib(n) that takes in a number as an argument.
@@ -507,18 +504,19 @@ arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitar
     Create new variable and reverse it
     */
 
-function palindromChecker(arr){
-    arr.forEach(element => {
-        element =  element.toLowerCase();
-        element = element.replace(/\s/g,'');
+function palindromeChecker(arr){
+     arr.forEach(element => {
+        element =  element.toLowerCase().replace(/\s/g,'');
         // creating an array then turn it back to string
-        const newElement = element.split('').reverse().join('');
-        if(newElement == element) {
+        let newElement = element.split('').reverse().join('');
+        if(newElement === element) {
             console.log('this is a palindrome')
             return true;
         } else {
+            {'this is not a palindrome'}
             return false;
         }
     })
 }
-console.log(palindromChecker(["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo", "Carla loves chocolate"]));
+let arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo","Carla loves chocolate"];
+palindromeChecker(arr);
