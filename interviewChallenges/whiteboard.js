@@ -445,9 +445,6 @@ const bstInsert = function(root, val) {
 }
 
 
-
-
-
 // Longest Palindrome from TechLead Youtube LeetCode challenges
 /* Given a string which consists of lowercase and uppercase letters, find the
 length of the longest palindromes that can be built with those letters.
@@ -506,17 +503,53 @@ arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitar
 
 function palindromeChecker(arr){
      arr.forEach(element => {
-        element =  element.toLowerCase().replace(/\s/g,'');
+        element = element.toLowerCase().replace(/\s/g,'');
         // creating an array then turn it back to string
         let newElement = element.split('').reverse().join('');
         if(newElement === element) {
             console.log('this is a palindrome')
             return true;
         } else {
-            {'this is not a palindrome'}
+            console.log('this is not a palindrome')
             return false;
         }
     })
 }
 let arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo","Carla loves chocolate"];
-palindromeChecker(arr);
+console.log(palindromeChecker(arr));
+
+
+//merge two sorted linked List (Terrible Whiteboard, Youtube Leetcode challenge)
+/* Merge two sorted Linked Lists and return it as a new list. The new list should be made
+by splicing together the nodes of the first two lists.*/
+class ListNode {
+    // A node I can use for the below function
+    // I have to create a dummy node below
+    constructor(val = null, next = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
+const mergeTwoLists = function(list1,list2) {
+  let dummyNode = new ListNode(-1);
+  // Reference to dummyNode will keep changing
+  // I intialize the head so that at the end, I can reference initial value and return it
+  // Head is -1 so I will return head.next at the end
+  let head = dummyNode;
+  while(list1 !== null && list2 !== null) {
+    if(list1.val <= list2.val) {
+        dummyNode.next = list1;
+        list1 = list1.next;
+    } else {
+        dummyNode.next = list2;
+        list2 = list2.next;
+    }
+    dummyNode = dummyNode.next;
+  }
+    if(list1 !== null) {
+        dummyNode.next = list1;
+    } else {
+        dummyNode.next = list2;
+    }
+    return head.next;
+}
