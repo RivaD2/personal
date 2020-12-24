@@ -88,6 +88,23 @@ const canSum = (targetSum, nums, memo ={}) => {
     return false;
 };
 
+/*FindSome: Write a function that will pair up the arr element whose sum
+is equal to a given num* (similar to canSum recursive, but this is 
+an iterative approach */
+const findSumPairs = (arr, value) => {
+    let sumsLookup = {};
+    let output = [];
+    for(let i = 0; i < arr.length; i++) {
+      let targetVal = value - arr[i];
+      if(sumsLookup[targetVal]) {
+        output.push([arr[i], targetVal]);
+      }  
+      sumsLookup[arr[i]] = true;
+    }
+    return output;
+  }
+ 
+
 // Challenge 4: howSum
 /* Write a function howSum(targetSum, nums) that takes in a targetSum and an arr of nums as args.
 The function should return an arr containing any combination of elements that add up to exactly the targetSum.
@@ -594,4 +611,25 @@ const removeDuplicates = linkedlist => {
        }
      }
      return linkedlist;
+}
+
+// Binary Search Recursive:
+const binarySearchRecursive = (arr, num, left, right) => {
+    if(left > right) {
+        // Error, can't find num;
+        return false;
+    }
+    // Pick midpoint
+    let mid = (left + right)/2;
+    // If I've found element, then I need to return true
+    if(arr[mid] === num) {
+        return true;
+        // Otherwise, if num is on left side of mid, search left side
+    } else if(num < arr[mid]) {
+        return binarySearchRecursive(arr, num, left, mid -1);
+        // Otherwise search the right side
+        // Left point moves up to mid plus 1, right stays as is
+    } else {
+        return binarySearchRecursive(arr, num, mid +1, right);
+    }
 }

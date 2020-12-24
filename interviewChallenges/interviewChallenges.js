@@ -1,4 +1,3 @@
-const { node } = require("prop-types");
 
 // Credit to https://dev.to/zchtodd/binary-tree-interview-questions-hpi for solutions
 class Tree {
@@ -131,23 +130,4 @@ postOrder(node){
 // postOrder: left, right, root (root is visited LAST)
 
 
-/*InOrder Traversal: 
-   - Traverse the left subtree by recursively calling inOrder function
-   - Process the root value by pushing it into nodes
-   - Traverse the right subtree by recursively calling inOrder function
-   */
-
-
-inOrder(node) {
-    if(node !== null) {
-        this.inOrder(node.left);
-        this.inOrder(node.right);
-    }
-}
-preOrder(node) {
-    if(node !== null) {
-        this.preOrder(node.left);
-        this.preOrder(node.right);
-    }
-}
 
