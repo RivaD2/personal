@@ -613,14 +613,14 @@ const removeDuplicates = linkedlist => {
      return linkedlist;
 }
 
-// Binary Search Recursive:
+// Binary Search Recursive: For Binary Search, data has to be sorted already
 const binarySearchRecursive = (arr, num, left, right) => {
     if(left > right) {
         // Error, can't find num;
         return false;
     }
     // Pick midpoint
-    let mid = (left + right)/2;
+    let mid = left + ((right - left)/ 2);
     // If I've found element, then I need to return true
     if(arr[mid] === num) {
         return true;
@@ -632,4 +632,23 @@ const binarySearchRecursive = (arr, num, left, right) => {
     } else {
         return binarySearchRecursive(arr, num, mid +1, right);
     }
+}
+
+// Binary Search Iterative Approach
+const binarySearchIterative = (num, arr) => {
+    let left = 0;
+    // Start off right at rightmost position in arr
+    let right =  arr.length - 1;
+    while(left <= right) {
+        let mid = left + ((right -left) / 2);
+        if(arr[mid] === num) {
+            return true;
+        }else if(num < arr[mid]) {
+            right = mid -1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    // Num has not been found
+    return false;
 }
