@@ -252,9 +252,6 @@ same([1, 2, 3, 2], [9, 1, 4, 4]);
 
 
 // Anagram Solution: Solving by using frequency counter pattern
-/*Write a function called `Same` which accepts two arrays. 
-The function should return true if every value in the array has it's 
-corresponding value squared in the second array. The frequency of values must be the same*/
 
 //O(n) time
 // Function takes two args
@@ -407,7 +404,7 @@ maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
 // O(n) linear complexity, as I only go over array once
 // Here I keep a variable with total and to get sum of next set of digits, I create a sum that goes up to a certain point
 // I move the window up by subtracting a num instead
-const maxSubarraySum = ((arr, num) => {
+const maxSubarraySum = (arr, num) => {
     let maxSum = 0;
     let tempSum = 0;
     // Edge case
@@ -428,7 +425,7 @@ const maxSubarraySum = ((arr, num) => {
         maxSum = Math.max(maxSum, tempSum);
     }
     return maxSum;
-})
+}
 maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
 
 // Divide and Conquer Pattern
@@ -454,10 +451,9 @@ const search = ((arr, val) => {
 // I then look at subarray, and pick middle element and do the same thing
 // It chops off the amount of values I have to search for
 // Log(N) time
-const search = ((arr, val) => {
+const search = (arr, val) => {
     let min = 0;
     let max = arr.length - 1;
-
     while(min <= max) {
         let mid = Math.floor((min + max)/ 2);
         let val = arr[mid];
@@ -473,7 +469,7 @@ const search = ((arr, val) => {
         }
     }
     return -1;
-})
+}
 
 //Linear Search Soltution from using PseudoCode
 // Best case for linear is O(1)

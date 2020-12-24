@@ -553,3 +553,45 @@ const mergeTwoLists = function(list1,list2) {
     }
     return head.next;
 }
+
+/* Given a linkedlist, return a boolean indicating whether or not
+the list is circular:*/
+
+const isCircular = linkedList => {
+    let currentNode = linkedlist.head;
+    if(currentNode === null) return false;
+
+    // Rather than use an array, using object keeps Big O at O(n)
+    let previousNodes = {};
+    // Traverse
+    // As we traverse, track visited
+    while(currentNode !== null) {
+        // Check previousNodes
+        if(previousNodes[currentNode]) {
+            // List is circular
+            return true;
+        } else {
+            // What about nodes not visited yet?
+            previousNodes[currentNode] = currentNode;
+            currentNode = currentNode.next;
+        }
+    }
+    return false;
+}
+
+// Write a function that deduplicates a linkedlist:
+const removeDuplicates = linkedlist => {
+  let currNode = linkedlist.head;
+  let listOfValues = [];
+  while(currNode !== null) {
+      // On first iteration, currNode goes into list
+    listOfValues.push(currNode.val);
+    if(listOfValues.indexOf(currentNode.next.val) === -1) {
+        currentNode = currentNode.next;
+       } else {
+           // There is a duplicate, so change next pointer to remove it
+        currentNode.next = currentNode.next.next;
+       }
+     }
+     return linkedlist;
+}
