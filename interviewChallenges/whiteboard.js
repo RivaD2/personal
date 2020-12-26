@@ -697,3 +697,22 @@ const cipherString = str => {
 }
 console.log('in cipher',cipherString("SERR PBQR PNZC"));
 cipherString('AZ'); // ASCII value is 65
+
+// FreeCodeCamp Seek and Destroy
+/*Given a function that takes in an arr and an arg(the first arg in the destroyer
+function), followed by one or more args, remoe all elements from the initial arr
+that are the same value as the arguments
+Ex: destroyer([1, 2, 3, 1, 2, 3], 2,3) -----> output: [1, 1]*/
+
+const destroyer = arr => {
+    // Remove all values
+    let args = Array.from(arguments);
+    // Give me everything from index 1 and on and remove first element
+    args.splice(0, 1);
+    let targets = args;
+    arr.filter(num => {
+          // If num is not in targets
+      return targets.indexOf(num) === -1;
+    })
+}
+console.log('in destroyer',destroyer([1, 2, 3, 1, 2, 3], 2, 3));
