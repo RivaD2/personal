@@ -1,5 +1,7 @@
 'use strict'
 
+const { string } = require("prop-types");
+
 // Practice with Dynamic Coding with Alvin Zablan from Coderbyte
 
 /* Challenge 1: Fibonacci Pattern
@@ -652,3 +654,46 @@ const binarySearchIterative = (num, arr) => {
     // Num has not been found
     return false;
 }
+
+// Hanker Rank: Left Rotate an Array of integers
+// [1, 2, 3, 4, 5] ----> [3, 4, 5, 1, 2]
+
+const rotateLeft = (arr, rotations) => {
+  const rotatedArray = arr.concat();
+  for(let i = 0; i < rotations; i++) {
+      // Pop off item from front
+      const frontItem = rotatedArray.shift();
+      // Push front item to back
+      rotatedArray.push(frontItem);
+  }
+    // One rotation done
+    return rotatedArray;
+}
+console.log(rotateLeft([1, 2, 3, 4, 5], 4));
+
+// FreeCodeCamp: Caesars Cipher or Shift Cipher
+/*Write a function which takes ROT13 encoded string
+as an input and returns a decoded string*/
+// Letters will be shifted 13 places
+// The input will be decoded
+const cipherString = str => {
+    let result = '';
+    // Loop through the string
+    for(let i = 0; i < str.length; i++) {
+     // Use charCodeAt (for ASCII value, numerical representation of characters on keyboard)
+     // This takes a letter and gives me ASCII value
+     let asciiValue = str[i].charCodeAt();
+     // Move num to left 13 spaces
+     if(asciiValue >= 65 && asciiValue <= 77) {
+         result += String.fromCharCode(asciiValue + 13);
+     } else if (asciiValue >= 78 && asciiValue <= 90) {
+         // FromCharCode differs from charCodeAt, this one takes ASCII num and gives me a letter
+        result += String.fromCharCode(asciiValue - 13);
+     } else {
+         result += str[i];
+     }
+   }
+   return result;
+}
+console.log('in cipher',cipherString("SERR PBQR PNZC"));
+cipherString('AZ'); // ASCII value is 65
