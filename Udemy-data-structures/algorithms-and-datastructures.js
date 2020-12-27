@@ -804,3 +804,5 @@ list.push(99);
 list.push(100);
 list.push("Last item");
 list.pop();
+
+/* Graph

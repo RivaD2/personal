@@ -356,10 +356,50 @@ There are many different search methods on arrays in JS:
     - Each element is a node and node store data
     - Head is the beginning of the list and tail is the end
     - To get to another item, we have to ask for the NEXT item
+    - Linked lists are linear
 
 **Comparison to Arrays**
     - Linked Lists do not have indexes
     - They are connected via nodes with a **next** pointer
     - Random access is not allowed, we have to traverse from the beginning
     - Insertion and deletion are easier and more efficient in lists
+
+2. Graphs: Graphs are everywhere! They are used in social networks, recommendations engines etc. 
+   - We traverse through graphs like trees, with BFS and DFS
+   - A graph is a collection of nodes and connections between those nodes
+   - So we have nodes and connections between them
+   - There is no parent node and nodes are connected in different ways
+    
+   **Uses of Graphs:**
+      - Social networking
+      - Location/Mapping
+      - Routing Algorithms
+      - File System Optimizations
+      - Web pages that link to one another
   
+   **Types of Graphs/Terminology:**
+     - **Vertex:** A node
+     - **Edge:** Connection between nodes
+     - **Weighted:** Has values assigned to edges.
+     - **Unweighted:** Each connection between vertices, has no value
+       associated with it.
+     - **Undirected:** Has to do with edges. There is no direction
+       or polarity to edges. They are two-way connections.
+       Facebook models friends in this way, a two-way connection.
+    - **Directed:** Represented with arrows. Indicates polarity of that edge. There is a direction assigned to the edge. Think Instagram here, 
+      where there is not a two-way connection automatically.
+  
+  **Storing Graphs:**
+     - We need to store vertices and connections
+     - With BST's , we have .left and .right, and with linkedlist we have .next and .prev with doubly linkedlist. We can't do that with graphs.
+  **There are TWO STANDARD WAYS to store info** 
+  1. Adjacency List or an Adjacency Matrix.
+     - In an Adjacency Matrix, we store info in rows and columns. We could store undirected and directed graphs this way. I could use true or false, or 1's and 0's.
+2. In an Adjacency List, we use an array or list to store edges.
+
+![adjacencyList](adjacencyList.png)
+
+- If nodes are strings, or there are huge gaps with numbers, we can use a hashtable
+
+![hashTable](hashTable.png)
+- Here I can see connections easily
