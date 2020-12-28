@@ -888,6 +888,27 @@ class Graph {
         }
         return result;
     }
+    // Use a queue, FIFO
+    BFSTraversal(startingVertex) {
+        let queue = [startingVertex];
+        let result = [];
+        let visitedVertices = {};
+        let currentVertex;
+        
+        visitedVertices[start] = true;
+        while(queue.length) {
+            // Take first item out and push into results array
+            currentVertex = queue.shift();
+            result.push(currentVertex);
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visitedVertices[neighbor]) {
+                    visitedVertices[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            })
+        }
+        return result;
+    }
 }
 let g = new Graph();
 g.addVertex('A');
