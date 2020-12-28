@@ -1002,7 +1002,17 @@ class HashTable {
     // I then go to that position, that index in arr(keyMap) and retrieve the value
     // If key is not found, return undefined
     get(key) {
-        let hashedKey = this._hash(key);
+        let index = this._hash(key);
+        // If there is nothing there, return undefined
+        if(this.keyMap[index]) {
+            for(let i = 0; i < keyMap[index].length; i++) {
+                if(this.keyMap[index][i][0] === key) {
+                    // Return entire subarray
+                    return this.keyMap[index][i][1];
+                }
+            }
+        }
+        return undefined
     }
 
 
@@ -1012,7 +1022,7 @@ ht.set("Hello World", "goodbye");
 ht.set("dogs", "are cool");
 ht.set("Cats", "are the best");
 ht.set("frenchfries", "with mayo");
-
+ht.get("frenchfries", "mayo");
 
 
 
