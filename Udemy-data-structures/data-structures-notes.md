@@ -471,3 +471,13 @@ There are many different search methods on arrays in JS:
     - A good function is fast (constant time)
     - It doesn't cluster outputs at specific indices, but distributes uniformly. It is useless if elements are stored at same spot.
     - It is deterministic, we want same input to give us the same output.
+
+**How do we handle collisions?**
+
+   - When hash functions have a lot of data, it is common that a collision will occur
+   - We can use Separate Chaining:
+      - With **separate chaining**, at each index in our array we store values using a more sophisticated data structure(an array or linked list for example)
+      - This allows us to store multiple key-value pairs at the same position
+   - We can use Linear Probing:
+      - With **linear probing**, when we find a collision, we search through the array to find the next empty slot
+      - Unlike with separate chaining, this allows us to store a single key-value at each index

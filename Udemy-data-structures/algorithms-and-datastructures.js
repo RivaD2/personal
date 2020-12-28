@@ -952,11 +952,13 @@ const hash = (key, arrayLength) => {
 console.log(hash("pink", 10)); // returns index 0;
 console.log(hash("cyan", 10)) // returns 3
 
-// Improving the previous hash function: 
+// Improving the previous hash function: Still not perfect, but array length is prime
+// This works well enough to implement basic hash table and handle collisions
 const hashImproved = (key, length) => {
     let total = 0;
     // Using prime numbers minimizes collisions
     let prime = 31;
+    // Loop at most 100 times
     for(let i = 0; i < Math.min(key.length, 100); i++) {
         let char = key[i];
         let value = char.charCodeAt(0) -96;
@@ -964,6 +966,53 @@ const hashImproved = (key, length) => {
     }
     return total;
 }
+console.log(hashImproved("hello", 13)); // returns 7
+console.log(hashImproved("goodbye", 13)); // returns 7
+
+// Hash Table implementation:
+
+class HashTable {
+    constructor(size=53) {
+        // All data is stored here
+        this.keyMap = new Array(size);
+    }
+    _hash(key) {
+        let total = 0;
+        let prime = 31;
+        for(let i = 0; i < Math.min(key.length, 100); i++) {
+            let char = key[i];
+            let value = char.charCodeAt(0) - 96
+            total = (total * prime + value) % this.keyMap.length;
+        }
+        return total;
+    }
+    // Set method: Accepts a key and a value
+    // The key is hashed and then stores the key-value pair in the hash table arr via separate chaining (in a nested structure)
+    set(key, value) {
+        let index = this._hash(key);
+        // Insert key and value at index, check if it is unoccupied
+        if(!this,keyMap[index]) {
+            // Set index of keyMap to empty arr
+            this.keyMap[index] = [];
+        }
+        // If there is already something there, push key, value pair into parent array
+        this.keyMap[index].push([key, value]);
+    }
+    // Get method: Accepts a key and hashes the key. 
+    // I then go to that position, that index in arr(keyMap) and retrieve the value
+    // If key is not found, return undefined
+    get(key) {
+        let hashedKey = this._hash(key);
+    }
+
+
+}
+let ht = new HashTable();
+ht.set("Hello World", "goodbye");
+ht.set("dogs", "are cool");
+ht.set("Cats", "are the best");
+ht.set("frenchfries", "with mayo");
+
 
 
 
