@@ -201,9 +201,9 @@ function same(arr1, arr2) {
 //Ex: first array below is arr1, second is arr2
 // As I loop, I check values, if element from arr1 is squared in arr2, remove element from arr2
 same([1, 2, 3, 2], [9, 1, 4, 4]) //true 1st iteration
-                   [9, 4, 4] // 2nd iteration 
-                   [9, 4] // 3rd iteration
-                   [4] // 4th iteration
+                //    [9, 4, 4] // 2nd iteration 
+                //    [9, 4] // 3rd iteration
+                //    [4] // 4th iteration
 
 
 // REFACTOR of same()
@@ -312,7 +312,7 @@ sumZero([-4, -3, -2, -1, 0, 1, 2, 5])
 
 // Multiple Pointers: The Better Solution
 // O(n) time complexity, linear
-const sumZero = arr => {
+const sumZeroSolutionTwo = arr => {
     let left = 0;
     let right = arr.length - 1;
     // -4 is left pointer and right pointer is 10 in the array below
@@ -333,7 +333,7 @@ const sumZero = arr => {
         }
     }
 }
-sumZero([-4, -3, -2, -1, 0, 1, 2, 3, 10]);
+sumZeroSolutionTwo([-4, -3, -2, -1, 0, 1, 2, 3, 10]);
 
 // Multiple Pointers Pattern cont...
 /* Implement a function called `countUniqueValues` which accepts a sorted array, 
@@ -386,7 +386,7 @@ const maxSubarraySum = ((arr, num) => {
     //loop goes to almost the end of the array
     for(let i = 0; i < arr.length - num + 1; i++) {
         // Temp stores sum each time through, 3 nums at a time
-        temp = 0;
+        let temp = 0;
         for(let j = 0; j < num; j++) {
             temp += arr[ i + j ];
         }
@@ -404,7 +404,7 @@ maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
 // O(n) linear complexity, as I only go over array once
 // Here I keep a variable with total and to get sum of next set of digits, I create a sum that goes up to a certain point
 // I move the window up by subtracting a num instead
-const maxSubarraySum = (arr, num) => {
+const maxSubarraySumBetterSolution = (arr, num) => {
     let maxSum = 0;
     let tempSum = 0;
     // Edge case
@@ -426,7 +426,7 @@ const maxSubarraySum = (arr, num) => {
     }
     return maxSum;
 }
-maxSubarraySum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
+maxSubarraySumBetterSolution([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
 
 // Divide and Conquer Pattern
 /* Given a **sorted** array of integers, write a function called search that accepts a value and 
@@ -451,7 +451,7 @@ const search = ((arr, val) => {
 // I then look at subarray, and pick middle element and do the same thing
 // It chops off the amount of values I have to search for
 // Log(N) time
-const search = (arr, val) => {
+const binarySearchBetterSolution = (arr, val) => {
     let min = 0;
     let max = arr.length - 1;
     while(min <= max) {
@@ -805,4 +805,30 @@ list.push(100);
 list.push("Last item");
 list.pop();
 
-/* Graph
+/* Undirected Graph using Adjacency List*/
+
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+    // Add vertex or node before connection, or edge
+    addVertex(vertex) {
+        if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
+    // Drawing connections between vertices
+    addEdge(v1, v2) {
+        // Find in the adjacency list the key of v1 and push into array
+        // Do the same things to v2
+        this.adjacencyList[v1].push(v2);
+        this.adjacencyList[v2].push(v1);
+    }
+    // Connnection is stored in two places so I will pass in two args
+    removeEdge()
+}
+let g = new Graph();
+g.addVertex('Tokyo');
+g.addVertex('San Francisco');
+g.addVertex('Dallas');
+g.addEdge('Tokyo', 'Dallas');
+
+

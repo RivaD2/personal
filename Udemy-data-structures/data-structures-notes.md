@@ -395,11 +395,15 @@ There are many different search methods on arrays in JS:
   **There are TWO STANDARD WAYS to store info** 
   1. Adjacency List or an Adjacency Matrix.
      - In an Adjacency Matrix, we store info in rows and columns. We could store undirected and directed graphs this way. I could use true or false, or 1's and 0's.
+     - An Adjacency Matrix takes up more space in sparse graphs
+     - It is slower to iterate over all edges but faster to lookup a specific edge
 2. In an Adjacency List, we use an array or list to store edges.
+    - An Adjacency list can take up less space in sparse graphs
+    - It is faster to iterate over all edges, but can be SLOWER to look up specific edge
 
 ![adjacencyList](adjacencyList.png)
 
 - If nodes are strings, or there are huge gaps with numbers, we can use a hashtable
 
 ![hashTable](hashTable.png)
-- Here I can see connections easily
+ 
