@@ -867,6 +867,27 @@ class Graph {
         return result;
     }
     // Iterative DFS
+    // Set a variable to hold stack
+    // While stack is not empty, vertex = stack.pop()
+    DFSIterative(startingVertex) {
+        let stack = [startingVertex];
+        let result = [];
+        let visitedVertices = {};
+        let currentVertex;
+
+        visitedVertices[startingVertex] = true;
+        while(stack.length) {
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+        }
+        return result;
+    }
 }
 let g = new Graph();
 g.addVertex('A');
