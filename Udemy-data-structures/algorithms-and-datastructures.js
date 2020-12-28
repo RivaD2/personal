@@ -287,7 +287,7 @@ const validAnagram = ((first, second)=> {
     }
     return true;
 })
-validAnagram('cinema', 'iceman');
+// validAnagram('cinema', 'iceman');
 
 // Multiple Pointers Pattern
 /*Write a function called sumZero which accepts a sorted array of integers. 
@@ -805,7 +805,7 @@ list.push(100);
 list.push("Last item");
 list.pop();
 
-/* Undirected Graph using Adjacency List*/
+/* Undirected Graph using Adjacency List: Working on fundamentals*/
 
 class Graph {
     constructor() {
@@ -823,12 +823,71 @@ class Graph {
         this.adjacencyList[v2].push(v1);
     }
     // Connnection is stored in two places so I will pass in two args
-    removeEdge()
+    removeEdge(v1, v2) {
+        this.adjacencyList[v1] = this.adjacencyList[v1].filter(vertex => {
+            //keep everything where it is not equal to v2
+        vertex !== v2;
+        });
+        this.adjacencyList[v2] = this.adjacencyList[v2].filter(vertex => {
+            vertex !== v1;
+        })
+    }
+    // Removing edges and vertex 
+    // Loops as long as there are other vertices in the list for that vertex
+    // Uses remove Edge method
+    // Remove key out of list
+    removeVertex(vertex) {
+        while(this.adjacencyList[vertex].length) {
+            const adjacentVertex = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, adjacentVertex);
+        }
+        delete this.adjacencyList[vertex];
+    }
+    // Traversals: Searching and visiting neighbors
+   /*DFS Traversal: Tricky to understand depth vs breadth
+    - With graphs, we pick a vertex to start on
+    - To do a depth first traversal, find a neighbor and continue to follow the neighbors
+    before we visit siblings(siblings are not necessarily on the same level
+    - Follow neighbors before backtracking*/
+
+    DFSRecursive(startingVertex) {
+        let result = [];
+        let visited = {};
+        const list = this.adjacencyList;
+        (function dfs(vertex) {
+            if(!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
+            list[vertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    return dfs(neighbor);
+                }
+            });
+        })(startingVertex);
+        return result;
+    }
+    // Iterative DFS
 }
 let g = new Graph();
-g.addVertex('Tokyo');
-g.addVertex('San Francisco');
-g.addVertex('Dallas');
-g.addEdge('Tokyo', 'Dallas');
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
+
+g.addEdge('A', 'B');
+g.addEdge('A', 'C');
+g.addEdge('B', 'D');
+g.addEdge('C', 'E');
+g.addEdge('D', 'E');
+g.addEdge('D', 'F');
+g.addEdge('E', 'F');
+g.DFSRecursive('A');
+
+
+
+
+
 
 

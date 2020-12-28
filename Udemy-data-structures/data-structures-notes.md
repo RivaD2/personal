@@ -407,3 +407,19 @@ There are many different search methods on arrays in JS:
 
 ![hashTable](hashTable.png)
  
+ **Graph Traversals:**
+
+ - Visiting/Updating/Checking each vertex in a graph is a traversal
+ - You may not need to visit every node
+ - Traversals are used usually for special cases
+ - Advanced algorithms come from the basic traversal methods
+ - We start from one vertex (node), like a tree, however there is no root
+ - Unlike a tree, to traverse a graph, we have to specify starting point
+ - For any node in a graph, there is no guarantee there's one unique path to get there
+ - It means, that sometimes, we have to revisit node we have already been to
+
+**Uses for traversals:**
+- Peer to peer networking
+- Web crawlers
+- Finding 'closest' matches, shortest path etc. are all related to traversing
+- Shortest path problems: GPS navigation, Solving mazes, AI(shortest path to winning move)
