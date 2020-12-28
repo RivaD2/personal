@@ -158,7 +158,7 @@ export default ({ label, value, onChange }) => {
 ```javascript
  return (
         <div>
-          <label class="label" for="name">Enter name:</label>
+          <label className="label" for="name">Enter name:</label>
           <input id="name" type="text" />
           <button style={{backgroundColor: 'blue', color: 'white'}}> Submit </button>
         </div>
@@ -174,4 +174,19 @@ export default ({ label, value, onChange }) => {
 - We have to use camelCase when using JSX
 - With JSX, use double quotes anytime I want to indicate a string
 - With any non JSX property, I should use single quotes (this changes from company to company)
+
+**Class vs Classname: (JSX vs HTML)**
+
+- Adding a class to an element uses a different syntax
+- We should not use the keyword `class` when using JSX
+- className is used to avoid collisions with the other keyword used in React, `class`
+
+**Referencing JS variables in JSX:**
+
+- JSX can very easily reference JS variables
+- WE can use curly braces to indicate the use of a JS variable
+- Values that JSX can't show:
+      - React does not allow us to take a JS object and reference it inside JSX 
+      - WE can't show a JS object as an attribute on an element
+      - We can use dot notation to reference an object created using JSX
 
