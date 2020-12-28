@@ -1,6 +1,6 @@
 # React and Redux
 
-**OUR FIRST APP: Building a small translation page**
+**OUR FIRST APP: Building a small translation page (codepen project)** 
 
 ```javascript
 import React, { useState } from "react";
@@ -90,3 +90,35 @@ export default ({ label, value, onChange }) => {
       - In the code above, we are trying to store data associated to the language the user has selected and text the user has input
       - Both of these will change over time, which is why we use a state system to manage data
     - useState is used to make React update the HTML on the screen
+
+**Starting a React App**
+
+- run `npx create-react-app <name of project>`
+- This is a command line tool with npm version 5.2 or higher
+- To start the project, run: `npm start` 
+- To stop the project, run: `ctrl c`
+
+**Why Create React App?**
+
+- We need to understand why so many packages are installed
+- Create React App ----> Brand new Project-----> Webpack, Babel, Dev Server
+- Babel is super IMPORTANT:
+    - Each version of JS has particular syntax and features
+    - Every version has upgrades to JS language
+    - These updates are for the benefit of developers
+    - JS that we write has to eventually be executed on the users browser
+    - The browser executes the JS, however all browsers are not all updated
+- Babel is a command line tool and it takes any version of JS and spits out newer versions
+- Babel allows us to write our JS code, and it is fed into Babel. Babel spits out a version of our JS code that is safely executed on most browsers
+- Babel is included in any Create React App project
+- Babel includes a large number of packages to make this possible
+
+**Exploring a Create-React-App Project**
+
+- We can delete some of the automatically generated files 
+- `Public` stores static files (html, images, music etc.)
+- `Node modules` of course stores all of the dependencies
+- `src` holds our source code
+- `package.json` lists out all dependencies project requires along with configuration
+- `packagelock.json` records exact versions of dependencies installed into project
+- `.gitignore` of course tells git what files to ignore
