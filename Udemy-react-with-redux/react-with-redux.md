@@ -95,8 +95,8 @@ export default ({ label, value, onChange }) => {
 
 - run `npx create-react-app <name of project>`
 - This is a command line tool with npm version 5.2 or higher
-- To start the project, run: `npm start` 
-- To stop the project, run: `ctrl c`
+- To start the project, run: `npm start` in project directory
+- To stop the project, run: `ctrl + c`
 
 **Why Create React App?**
 
@@ -122,3 +122,56 @@ export default ({ label, value, onChange }) => {
 - `package.json` lists out all dependencies project requires along with configuration
 - `packagelock.json` records exact versions of dependencies installed into project
 - `.gitignore` of course tells git what files to ignore
+
+**Possible Errors on start**:
+
+- Port in use: I need to run app in a different port 
+- localhost:8080 doesn't work: Easy work around is in terminal:
+      - visit your network address instead by copying and pasting in browser
+
+**JS Module System:**
+
+- With React, we use a bundler system called Webpack
+- Every file we create inside project is like it's own tiny universe
+- Any code is not automatically shared with other files
+- To get access to libraries, we have to use import statements
+- We can import from a file or a dependency
+- Import statements refer to ES2015 modules
+- CommonJS uses the keyword `require`
+
+**What is a React Component**
+
+- A component is a function or a Class
+- The purpose of a component is to produce HTMl(Using JSX) to show the user and handle feedback from user(clicking, dragging etc.) using event handlers
+
+**What is JSX?**
+
+- JSX looks like HTML, but it is not HTML at all
+- Before JSX gets sent down to users' browser, it gets converted to normal JS code
+- Every time we see JSX, that JSX gets turned into a function call using `React.createElement()`
+- In JSX, we can see at a glance elements and text they contain
+- The entire purpose of JSX is to allow us to write out all these function calls that happen behind the scenes in a way that is more readable and maintainable
+- JSX is technically JS not HTML
+- Browsers don't know how to read JSX, so Babel takes JSX and turns it into JS
+- To use multiple lines of JSX, wrap it in parens `()` with open paren on same line as `return statement`:
+
+```javascript
+ return (
+        <div>
+          <label class="label" for="name">Enter name:</label>
+          <input id="name" type="text" />
+          <button style={{backgroundColor: 'blue', color: 'white'}}> Submit </button>
+        </div>
+    )
+```
+
+**Inline Styling with JSX**
+
+- Adding custom styling to JSX uses different syntax than html
+`HTML--> <div style="background-color: red;"></div>`
+`JSX ---> <div style={{backgroundColor:'red'}}></div>` 
+- JSX requires us to provide JS object where key is a different property we want to style and value is the value for particular styling
+- We have to use camelCase when using JSX
+- With JSX, use double quotes anytime I want to indicate a string
+- With any non JSX property, I should use single quotes (this changes from company to company)
+
