@@ -927,9 +927,43 @@ g.addEdge('D', 'F');
 g.addEdge('E', 'F');
 g.DFSRecursive('A');
 
+// Writing hash function:
+// For example: hash('pink'): How would I convert pink to a number? There are many ways, but it needs to be deterministic
+// I can use UTF character codes and I can access this by using charCodeAt() and pass in an index.
+// I can subtract 96 after using charCodeAt() method: "total" += "hello".charCodeAt(1) -96. 
+// I can also use modulo to help me
 
+// Has that works with strings only:
+// This is a basic hash function
+/* Downsides to this function:
+     - This only hashes strings, so that could be a problem. 
+     - This isn't constant time.
+     - There is clustered data*/
 
+const hash = (key, arrayLength) => {
+    let total = 0;
+    for(let char of key) {
+        // Map "a" to 1, "b" to 2, etc.
+        let value = char.charCodeAt(0) -96;
+        total = (total + value) % arrayLength;
+    }
+    return total;
+}
+console.log(hash("pink", 10)); // returns index 0;
+console.log(hash("cyan", 10)) // returns 3
 
+// Improving the previous hash function: 
+const hashImproved = (key, length) => {
+    let total = 0;
+    // Using prime numbers minimizes collisions
+    let prime = 31;
+    for(let i = 0; i < Math.min(key.length, 100); i++) {
+        let char = key[i];
+        let value = char.charCodeAt(0) -96;
+        total = (total * prime + value) % length;
+    }
+    return total;
+}
 
 
 

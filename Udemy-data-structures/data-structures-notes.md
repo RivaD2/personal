@@ -9,7 +9,7 @@
 **HOW can we determine which one is BEST?**
 
 - Both ways work as far as approaches, and both accomplish the task
-- Big O allows us to compare code and its performance in relation to other partsof code
+- Big O allows us to compare code and its performance in relation to other parts of code
   
   Ex: Write a function that accepts a string and returns a reversed copy?
       - There are many approaches to solve this
@@ -38,9 +38,9 @@
 
 ### The problem with TIME:
 
-  - Different machines run different times
-  - The same machine will also record different times!
-  - For fast algorithms, speed may not be the most precise measurement
+- Different machines run different times
+- The same machine will also record different times!
+- For fast algorithms, speed may not be the most precise measurement
   
 **OK, so if I'm not using time as a measurement, then what?**
 
@@ -62,15 +62,16 @@
 - We really only care about trends here, how the runtime grows
 
 **We say that an algorithm is Of(n)) if the number of simple operations the computer has to do is eventually less that a constant times(f(n), as n increases**
+
     - f(n) means a function with input of n and then an output
     - f(n) could be linear (f(n) = n)
     - f(n) could be quadratic (f(n) = n^2)
     - f(n) could be constant (f(n) =1)
     - f(n) could be something entirely different!
   
-O(1) = as n grows, in this case, there is no change in the runtime
-O(n) = Number of operations is eventually bounded by a multiple of n
-O(n^2) = (think nested for loops)
+- O(1) = as n grows, in this case, there is no change in the runtime
+- O(n) = Number of operations is eventually bounded by a multiple of n
+- O(n^2) = (think nested for loops)
 
 ### Simplifying Big O Expressions
 
@@ -166,6 +167,7 @@ Imagine I am in an interview setting and the interviewer asks me to:
 
 **In this scenario, the interviewer asks me to:**
 **Write a function which takes in a string, and returns counts of each character in the string**
+
     - I should ask, do I take into consideration spaces?
     - Do I need to track the entire alphabet to make it easier?
     - What if the function doesn't receive any params, what should I return?
@@ -235,12 +237,15 @@ It is not officially called this. This pattern uses an object to collect values/
     - Useful when there are multiple inputs to compare to see if they consists of similar values
     - Usually O(n) time
 
-Ex 1: Write a function called `Same` which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same
-     - `same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)`
-     - `same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.`
-     - (see js file to view two ways of solving this)
+**Ex 1: Write a function called `Same` which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same:**
 
-2. **Anagrams: 
+```javascript
+  same([1, 2, 3], [4, 1, 9]) ---> true (all values are squared)
+  same([1, 2, 1], [4, 4, 1]) ---> false, frequency is wrong. There should be two 1's.
+  ```
+  - (see js file to view two ways of solving this)
+
+1. **Anagrams: 
   Given two strings, write a function to determine if the second string is an anagram of the first.** 
    Ex: cinema -----> iceman
    - Compare the occurrance of characters
@@ -268,12 +273,15 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
     - `sumZero([-2, 0, 1, 3]) // undefined`
     - See js file for solution
 
-**Ex2: Implement a function called `countUniqueValues` which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted. Use two pointers pattern.
-    - `countUniqueValues(][1, , 1, 1, 1, 2]) //2` ----> only two unique nums, 1 and 2
-    - `countUniqueValues([1, ,2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) //7` -----> 7 unique values 1, 2, 3, 4, 7, 12, 13
-    - `countUniqueValues([ ]) //0`
-    - `countUniqueValues([-2, -1, -1, 0, 1]) //4`
-    - Here I will have two pointers moving some direction based off condition
+**Ex2: Implement a function called `countUniqueValues` which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted. Use two pointers pattern:**
+
+```javascript
+  countUniqueValues(][1, , 1, 1, 1, 2]) //2 ----> only two unique nums, 1 and 2
+  countUniqueValues([1, ,2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) //7 -----> 7 unique values 1, 2, 3, 4, 7, 12, 13
+  countUniqueValues([ ]) //0
+  countUniqueValues([-2, -1, -1, 0, 1]) //4
+  ```
+  - Here I will have two pointers moving some direction based off condition
 
 **To solve the problem**
 
@@ -288,22 +296,26 @@ Ex 1: Write a function called `Same` which accepts two arrays. The function shou
 - At the end, we will have all unique values at beginning of array
 - Basically we are updating the pointer when we find two unique values that don't match
 
-4. **Sliding Window Pattern:**
+1. **Sliding Window Pattern:**
 
 - This pattern involves creating a **window** which can either be an array or number from one position to another.
 - Depending on a certain condition, the window either increases or closes(and a new window is created)
 - This pattern is very useful for keeping track of a subset of data in an array or string etc.
 
-Ex: "hellothere" ----> Find longest sequence of unique characters
-Ex: Write a function called maxSubarraySum which accepts an array of integers and a number n.
+- Ex: "hellothere" ----> Find longest sequence of unique characters
+- Ex: Write a function called maxSubarraySum which accepts an array of integers and a number n.
     This function should calculate the max sum of n consecutive elements in the array.
-    
-- `maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2) //2` ----> two digits next to one another with largest sum are 8 and 2
-- `maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4) //17`  ------> What is the largest sum of 4 nums, so it is 2, 5, 2, 8
-- `maxSubArraySum([ ], 4) // null` ---> if empty, return null (edge case)
+
+```javascript
+maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2) //2 ----> two digits next to one another with largest sum are 8 and 2
+
+maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4) //17  ------> What is the largest sum of 4 nums, so it is 2, 5, 2, 8
+
+maxSubArraySum([ ], 4) // null ---> if empty, return null (edge case)
+```
 - `n` is the amount of nums that we look at to see largest sum in array
   
-5. **Divide and Conquer**
+1. **Divide and Conquer**
    
 - This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
 - This pattern can tremendously decrease time complexity
@@ -311,10 +323,13 @@ Ex: Write a function called maxSubarraySum which accepts an array of integers an
 - Binary search trees are another example of when we could use divide and conquer
 
 Ex: Given a **sorted** array of integers, write a function called search that accepts a value and returns the index where the value passed to the function is located. If the value is NOT found, return -1.
+
+```javascript
 // Here we are look for 4, and 4 is at index 3
-`search([1, 2, 3, 4, 5, 6], 4) // 3`
+search([1, 2, 3, 4, 5, 6], 4) // 3
 // Here we are looking for 11 and it is not found so I return -1
-`search([1, 2, 3, 4, 5, 6], 11) // -1`
+search([1, 2, 3, 4, 5, 6], 11) // -1
+```
 
 ## Searching Algorithms
 
@@ -322,13 +337,15 @@ Ex: Given a **sorted** array of integers, write a function called search that ac
 In an array, this involves checking every single value to see if it is what I want.
 This is not a bad approach, but if I have sorted data, there are better ways to sort.
 There are many different search methods on arrays in JS:
+
     - indexOf()
     - includes()
     - find()
     - findIndex()
-    - All of these methods check one element at a time 
+    - All of these methods check one element at a time
 
 **BUT HOW DO THESE METHODS WORK?**
+
     - They work through using a linear search
     - Ex: [5, 8, 1, 100] // We are looking for 1
     - So, we would start the beginning and continue until we find 1
@@ -423,3 +440,34 @@ There are many different search methods on arrays in JS:
 - Web crawlers
 - Finding 'closest' matches, shortest path etc. are all related to traversing
 - Shortest path problems: GPS navigation, Solving mazes, AI(shortest path to winning move)
+
+3. Hash table/Hash map: 
+   **What is a hash table?**: 
+   - It is used to store key-value pairs. The keys in a hash table are not ordered.
+   - They are fast for finding, adding, removing values etc. 
+   - Nearly every language has some sort of hash table structure
+   - Because of their speed, they are commonly used
+
+  **How do we write our own version**:
+   - Imagine we want to store some colors. We could store them in a list etc.
+   - However, storing colors in a list works best if we need a random color.
+   - If we need a particular color, it would be better to use keys: 
+   `colors['cyan']`
+  - To implement a hash table, we can use an array or an object to store numbers.
+  
+  **How they work**:
+
+  - In order to look up values by key, we need a way to convert keys into valid array indices.
+  - We create functions that perform this task and they care called hash functions.
+  - We can pass a string to hash function that tells us where data is stored/at what index it is stored.
+  - A hash function can take data and spit out a number. 
+  - Hash function uses include:
+      - Protecting data
+      - Authentication
+      - Cryptography
+  - **A basic hash function definition:** A function that takes data of arbitrary size, and spits out data of fixed size. It maps an input to an output of fixed size.
+
+**What makes a good hash function:**
+    - A good function is fast (constant time)
+    - It doesn't cluster outputs at specific indices, but distributes uniformly. It is useless if elements are stored at same spot.
+    - It is deterministic, we want same input to give us the same output.
