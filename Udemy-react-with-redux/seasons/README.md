@@ -1,13 +1,22 @@
-# A React App for practicing JSX
+# Weather detection App
 
-**The Goals:**
-- Understanding differences between HTML and JSX
-- Understanding how to convert HTML to JSX
-- Covering inline Styling with JSX
-- Class vs ClassName
-- Covering Values JSX is unable to show
-- Finding Forbidden Property Names
+**Goals:**
 
+- Dive in deeper with Class based Components
+- Learn more about state
+- Learn more about Lifecycle Methods
+
+**How this mini-app works**:
+
+- If user is located in Northern Hemisphere, and it is between Oct-March, print "brr it's chilly" and display icons
+- If user is in the northern Hemisphere between March and Oct, show the same
+- If it is in the southern hemisphere, show something different based on user's location and print different content on screen
+
+**Challenges:**
+
+- Need to get the user's physical location
+- Need to determine the current month
+- Need to change text and styling based on location + month
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

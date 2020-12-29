@@ -7,7 +7,10 @@ import ApprovalCard from './Components/ApprovalCard';
 const App = () => {
     return (
         <div className="ui container comments" >
-
+            <ApprovalCard> 
+            <div>Are you sure you want to do this?</div>
+            <h4>Warning!</h4>
+            </ApprovalCard>
             <ApprovalCard>
             {/* author is name of prop and names of people are values */}
                 <CommentDetail  
@@ -17,18 +20,22 @@ const App = () => {
                 foodImage={faker.image.food}
                 />
             </ApprovalCard>
+            <ApprovalCard>
+                <CommentDetail  
+                author="Alex" 
+                timeAgo="Yesterday at 2PM" 
+                comment="Great post"
+                foodImage={faker.image.food}
+                />
+             </ApprovalCard>
+             <ApprovalCard>
             <CommentDetail  
-            author="Alex" 
-            timeAgo="Yesterday at 2PM" 
-            comment="Great post"
-            foodImage={faker.image.food}
+                author="Jane" 
+                timeAgo="Today at 1PM" 
+                comment="Really enjoyed the blog!"
+                foodImage={faker.image.food}
             />
-            <CommentDetail  
-            author="Jane" 
-            timeAgo="Today at 1PM" 
-            comment="Really enjoyed the blog!"
-            foodImage={faker.image.food}
-            />
+             </ApprovalCard>
         </div>
   );
 }

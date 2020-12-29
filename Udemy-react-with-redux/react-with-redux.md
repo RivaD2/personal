@@ -1,4 +1,4 @@
-# React and Redux
+# React and Redux 
 
 **OUR FIRST APP: Building a small translation page (codepen project)** 
 
@@ -190,6 +190,7 @@ export default ({ label, value, onChange }) => {
       - WE can't show a JS object as an attribute on an element
       - We can use dot notation to reference an object created using JSX
 
+
 ## Communicating with props
 
 **Three Important Concepts that are all tenets of React ecosystem**
@@ -249,4 +250,36 @@ export default ({ label, value, onChange }) => {
 </ApprovalCard>
 ```
 
-- When I pass one component to another, the child component (CommentDetail), is going to show up inside ApprovalCard on the props object, specifically on property of props object called the children property
+- When I pass one component to another, the child component (`CommentDetail`), is going to show up inside `ApprovalCard` on the props object, specifically on property of props object called the children property
+- To make show some component, or custom content inside component, take the child, wrap it with the parent component and then child component will show up inside children property of `props.children`. I can then reference that anywhere in JSX.
+- Doing this allows me to create as many elements as I wish! I just have to remember to reference `props.children` inside target component
+
+## Structuring Apps with Class-Based Components
+
+- A component(again) is a function or class that produces HTML to the user (using JSX) and handles feedback from the user(using event handlers)
+
+**Functional Components VS Class-Based Components**
+
+**OLD WAY**
+
+- It used to be that Functional components were only used to produce JSX to show content to the user
+- It used to be that we would used Class components when we wanted to make sure of Lifecycle Method system to run codes at specific points in time or to use the state system to update content on the screen
+- Functional components in the past were more restricted in nature
+
+**THE PRESENT**
+
+- Class Components can produce JSX to show content to user
+- They can use the Lifecycle Method system to run code at specific points in time
+- They can use the 'state' system to update content on the screen
+
+- Function Components can now:
+      - Produce JSX to show content to the user
+      - Use Hooks to run code at specific points in time
+      - Use Hooks to access state system and update content on the screen
+
+**So which Components should we use?**
+
+- For many companies, building established products or projects, chances are Class based components are STILL being used
+- Any company working on a newer project could be using both
+- We need to understand BOTH!
+- Learning Hooks with Function Components before understanding Class-based components is much harder! It is easier to first understand HOW react works with Lifecycle Methods and State with Classes, then move on to Hooks and Redux
