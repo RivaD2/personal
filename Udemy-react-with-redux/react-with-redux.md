@@ -198,3 +198,36 @@ export default ({ label, value, onChange }) => {
 2. **Component Re-usability:** We want to make components that can be easily reused through out the application
 3. **Component Configuration:** We should be able to configure a component when is created
 
+**Creating Reusable Components**
+
+- Identify JSX that appears to be duplicated
+- What is the purpose of the block of JSX? Think of a descriptive name for what it does
+- Create a new file to house this new component- it should have the same name as the Component
+- Create a new Component in the new file, paste the JSX into it
+- Make the new component configurable by using React's 'props' system
+
+**React's prop System:**
+
+**Component Hierarchy:**
+
+- When looking at the Component App, the hierarchy is as follows:
+   1. App : parent component
+   2. Comment Detail: child component
+
+**Props:** 
+
+- Is a system from passing data from a parent component to a child component
+- The goal of props is to customize or configure a child component
+- Props customize looks or how a user interacts with a component(how it behaves)
+- Looking at Component application, here's how it works:
+    - App component shows instances of the CommentDetail
+    - When app shows components, it will show pieces of configuration to components called props
+    - props will tell the component to show name, time, and text
+    - There is no limit to amount of info I can share using props
+    - A child CAN NOT pass data back to a parent through prop system directly
+
+**Two stages when using prop system:**
+
+1. Provide info from parent to child
+2. Child consumes information from parent or makes use of it
+

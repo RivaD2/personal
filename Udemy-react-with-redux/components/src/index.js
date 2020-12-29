@@ -1,54 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CommentDetail from './Components/CommentDetail';
 import faker from 'faker';
 
 const App = () => {
     return (
         <div className="ui container comments" >
-            <div className="comment">
-                <a href="/" className="avatar">
-                    <img alt="avatar" src={faker.image.image()} />
-                </a>
-                <div className="content">
-                    < a href="/" className="author" >
-                        Sam
-                    </a>
-                    <div className="metadata">
-                        <span className="data">Today at 6:00pm</span>
-                    </div>
-                    <div className="text">Nice Blog Post!</div>
-                </div>
-            </div>
-            <div className="comment">
-                <a href="/" className="avatar">
-                    <img alt="avatar" src={faker.image.image()} />
-                </a>
-                <div className="content">
-                    < a href="/" className="author" >
-                        Tina
-                    </a>
-                    <div className="metadata">
-                        <span className="data">Today at 6:00pm</span>
-                    </div>
-                    <div className="text">Nice Blog Post!</div>
-                </div>
-            </div>
-            <div className="comment">
-                <a href="/" className="avatar">
-                    <img alt="avatar" src={faker.image.image()} />
-                </a>
-                <div className="content">
-                    < a href="/" className="author" >
-                        Sue
-                    </a>
-                    <div className="metadata">
-                        <span className="data">Today at 6:00pm</span>
-                    </div>
-                    <div className="text">Nice Blog Post!</div>
-                </div>
-            </div>
+            {/* author is name of prop and names of people are values */}
+            <CommentDetail  
+            author="Sam" 
+            timeAgo="Today at 4:46PM" 
+            comment="Love it!"
+            foodImage={faker.image.food}
+            />
+            <CommentDetail  
+            author="Alex" 
+            timeAgo="Yesterday at 2PM" 
+            comment="Great post"
+            foodImage={faker.image.food}
+            />
+            <CommentDetail  
+            author="Jane" 
+            timeAgo="Today at 1PM" 
+            comment="Really enjoyed the blog!"
+            foodImage={faker.image.food}
+            />
         </div>
-    
   );
 }
 ReactDOM.render(<App />, document.querySelector('#root'));
