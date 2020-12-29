@@ -736,6 +736,7 @@ Ex: [5, 3, 4, 1, 2]
      (I have to shrink window of what I am comparing on iteration)
      */
 
+// BIG O time: O^n2
 const selectionSort = arr => {
     const swap = (arr, index1, index2) => {
         ([arr[index1], arr[index2]] = [arr[index2], arr[index1]]);
@@ -754,3 +755,35 @@ const selectionSort = arr => {
 }
 selectionSort([0, 2, 1, 7, 15, 4, 9]);
 
+/*Insertion Sort: Builds up sort by gradually creating 
+larger half of arr which is always sorted.It takes each element and places 
+each element where it should go in sorted portion.
+Ex:  [5, 3, 4, 1, 2] --> Look at 5 and 3
+     [3, 5, 4, 1, 2] --> Look at 4, 3 and 5 are now sorted
+     [3, 4, 5, 1, 2] --> Look at 1, 3, 4 and 5 are the sorted portion
+     [1, 3, 4, 5, 2] --> Look at 2, 1, 3, 4 and 5 are now sorted
+     [1, 2, 3, 4, 5] complete
+
+PseudoCode:
+- Start by picking second element in arr(our sorted portion will be considered at beginning)
+- Compare the second element with one before it and swap if necessary
+- Continue to next element
+- If it is in the incorrect order, iterate through sorted portion (left side) 
+  to place element in correct spot
+- Repeat until arr is sorted*/
+
+// BIG O: Time: O(n^2): It is good when data is coming in 
+const insertionSort = arr => {
+    for( let i = 1; i < arr.length; i++) {
+        let currentVal = arr[i];
+        // Work backwards
+        // Start figuring out where inserted value needs to go
+        for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = currentVal;
+    }
+    return arr;
+ }
+
+insertionSort([2, 1, 9, 76, 4]);
