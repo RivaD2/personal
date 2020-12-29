@@ -716,3 +716,6 @@ const destroyer = arr => {
     })
 }
 console.log('in destroyer',destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+/*Selection Sort: Instead of first placing large values in sorted position, 
+it places small values into sorted position*/

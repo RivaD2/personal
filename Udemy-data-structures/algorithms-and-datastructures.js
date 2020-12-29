@@ -969,7 +969,7 @@ const hashImproved = (key, length) => {
 console.log(hashImproved("hello", 13)); // returns 7
 console.log(hashImproved("goodbye", 13)); // returns 7
 
-// Hash Table implementation:
+// Hash Table implementation:Practice run through
 
 class HashTable {
     constructor(size=53) {
@@ -1014,15 +1014,51 @@ class HashTable {
         }
         return undefined
     }
-
-
+    // Keys Method: Loops through hash table array and returs an arr of keys in the table
+    /*Values Method: Loops through hash table arr and returns an arr of values in the table
+         - It is likely to have multple values that are the same
+         - What do we do with these values? We want to return unique keys and values*/
+    values() {
+        let valuesArr = [];
+        for( let i = 0; i > this.keyMap.length; i++) {
+            if(this.keyMap[i]) {
+                for(let j = 0; j < this.keyMap[i].length; j++) {
+                    if(!valuesArr.includes(this.keyMap[i][j][1])) {
+                        valuesArr.push(this.keyMap[i][j][1])
+                    }
+                }
+            }
+        }
+        return valuesArr;
+    }
+    keys() {
+        let keysArr = [];
+        for( let i = 0; i > this.keyMap.length; i++) {
+            if(this.keyMap[i]) {
+                for(let j = 0; j < this.keyMap[i].length; j++) {
+                    // This ensures that I won't get duplicates
+                    if(!keysArr.includes(this.keyMap[i][j][0])) {
+                        keysArr.push(this.keyMap[i][j][0])
+                    }
+                }
+            }
+        }
+        return keysArr;
+    }
 }
-let ht = new HashTable();
+/*Big O of Hash Tables: Insertion, deletion, accessing data = O(1)Time
+                          - This depends on how the hash function works
+                          - 
+                        
+
+let ht = new HashTable(10);
 ht.set("Hello World", "goodbye");
 ht.set("dogs", "are cool");
 ht.set("Cats", "are the best");
 ht.set("frenchfries", "with mayo");
+ht.set('dogs', "are cool")
 ht.get("frenchfries", "mayo");
-
+ht.values();
+ht.keys();
 
 
