@@ -718,4 +718,39 @@ const destroyer = arr => {
 console.log('in destroyer',destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 
 /*Selection Sort: Instead of first placing large values in sorted position, 
-it places small values into sorted position*/
+it places small values into sorted position
+Ex: [5, 3, 4, 1, 2]
+     Compare 5 and 3, 3 is min, so set 3 to min
+     Compare 5 and 4, 3 is still min
+     Compare 5 and 1, so now 1 is new min
+     Compare 1 and 2, 1 is still min
+     Now I swap min with whatever the starting num was
+     Repeat the process, now starting at next index which is 3
+     
+     PseudoCode:
+     Make var to store min value
+     Compare this item to net item in the arr until I find another min
+     If I find new min, save index of where the value is found in var
+     If min is not the index I began with, swap two values
+     Repeat this with next element until arr is sorted
+     (I have to shrink window of what I am comparing on iteration)
+     */
+
+const selectionSort = arr => {
+    const swap = (arr, index1, index2) => {
+        ([arr[index1], arr[index2]] = [arr[index2], arr[index1]]);
+
+        for(let i = 0; i < arr.length; i++) {
+            let minIndex = i;
+            for(let j = i + 1; j < arr.length; j++) {
+                if(arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            if(i !== minIndex) swap(arr, i, minIndex);
+        }
+        return arr;
+    }
+}
+selectionSort([0, 2, 1, 7, 15, 4, 9]);
+
