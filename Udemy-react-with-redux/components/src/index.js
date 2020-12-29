@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentDetail from './Components/CommentDetail';
 import faker from 'faker';
+import CommentDetail from './Components/CommentDetail';
+import ApprovalCard from './Components/ApprovalCard';
 
 const App = () => {
     return (
         <div className="ui container comments" >
+            <ApprovalCard />
             {/* author is name of prop and names of people are values */}
             <CommentDetail  
             author="Sam" 

@@ -1,6 +1,6 @@
 import { image } from 'faker';
 import React from 'react';
-import faker from 'faker'
+
 
 const CommentDetail = props  => {
     return (
