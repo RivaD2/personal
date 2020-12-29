@@ -231,3 +231,22 @@ export default ({ label, value, onChange }) => {
 1. Provide info from parent to child
 2. Child consumes information from parent or makes use of it
 
+**There is another way to communicate information to child component**
+
+- We can tell another component to show another component, by wrapping another component in another. We pass it as a prop down by doing this.
+- If this is done, I need to pass props in as an arg into the component that wrapped the other:
+
+```javascript
+<ApprovalCard>
+    {/* here I wrap CommentDetail in ApprovalCard Component
+    and then pass props into the ApprovalCard Component*/}
+    <CommentDetail  
+      author="Sam" 
+      timeAgo="Today at 4:46PM" 
+      comment="Love it!"
+      foodImage={faker.image.food}
+      />
+</ApprovalCard>
+```
+
+- When I pass one component to another, the child component (CommentDetail), is going to show up inside ApprovalCard on the props object, specifically on property of props object called the children property
