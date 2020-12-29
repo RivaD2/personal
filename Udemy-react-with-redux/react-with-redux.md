@@ -190,3 +190,11 @@ export default ({ label, value, onChange }) => {
       - WE can't show a JS object as an attribute on an element
       - We can use dot notation to reference an object created using JSX
 
+## Communicating with props
+
+**Three Important Concepts that are all tenets of React ecosystem**
+
+1. **Component Nesting:** A component can be shown inside of another
+2. **Component Re-usability:** We want to make components that can be easily reused through out the application
+3. **Component Configuration:** We should be able to configure a component when is created
+
