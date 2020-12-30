@@ -11,12 +11,17 @@
 - If user is located in Northern Hemisphere, and it is between Oct-March, print "brr it's chilly" and display icons
 - If user is in the northern Hemisphere between March and Oct, show the same
 - If it is in the southern hemisphere, show something different based on user's location and print different content on screen
+- App will determine the location and month
+- The App Component will take season and pass it as a prop down to second component called SeasonDisplay
+- The SeasonDisplay will be charged with showing different text/icons based on props
+- Makes use of the Geolocation API to get user's current position
 
 **Challenges:**
 
 - Need to get the user's physical location
 - Need to determine the current month
 - Need to change text and styling based on location + month
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const App = () => {
+    window.navigator.geolocation.getCurrentPosition(
+        // success callback (first callback) for when things go as planned
+        // Position object contains latitude, use it to customize look and feel of page
+        (position) => console.log(position),
+        // need a second callback for errors
+        (err) => console.log(err)
+    );
+    return (
+        <div>Latitude: </div>
+    )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <App />,
+    document.querySelector('#root')
+)
