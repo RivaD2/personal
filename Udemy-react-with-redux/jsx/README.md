@@ -1,8 +1,9 @@
 # A React App for practicing JSX
 
 **The Goals:**
-- Understanding differences between HTML and JSX
-- Understanding how to convert HTML to JSX
+
+- Gain a better understanding of the differences between HTML and JSX
+- Gain a better understanding how to convert HTML to JSX
 - Covering inline Styling with JSX
 - Class vs ClassName
 - Covering Values JSX is unable to show

@@ -1,12 +1,16 @@
 # Build Components that generate List of Comments
 
 **The goals:**
+
  - Display images
  - User name
  - Time and date comment was posted
  - Use Semantic UI library for styling
+
+** The steps:**
+
  - I first begin by taking naive approach, making one big component
- - I then go back and create resuable components that can be used within other components
+ - I then go back and create reusable components that can be used within other components
  - The purpose of this exercise is to show HOW/WHY you split logic out into separate Components
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -283,3 +283,50 @@ export default ({ label, value, onChange }) => {
 - Any company working on a newer project could be using both
 - We need to understand BOTH!
 - Learning Hooks with Function Components before understanding Class-based components is much harder! It is easier to first understand HOW react works with Lifecycle Methods and State with Classes, then move on to Hooks and Redux
+
+**Lifecycle for what happens in Seasons Mini App/ When using Class-based component**
+
+**inside user's browser**
+
+- JS file gets loaded by browser (index.html)
+- The browser interprets JS file and sees we are trying to create instance of App Component
+- Instance of App component gets created
+- App components constructor function gets called
+- State object is then created and assigned to the `this.state` property
+- At some point, App component is invoked by the App function
+- The Geolocation service is then called:
+    - Getting geolocation result takes SOME AMOUNT OF TIME
+    - We call Geolocation service and in next instance App component returns
+      some amount of JSX using the render method
+    - The JSX is taken and turned into HTML and then rendered out on the   screen
+    - When using the Functional component, I don't have a good way of waiting for success callback. By the time it has returned the position, I have already rendered App component on screen. There is no way for me to pause the rendering process
+    - The solution is to use a Class-based component with React's state system so we can tell the component to update itself with the new information
+    - Using State, I can update the state on the component with the given latitude using `this.setState`. React will see that I updated a property on the state object and then it calls the render method again! React then updates the content on the screen. My content is rendered upon initial boot-up and then again when the state was updated
+
+**Rules for Class-based components:**
+
+- Must use the JS Class
+- Must `extend` (subclass) `React.component`
+- Must define `render()` method that returns some amount of JSX
+
+*Rules of State in React**
+
+- Usable with class based components (Technically it can be used with functional components through Hook system)
+- Prop system and state system are very different but easy to confuse
+- 'State' is a JS object that contains some amount of data that is relevant to a singular component
+- Updating 'state' on a component causes the component to almost instantly rerender
+- State must be initialized with a component is first created
+- **State can ONLY be updated using the function `setState`**
+
+**Where to initialize state**
+
+- Inside the constructor function is an option
+  - calling the constructor with `super(props)` is a reference to parents constructor function
+  - can then use `this.state={}`
+  - Setting a value to `null` tells me that I don't know the current value but I will in the future so I can set it null
+  - I can freely reference the state objects and properties from any function inside my component
+
+**Note on request calls in render**:
+
+- I should NOT initialize a request inside render method as it is called all the time
+
