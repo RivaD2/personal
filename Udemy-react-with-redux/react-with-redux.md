@@ -404,4 +404,100 @@ constructor(props){
 - I want to try to avoid using multiple return statements inside render
 - The reason is is we might want to return some common element no matter what, and multiple conditionals in render makes this much more difficult
 
+**Event handlers in React**
+
+1. User clicks on something ---->  use `onClick`
+2. User changes text in an input ----> use `onChange`
+3. User submits a form ---->  use `onSubmit`
+
+**I pass a function to each of these handlers and any time user does one of these things, the function is invoked**
+
+- To use handlers I have to pass them in as a prop without using parens. I am passing a method, a callback function. However, I DO NOT want the handler to be called whenever the component is rendered. I want to call it at SOME POINT IN TIME in the future.
+
+**Controlled vs Uncontrolled Form Elements**
+
+- Controlled form elements are ideal vs uncontrolled
+- The difference between the two is that with uncontrolled form elements, the only way to figure out the input value would be to reach into the DOM and pull out the value.
+- With uncontrolled form elements, the source of data is inside of the HTML document, not the React Component
+- Uncontrolled elements are stored in the HTML world, or the DOM
+- Instead, centralizing information should be done inside the React Component (a controlled form)
+
+
+**An example of a controlled form:**
+
+```javascript
+export default class SearchBar extends React.Component {
+// Here I am not referencing the DOM, I am looking at its state object, and the term value
+// We want to look at the state to get the current value, thus looking at the Component NOT at the DOM
+   state = { term: ''};
+   onFormSubmit(event) {
+       event.preventDefault();
+   }
+    render() {
+        return (
+            <div className="ui segment">
+              <form onSubmit={this.onFormSubmit} className="ui form">
+                  <div className="field">
+                    <label>Image Search</label>
+                    <input type="text" value={this.state.term} onChange={e => this.setState({term: e.target.value})}/>
+                  </div>
+             </form> 
+            </div>
+        )
+    }
+}
+
+```
+
+**The flow of the above component is as follows:**
+
+- User types in an input
+- Callback gets invoked the instant the user type sin input, the one that is passed to `onChange`
+- Inside callback, I pull current value of the input out of the event object
+- We update the state on the component by calling `setState` 
+- Inside body of callback I take event object (`e`), and pull the change in the input by referencing `e.target.value`
+- Then state is update with `e.target.value`
+- Component then rerenders, a second time the instant the user types something into input
+- When component rerenders, we take the value of that input, or `this.state.term` and assign it to the value prop of the input
+- The value prop `value={this.state.term}`, will overwrite whatever text is already inside the input
+- Basically, all of this is what constitutes a CONTROLLED ELEMENT
+  
+**The `this` keyword in a Class:**
+
+- `this` is a reference back to the Class itself
+- I can then get access to other properties or the state object that belong to the instance of the Class
+
+**How the value of `this` is determined inside a function:**
+
+- Whenever I want to know what the value of `this` will be equal to inside a method on a class, I need to look NOT at the method itself, but where IT IS CALLED
+
+**Binding a function/ handling `this` inside Class Component:**
+- I can make use of the `bind` keyword, which actually produces a new version of the function
+- The new function that is created using bind is fixed with the value of `this`, or the instance of the Class
+- I can use `bind` in the constructor, this is one way
+- Or, I can turn methods themselves into arrow functions instead to avoid errors when using `this` 
+- I am able to use arrow functions inside classes without `bind` as seen below:
+
+```javascript
+export default class SearchBar extends React.Component {
+   state = { term: ''};
+   onFormSubmit = event =>{
+       event.preventDefault();
+   }
+
+    render() {
+        return (
+            <div className="ui segment">
+                {/* Defining arrow function, when form is submitted, it will call arrow function */}
+              <form onSubmit={this.onFormSubmit} className="ui form">
+                  <div className="field">
+                    <label>Image Search</label>
+                    <input type="text" value={this.state.term} onChange={e => this.setState({term: e.target.value})}/>
+                  </div>
+             </form> 
+            </div>
+        )
+    }
+}
+```
 
