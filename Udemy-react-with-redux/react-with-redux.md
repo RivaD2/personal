@@ -384,3 +384,14 @@ constructor(props){
     - shouldComponentUpdate
     - getDerivedStateFromProps
     - getSnapshotBeforeUpdate
+
+**Adding in default text/specifying default props**
+
+- After component is defined, I can define something on the function itself called `.defaultProps`. This is an object that provides default props to component should I forget to add props at some point in time. 
+- This is helpful for messages/text to users etc.
+
+**Avoiding Conditionals in the Render Function**
+
+- Creating a helper function that contains conditionals is better
+- I want to try to avoid using multiple return statements inside render
+- The reason is is we might want to return some common element no matter what, and multiple conditionals in render makes this much more difficult
