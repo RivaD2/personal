@@ -167,8 +167,10 @@ export default ({ label, value, onChange }) => {
 
 **Inline Styling with JSX**
 
-- Adding custom styling to JSX uses different syntax than html
+- Adding custom styling to JSX uses different syntax than html:
+  
 `HTML--> <div style="background-color: red;"></div>`
+
 `JSX ---> <div style={{backgroundColor:'red'}}></div>` 
 - JSX requires us to provide JS object where key is a different property we want to style and value is the value for particular styling
 - We have to use camelCase when using JSX
@@ -238,9 +240,9 @@ export default ({ label, value, onChange }) => {
 - If this is done, I need to pass props in as an arg into the component that wrapped the other:
 
 ```javascript
-<ApprovalCard>
-    {/* here I wrap CommentDetail in ApprovalCard Component
+ {/* here I wrap CommentDetail in ApprovalCard Component
     and then pass props into the ApprovalCard Component*/}
+<ApprovalCard>
     <CommentDetail  
       author="Sam" 
       timeAgo="Today at 4:46PM" 
@@ -350,37 +352,43 @@ constructor(props){
 - A component lifecycle method is a function we can optionally define inside class-based components. They will be called at certain points during the components lifecycle
 - The lifecycle is as follows:
 - A component is created, show up in the DOM (on screen), and the component will rerender on setState. It might be removed from DOM etc. All these events are referred to as the Components Lifecycle.
-      - Constructor
-      - Render
-      - Content Visable on screen by rendering JSX
-      - `componentDidMount()`: Immediately after component shows on screen is when this method is called
-           - If I define this method, above the render method, it will automatically be called one time,when component is first rendered on the screen. It will then sit around and wait for an update from `setState`
-      - `componentDidUpdate()`: This will be called automatically if I decided to use this method. It will be called any time the component updates itself.It will sit around and wait for updates. Right before this method is invoked, render is actually called.
-      - At some point in time, I might want to stop showing a component on a screen. In that case, I will use the `componentWillUnmount()`. This is used under certain scenarios where I would want to do some cleanup.
+    - Constructor
+    - Render
+    - Content Visable on screen by rendering JSX
+    - `componentDidMount()`: Immediately after component shows on screen is when this method is called
+        - If I define this method, above the render method, it will automatically be called one time, when the component is first rendered on the screen. It will then sit around and wait for an update from `setState`
+    - `componentDidUpdate()`: This will be called automatically if I decided to use this method. It will be called any time the component updates itself. It will sit around and wait for updates. Right before this method is invoked, render is actually called.
+    - At some point in time, I might want to stop showing a component on a screen. In that case, I will use the `componentWillUnmount()`. This is used under certain scenarios where I would want to do some cleanup.
 
-**Reasons to Use different Lifecycle Methods**
+**Reasons to Use different Lifecycle Methods/Where to initalize state**
 
-- constructor: 
-     - Good place to do state intialization (there are other ways too)
+1. Initializing state in the constructor: 
+     - Good place to do state initialization (there are other ways too)
      - Can do data loading and reach out to API (but not ideal)
 
-- In the `componentDidMount` method OR `componentDidUpdate` method
+2. In the `componentDidMount` method OR `componentDidUpdate` method
 
-- render: returning JSX, never going to make network request, fetching locations etc. Alone, it is about returning JSX
-- componentDidMount:
+**Lifecycle Methods:**
+
+1. render: returning JSX, never going to make network request, fetching locations etc. Alone, it is about returning JSX
+  
+2. componentDidMount:
       - Perfect place for data loading code
       - Good place to kick off some outside process (like getting a user's location one time)
       - In truth, constructor or this method can work for places to do data loading. HOWEVER, data loading inside constructor function is not ideal. It is recommended that I do data loading inside this method.
       - The reason why data loading should be done in this method is because centralizing data loading here leads to clear code. 
-- componentDidUpdate: 
+
+3. componentDidUpdate: 
       - Good place as well to do data loading where the component needs to updated every single time
       - For ex, making network requests when user clicks on button, or enters text as input or new props given from parent component
       - (best to use this method with data loading when state/props change)
-- componentWillUnMount:
+  
+4. componentWillUnMount:
    - Good place to do cleanup 
    - It is not used as often as other methods
 
 **Other lifecycle methods that aren't used frequently at all:**
+
     - shouldComponentUpdate
     - getDerivedStateFromProps
     - getSnapshotBeforeUpdate
@@ -395,3 +403,5 @@ constructor(props){
 - Creating a helper function that contains conditionals is better
 - I want to try to avoid using multiple return statements inside render
 - The reason is is we might want to return some common element no matter what, and multiple conditionals in render makes this much more difficult
+
+
