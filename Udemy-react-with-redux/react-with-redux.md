@@ -541,3 +541,9 @@ export default class SearchBar extends React.Component {
         console.log(response.data.results);
     }
 ```
+**The purpose of Keys in Lists:**
+
+- List items get rendered for JSX and then React looks at what is currently present in the DOM
+- React doesn't WANT to rerender anything that is already present in the DOM. In order to allow it to rerender what is already in the DOM, we should use the Key prop on an element in a list
+- React will then compare the keys, the key of element in the DOM to the element with the matching key in the new rendered list
+- It is a performance consideration and helps React update lists in a more precise manner
