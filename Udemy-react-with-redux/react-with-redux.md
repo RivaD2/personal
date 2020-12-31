@@ -326,7 +326,61 @@ export default ({ label, value, onChange }) => {
   - Setting a value to `null` tells me that I don't know the current value but I will in the future so I can set it null
   - I can freely reference the state objects and properties from any function inside my component
 
+- The other way to initialize a state variable and assign object holding key value pairs:
+
+```javascript
+constructor(props){
+        super(props);
+        this.state ={
+            lat: null,
+            errorMessage: ''
+        };
+    }
+    // This is the same as using the constructor with super(props)
+    // When I run this line in babeljs.io, babel implements the constructor function for me
+   state = {lat: null, errorMessage: ''};
+```
+
 **Note on request calls in render**:
 
 - I should NOT initialize a request inside render method as it is called all the time
 
+**Lifecycle Methods and the Component Lifecycle:**
+
+- A component lifecycle method is a function we can optionally define inside class-based components. They will be called at certain points during the components lifecycle
+- The lifecycle is as follows:
+- A component is created, show up in the DOM (on screen), and the component will rerender on setState. It might be removed from DOM etc. All these events are referred to as the Components Lifecycle.
+      - Constructor
+      - Render
+      - Content Visable on screen by rendering JSX
+      - `componentDidMount()`: Immediately after component shows on screen is when this method is called
+           - If I define this method, above the render method, it will automatically be called one time,when component is first rendered on the screen. It will then sit around and wait for an update from `setState`
+      - `componentDidUpdate()`: This will be called automatically if I decided to use this method. It will be called any time the component updates itself.It will sit around and wait for updates. Right before this method is invoked, render is actually called.
+      - At some point in time, I might want to stop showing a component on a screen. In that case, I will use the `componentWillUnmount()`. This is used under certain scenarios where I would want to do some cleanup.
+
+**Reasons to Use different Lifecycle Methods**
+
+- constructor: 
+     - Good place to do state intialization (there are other ways too)
+     - Can do data loading and reach out to API (but not ideal)
+
+- In the `componentDidMount` method OR `componentDidUpdate` method
+
+- render: returning JSX, never going to make network request, fetching locations etc. Alone, it is about returning JSX
+- componentDidMount:
+      - Perfect place for data loading code
+      - Good place to kick off some outside process (like getting a user's location one time)
+      - In truth, constructor or this method can work for places to do data loading. HOWEVER, data loading inside constructor function is not ideal. It is recommended that I do data loading inside this method.
+      - The reason why data loading should be done in this method is because centralizing data loading here leads to clear code. 
+- componentDidUpdate: 
+      - Good place as well to do data loading where the component needs to updated every single time
+      - For ex, making network requests when user clicks on button, or enters text as input or new props given from parent component
+      - (best to use this method with data loading when state/props change)
+- componentWillUnMount:
+   - Good place to do cleanup 
+   - It is not used as often as other methods
+
+**Other lifecycle methods that aren't used frequently at all:**
+    - shouldComponentUpdate
+    - getDerivedStateFromProps
+    - getSnapshotBeforeUpdate

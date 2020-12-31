@@ -1,33 +1,27 @@
 import React  from 'react'
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './Components/SeasonDisplay';
+import "semantic-ui-css/semantic.min.css";
 
 export default class App extends React.Component {
-    constructor(props){
-        super(props);
-        // Setting it to null tells me I will know latitude eventually
-        // ONLY TIME I will do direct assignment to this.state
-        this.state ={
-            lat: null,
-            errorMessage: ''
-        };
+   state = {lat: null, errorMessage: ''};
+
+    componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
             // Success callback (first callback) for when things go as planned
             // Position object contains latitude, use it to customize look and feel of page
-            position => {
-                // Updating state object
-                this.setState({lat: position.coords.latitude})  
-            },
-            // Need a second callback for errors and handle them appropriately by rerendering component
-            err => {
-                // This still leaves latitude untouches, I am just adding properties onto state, not deleting them
-                this.setState({errorMessage: err.message});
-            }
+            position => this.setState({lat: position.coords.latitude}),
+              //Adding properties onto state, not deleting them
+            err => this.setState({errorMessage: err.message})
         );
     }
+
     render() {
         // Refactor using ternary
            if(this.state.errorMessage && !this.state.late) return <div>Error: {this.state.errorMessage}</div>
-           if(!this.state.errorMessage && this.state.lat) return <div>Latitude: {this.state.lat}</div>
+           // I can take state and pass as it as a prop 
+           // The component will rerender any children it shows as well when state is updated
+           if(!this.state.errorMessage && this.state.lat) return <SeasonDisplay lat={this.state.lat} />
            return <div>Loading!</div>
         
     }
