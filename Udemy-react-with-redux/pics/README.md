@@ -18,7 +18,7 @@
 - SearchBar: Responsible for showing text input at top of screen
     - Search Bar will handle typing event
 - ImageList: Take a list of images and render them out as list on the screen
-- App: At the very top/root component: Will show instance of SearchBar and ImageList
+- App: At the very top/root component: Will show instance of SearchBar and ImageList. It will fetch data via Ajax request to the Unsplash API
 
 **Challenges**
 

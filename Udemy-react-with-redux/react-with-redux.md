@@ -499,5 +499,45 @@ export default class SearchBar extends React.Component {
         )
     }
 }
-```
 
+```
+**Axios vs Fetch to make Requests inside React App**
+
+- React as a library is about showing content to users and handling user interaction
+- Ajax request is left to some separate piece of code
+- Two commonly used options for fetching data/managing network requests are:
+  
+1. **Axios:** Standalone package installed via npm that handles network request in predictable fashion
+  
+2. **Fetch:** A singular function built into almost all modern browsers. Amount of code sent down to users browser is lower. However, fetch is a lower level function to use to fetch data. Using fetch requires us to write more code that is already written for us in Axios.
+
+**Time series for Picts App using Axios**
+
+- Component renders itself one time with no list of images (App Component will render itself one time)
+- `onSearchSubmit` method is called once user enters search term
+- Request is made to unsplash
+  ...wait
+- Once I receive a response, request is complete and I need to use image data to update what App is showing(rerender)
+- Call `setState` and set image data on state of the App Component
+- App will rerender and we can use it to show images
+- However, I will make a new component called  `imageList` that will show the images
+
+**Handling requests with Async Await**
+
+- When I make a request with Axios, it returns an object called a Promise
+- A promise is an object that will tell me when some amount of work is completed
+- I can chain on the `.then` function that will be called at some point in the future
+- OR, I can use `async/await` syntax to handle requests by putting `async` in front of the method
+- I then find whatever is taking some time to resolve (the network request) and put the `await` keyword in front of it. I then assign this to a variable as the response:
+
+```javascript
+ async onSearchSubmit(term) {
+        const response = await axios.get('https://api.unsplash.com/search/photos', {
+          params: { query: term },
+          headers: {
+              Authorization: 'Client-ID 0WimT32moFGqGVKDxfDO21bWIJ-QLy5X3a9pux0l5XY'
+          }
+        })
+        console.log(response.data.results);
+    }
+```
