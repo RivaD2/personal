@@ -11,6 +11,7 @@
     - solving context issues
     - communicating from Child to Parent
     - invoking callbacks in Children
+    - Styling done with Semantic-UI
 
 
 **Components in this project:**
