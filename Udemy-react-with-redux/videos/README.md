@@ -12,7 +12,16 @@
 **Tools Used:**
 
 - Axios
-- Youtube Public Free API
+- Youtube Public Free API from console.developers.google.com
+
+**How it works**
+
+- React App will make use of Axios library by making network request over to the Youtube API. The Youtube API will respond with list of videos related to the search term the user entered in.
+- That list of videos will be an array of objects where every object represents a different video
+- In order to make use of the API, I have to use the API key by visiting 
+the console.developers.google.com. After set up process I receive the 
+API key
+
 
 **Components:**
 

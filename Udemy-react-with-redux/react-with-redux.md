@@ -452,7 +452,7 @@ export default class SearchBar extends React.Component {
 **The flow of the above component is as follows:**
 
 - User types in an input
-- Callback gets invoked the instant the user type sin input, the one that is passed to `onChange`
+- Callback gets invoked the instant the user types in input, the one that is passed to `onChange`
 - Inside callback, I pull current value of the input out of the event object
 - We update the state on the component by calling `setState` 
 - Inside body of callback I take event object (`e`), and pull the change in the input by referencing `e.target.value`
@@ -472,6 +472,7 @@ export default class SearchBar extends React.Component {
 - Whenever I want to know what the value of `this` will be equal to inside a method on a class, I need to look NOT at the method itself, but where IT IS CALLED
 
 **Binding a function/ handling `this` inside Class Component:**
+
 - I can make use of the `bind` keyword, which actually produces a new version of the function
 - The new function that is created using bind is fixed with the value of `this`, or the instance of the Class
 - I can use `bind` in the constructor, this is one way
@@ -570,6 +571,7 @@ export default class SearchBar extends React.Component {
 
 - It is a system that gives us direct access to single DOM element rendered by a component
 - In order to create a ref:
+  
       - Define a constructor function
       - Call a function inside constructor to create reference
       - Assign it as an instance variable on our class
