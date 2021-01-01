@@ -11,7 +11,13 @@
     - solving context issues
     - communicating from Child to Parent
     - invoking callbacks in Children
-    - Styling done with Semantic-UI
+
+**Tools Used:**
+  
+- Axios
+- Semantic UI
+- CSS Grid
+- Unsplash API
 
 
 **Components in this project:**

@@ -547,3 +547,31 @@ export default class SearchBar extends React.Component {
 - React doesn't WANT to rerender anything that is already present in the DOM. In order to allow it to rerender what is already in the DOM, we should use the Key prop on an element in a list
 - React will then compare the keys, the key of element in the DOM to the element with the matching key in the new rendered list
 - It is a performance consideration and helps React update lists in a more precise manner
+
+**CSS Grid**
+
+- I can find some element in DOM hierarchy
+- I use the `display: grid` on that element
+- All elements below will display as a grid
+- However, Grid won't necessarily solve our tile layout issues
+
+**Creating ImageCard Components/ How they can help along CSS GRID**
+
+- Create an ImageCard component
+- Let the ImageCard render itself and its image
+- Reach into the DOM and figure out the height of the image:
+      - We know how to do this with vanilla JS
+      - Using React, we can't use the same properties in vanilla JS
+      - Instead, we have to use the REF system(Reference)
+- Set the image height on state to get the component to rerender
+- When rerendering, assign a `grid-row-end` to make sure the image takes up the appropriate space
+
+**What is React's Ref System?**
+
+- They are a system that gives us direct access to single DOM element rendered by component
+- In order to create a ref:
+      - Define a constructor function
+      - Call a function inside constructor to create reference
+      - Assign it as an instance variable on our class
+      - We can in theory assign references to state of component but this is not required as refs will not change over time and we will not call state with ref. 
+      - Once ref is assigned as an instance variable, we will go into render method and pass ref as some JSX prop
