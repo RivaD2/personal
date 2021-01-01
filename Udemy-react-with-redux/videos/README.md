@@ -13,7 +13,8 @@
 
 - Axios
 - Youtube Public Free API from console.developers.google.com
-
+- CSS Grid
+  
 **How it works**
 
 - React App will make use of Axios library by making network request over to the Youtube API. The Youtube API will respond with list of videos related to the search term the user entered in.
@@ -30,7 +31,9 @@ API key
      - The search term will be sent back up to Parent component that will do the API request
      - On right-hand side, VideoList will render entire list of videos
      - Each individual VideoItem will be contained by the VideoList
-     - VideoDetail will show the video player that will play the Youtube Video that has been fetched along with title and description
+- VideoDetail will show the video player that will play the Youtube Video that has been fetched along with title and description
+- VideoItem:One particular video, contained by VideoList
+- VideoList:Will render list of videos
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

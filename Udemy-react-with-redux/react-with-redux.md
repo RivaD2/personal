@@ -577,3 +577,24 @@ export default class SearchBar extends React.Component {
       - Assign it as an instance variable on our class
       - We can in theory assign references to state of component but this is not required as refs will not change over time and we will not call state with a ref (for my mini application anyway)
       - Once ref is assigned as an instance variable, we will go into render method and pass ref as some JSX prop
+
+**Communicating from Child to Parent in Youtube Browser App**
+
+**How do  you make sure that clicking on a video opens up a larger detail of that video?** (I can do this by making use of callback)
+
+1. On App component there is a state object with single property on it: the videos property with an array of video objects retrieved from Youtube API
+2. I will add another property onto the state object called `selectedVideo`
+3. Whenever the user clicks on the video, I will take that video object and assign it to that `selectedVideo` video property
+4. Anytime I have a selected video property I will pass that video down to the `VideoDetail` component, thus telling the `VideoDetail` component what to render on the screen
+
+**But how do I update selected video property whenever user clicks on thumbnail of a video item?**
+
+- The App component has a list of videos. The App component is passing a list of videos down to the `VideoList` component
+- In addition to that list of videos, I will pass a callback down there as well. I will pass a reference to a callback down to the video list called the `onVideoSelect`  prop
+- The `VideoList` component in turn is going to the take the callback `onVideoSelect`  and pass it down to each `VideoItem`
+- Each video item is currently receiving props object with single video labeled as the prop called `video`
+- They will also now be getting a second prop called the `onVideoSelect` callback
+- That will be the exact same function passed from `App` component to the `VideoList` component. I am essentially adding a new method to the `App` component and passing that reference to that function down first to `VideoList`c component then to the `VideoItem` component
+- When the user clicks on the video item, the `VideoItem` component will call the method `onVideoSelect`, thus passing in the video that it had been passed
+- What this does is invokes the method on the `App` component with the video object that was clicked on
+- The App can then update its state and say that the new currently selected video is what the user just clicked on
