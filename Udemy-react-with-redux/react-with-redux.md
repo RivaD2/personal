@@ -568,10 +568,10 @@ export default class SearchBar extends React.Component {
 
 **What is React's Ref System?**
 
-- They are a system that gives us direct access to single DOM element rendered by component
+- It is a system that gives us direct access to single DOM element rendered by a component
 - In order to create a ref:
       - Define a constructor function
       - Call a function inside constructor to create reference
       - Assign it as an instance variable on our class
-      - We can in theory assign references to state of component but this is not required as refs will not change over time and we will not call state with ref. 
+      - We can in theory assign references to state of component but this is not required as refs will not change over time and we will not call state with a ref (for my mini application anyway)
       - Once ref is assigned as an instance variable, we will go into render method and pass ref as some JSX prop
