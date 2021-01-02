@@ -758,4 +758,39 @@ const renderedResults = results.map(result => {
 - This is VERY BAD!
 - The attribute of `dangerouslySetInnerHTML` is available for use but is somewhat hidden
 - Any time I use this attribute, I have to be confident that whomever is providing the html is a trusted source. If it is not, then it should never be used.
-      
+
+** `useEffect's` Cleanup Function:**
+
+- Whenever I define this function or call it and provide function as first arg, there is only one value I am allowed to return. Another function.
+- This all depends on when React calls the `useEffect` function
+- Initial component render will call function provided to `useEffect`
+- The function I provide inside `useEffect` the cleanup function will be returned
+- On rerender the cleanup function is invoked. Then the function provided to `useEffect` is called again and returns the cleanup function. This process repeats.
+- This function is key when I want to cancel a previous timer set.
+
+```javascript
+
+if(term && !results.length) {
+         search(); 
+      } else {
+        const timeoutId = setTimeout(() => {
+            if(term) {
+                search();
+              }
+          }, 1000);
+          //cleanup
+          return () => {
+              clearTimeout(timeoutId);
+          }
+      }
+    }, [term]);
+```
+**FIXING A WARNING THAT OCCURS WITH `useEffect` Hook**
+
+- In Widget App, `term` and `results.length` are pieces of state
+- I will have to reference any prop or piece of state inside `useEffect's` dependency array, or the second arg to the function
+- Not listing out all pieces of state in the dependency array can cause some issues that can be hard to troubleshoot
+- Adding in elements inside the array can also add bugs into the code when dealing with data fetching
+- To fix some errors, we can introduce another piece of state and use multiple `useEffect` functions
+- One `useEffect` Hook will watch `debouncedTerm` and when change occurs I will make a request
+- The other `useEffect` will watch updates to `term` and when there is a change to `term`, I will create timer to update `debouncedTerm`
