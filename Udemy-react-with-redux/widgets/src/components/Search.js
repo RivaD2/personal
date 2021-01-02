@@ -5,20 +5,26 @@ const Search = () => {
   const [term, setTerm] = useState('programming');
   const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
-
+  
+  // Runs anytime term changes
   useEffect(() => {
     const timerId = setTimeout(() => {
+        // Anytime useEffect changes, I queue up change to debouncedTerm
         // Timer updates setDebouncedTerm
         setDebouncedTerm(term);
     }, 1000);
 
     // Cleanup to cancel timer
+    // I clear previous timer if user changes term too quickly
     return () => {
         clearTimeout(timerId);
     }
+    // Term changes when user types in input
   }, [term]);
 
-  // Whenever component rerenders and term has changed run useEffect
+  // We hit this function whenever a change to 
+  // setDebouncedTerm is changed and processed
+  // This useEffect will run whenever I first render component so a search immediately happens
   useEffect(() => {
     const search = async () => {
         const {data} = await axios.get('https://en.wikipedia.org/w/api.php', {
@@ -33,6 +39,7 @@ const Search = () => {
         });
         setResults(data.query.search);
     };
+    // Search is called when useEffect is called and a request is made
     search();
     // Array controls when overall function is executed
     // Whatever elements are passed in will cause function to execute 

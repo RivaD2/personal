@@ -785,6 +785,7 @@ if(term && !results.length) {
       }
     }, [term]);
 ```
+
 **FIXING A WARNING THAT OCCURS WITH `useEffect` Hook**
 
 - In Widget App, `term` and `results.length` are pieces of state
