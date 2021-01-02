@@ -795,3 +795,52 @@ if(term && !results.length) {
 - To fix some errors, we can introduce another piece of state and use multiple `useEffect` functions
 - One `useEffect` Hook will watch `debouncedTerm` and when change occurs I will make a request
 - The other `useEffect` will watch updates to `term` and when there is a change to `term`, I will create timer to update `debouncedTerm`
+
+**Hiding and Showing Dropdowns with React**
+
+- I could use a conditional to say what to show
+- Or I can toggle classes using a new piece of state to component
+- With the new piece of state, it would keep track of whether or not the component is open at any given time
+- I could then toggle that state from true to false when user clicks on
+- True would be show the values, false would mean to hide them
+
+**How to make sure clicking outside a Dropdown closes dropdown**
+
+- A Dropdown is not able to listen for click events on something that was not created by the dropdown itself
+- The Dropdown has a hard time listening for these events outside of itself
+- The built-in event system with React only allows a component to listen for clicks on elements created by that component
+
+**Event Bubbling:**
+
+- Let's imagine a user clicks on an item in a div
+- The browser itself creates an event object
+- This object describes some information about the click (the element that was clicked on, where user's mouse is on screen etc.)
+- The browser then hands that event object off to React
+- React does some processing on the event and then provides event object to `onClick` event handler
+- **Whenever a user clicks on that element, the event does not stop there**
+- The event travels up to the Parent element
+- If that element has a click event handler on it, it is automatically invoked
+- The event object then goes back up to the NEXT Parent element
+- IF that parent has on click handler, then it is also invoked with event object
+- The event travels up to all Parent elements, and in every step, the browser checks to see if that element has event handler
+- IF it does, it is invoked automatically! Thus, event bubbling!
+
+**Why is event bubbling relevant?**
+
+- In the case of the Widget App and its Dropdown component, the component needs to detect a click event on any element besides the ones it creates
+- The Dropdown has a hard time setting up event handlers on elements it does not create
+- Event Bubbling is a thing
+- Solution is to have Dropdown component set up manual Event Listener on the body element
+- Anytime anyone clicks on any element inside entire document, event will bubble up to body element thus telling Dropwdown that something has been clicked
+- We can still make use of use of native Browser events/Event Listeners in React:
+
+```javascript
+useEffect(() => {
+    document.body.addEventListener('click', () => {
+        console.log('Click!')
+    })
+  }, [])
+```
+
+- Any event listeners wired up with `.addEventListener` get called first (body listeners first)
+- Then, all React listeners get called, first with child listeners, then Parents

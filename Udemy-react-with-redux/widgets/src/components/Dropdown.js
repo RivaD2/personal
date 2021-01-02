@@ -1,26 +1,43 @@
-import React from 'react'
+import React , {useState, useEffect, useRef} from 'react'
 
 const Dropdown = ({options, selected, onSelectedChange}) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    document.body.addEventListener('click', event => {
+        // Logic to close the dropdown menu based on what element is clicked
+        // If element is in Dropdown, don't do anything with addEventListener
+        // If element isn't in dropdown, do something
+        if(ref.current && ref.current.contains(event.target)) return;
+        setOpen(false);
+    });
+  }, []);
+
   const renderedOptions = options.map(option => {
+    if(option.value === selected.value) return null;
     return (
         <div 
           key={option.value} 
           className="item"
           onClick={() => onSelectedChange(option)}
         >
-        {option.label}
+          {option.label}
         </div>
     )
   });
 
     return (
-        <div className="ui form">
+        <div ref={ref} className="ui form">
           <div className="field">
-            <lavel className="label">Select a color</lavel>
-            <div className="ui selection dropdown visible active">
+            <label className="label">Select a color</label>
+            <div 
+              onClick={() => setOpen(!open)} 
+              className={`ui selection dropdown ${open ? 'visible active' : ''}`}
+            >
               <i className="dropdown icon"></i>
               <div className="text">{selected.label}</div>
-              <div className="menu visible transition">
+              <div className={`menu ${open ? 'visible transition' : ''}`}>
                 {renderedOptions}
               </div>
             </div>
