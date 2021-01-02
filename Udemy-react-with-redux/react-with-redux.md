@@ -738,4 +738,24 @@ export default class SearchBar extends React.Component {
       }, [term]);
       ```
 
+**XSS Attacks in React**
+
+```javascript
+const renderedResults = results.map(result => {
+        return <div key={result.pageid} className="item">
+            <div className="content">
+                <div className="header">
+                  {result.title}
+                </div>
+                <span dangerouslySetInnerHTML={{ __html: result.snippet}}></span>
+            </div>
+        </div>
+    })
+```
+- Looking at the code above, I can see the `<span dangerouslySetInnerHTML={{__html: result.snippet}}></span>`
+- When taking a string from a 3rd party, such as Wikipedia API, I could be introducing a security hole into my application
+- Specifically an XSS attack, Cross-site scripting attack. This is when I accidentally pick up and render some HTML from an untrusted source, thus allowing a hacker to execute JS inside my app. 
+- This is VERY BAD!
+- The attribute of `dangerouslySetInnerHTML` is available for use but is somewhat hidden
+- Any time I use this attribute, I have to be confident that whomever is providing the html is a trusted source. If it is not, then it should never be used.
       
