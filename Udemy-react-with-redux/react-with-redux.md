@@ -648,6 +648,94 @@ export default class SearchBar extends React.Component {
   
      - The first variable, `activeIndex` is the piece of state I am trying to keep track of. It is some value that will change at some point in time
      - The second variable, `setActiveIndex` is a function I call to update that piece of state. Anytime this is called, this setter function, it will cause the entire component to automatically rerender. It is the setter.
-     - When I call, `useState` it takes in one arg, which is the default value for the piece of state
+     - When I call, `useState` it takes in one arg, which is the default value for the piece of state. 
+     - Once the setter is called, the default value to `useState` function will fall away. It is only an intialization value and the new value will be whatever is passed to the setter.
 
 **With Class Components I can easily define and change multiple pieces of state at the same time. However, in a function component using Hooks, it is different. If I want to have multiple pieces of state, I have to call `useState` multiple times. If I want to update state values, I have to call a setter.**
+
+**When Do we Search (to an API, in relation to the Widgets App)?**
+
+**Option 1:**
+
+- User types in input
+- onChange event handler caleld
+- We take value form input and make a request immediately to API
+- It will take some time to make request
+- Get reponse
+- Update piece of state (results)
+- Component rerenders to show list of results
+
+**Option 2:**
+
+- User types in input
+- OnChange event handler is called
+- Update 'term' piece of state
+- Component rerenders
+- **I then add code to detect that the `term` has changed! Also, that the component is rerendering!**
+- Once I detect that it is rerendering, make the the request to the API
+- Wait
+- Update `results` piece of state
+- Component rerenders again, showing list of results to user
+
+**Big difference between these two approaches is whether we want to attempt to make request immediately inside `onChange` handler or whether I want to only update some piece of state and then make request ONLY after component has rerenders and I detect that the `term` has changed.**
+
+- **Option 1** allows me to: Search instantly when `onChange` event triggers. It also tightly couples `onChange` event with search.
+- **Option 2** allows me to search when `term` piece of state changes. It can easily trigger a search when other parameters change. It is also easier to extract code out into a more reusable component. Option to is better.
+    - I can use the  `useEffect` Hook is what will allow me to add code that will detect that the component is rerendering and that SOME piece of information has changed
+
+**The `useEffect` Hook:**
+
+- Allows function components to use **something like** lifecycle methods
+- We can configure the hook to run some code automatically in one of three scenarios:
+  1. When the component is rendered **for the first time only**
+  2. When the component is rendered **for the first time AND whenever it rerenders**
+  3. When the component is rendered **for the first time AND (whenever it rerenders AND some piece of data has changed)**
+
+- To tell the `useEffect` function which scenarios we want the function to be executed in, I have to provide a second arg to `useEffect`.
+- The second arg can be an empty array, arra with value inside of it, or NO array at all
+- I will always see either an empty array, an array with one or more elements inside of it, or nothing at all
+
+**Why?**
+
+- The presence of an array with values inside, an empty array or no array at all matches the scenarios above:
+   1. An empty array as second arg: Means I want to run function at initial render of component
+   2. No array as a second arg: Means I want to run the function at the initial render and after single rerender
+   3. An array with one or more elements inside: Means I want to run at initial render and after ever single rerender IF data has changed since last render
+
+**Async code in `useEffect`:**
+
+- I am not able to use async await code inside `useEffect` function
+- There are 3 different ways I can do this:
+  1. Inside of `useEffect` I can create a helper function:
+   
+      ```javascript
+      useEffect(() => {
+        const search = async () => {
+          await axios.get('adsfa');
+        }
+        search();
+      }, [term]);
+      ```
+
+  2. I can remove temp variable `search` above altogether and wrap async function with set of parens. 
+
+      ```javascript
+      useEffect(() => {
+        (async () => {
+          await axios.get('asdfad');
+        })();
+      }, [term]);
+      ```
+
+  3. I can use promises instead using `.then` syntax:
+       
+       ```javascript
+      useEffect(() => {
+        axios.get('asdfad')
+        .then((response) => {
+          console.log(response.data);
+        });
+      }, [term]);
+      ```
+
+      

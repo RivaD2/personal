@@ -4,12 +4,22 @@
 
 - App Component: Governs information across app that holds `items` prop
 - An Accordion component: In charge of showing different sets of questions and answers. The Accordian decides what questions and answers to show depending on `items` prop
-- A Wikipedia API search component
+- A Wikipedia API search component: Goal is to show text input so user can type in a topic. A search will be done to the Wikipedia API and results will be displayed to user. A title and summary will be included.
 - A Dropdown item selection component
 - A Google Translate API component
 
 - I then wrap up the Widgets application by building my own navigation using JS and React without a third-party library like React Router. This will be used to navigate between the different widget components that were built.
+- The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
+- Code toggles which widget is available on the screen at any given time. Widgets were built first with navigation added at the end.
+- The point of these widgets is to build knowledge on the Hook system in React
 
+**Tools used:**
+
+- Wikipedia API 
+    - Doesn't require any API keys
+    - There is a query property with a search property inside holding search results
+    - I take the user input, make a request, map over the results and show them on the screen
+- Semantic UI
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
