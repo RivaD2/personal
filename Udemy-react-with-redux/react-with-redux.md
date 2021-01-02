@@ -635,3 +635,19 @@ export default class SearchBar extends React.Component {
 
 - It is a piece of code that does one repeatable task, it is a reusable piece of code and can incorporate the use of other hooks
 
+**Understanding useState:**
+
+- Whenever this is called, I am making use of this syntax:
+
+` const [activeIndex, setActiveIndex] = useState(null);`
+
+- This syntax is referred to as array destructuring and it's identical to object destructuring. 
+- This syntax tells JS that I want to get references to elements inside an array
+- Whenever I call `useState` I get back an array with two elements inside of it (in the above example)
+- The variables used inside brackets goes as follows:
+  
+     - The first variable, `activeIndex` is the piece of state I am trying to keep track of. It is some value that will change at some point in time
+     - The second variable, `setActiveIndex` is a function I call to update that piece of state. Anytime this is called, this setter function, it will cause the entire component to automatically rerender. It is the setter.
+     - When I call, `useState` it takes in one arg, which is the default value for the piece of state
+
+**With Class Components I can easily define and change multiple pieces of state at the same time. However, in a function component using Hooks, it is different. If I want to have multiple pieces of state, I have to call `useState` multiple times. If I want to update state values, I have to call a setter.**
