@@ -598,3 +598,40 @@ export default class SearchBar extends React.Component {
 - When the user clicks on the video item, the `VideoItem` component will call the method `onVideoSelect`, thus passing in the video that it had been passed
 - What this does is invokes the method on the `App` component with the video object that was clicked on
 - The App can then update its state and say that the new currently selected video is what the user just clicked on
+
+## React Hooks
+
+**Hook System**
+
+- This system is all about giving functional components additional functionality
+- With the Hook system, React gives us the following functions:
+      - `useState`: Allows us to use state in the function component
+      - `useEffect` Allows us to use something like lifecycle methods in a function component
+      - `useRef` Lets us create a 'ref' in a function component
+
+**Hooks are a way to write reusable code, instead of more classic techniques like Inheritance**
+
+**Basic/Additional Hooks (not a real term)**
+
+**With the Hook system, we get access to 10 functions:**
+
+**Basic Hooks:**
+
+1. `useState`
+2. `useEeffect`
+3. `useContext`
+  
+  **Additional Hooks:**
+
+4. `useReducer`
+5. `useCallback`
+6. `useMemo`
+7. `useRef`
+9. `useImperativeHandle`
+10. `useLayoutEffect`
+11. `useDebugValue`
+    
+**What is a custom hook?**
+
+- It is a piece of code that does one repeatable task, it is a reusable piece of code and can incorporate the use of other hooks
+
