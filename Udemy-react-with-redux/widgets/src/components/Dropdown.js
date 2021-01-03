@@ -5,13 +5,18 @@ const Dropdown = ({options, selected, onSelectedChange}) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener('click', event => {
+    const onBodyClick = event => {
         // Logic to close the dropdown menu based on what element is clicked
         // If element is in Dropdown, don't do anything with addEventListener
-        // If element isn't in dropdown, do something
         if(ref.current && ref.current.contains(event.target)) return;
         setOpen(false);
-    });
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+    // Cleanup function invoked when Dropdown component is about to be removed entirely
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
   }, []);
 
   const renderedOptions = options.map(option => {
