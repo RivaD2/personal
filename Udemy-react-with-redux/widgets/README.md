@@ -6,7 +6,8 @@
 - An Accordion component: In charge of showing different sets of questions and answers. The Accordian decides what questions and answers to show depending on `items` prop
 - A Wikipedia API search component: Goal is to show text input so user can type in a topic. A search will be done to the Wikipedia API and results will be displayed to user. A title and summary will be included.
 - A Dropdown item selection component: Is in charge of showing list of options. 
-- A Google Translate API component
+- A Google Translate API component: Resonsible for showing all content on screen. The component itself will show instance of the Dropdown component and a Convert Component
+- Covert Component: Responsible for taking in language input text and translating it
 
 - I then wrap up the Widgets application by building my own navigation using JS and React without a third-party library like React Router. This will be used to navigate between the different widget components that were built.
 - The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
