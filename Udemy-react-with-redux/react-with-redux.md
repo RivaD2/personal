@@ -856,3 +856,17 @@ useEffect(() => {
 **I can make another component which is in charge of knowing what other routes/components to show**
 
 - When we extract navigation logic out into a reusable component, we can then use it anywhere in the app
+- In the Widget App, anytime I click on a nav link, I am making many different requests
+- Traditionally on HTML web-based app, I navigate to some webpage in browser, thus making a request to a server for an HTML doc. The HTML is then parsed and put onto screen. When user clicks on link, it makes a request to another server for another HTML doc. 
+- In the Widget app, whenever I click on one of the links, I completely reload HTML file inside project and reload JS and CSS. THAT IS NOT IDEAL INSIDE REACT APP.
+- There is no reason for me to do a hard reload, or full page reload. With a full page reload, a whole bunch of network traffic occurs which is not required to change content on the screen.
+
+**SO HOW CAN I SOLVE THIS?**
+
+- Ideally this would happen:
+     - Change the URL when user clicks on link, but don't do a full page refresh
+        - To do this, I can use `window.history.pushState({}, '', 'url here')`
+     - Each Route could detect the URL has changed
+     - Route could update piece of state tracking the current pathname
+     - Each Route rerenders, showing/hiding components appropriately
+
