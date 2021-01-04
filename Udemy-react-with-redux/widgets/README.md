@@ -1,18 +1,4 @@
-# Widget Application
-
-**Components:**
-
-- App Component: Governs information across app that holds `items` prop
-- An Accordion component: In charge of showing different sets of questions and answers. The Accordian decides what questions and answers to show depending on `items` prop
-- A Wikipedia API search component: Goal is to show text input so user can type in a topic. A search will be done to the Wikipedia API and results will be displayed to user. A title and summary will be included.
-- A Dropdown item selection component: Is in charge of showing list of options. 
-- A Google Translate API component: Resonsible for showing all content on screen. The component itself will show instance of the Dropdown component and a Convert Component
-- Covert Component: Responsible for taking in language input text and translating it
-
-- I then wrap up the Widgets application by building my own navigation using JS and React without a third-party library like React Router. This will be used to navigate between the different widget components that were built.
-- The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
-- Code toggles which widget is available on the screen at any given time. Widgets were built first with navigation added at the end.
-- The point of these widgets is to build knowledge on the Hook system in React
+# Widget Application: In this application I dive in deep to the Hook system in React and go further into the inner workings of the DOM, XSS attacks, event bubbling, asynchronous code in React, and debouncing in JS
 
 **Tools used:**
 
@@ -22,6 +8,22 @@
     - I take the user input, make a request, map over the results and show them on the screen
 - Semantic UI
 - Axios
+- Google Translate API (takes target language code and text from input and translates it. It sent me back a response and I took the translated text, update some piece of state, and showed the data on the screen)
+
+**Components:**
+
+- App Component: Governs information across app that holds `items` prop
+- An Accordion component: In charge of showing different sets of questions and answers. The Accordion decides what questions and answers to show depending on `items` prop
+- A Wikipedia API search component: Goal is to show text input so user can type in a topic. A search will be done to the Wikipedia API and results will be displayed to user. A title and summary will be included.
+- A Dropdown item selection component: Is in charge of showing list of options. 
+- A Google Translate API component: Responsible for showing all content on screen. The component itself will show instance of the Dropdown component and a Convert Component
+- Covert Component: Responsible for taking in language input text and translating it using Google Translate API
+
+- I then wrap up the Widgets application by building my own navigation using JS and React without a third-party library like React Router. This will be used to navigate between the different widget components that were built.
+- The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
+- Code toggles which widget is available on the screen at any given time. Widgets were built first with navigation added at the end.
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

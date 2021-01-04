@@ -787,3 +787,33 @@ const insertionSort = arr => {
  }
 
 insertionSort([2, 1, 9, 76, 4]);
+
+/* Implement a function named generateRange(min, max, step), which takes three args
+and generates a range of integers from min to max, with the step. The first integer
+is the min, the second the max and the third, the step.
+
+Ex: generateRange(2, 10, 2) // should return an arr of [2, 4, 6, 8, 10]
+    generateRange(1, 10, 3) // should return an rr of [1, 4, 7, 10]*/
+
+const generateRange = (min, max, step) => {
+    let results = [];
+    for(let i = min; i <= max; i += step) {
+        results.push(i);
+    }
+    return results;
+};
+
+/* Write a function that acccepts a string parameter and reverses each word
+in the string. All spaces in the string should be retained*/
+const reverseWords = str => {
+    return str.split('').map(word => word.split('').reverse().join(''));
+}
+
+/* Count the number of divisors of a positive integer n. Random tests go up to n = 5000000.*/
+const getDivisors = n => {
+    let count = 0;
+    for(let i = 1; i <= n; i++) {
+        if(n % i === 0) count ++
+    }
+    return count;
+}
