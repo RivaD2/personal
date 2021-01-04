@@ -844,3 +844,15 @@ useEffect(() => {
 
 - Any event listeners wired up with `.addEventListener` get called first (body listeners first)
 - Then, all React listeners get called, first with child listeners, then Parents
+
+## Navigation in React
+
+**Majority of React apps use React-Router. However...**
+
+- React Router has frequent breaking changes
+- It is more important to learn the ideas and theory of navigation
+- First start off with building Navigation from scratch and then move on to React Router
+
+**I can make another component which is in charge of knowing what other routes/components to show**
+
+- When we extract navigation logic out into a reusable component, we can then use it anywhere in the app

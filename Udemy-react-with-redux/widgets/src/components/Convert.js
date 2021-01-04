@@ -3,14 +3,25 @@ import axios from 'axios';
 
 const Convert =({language, text}) => {
   const [translated, setTranslated] = useState('');
+  const [debouncedText, setDebouncedText] = useState(text);
   const KEY = 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM';
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedText(text);
+    }, 500);
+    // Cleanup function
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [text]);
 
   useEffect(() => {
     const doTranslation = async () => {
       const { data } = await axios.post('https://translation.googleapis.com/language/translate/v2', {}, 
       {
         params: {
-          q: text,
+          q: debouncedText,
           target: language.value,
           key: KEY
         }
@@ -20,7 +31,7 @@ const Convert =({language, text}) => {
     }
     // Function invoked anytime language or text is changed or when component first mounts
     doTranslation();
-  }, [language, text]);
+  }, [language, debouncedText]);
 
   return (
     <div>
