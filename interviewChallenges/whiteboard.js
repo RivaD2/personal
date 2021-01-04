@@ -817,3 +817,36 @@ const getDivisors = n => {
     }
     return count;
 }
+
+/* Write a function that returns the first word with the greatest number of
+repeated letters*/
+
+const countLetters = str => {
+    // Splitting at words
+    let tempArr = str.split(' ');
+    tempArr = tempArr.map(word => {
+        // Split at letters
+        let tempWord = word.toLowerCase().split('');
+        return tempWord.reduce((acc, curr) => {
+            // Creating properties on the object
+            acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+            if(acc[curr] > acc.max) {
+                acc.max = acc[curr];
+            }
+            return acc;
+        }, {max: 1, word: item})
+    })
+    let amount = 1;
+    let word = '';
+    for(let item of tempArr) {
+        if(item.max > amount) {
+            amount = item.max;
+            word = item.word;
+        }
+    }
+    if(amount > 1) {
+        return word;
+    }
+    return -1;
+}
+
