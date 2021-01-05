@@ -1,4 +1,5 @@
-# Widget Application: In this application I dive in deep to the Hook system in React and go further into the inner workings of the DOM, XSS attacks, event bubbling, asynchronous code in React, and debouncing in JS
+### Widget Application: 
+In this application I dive in deep to the Hook system in React and go further into the inner workings of the DOM, XSS attacks, event bubbling, asynchronous code in React, and debouncing in JS
 
 **Tools used:**
 
@@ -23,6 +24,12 @@
 - The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
 - Code toggles which widget is available on the screen at any given time. Widgets were built first with navigation added at the end.
 
+**Result**
+
+![search component]('../../src/assets/search.png)
+![accordion component]('./../src/assets/accordion.png)
+![translate component]('./../src/assets/translate.png)
+![dropdown component]('./../src/assets/dropdown.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
