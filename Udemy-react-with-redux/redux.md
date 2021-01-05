@@ -71,7 +71,7 @@
     - Type: Describes some change I want to make to data
     - Payload:Describes some context around change I want to make
     - Purpose of action is to describe some change we want to make to data
-3. Dispatch: The dispatch function takes in an action, makes copies of object, and passes iot off to a bunch of different places inside application
+3. Dispatch: The dispatch function takes in an action, makes copies of object, and passes it off to a bunch of different places inside application
 4. Reducers: A reducer is a function that is responsible for taking in action and some existing amount of data. It will process that action by looking at its type and make some change to data. Then it will return it so it can be centralized in some.location.
 5. State: The state property is a central repository of all information created by reducers. All information gets consolidated in state. Our react app then doesn't have to go to each separate reducer for current state.
 
