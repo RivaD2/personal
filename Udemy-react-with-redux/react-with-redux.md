@@ -649,7 +649,7 @@ export default class SearchBar extends React.Component {
      - The first variable, `activeIndex` is the piece of state I am trying to keep track of. It is some value that will change at some point in time
      - The second variable, `setActiveIndex` is a function I call to update that piece of state. Anytime this is called, this setter function, it will cause the entire component to automatically rerender. It is the setter.
      - When I call, `useState` it takes in one arg, which is the default value for the piece of state. 
-     - Once the setter is called, the default value to `useState` function will fall away. It is only an intialization value and the new value will be whatever is passed to the setter.
+     - Once the setter is called, the default value to `useState` function will fall away. It is only an initialization value and the new value will be whatever is passed to the setter.
 
 **With Class Components I can easily define and change multiple pieces of state at the same time. However, in a function component using Hooks, it is different. If I want to have multiple pieces of state, I have to call `useState` multiple times. If I want to update state values, I have to call a setter.**
 
@@ -677,11 +677,11 @@ export default class SearchBar extends React.Component {
 - Update `results` piece of state
 - Component rerenders again, showing list of results to user
 
-**Big difference between these two approaches is whether we want to attempt to make request immediately inside `onChange` handler or whether I want to only update some piece of state and then make request ONLY after component has rerenders and I detect that the `term` has changed.**
+**Big difference between these two approaches is whether we want to attempt to make request immediately inside `onChange` handler or whether I want to only update some piece of state and then make request ONLY after component has rerendered and I detect that the `term` has changed.**
 
 - **Option 1** allows me to: Search instantly when `onChange` event triggers. It also tightly couples `onChange` event with search.
-- **Option 2** allows me to search when `term` piece of state changes. It can easily trigger a search when other parameters change. It is also easier to extract code out into a more reusable component. Option to is better.
-    - I can use the  `useEffect` Hook is what will allow me to add code that will detect that the component is rerendering and that SOME piece of information has changed
+- **Option 2** allows me to search when `term` piece of state changes. It can easily trigger a search when other parameters change. It is also easier to extract code out into a more reusable component. Option two is better.
+    - I can use the  `useEffect` Hook which will allow me to add code that will detect that the component is rerendering and that SOME piece of information has changed
 
 **The `useEffect` Hook:**
 
@@ -692,7 +692,7 @@ export default class SearchBar extends React.Component {
   3. When the component is rendered **for the first time AND (whenever it rerenders AND some piece of data has changed)**
 
 - To tell the `useEffect` function which scenarios we want the function to be executed in, I have to provide a second arg to `useEffect`.
-- The second arg can be an empty array, arra with value inside of it, or NO array at all
+- The second arg can be an empty array, array with value inside of it, or NO array at all
 - I will always see either an empty array, an array with one or more elements inside of it, or nothing at all
 
 **Why?**
@@ -831,7 +831,7 @@ if(term && !results.length) {
 - The Dropdown has a hard time setting up event handlers on elements it does not create
 - Event Bubbling is a thing
 - Solution is to have Dropdown component set up manual Event Listener on the body element
-- Anytime anyone clicks on any element inside entire document, event will bubble up to body element thus telling Dropwdown that something has been clicked
+- Anytime anyone clicks on any element inside entire document, event will bubble up to body element thus telling Dropdown that something has been clicked
 - We can still make use of use of native Browser events/Event Listeners in React:
 
 ```javascript
@@ -857,7 +857,7 @@ useEffect(() => {
 
 - When we extract navigation logic out into a reusable component, we can then use it anywhere in the app
 - In the Widget App, anytime I click on a nav link, I am making many different requests
-- Traditionally on HTML web-based app, I navigate to some webpage in browser, thus making a request to a server for an HTML doc. The HTML is then parsed and put onto screen. When user clicks on link, it makes a request to another server for another HTML doc. 
+- Traditionally on HTML web-based app, I navigate to some webpage in a browser, thus making a request to a server for an HTML doc. The HTML is then parsed and put onto screen. When user clicks on link, it makes a request to another server for another HTML doc. 
 - In the Widget app, whenever I click on one of the links, I completely reload HTML file inside project and reload JS and CSS. THAT IS NOT IDEAL INSIDE REACT APP.
 - There is no reason for me to do a hard reload, or full page reload. With a full page reload, a whole bunch of network traffic occurs which is not required to change content on the screen.
 
@@ -891,4 +891,17 @@ useEffect(() => {
 
 **Deploying Youtube App with Vercel**
 
+- sign up at `vercel.com`
+- Install the Vercel CLI
+- Run command `vercel` in project directory (to deploy)
+- If I make a change to project I can update the change, then run `vercel --prod`
+
+**Deploying with Netlify**
+
+- Create a Github repo
+- Commit changes locally
+- Link local project with Github repo
+- Push code to Github
+- Sign up for account on Netlify
+- Link Github account and repo I want to deploy
 
