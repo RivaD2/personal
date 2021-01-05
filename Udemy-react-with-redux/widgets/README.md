@@ -24,11 +24,14 @@ In this application I dive in deep to the Hook system in React and go further in
 - The final result is 4 separate pages of widgets. Each widget will be wired with another by making use of links or navigation.
 - Code toggles which widget is available on the screen at any given time. Widgets were built first with navigation added at the end.
 
-**Result**
+### Final Result 
 
 ![search component]('../../src/assets/search.png)
+
 ![accordion component]('./../src/assets/accordion.png)
+
 ![translate component]('./../src/assets/translate.png)
+
 ![dropdown component]('./../src/assets/dropdown.png)
 
 

@@ -870,3 +870,25 @@ useEffect(() => {
      - Route could update piece of state tracking the current pathname
      - Each Route rerenders, showing/hiding components appropriately
 
+**Deployment with React App**
+
+**What is the process?**
+
+- When we build out our project, it builds what is called a deployment bundle
+- In the deployment bundle are static files that are used for deployment. They are normal files that exist in some file or directory
+- The deployment bundle includes files such as:
+    - `index.html`
+    - `bundle.js`
+    - `image.jpg`
+    - `index.css`
+
+- When the deployment bundle is built out, there is no longer a server running
+- So, we take these files and upload them to some Deployment Target
+- This might be any service provider we decide to deploy to
+- Whenever user types in our domain into the browser, the browser will make request to deployment provider and receive response that includes the `html` file etc.
+- I do NOT NEED A VM to deploy a React app
+- I would only need a VM if I am running any type of server
+
+**Deploying Youtube App with Vercel**
+
+
