@@ -74,3 +74,119 @@
 3. Dispatch: The dispatch function takes in an action, makes copies of object, and passes iot off to a bunch of different places inside application
 4. Reducers: A reducer is a function that is responsible for taking in action and some existing amount of data. It will process that action by looking at its type and make some change to data. Then it will return it so it can be centralized in some.location.
 5. State: The state property is a central repository of all information created by reducers. All information gets consolidated in state. Our react app then doesn't have to go to each separate reducer for current state.
+
+**Redux in action for this analogy**
+
+```javascript
+
+// People dropping of a form(action creators)
+const createPolicy = (name, amount) => {
+  return {
+    type: 'CREATE_POLICY',
+    payload: {
+      name: name,
+      amount: amount
+    }
+  };
+};
+
+const deletePolicy = name => {
+  return {
+    type: 'DELETE_POLICY',
+    payload: {
+      name: name
+    }
+  };
+};
+
+const createClaim = (name, amountOfMoneyToCollect) => {
+  return {
+    type: 'CREATE_CLAIM',
+    payload: {
+      name: name,
+      amountOfMoney: amountOfMoneyToCollect
+    }
+  };
+};
+
+// Reducers (take data and action and modify data based of contents of action)
+const claimsHistory = (oldClaimsList = [], action) => {
+  if(action.type === 'CREATE_CLAIM') {
+    // We care about this action, the FORM
+    return [...oldClaimsList, action.payload];
+  }
+  return oldClaimsList;
+};
+
+const accounting = (bagOfMoney = 100, action) => {
+  if(action.type === 'CREATE_CLAIM') {
+    return bagOfMoney - action.payload.amountOfMoneyToCollect;
+  } else if (action.type === 'CREATE_POLICY') {
+    return bagOfMoney + action.payload.amount;
+  }
+  return bagOfMoney;
+};
+
+const policies = (listOfPolicies = [], action) => {
+  if(action.type === 'CREATE_POLICY') {
+    return [...listOfPolicies, action.payload.name];
+  } else if (action.type === 'DELETE_POLICY') {
+    return listOfPolicies.filter(name => name !==    action.payload.name);
+  }
+  return listOfPolicies;
+};
+
+// Store and using combineReducers
+const {createStore, combineReducers} = Redux;
+const ourDepts = combineReducers({
+  accounting: accounting,
+  claimsHistory: claimsHistory,
+  policies: policies
+});
+
+// Store represents entire Redux app
+// It contains reducers and state produced by reducers or data produced
+// Functions on it that are useful are the dispatch function
+// It is like the form receiver in the analogy
+// We send it an action and it makes a copy of it and sends it off to all reducers in application
+
+const store = createStore(ourDepts);
+//To call dispatch, pass in an action
+store.dispatch(createPolicy('Willow', 20));
+store.dispatch(createPolicy('Zander', 30));
+store.dispatch(createPolicy('Buffy', 50));
+store.dispatch(deletePolicy('Willow'));
+// Another method on the store object is getState
+// When calling this, I get access to all information
+store.getState();
+```
+
+**Important notes about Redux and code above**
+
+- Anytime we want to change the state or data of app, we call an action creator
+- Calling an action creator will produce action object
+- The action object describes how we want to change data in application and is fed to dispatch function
+- The dispatch function makes copies of action object and feeds copies to reducers
+- The reducers run, process the actions and modify data. Then they return the new data
+- The data that is returned is formed into some NEW state object
+
+**Inside the code above**
+
+- Different reducers are different functions that need to be wired up together
+- We can do this by using `combineReducers`
+- We do not always have to name reducers after keys, but by convention they are usually similar
+- Each dispatch I am doing is running an entire Redux cycle
+- I can print out state object in between each dispatch
+- Even after `getState`, I can still continue to modify state object
+- So, at any point in time along our application, I can take the store object and pull our state out of it and read our current data/or state for the application
+- One thing about Redux is that I can only modify the state object through the use of the dispatch function, action creators and actions
+- In other words, I can't manually reach into store and modify state. I am unable to get direct access to the state property and modify it in some meaningful way
+
+**I am only able to modify state by dispatching an action that has been created by an action creator**
+
+**Why Use Redux**
+
+1. As application gets larger, the app grows in complexity. 
+2. Because I can only change data through the use of action creators, the application becomes self-documenting. 
+3. People can only modify data by calling action creators. So, if someone walks into application, they can see action creators and easily see exactly how they can modify data in the application. 
+4. Using Redux helps our app become more stable as there are set ways to modify data
