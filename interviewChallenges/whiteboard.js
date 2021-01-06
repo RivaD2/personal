@@ -1,7 +1,5 @@
 'use strict'
 
-const { string } = require("prop-types");
-
 // Practice with Dynamic Coding with Alvin Zablan from Coderbyte
 
 /* Challenge 1: Fibonacci Pattern

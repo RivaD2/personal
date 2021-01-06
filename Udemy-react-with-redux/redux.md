@@ -190,3 +190,9 @@ store.getState();
 2. Because I can only change data through the use of action creators, the application becomes self-documenting. 
 3. People can only modify data by calling action creators. So, if someone walks into application, they can see action creators and easily see exactly how they can modify data in the application. 
 4. Using Redux helps our app become more stable as there are set ways to modify data
+
+**Design of a Redux App**
+
+- We will need to use Function components for Redux
+- In general all state is now handled by Redux
+- What this means, is a more straightforward App component

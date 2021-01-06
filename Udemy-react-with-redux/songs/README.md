@@ -1,10 +1,37 @@
-# Songs: A simple app for selcting a song
+# Songs: A simple app for selecting a song
 
 **TOOLS USED:**
 - React
 - React-redux
 - Redux
 - Semantic-UI
+
+**Components**
+
+- App
+- SongList
+- SongDetail
+- Provider: Implemented by React Redux
+- Connect: Implemented by React Redux
+
+**Design of Redux App**
+
+- Reducers: Produces list of songs and records currently selected song. These are the two pieces of state.
+  - This will be creating a static list of songs
+  - This is to get an idea of the basics of Redux
+- Action Creator `SELECT_SONG`: To change the state inside the Redux App
+
+**How it works**
+
+- The store contains all the state of the application. I take the store and pass it as a prop into the Provider
+- The Provider is going to be rendered at top of application hierarchy
+- The Provider provides information to all other components and is passed reference to the store
+- Instance of the Connect component/tag will communicate with the Provider through the Context system(parent to child communication even if other components exist between them)
+- The Connect tag is configured to reach back up to Provider to request notification when SongList changes. It knows what pieces of state I want from the store and what different action creators we want wired up.
+- The Provider provides SongList back down and Connect takes list and passes it as a prop down into SongDetail component
+
+### Final Result:
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
