@@ -5,6 +5,7 @@
 - React-redux
 - Redux
 - Semantic-UI
+- Semantic-UI Grid
 
 **Components**
 
@@ -32,6 +33,7 @@
 
 ### Final Result:
 
+![songs](src/assets/songs.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
