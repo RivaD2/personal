@@ -35,7 +35,7 @@
 **What happens when a form is handed of to a department?**
 
 - A form comes in with intent of signing up for policy
-- Chances are, internally policy department has list of everyone with a policy
+- Chances are, internal policy department has list of everyone with a policy
 - The policy department takes in form and adds them onto policy list
 - Let's imagine we have a management team at the company
 - The management team always wants to know who has a policy RIGHT NOW
@@ -48,13 +48,16 @@
 **How does this relate to Redux?**
 
 - Every form that gets filled out has two different parts
-      - A type: What type of form it is
-      - A payload: The body of the form (name and claim amount)
+  
+  - A type: What type of form it is
+  - A payload: The body of the form (name and claim amount)
+  
 - We would need three different types of forms:
-      - A policy form
-      - A claim form
-      - A delete policy form
-      - Each different type of form would have different information inside payload
+    - A policy form
+    - A claim form
+  - A delete policy form
+- Each different type of form would have different information inside payload
+  
 - Now all department data is stored in one central location or data store
 
 `Action Creator--> Action-->dispatch-->Reducers-->State`
@@ -197,10 +200,10 @@ store.getState();
 - In general all state is now handled by Redux
 - What this means, is a more straightforward App component
 
-**Redux:** The redux library
-**react-redux:** Integration layer between react and redux
-**Axios:** Helps us make network requests
-**redux-thunk** Middleware to help us make requests in redux application
+1. **Redux:** The redux library
+2. **react-redux:** Integration layer between react and redux
+3. **Axios:** Helps us make network requests
+4. **redux-thunk** Middleware to help us make requests in redux application
 
 **What is redux-thunk**
 
@@ -271,5 +274,81 @@ export const fetchPosts = async() => {
 - If an action object gets returned, it can optionally have a 'payload'
 - Redux thunk calls the functions automatically
 
-**After we dispatch something, redux thunk will say, "Are you a function or an object?" If the something is an object, it passes it off to reducers. If it is a function, redux thunk will invokes the function and passes into it the `getState` and `dispatch` functions as args.**
+**After we dispatch something, redux thunk will say, "Are you a function or an object?" If the something is an object, it passes it off to reducers. If it is a function, redux thunk will invoke the function and passes into it the `getState` and `dispatch` functions as args:**
+
+```javascript
+// In fetchPosts, we can expect to see dispatch and getState as args 
+// In my case, I only needed to use dispatch
+// In index.js, thunk is passed into the applyMiddleware() function and thunk handles API request
+export const fetchPosts = () => async dispatch => {
+    const response = await jsonPlaceholder.get('/posts');
+    dispatch({
+      type: 'FETCH_POSTS',
+      payload:response
+    })
+};
+```
+**Rules of Reducers**
+
+- Must return any value besides 'undefined'
+- Produces 'state' or data to be used inside of your app using only previous state and the action object that has been dispatched 
+- Must not return reach 'out of itself' to decided what value to return (reducers are pure). Anytime we call a reducer with an action and previous state value, we are not supposed to reach outside of this function (no api calls, no reaching into DOM, etc.) The only thing that will be returned is some computation done on the two arguments, the state object or action. This is known as keeping the reducer pure!
+- Must not mutate its input 'state' argument.
+      - In reducers the args are state and action. This rule is slightly misleading however mutation comes up frequently when dealing with reducers
+      - I will see a lot of information out there that says you can't mutate state
+  
+**The truth is that WE CAN MUTATE state and not see any errors. However, there is one case where the app will not work the way we expect if we mutate state.**
+
+**Best practice is to not mutate the state argument. To better understand this rule though we need to look at source code of Redux itself:**
+
+- On the Redux repo, nside the `src` folder, inside `combineReducers` we see the following code:
+
+```javascript
+let hasChanged = false
+    const nextState: StateFromReducersMapObject<typeof reducers> = {}
+    for (let i = 0; i < finalReducerKeys.length; i++) {
+      const key = finalReducerKeys[i]
+      const reducer = finalReducers[key]
+      const previousStateForKey = state[key]
+      const nextStateForKey = reducer(previousStateForKey, action)
+      if (typeof nextStateForKey === 'undefined') {
+        const errorMessage = getUndefinedStateErrorMessage(key, action)
+        throw new Error(errorMessage)
+      }
+      nextState[key] = nextStateForKey
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+    }
+    hasChanged =
+      hasChanged || finalReducerKeys.length !== Object.keys(state).length
+    return hasChanged ? nextState : state
+  }
+}
+```
+
+- This block of code is what we need to look at. It takes an action anytime it is dispatched and sends action around to all of the different Reducers inside your application. 
+- So, anytime you dispatch an action, the code above is executed.
+- The first thing that happens is `hasChanged` is set to false
+- The for loop iterates through all Reducers inside your app
+- Inside body of the for loop, `previousStateForKey` is assigned the last state value that the reducer returned, the previous state value
+- When the `reducer()` function is invoked, the first argument is the state that the reducer returned the last time it ran, and second is the action object
+- `nextStateForKey` is the new state value
+- A check is done to see if the reducer has returned a value of 'undefined' as this is one of the big rules around using Reducers
+- `hasChanged` takes the value of a direct comparison between `nextStateForKey` and `previousStateForKey`:
+  
+  `hasChanged = hasChanged || nextStateForKey !== previousStateForKey`
+
+**This is the line of code that we need to focus on when thinking of the rule "Must not mutate state". This comparison is checking to see if `nextStateForKey` and `previousStateForKey` are the exact same array/object in memory**
+
+- If I just returned some array and it matchs the one from the last time the reducer ran, it will return a value of false
+- If it returned a new array from the previous, `hasChanged` will be true
+- `hasChanged` refers to "has the state returned by your reducers changed?"
+- If any different reducer has changed, or returns a new value, `hasChanged` will be true!
+
+`return hasChanged ? nextState : state`
+
+-If has changed is true, the new state object will be returned
+- Otherwise, the state is returned (state on this line refers to all the state the reducers returned the last time they ran)
+- If Redux returns old state value, then redux is not going to notify the rest of your app that your data has changed. If you do have a new state, something has changed in one of your reducers, Redux will notify the rest of the app (including React) that a new state is available, thus rerendering your app.
+
+**In summary, we care so much about saying you must not mutate state, is if we accidentally return the same value that is pumped into your reducer, redux will say, "Nothing has changed and so I will not update your data and your app is not going to rerender."**
 
