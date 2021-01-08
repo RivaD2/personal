@@ -352,3 +352,11 @@ let hasChanged = false
 
 **In summary, we care so much about saying you must not mutate state, is if we accidentally return the same value that is pumped into your reducer, redux will say, "Nothing has changed and so I will not update your data and your app is not going to rerender."**
 
+**Techniques to not mutate state inside reducer**
+
+- Use the spread operator to add an element to an array
+- Use filter method to remove an element from an array
+- Use map to replace an element in an array
+- Use spread operator to update a property in an object
+- Use spread operator to add a property to an object
+- Use spread to remove a property from an object
