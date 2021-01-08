@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+const postsReducer =  (state = [], action) => {
     // Typically I would have more switch statements
   switch(action.type) {
     case 'FETCH_POSTS':
@@ -7,3 +7,5 @@ export default (state = [], action) => {
         return state;
   }
 };
+
+export default postsReducer;
