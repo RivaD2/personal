@@ -335,7 +335,7 @@ let hasChanged = false
 - A check is done to see if the reducer has returned a value of 'undefined' as this is one of the big rules around using Reducers
 - `hasChanged` takes the value of a direct comparison between `nextStateForKey` and `previousStateForKey`:
   
-  `hasChanged = hasChanged || nextStateForKey !== previousStateForKey`
+`hasChanged = hasChanged || nextStateForKey !== previousStateForKey`
 
 **This is the line of code that we need to focus on when thinking of the rule "Must not mutate state". This comparison is checking to see if `nextStateForKey` and `previousStateForKey` are the exact same array/object in memory**
 
@@ -346,8 +346,7 @@ let hasChanged = false
 
 `return hasChanged ? nextState : state`
 
--If has changed is true, the new state object will be returned
-- Otherwise, the state is returned (state on this line refers to all the state the reducers returned the last time they ran)
+If has changed is true, the new state object will be returned. Otherwise, the state is returned (state on this line refers to all the state the reducers returned the last time they ran)
 - If Redux returns old state value, then redux is not going to notify the rest of your app that your data has changed. If you do have a new state, something has changed in one of your reducers, Redux will notify the rest of the app (including React) that a new state is available, thus rerendering your app.
 
 **In summary, we care so much about saying you must not mutate state, is if we accidentally return the same value that is pumped into your reducer, redux will say, "Nothing has changed and so I will not update your data and your app is not going to rerender."**
