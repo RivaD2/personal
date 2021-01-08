@@ -1,18 +1,26 @@
+import _ from 'lodash';
 import jsonPlaceholder from '../apis/jsonPlaceholder';
+
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+    // Calling action creator inside action creator
+    await dispatch(fetchPosts());
+    // Lodash map and uniq methods
+    const userIds = _.uniq(_.map(getState().posts, 'userId'));
+    userIds.forEach(id => dispatch(fetchUser(id)));
+};
 
 export const fetchPosts = () => async dispatch => {
     const response = await jsonPlaceholder.get('/posts');
     dispatch({
       type: 'FETCH_POSTS',
-      payload:response
-    })
+      payload:response.data
+    });
 };
 
 export const fetchUser = id => async dispatch => {
-  // Fetch one user at a time
-  const response = jsonPlaceholder.get(`/users/${id}`);
+  const response = await jsonPlaceholder.get(`/users/${id}`);
   dispatch({
     type: 'FETCH_USER',
     payload: response.data
-  })
-};
+  });
+} ;

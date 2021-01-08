@@ -13,6 +13,7 @@
 - React-redux
 - Redux
 - JSON Placeholder API `jsonplaceholder.typicode.com/`
+- Lodash to understand how memoization works with user requests
 
 **Result:**
 
