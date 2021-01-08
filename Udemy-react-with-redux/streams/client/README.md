@@ -1,25 +1,36 @@
-# Blog: A plain blog app with a focus on learning more about Redux
+# A clone of the popular website Twitch.tv
 
-**Goals**
+**What it includes**
 
-- Really understand purpose of reducers and how they work internally
-- Total understanding of API request with Redux
-- Understand the purpose of middleware inside Redux, specifically `redux-thunk`
+1. Users will be able to stream video from the desktop
+2. Once they see a stream, the user can select a stream which makes a request to the RTMP server to get live video stream
+3. Users will be able to see a list of streams/channels available and view video from a single stream if not logged in
+4. Users will be able to login
+5. Users once logged in, will be able to create streams, edit streams and delete any stream they have created
 
-**Tools Used**
+
+**Tools Used:**
 
 - React
-- Redux-Thunk
-- React-redux
+- API server that lists out all the streams or channels that a user can watch
+- RTMP(Real Time Messaging Protocol) server which handles video streaming itself
+- React-Redux 
 - Redux
-- Axios
-- JSON Placeholder API `jsonplaceholder.typicode.com/`
-- Lodash to understand how memoization works with user requests and how to chain methods
+- Google Sign-in/ Google Oauth for handling authentication
+- react-router-dom to manage Navigation
 
-**Result:**
+**How it Works:**
 
-![simpleBlog]('./../src/assets/simpleBlog.png);
+1. When the user comes to the landing page, they will see a list of all the different streams available on the app
+2. The list of streams includes a name/title or description
+3. Once the user clicks on a stream, they are taken to the Detail page that shows them the video player that displays video being streamed from user currently streaming video
+4. With Twitch, every user has one stream/channel they can stream to. This application is different from Twitch in that it allows the user to create unlimited channels/streams that they can stream to.
+5. When a user is not logged into the application, they can only see the list of channels/streams available and view video from a single stream
+6. When a user is logged in, they can create a new stream, edit any stream they have created and delete any stream they have created
+7. When the user is signed in, any stream they have created will have additional buttons (so a slightly different landing page is shown compared to when the user is not logged in)
 
+
+** Final Result:**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

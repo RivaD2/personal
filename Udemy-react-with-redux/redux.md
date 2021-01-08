@@ -359,3 +359,15 @@ If has changed is true, the new state object will be returned. Otherwise, the st
 - Use spread operator to update a property in an object
 - Use spread operator to add a property to an object
 - Use spread to remove a property from an object
+
+
+### react-router-dom
+
+1. react-router: Core navigation lib, I don't install this manually
+2. react-router-dom: Navigation for dom-based apps
+3. react-router-native: Navigation for react-native apps
+4. react-router-redux: Bindings between Redux and React Router(not necessary)
+
+- The react-router itself has core navigation logic, how to work with React, how to change content out etc.
+- `react-router-dom` is used to handle navigation in web-based aps, so I do not need to install `react-router`
+- `react-router-redux` is a compatbility layer to get Redux and React to work well together and in fact, navigation should not be taken care of in Redux
