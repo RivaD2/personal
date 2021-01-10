@@ -371,3 +371,69 @@ If has changed is true, the new state object will be returned. Otherwise, the st
 - The react-router itself has core navigation logic, how to work with React, how to change content out etc.
 - `react-router-dom` is used to handle navigation in web-based aps, so I do not need to install `react-router`
 - `react-router-redux` is a compatbility layer to get Redux and React to work well together and in fact, navigation should not be taken care of in Redux
+
+**How React Router Dom works with `<Browser Router/>`**
+
+- As we navigate to different URL's on the screen, different content is shown
+- React router cares about a very specific part of the URL
+- It cares about all the characters that are listed after the port and the domain
+- Once an app is created and loaded in browser, an instance of the BrowserRouter Component is made
+- BrowserRouter internally creates an object of its own called the history object
+- This history object looks at url inside of your address bar and extracts portion of url that React-router cares about
+- The history object then sends the path to BrowserRouter
+- BrowserRouter then sends the path down to route components
+- The Route components then decide to show or hide themselves depending on the path inside of the url that the user is visiting and the path prop that is passed when it was created
+- The `path` property is used by ReactRouter to decide whether or not to show Component on the screen
+- In React Router Application, different routes can be matched by the same URL and all show themselves to the user
+- The `exact` prop inside Route component causes React Router to change the rule that it uses for matches the path slightly. Basically it asks: `extractedPath === path`
+- If `extractedPath !== path` then the component will not show
+
+**Oauth-Based Authentication**
+
+**Email/Password Authentication**
+
+- We store a record in the DB with the users email and encrypted password
+- When the user tries to login, we compare email/password with whatever is saved in DB
+- They are logged in when they enter the correct info
+
+**OAuth Authentication**
+
+- User authenticates with outside service provider(Google, LinkedIn, Facebook)
+- User authorizes our app to access their information
+- Outside provider gives us the info we need to identify the user
+- We are trusting the outside provider to correctly handle identification of user
+- OAuth can be used for user identification in our app and also our app making actions on behalf of the user
+- A scope is a permission I am granting to an application
+
+**OAuth for Servers**
+
+- Results in a 'token' that a server can use to make request on behalf of the user
+- Usually used when we have an app that needs to access user data **when they are NOT logged in**
+- Difficult to set up because we need to store a lot of info about the user
+
+**OAuth for JS Browser Apps**
+
+- Results in a 'token' that a browser app can use to make requests on behalf of the user
+- Usually used when we have an app that only needs to access user data **while they are logged in**
+- Very easy to set up thanks to Google's JS lib to automate flow
+
+*OAuth Flow**
+
+- User clicks on Login with Google button
+- We use Google JS lib to initiate OAuth process
+- Google's JS lib makes auth request over to Google
+- Google displays confirmation screen to user in popup window
+- User accepts
+- Popup window closes
+- Google JS lib invokes a callback in React/Redux app
+- Callback provided with 'authorization' token and profile info for user
+- If user is logged out, that would be a separate callback event
+
+**Steps for Setting up OAuth**
+
+- Create a new project at console.developers.google.com
+- Set up an OAuth confirmation screen
+- Generate an OAuth Client ID
+- Install Google's API library, initialize it with the OAuth Client ID
+- Make sure the lib gets called any time the user clicks on the 'Login with Google button'
+
