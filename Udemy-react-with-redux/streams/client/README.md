@@ -16,8 +16,10 @@
 - RTMP(Real Time Messaging Protocol) server which handles video streaming itself
 - React-Redux 
 - Redux
+- Redux-Form
 - Google Sign-in/ Google Oauth for handling authentication
 - react-router-dom to manage Navigation
+
 
 **How it Works:**
 

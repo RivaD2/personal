@@ -437,3 +437,52 @@ If has changed is true, the new state object will be returned. Otherwise, the st
 - Install Google's API library, initialize it with the OAuth Client ID
 - Make sure the lib gets called any time the user clicks on the 'Login with Google button'
 
+**Redux Dev Tools**
+
+- Go to: https://github.com/zalmoxisus/redux-devtools-extension
+- Go to the 'Installation' section
+- Add the extension for Chrome or Firefox
+- Scroll down further on the repo to find 'Advanced Store Setup'
+- Import `{compose}` and `applyMiddleware` into root `index.js` file
+- Add the following code to prepare for Redux Thunk:
+
+```javascript
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store =  createStore(
+  reducers,
+  composeEnhancers(applyMiddleware())
+  );
+```
+
+- There are two features used frequently with these dev tools: 'State' which shows the current state inside Redux store. I can see all data sitting inside Redux app
+- The second feature is the left panel. This is a list of all the action dispatched to the store
+- I can 'jump' back in time using this panel by clicking on 'jump'
+- This allows me to get a better idea of what happened at different points in time
+- When we click 'jump', I am not just changing the state inside dev tool, I am changing the state inside my real Redux store! We can see this happening in our app as we click 'jump'
+
+**Debug Sessions with Redux Dev Tools**
+
+- We can add a query string at the end of our localhost address
+- When we do this, Redux Dev Tools will see I am trying to set up a debug session
+- It will automatically save all data inside the Redux store and persist across refreshes of the app
+- Normally on a refresh, all data falls away
+- This is incredibly helpful with advanced feature development
+- I must make sure to remove the query string after I am done using the debug session
+- Debug sessions allow me to have checkpoints of state
+
+**Forms with Redux-Form Library**
+
+- To start, run: `npm install redux-form`
+- It is kind of challenging, however it does a lot automatically
+- With Redux, all data needs to be inside Redux store
+- Redux form will automate some portion of that flow
+- The reducer holds the state of all the forms inside app, all the form data will exist inside the redux store
+- In order to make sure we can get data into the store, we  use `mapStateToProps` and then pass them into input elements as values
+- Anytime user makes a change to an element, I will have callback handler that will call action creator which will try and update form data
+- The cool thing about Redux form is it will handle all this for us
+- Redux Form is going to have a reducer that we just wire up to the applicatino
+- I do not write the reducer, but rather it is given to me along with `mapStateToProps` and all action creators from Redux-Form
+- I just have to make sure I get form info down into an input element, and that the input element knows it has to call a callback handler provided by `Redux-Form` anytime it is changed
+  
+**With all this said, if we go to the Redux-Store repo (https://github.com/redux-form/redux-form), we will see that the general consensus is that we DO NOT want form state inside the Redux Store.`React Final Form` is a better option. However, it is noted that the only good reason to use `Redux Form` in your application is if you need really tight coupling of your form data with Redux, specifically if you need to subscribe to it and modify it from parts of your application far from your form component**
