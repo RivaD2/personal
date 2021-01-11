@@ -870,3 +870,28 @@ const isPalindrome = str => {
   return false;
 } 
 isPalindrome("eye");
+
+/*Write a function that takes an obj as an arg and returns a very 
+similar object, but with a special property. The returned obj should allow
+a user to access values by providing only the beginning of the key for the value they want. 
+
+For example, if the given object has a key idNumber, you should be able to 
+access its value on the returned object by using a key idNum or even id.
+
+Num and Number shouldn't work because we are looking for matches at the
+beginning of a key.*/
+
+const partialKeys = obj => {
+    // loop over properies of the obj
+    // Create all substring properties on the obj
+    // Assign substring properties to values
+  const newObj = {};
+  Object.keys(obj).sort().reverse().forEach(key => {
+    const value = obj[key];
+    for(let i = 0; i < key.length; i++){
+      const newKey = key.substring(0, i + 1);
+      newObj[newKey] = value;
+    }
+  });
+    return newObj;
+};
