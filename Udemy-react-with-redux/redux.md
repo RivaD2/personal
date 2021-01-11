@@ -486,3 +486,4 @@ const store =  createStore(
 - I just have to make sure I get form info down into an input element, and that the input element knows it has to call a callback handler provided by `Redux-Form` anytime it is changed
   
 **With all this said, if we go to the Redux-Store repo (https://github.com/redux-form/redux-form), we will see that the general consensus is that we DO NOT want form state inside the Redux Store.`React Final Form` is a better option. However, it is noted that the only good reason to use `Redux Form` in your application is if you need really tight coupling of your form data with Redux, specifically if you need to subscribe to it and modify it from parts of your application far from your form component**
+
