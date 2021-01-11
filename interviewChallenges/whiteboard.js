@@ -848,3 +848,25 @@ const countLetters = str => {
     return -1;
 }
 
+/* Given a function, confirmEnding which takes two args, a str and a target,
+check if a str ends with the given target string, target. Use a substr() method.
+
+Ex: confirmEnding("Bastian", "n")*/
+const confirmEnding = (str, target) => {
+// can also use slice return str.slice(-target.length === target)
+  if(str.substr(-target.length) === target) {
+      return true;
+  }
+  return false;
+}
+
+/*Write a function that checks whether a given string is a palindrome.
+Remove all alphanumeric characters.*/
+const isPalindrome = str => {
+ let reg = /[\W_]/g;
+ let removedAlphanumerics = str.toLowerCase().replace(reg,'');
+ const reversed = removedAlphanumerics.split('').reverse().join('');
+ if(reversed === removedAlphanumerics) return true; 
+  return false;
+} 
+isPalindrome("eye");
