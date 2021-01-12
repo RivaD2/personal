@@ -17,9 +17,17 @@
 - React-Redux 
 - Redux
 - Redux-Form
-- Google Sign-in/ Google Oauth for handling authentication
-- react-router-dom to manage Navigation
+- Redux-thunk
+- Google Sign-in/ Google OAuth for handling authentication
+- React-router-dom to manage Navigation
 - JSON server (used because of REST-ful conventions)
+- Axios for ajax requests
+
+*How to use/view Streams app:**
+
+- You will need to clone the repo and then run the command `npm i` both in the client directory and api directory
+- Open up two terminal windows and do an `npm start` for both the `client` and `api` directories
+  
 
 **How it Works:**
 
