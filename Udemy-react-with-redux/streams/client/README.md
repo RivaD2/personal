@@ -22,6 +22,7 @@
 - React-router-dom to manage Navigation
 - JSON server (used because of REST-ful conventions)
 - Axios for ajax requests
+- Lodash
 
 *How to use/view Streams app:**
 
