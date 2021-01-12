@@ -19,7 +19,7 @@
 - Redux-Form
 - Google Sign-in/ Google Oauth for handling authentication
 - react-router-dom to manage Navigation
-
+- JSON server (used because of REST-ful conventions)
 
 **How it Works:**
 
