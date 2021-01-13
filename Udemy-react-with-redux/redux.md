@@ -488,3 +488,48 @@ const store =  createStore(
 **With all this said, if we go to the Redux-Store repo (https://github.com/redux-form/redux-form), we will see that the general consensus is that we DO NOT want form state inside the Redux Store.`React Final Form` is a better option. However, it is noted that the only good reason to use `Redux Form` in your application is if you need really tight coupling of your form data with Redux, specifically if you need to subscribe to it and modify it from parts of your application far from your form component**
 
 ### REST-based React Apps**
+
+**When to Navigate User**
+
+1. Intentional Navigation:Whenever a user clicks on a Link component. They are trying to go from page A to page B.
+2. Programmatic Navigation: When I run code in response to some event and this code has intent of navigating user to another component.
+3. What instant in time do I want the user to go back, or go to another page? In the case of the Stream App, I do NOT want to navigate user back to streams immediately after request is made. Why? Because the stream might not be created. The user has already navigated away from the form. In other words, I don't want to navigate them away too early.
+4. Instead, I want to have the following happen:
+   - User submit the form
+   - The request is made to back-end API to create the Stream
+   - Time passes...we wait
+   - API responds with success or error
+   - Either show error to user OR navigate them back to list of streams
+
+**How to do Programmatic Navigation**
+
+- Sometimes it is easy, other times it can be quite difficult
+- Browser Router is at the top of the Component hierarchy in the Streams app, and it creates this history object
+- The history object tracks the address in the address bar of the browser
+- The history object doesn't just watch the address bar but also has the ability to change the address bar
+- To make programmatic navigation work, we can use the history object
+- It is challenging to write code that can get a reference to THAT history object
+
+**Normal operations of Browser Router**
+
+- Internally, Browser Router creates the history object
+- Anytime Browser Router renders some component, the Browser Router passes history object as a prop down to your component
+- That component could EASILY TRIGGER navigation inside of it
+- However, if you are trying to navigation from an action creator and NOT a component, it is hard to get the reference to the history object
+
+**Solution:**
+
+- Anytime component calls action creator, the component should pass along the history object into the action creator
+- This is hard because every single time, I would have to write action creators to be called with history object and make sure all components call action creator with history object. NOT IDEAL
+- **BETTER SOLUTION:** Since the Browser Router maintains history object, we can create the history object ourselves inside a file in our project. We can then access the object by importing the file when we need it, thus maintaining control over the history object instead of React-Router
+- When we create a history object that will look at everything after port to decide to what to show on the screen
+- I no longer need the `<Browser Router>` object, instead, it will be just a plain `<Router>`
+
+**How to manually change API records using JSON server**
+
+- In terminal, go to your api directory where `db.json` file
+- Inside of `db.json` we have a list of records created
+- I can just change the json file itself
+- API server will automatically restart
+
+
