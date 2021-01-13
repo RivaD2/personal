@@ -540,6 +540,31 @@ const store =  createStore(
 - Users often come directly to a given route in your app, so it can not rely upon another component fetching data fro it ahead of time
 - With React-Router, components should fetch their own data as eventually user will go to a page where the data will not exist
 
+### Using React Portals
+
+- Creating modals with React can be challenging
+- In React, all of our elements are nested inside of that 'div with id of root'
+- That is the normal operation of React
+- However, there is a feature called 'Portals'
+- We can use Portals to get around all the nested elements etc.
+
+**Why use a Portal?**
+
+- We don't have to stick to strict component hierarchy using Portals
+- We can ask Portals to make a component a child of another element in the structure
+- In the Stream app, I can make the modal component a child of another element without conflicts
+- Most common uses for this are for modal windows or anytime we want to work with 3rd party library
+
+**How to Create a Portal and render something into it**
+
+- Build it as a reusable component 
+- Have to use `react-dom` 
+- We return a reference or call to reactDOM.createPortal()
+- `reactDOM.createPortal() takes two arguments:
+      - The first is JSX
+      - Second is a reference to HTML element, usually by using `document.querySelector`
+
+
 
 
 
