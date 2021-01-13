@@ -1,3 +1,22 @@
 {
-  "streams": []
+  "streams": [
+    {
+      "title": "stream",
+      "description": "stream action",
+      "userId": "101097747827947828276",
+      "id": 1
+    },
+    {
+      "title": "stream 4",
+      "description": "stream about cats with balls",
+      "userId": "101097747827947828276",
+      "id": 2
+    },
+    {
+      "title": "stream 4",
+      "description": "stream about cats with balls",
+      "userId": "101097747827947828276",
+      "id": 3
+    }
+  ]
 }
