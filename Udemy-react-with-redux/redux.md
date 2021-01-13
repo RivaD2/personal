@@ -532,4 +532,14 @@ const store =  createStore(
 - I can just change the json file itself
 - API server will automatically restart
 
+**Component Isolation with React-router**
+
+- ID based selection in URl requires us to obey this rule:
+
+**Each component needs to be designed to work in isolation (fetch its own data!)**
+- Users often come directly to a given route in your app, so it can not rely upon another component fetching data fro it ahead of time
+- With React-Router, components should fetch their own data as eventually user will go to a page where the data will not exist
+
+
+
 
