@@ -1,13 +1,12 @@
 {
   "streams": [
     {
-      "title": "stream",
+      "title": "Dragon stream",
       "description": "stream action",
-      "userId": "101097747827947828276",
       "id": 1
     },
     {
-      "title": "stream 4",
+      "title": "New Cat stream",
       "description": "stream about cats with balls",
       "userId": "101097747827947828276",
       "id": 2
@@ -23,6 +22,12 @@
       "description": "Watch Ragnar",
       "userId": "101097747827947828276",
       "id": 4
+    },
+    {
+      "title": "Succulent with eyes",
+      "description": "Weird plants with eyes",
+      "userId": "101097747827947828276",
+      "id": 5
     }
   ]
 }
