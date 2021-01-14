@@ -564,7 +564,40 @@ const store =  createStore(
       - The first is JSX
       - Second is a reference to HTML element, usually by using `document.querySelector`
 
+**RTMP Server Setup**
 
+- Import on root `index.js` is  `const NodeMediaServer = require('node-media-server');`
+- It has to receive different video streams and broadcast them out
+- In terminal, inside main directory where project is held:
+     - Make new file called rtmpserver
+     - cd into it
+     - generate new package.json with `npm init`
+     - read docs about Node Media Server at ![github.com/illuspas/Node-Media-Server]
+     - Create new `index.js` inside rtmp server directory and add the following:
 
+```javascript
+
+const NodeMediaServer = require('node-media-server');
+
+const config = {
+  rtmp: {
+    port: 1935,
+    chunk_size: 60000,
+    gop_cache: true,
+    ping: 30,
+    ping_timeout: 60
+  },
+  http: {
+    port: 8000,
+    allow_origin: '*'
+  }
+};
+
+var nms = new NodeMediaServer(config)
+nms.run();
+
+```
+
+- inside directory, run `npm start`
 
 
