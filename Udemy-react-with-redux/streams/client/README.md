@@ -26,7 +26,7 @@
 - Lodash
 
 
-*How to use/view Streams app:**
+**How to use/view Streams app:**
 
 - You will need to clone the repo and then run the command `npm i` both in the client directory and api directory
 - Open up two terminal windows and do an `npm start` for both the `client` and `api` directories
@@ -44,17 +44,19 @@
 
 ### Final Result:
 
-![streamsList]('./../src/assets/StreamsList.png)
+![streamsList]('./../src/assets/streams-list.png)
 
-![OAuth](src/assets/OAuth.png)
+![OAuth](src/assets/oAuth.png)
 
-![StartingStream]('./../src/assets/startingStream.png)
+![After Signin](../client/src/assets/edit-delete.png)
 
-![flvPlayer]('./../src/assets/FLVplayer.png)
+![StartingStream]('./../src/assets/starting-stream.png)
 
-![FlvPlayer](src/assets/FLVPlayer2.png)
+![flvPlayer]('./../src/assets/flvplayer.png)
 
-![githubOnPlayer]('./../src/assets/VideoPlayer.png)
+![FlvPlayer](src/assets/flvPlayer2.png)
+
+![githubOnPlayer]('./../src/assets/videoPlayer.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
