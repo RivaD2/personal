@@ -599,5 +599,13 @@ nms.run();
 ```
 
 - inside directory, run `npm start`
+- go to ![obsproject.com]
+- select OS you use
+- Follow instructions for installation 
 
+- When we try to access livestream/video there are many formats we can access it with
+- HLS and DASH are popular types but enabling takes a bit longer
+- So for the RTMP server in Streams app, I use `http-flv` (flash video format)
+- So, to set it up this way, follow instruction on the `flv.js` over `http-flv` set up on ![github.com/illuspas/Node-Media-Server]
+- Install the `flv` library for the actual video player
 

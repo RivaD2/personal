@@ -13,7 +13,8 @@
 
 - React
 - API server that lists out all the streams or channels that a user can watch
-- RTMP(Real Time Messaging Protocol) server which handles video streaming itself
+- OBS for RTMP(Real Time Messaging Protocol) server which handles video streaming itself
+- Flv.js
 - React-Redux 
 - Redux
 - Redux-Form
@@ -23,6 +24,7 @@
 - JSON server (used because of REST-ful conventions)
 - Axios for ajax requests
 - Lodash
+
 
 *How to use/view Streams app:**
 
