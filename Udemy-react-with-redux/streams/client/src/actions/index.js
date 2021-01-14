@@ -57,7 +57,7 @@ export const editStream = (id, formValues) => async dispatch => {
     payload: response.data
   })
   history.push('/');
-}
+};
 
 
 export const deleteStream = id => async dispatch => {
@@ -66,5 +66,6 @@ export const deleteStream = id => async dispatch => {
     type: DELETE_STREAM,
     payload: id
   });
+  history.push('/')
 };
 

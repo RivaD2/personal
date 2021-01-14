@@ -2,13 +2,26 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 
 const Modal = props => {
-  /*
-   Create protal takes two args, 
+  /*Create protal takes two args, 
    JSX and reference to element we want to render Portal into*/
   return ReactDOM.createPortal(
-    <div className="ui dimmer modals visible active">
-      <div className="ui standard modal visible active">
-        Modal Window
+    <div 
+    // onDimiss
+      onClick={props.onDismiss} 
+      className="ui dimmer modals visible active"
+    >
+      {/* stopPropogation() prevents event bubbling/our window getting dismissed */}
+      <div 
+        onClick={e => e.stopPropagation()} 
+        className="ui standard modal visible active"
+      >
+       <div className="header">{props.title}</div>
+       <div className="content">
+         {props.content}
+       </div>
+       <div className="actions">
+         {props.actions}
+       </div>
       </div>
     </div>,
      document.querySelector('#modal')
