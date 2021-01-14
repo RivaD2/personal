@@ -18,8 +18,8 @@
       "id": 3
     },
     {
-      "title": "Cat videos",
-      "description": "Watch Ragnar",
+      "title": "Ragnar video",
+      "description": "Watch Ragnar jump",
       "userId": "101097747827947828276",
       "id": 4
     },
@@ -28,6 +28,12 @@
       "description": "Weird plants with eyes",
       "userId": "101097747827947828276",
       "id": 5
+    },
+    {
+      "title": "code challenge reduce",
+      "description": "reduce stream",
+      "userId": "101097747827947828276",
+      "id": 6
     }
   ]
 }
