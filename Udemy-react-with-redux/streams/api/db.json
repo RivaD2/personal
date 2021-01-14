@@ -34,6 +34,12 @@
       "description": "reduce stream",
       "userId": "101097747827947828276",
       "id": 6
+    },
+    {
+      "title": "Final product: Streams Application ",
+      "description": "A streaming app modeled after Twitch TV",
+      "userId": "101097747827947828276",
+      "id": 7
     }
   ]
 }

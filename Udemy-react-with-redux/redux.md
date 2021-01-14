@@ -439,7 +439,7 @@ If has changed is true, the new state object will be returned. Otherwise, the st
 
 **Redux Dev Tools**
 
-- Go to: https://github.com/zalmoxisus/redux-devtools-extension
+- Go to: [Redux Dev Tools](https://github.com/zalmoxisus/redux-devtools-extension)
 - Go to the 'Installation' section
 - Add the extension for Chrome or Firefox
 - Scroll down further on the repo to find 'Advanced Store Setup'
@@ -485,7 +485,7 @@ const store =  createStore(
 - I do not write the reducer, but rather it is given to me along with `mapStateToProps` and all action creators from Redux-Form
 - I just have to make sure I get form info down into an input element, and that the input element knows it has to call a callback handler provided by `Redux-Form` anytime it is changed
   
-**With all this said, if we go to the Redux-Store repo (https://github.com/redux-form/redux-form), we will see that the general consensus is that we DO NOT want form state inside the Redux Store.`React Final Form` is a better option. However, it is noted that the only good reason to use `Redux Form` in your application is if you need really tight coupling of your form data with Redux, specifically if you need to subscribe to it and modify it from parts of your application far from your form component**
+**With all this said, if we go to the [Redux-Store repo](https://github.com/redux-form/redux-form), we will see that the general consensus is that we DO NOT want form state inside the Redux Store.`React Final Form` is a better option. However, it is noted that the only good reason to use `Redux Form` in your application is if you need really tight coupling of your form data with Redux, specifically if you need to subscribe to it and modify it from parts of your application far from your form component**
 
 ### REST-based React Apps**
 
@@ -572,8 +572,8 @@ const store =  createStore(
      - Make new file called rtmpserver
      - cd into it
      - generate new package.json with `npm init`
-     - read docs about Node Media Server at ![github.com/illuspas/Node-Media-Server]
-     - Create new `index.js` inside rtmp server directory and add the following:
+     - read docs about Node Media Server at [Node-Media-Server](github.com/illuspas/Node-Media-Server)
+     - Create new `index.js` inside RTMP server directory and add the following:
 
 ```javascript
 
@@ -599,13 +599,13 @@ nms.run();
 ```
 
 - inside directory, run `npm start`
-- go to ![obsproject.com]
+- go to obsproject.com
 - select OS you use
 - Follow instructions for installation 
 
 - When we try to access livestream/video there are many formats we can access it with
 - HLS and DASH are popular types but enabling takes a bit longer
 - So for the RTMP server in Streams app, I use `http-flv` (flash video format)
-- So, to set it up this way, follow instruction on the `flv.js` over `http-flv` set up on ![github.com/illuspas/Node-Media-Server]
+- So, to set it up this way, follow instruction on the `flv.js` over `http-flv` set up on github.com/illuspas/Node-Media-Server
 - Install the `flv` library for the actual video player
 

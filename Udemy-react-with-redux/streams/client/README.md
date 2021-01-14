@@ -42,8 +42,19 @@
 6. When a user is logged in, they can create a new stream, edit any stream they have created and delete any stream they have created
 7. When the user is signed in, any stream they have created will have additional buttons (so a slightly different landing page is shown compared to when the user is not logged in)
 
+### Final Result:
 
-** Final Result:**
+![streamsList]('./../src/assets/StreamsList.png)
+
+![OAuth](src/assets/OAuth.png)
+
+![StartingStream]('./../src/assets/startingStream.png)
+
+![flvPlayer]('./../src/assets/FLVplayer.png)
+
+![FlvPlayer](src/assets/FLVPlayer2.png)
+
+![githubOnPlayer]('./../src/assets/VideoPlayer.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
