@@ -29,7 +29,12 @@
 **How to use/view Streams app:**
 
 - You will need to clone the repo and then run the command `npm i` both in the client directory and api directory
-- Open up two terminal windows and do an `npm start` for both the `client` and `api` directories
+- Open up two terminal windows and do an `npm start` for both the `client`, `api` , and `rtmpserver` directories
+- Go to [obsproject](obsproject.com)
+- Select OS you use
+- Follow instructions for installation if OBS on your local machine
+- Go to [Node-Media-Server](github.com/illuspas/Node-Media-Server) to read about setting up rtmp server
+
   
 
 **How it Works:**
@@ -44,19 +49,19 @@
 
 ### Final Result:
 
-![streamsList](../client/src/assets/streams-list.png)
+![streamsList](../../streams/client/src/assets/streams-list.png)
 
-![OAuth](./src/assets/oAuth.png)
+![OAuth](../../streams/client/src/assets/oAuth.png)
 
-![After Signin](./src/assets/starting-stream.png)
+![EditDelete](../client/src/assets/edit-delete.png)
 
-![StartingStream](./src/assets/starting-stream.png)
+![AfterSignin](../../streams/client/src/assets/edit-delete.png)
 
-![flvPlayer](./src/assets/flvplayer.png)
+![flvPlayer](../../streams/client/src/assets/flvplayer.png)
 
-![FlvPlayer](./src/assets/flvPlayer2.png)
+![flvPlayer2](../../streams/client/src/assets/flvPlayer2.png)
 
-![githubOnPlayer](./src/assets/videoPlayer.png)
+![githubOnPlayer](../../streams/client/src/assets/videoPlayer.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
