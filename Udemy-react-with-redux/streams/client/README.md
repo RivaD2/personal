@@ -49,19 +49,19 @@
 
 ### Final Result:
 
-![streamsList](../../streams/client/src/assets/streams-list.png)
+![streamsList](./src/assets/streams-list.png)
 
-![OAuth](../../streams/client/src/assets/oAuth.png)
+![OAuth](./src/assets/OAuth.png)
 
-![EditDelete](../client/src/assets/edit-delete.png)
+![EditDelete](./src/assets/edit-delete.png)
 
-![AfterSignin](../../streams/client/src/assets/edit-delete.png)
+![AfterSignin](./src/assets/starting-stream.png)
 
-![flvPlayer](../../streams/client/src/assets/flvplayer.png)
+![flvPlayer](./src/assets/FLVplayer.png)
 
-![flvPlayer2](../../streams/client/src/assets/flvPlayer2.png)
+![flvPlayer2](./src/assets/FLVPlayer2.png)
 
-![githubOnPlayer](../../streams/client/src/assets/videoPlayer.png)
+![githubOnPlayer](./src/assets/VideoPlayer.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
