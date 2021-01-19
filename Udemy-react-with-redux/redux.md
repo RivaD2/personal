@@ -609,3 +609,11 @@ nms.run();
 - So, to set it up this way, follow instruction on the `flv.js` over `http-flv` set up on github.com/illuspas/Node-Media-Server
 - Install the `flv` library for the actual video player
 
+### Context System
+
+- Context system gets data from a parent component to any nested child component
+- It is similar to the Props system
+- The difference is that it the context involves data from ANY NESTED child component
+- The context system is just about communicating information
+
+**How to use the Context System**
