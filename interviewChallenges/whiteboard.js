@@ -895,3 +895,113 @@ const partialKeys = obj => {
   });
     return newObj;
 };
+
+// What are the data types supported by JS?
+/*
+boolean,
+string,
+integer,
+null,
+undefined,
+symbol*/
+
+// What do the break and continue statements do?
+/* The break statement jumps out of a loop and the continue statement jumps over one
+iteration of the loop. If I had 10 iterations, and on the second I had  continue statement,
+I would skip over all the code for example.
+
+//Explain the differences between var, const and let
+/* var: It is a scope defined variable and is limited to a function. If it is defined
+        outside of the function, it is global. It is function-scoped.
+   const: Is the same thing as let, HOWEVER, it can't be reassigned. 
+          const num = 50; num can't be reassigned but it CAN be mutated.
+   let: Scoped-defined. It is limited to a code block. If I call this outside, it won't work.
+       It is inside a block of code.
+
+
+// Explain the difference between null, undefined and undeclared variables
+/* Null: null is a value of a variable and type object. I can check for type of null
+        can be evaulated. 
+   undefined: It is a variable that has been declared, but it's value does not exist or value is undefined.
+   undeclared: A variable that has been declared without the var keyword
+*/
+
+//What is the difference between == and === ?
+/* == operator tests for abstract quality, it does type conversion for doing equality conversion
+  === operator is more strict:  var num = 50 === var num = '50' // returns false
+
+  These deal with type conversions*/
+      
+
+// 'trick' question regarding syntax
+// What does each return?
+function foo1() {
+    return {
+        // return hello
+        bar:'hello'
+    }
+}
+
+function foo1() {
+    return 
+    { //dead code, return undefined
+     // opening curly is not on the return line
+        bar:'hello'
+    }
+}
+// Youtube Frontend Interview Question Peter Elbaum:
+
+/*What is an IIFE?
+It is an immediately invoked function expresssion. It creates a closure around the code I write.
+It is writing a function and then immediately calling it. It helps me to mitigate naming collisions*/
+
+/* What CSS frameworks have I used?
+breakpoints, styleguides. or are you overly reliant on bootstrap etc?
+*/
+
+/* What does the keyword 'this' refer to?
+  this is a property of an execution context or function. 
+  It is typically a reference to an object in which it is used and when it isn't, 
+  it is referencing the global context or window object. Arrow functions don't have 'this' but 
+  have it inherited from the parent (in React for example)*/
+
+/*What is the difference between absoloute, relative and static positioning in CSS?
+relative: top, bottom, left, right specify how offset a box is from its normal position
+absolute: taken out of normal document flow and attached to parent that is relatively positioned. 
+          If there is no relative parent, it attaches to the window
+static: default value*/
+
+/*What are the parts of an HTTP request?
+1. Preflight: TCP connection, client establishes a TCP connection.
+    This is the period before the request is sent.
+2. Request is sent, status is pending
+3. HTTP request comes back either resolved or rejected
+*/
+
+// Given an array of nums, write a function that returns the values and the index value
+
+const selfPlusIndex = array => {
+  const newArray = array.map((item, i)=> item + i)
+  return newArray;
+}
+
+// Shuffle list of integers in an array
+// Measure where I am in array, starting at the end and working backwards
+// For each index, get currentindex and generate a random num based on current value so it isn't greater
+// With random num, assign currentIndex a temp value while I mutate the original one
+// Mutate currentIndex and give it randomIndex value
+
+const shuffle = arr => {
+  let currentIndex = arr.length;
+  let tempValue, randomIndex
+
+  while(currentIndex !== 0){ 
+   randomIndex = Math.floor(Math.random() * currentIndex)
+   currentIndex -= 1;
+
+   tempIndex = arr[currentIndex];
+   arr[currentIndex] = arr[randomIndex]
+   arr[randomIndex] = tempValue
+  }
+   return arr;
+}
