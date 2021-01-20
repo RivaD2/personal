@@ -616,4 +616,23 @@ nms.run();
 - The difference is that it the context involves data from ANY NESTED child component
 - The context system is just about communicating information
 
-**How to use the Context System**
+**How Context System Works**
+
+- It is all about communicating information from parent to child
+- In order to do this, I create a context object
+- This object holds data that is consumed by a child component
+- How does the information get into the object and out of it?
+
+**There are two ways to get information into the object and out of it**
+
+**DATA IN**
+
+1. Set up a default value when context object is created
+2. Inside parent component, I can create a `<Provider>` component (Provider pushes info into context object)
+
+**DATA OUT**
+
+1. I can reference `this.context` inside nested child
+2. Create component in the nested child called a `<Consumer>` component
+
+- So, the parent becomes the Provider, the child becomes the Consumer
