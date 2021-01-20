@@ -636,3 +636,95 @@ nms.run();
 2. Create component in the nested child called a `<Consumer>` component
 
 - So, the parent becomes the Provider, the child becomes the Consumer
+
+**Creating the Context Object**
+
+- I can create a `context` directory with one `context.js` file and then make use of it where I want to connect it.
+- To do this: 
+
+```javascript
+import React from 'react'
+
+export default React.createContext();
+```
+
+- The challenge is not creating the context object, but rather how to get data in it and out of it.
+- After creating the context object, I can get information in by setting up the default value by passing it in directly to the context call.
+
+```javascript
+
+export default React.createContext('english);
+```
+
+- I can import the context file where needed and connect context object to the child by using he `this.context` property
+
+
+```javascript
+
+// static contextType is how we hook up context object to Class component
+// static adds property to the Class itself
+// I can also write Button.contextType = LanguageContext
+
+class Button extends React.Component {
+  static contextType = LanguageContext;
+  
+  render() {
+    // Getting reference to data inside context object
+    const text = this.context === 'english' ? 'Submit' : 'Voorleggen';
+    return (
+      <button className="ui button primary">{text}</button>
+    )
+  }
+}
+
+export default Button;
+```
+
+- The default value passed to the context object can easily be changed
+- I can pass it any type of valid JS value
+
+**The Context Provider**
+
+- To communicate information into the context object, I need to create the Provider component
+- It is not the same as the Provider in Redux
+- This Provider component can then update values inside the context object
+- In the translate app, I wrap the `UserCreate` component with the Provider component:
+
+```javascript
+<LanguageContext.Provider value={this.state.language}>
+  <UserCreate />
+</LanguageContext.Provider>
+```
+
+- The parent component renders the Provider component
+- We had the `value` prop which is necessary when using the Provider
+- The `value` prop can come from state obj or a props object or something similar as usually we want to change data in Context object at some point in time
+
+**Accessing Data with Consumers**
+
+- The `Consumer` component is similar to the `Provider` component, created for us automatically when we create a Context object
+- I can use this to get information out of the context object rather than using `this.context`
+- What this also means, is that inside the child, I no longer need to use
+`static contextType`
+
+```javascript
+class Button extends React.Component {
+  render() {
+    return (
+      <button className="ui button primary">
+        <LanguageContext.Consumer>
+          {(value) => value === 'english' ? 'Submit' : 'Vorleggen'}
+        </LanguageContext.Consumer>
+      </button>
+    )
+  }
+}
+
+export default Button;
+```
+
+- Looking at the above code, the `Consumer` will always have one child that is passed it. It is alway sa function
+- This function is automatically called by the consumer, called with whatever current value is in our pipe. That value is the first argument in the function.
+- The function is the child of the React component, which will take child function and invoke it 
+- Inside of the function, and only there can I get access to the value and use it
+- If the logic is complex inside the child in the Consumer, we can always create a helper method on the class
