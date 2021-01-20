@@ -731,8 +731,26 @@ export default Button;
 
 **Why use Consumer vs `this.context`?**
 
-- We should use the `Consumer` whenever we want to information from multipel context objects inside a single component
+- We should use the `Consumer` whenever we want to information from multiple context objects inside a single component
 - `this.context` is used for only a single context object
 - There are times where we want to get information from multiple contexts, which also means we would have another `Provider`.
 
 **The whole point of the Context System is to share information!**
+
+**REDUX vs Context**
+
+- When context first came out, folks considered Context an option to replace Redux
+- Why? Redux distributes data to various components, centralizes data in the store, and provides means of changing data in the store through use of reducers and actions
+- With the Context system by itself, it seems as though it is mainly for distributing data to various components and for parents to communicate to nested children
+
+**HOW we can use Context to replace REDUX and maintain State**
+
+1. I need to be able to get data to any component in the hierarchy(the Context system makes this easier)
+2. I need to be able to separate view logic from business logic(a bit more tricky with Context System)
+3. I need to be able to split up business logic(not have one big file with tons of code). 
+
+**One approach when refactoring the `Translate` App**
+
+1. Extract business logic and place it inside new component 
+2. This component store would implement a Provider to share info to children
+3. This store would be the single source of truth
