@@ -23,7 +23,7 @@ the letter has been found in the string.
 const maxChar = str => {
  let charMap = {};
  // Iterate throgh map, if char has more uses than max, set max to new value
- // Set maxChar for character that is responsible for num set to max
+ // Set maxChar for character(key) that is responsible for num set to max
  let max = 0;
  let maxChar = '';
 
@@ -43,3 +43,4 @@ const maxChar = str => {
  }
  return maxChar;
 };
+
