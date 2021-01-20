@@ -728,3 +728,11 @@ export default Button;
 - The function is the child of the React component, which will take child function and invoke it 
 - Inside of the function, and only there can I get access to the value and use it
 - If the logic is complex inside the child in the Consumer, we can always create a helper method on the class
+
+**Why use Consumer vs `this.context`?**
+
+- We should use the `Consumer` whenever we want to information from multipel context objects inside a single component
+- `this.context` is used for only a single context object
+- There are times where we want to get information from multiple contexts, which also means we would have another `Provider`.
+
+**The whole point of the Context System is to share information!**
