@@ -754,3 +754,25 @@ export default Button;
 1. Extract business logic and place it inside new component 
 2. This component store would implement a Provider to share info to children
 3. This store would be the single source of truth
+
+### MIDDLEWARE IN REDUX
+
+- User does something, calls action creator, returning the action
+- The action flows into the reducer
+- The reducer creates a new global state
+- That gets injected back into app, and rerenders app 
+
+**But where does middleware comes into play?**
+
+**Middleware are functions that take an action and depending on action type and payload, or other factors, the middleware can choose to let action pass through, manipulate the action, console.log it, or stop it before they reach any reducer. Middleware acts as a gatekeeper!**
+
+- Middleware can modify actions and I can have many steps of middleware in an application
+- They are just functions where actions pass through them before hitting the reducer/a reducer
+
+**Redux-Promise Middleware**
+
+- For the starterRedux project, I used `redux-promise` for middleware
+- Helps me to  manage my Ajax request
+- My application state holds all data of the application
+- For the weather data app, I can only change the app state through reducers and actions
+- To add weather data, I have to dispatch an action/call action creator which will be responsible for making Ajax request

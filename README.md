@@ -8,7 +8,8 @@ As time has passed, this repo now holds the code from Udemy courses and addition
 
 **Courses Completed**
 
-- Udemy: Modern React with Redux(52.5hrs) (IN PROGRESS)
+- Udemy: Modern React with Redux(52.5hrs) **(IN PROGRESS)**
+- Udemy: The Coding Interview Bootcamp: Algorithms and Data Structures(13 hrs)  **(IN PROGRESS)**
 - freeCodeCamp: JavaScript Data Structures and Algorithms Certification(300 hrs)
 - Udemy: Node.js: The complete guide to build RESTful APi’s(15 total hours)
 - Udemy: Object Oriented Programming in JS(7.5hrs)
