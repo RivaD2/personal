@@ -20,17 +20,39 @@ const fib = n => {
 };
 
 // Recursive Solution
+// Exponential time
+// What are ways to improve the recursive solution? Answer: MEMOIZATION!
 const fibonacci = n => {
   if(n < 2) return n;
   fib(n - 1) + fib(n - 2)
   return n;
-}
+};
 
-//Memoized Solution
+// Memoized Solution
 const memoizedFib = (n, memo = {}) => {
   if(n in memo) return memo(n);
   if(n <= 2) return 1;
   // Recursive calls here 
   memo(n) = fib(n - 1, memo) + fib( n - 2 , memo);
   return memo(n);
-}
+};
+
+
+// Generic memoize to work with other functions
+const memoize = fn => {
+ const cache = {};
+ return (...args) => {
+   if(cache[args]) {
+     return cache[args];
+   }
+   const result = fn.apply(this, args);
+   cache[args] = result;
+   return result;
+  };
+ };
+
+const slowFib = n => {
+ if(n < 2) return n;
+ return slowFib(n - 1) + slowFib(n - 2);
+};
+

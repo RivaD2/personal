@@ -66,3 +66,10 @@ The 'handshake problem', basically imagine a group of people standing in a room.
 - A lot of times, the space complexity would be the same as time complexity (NOT ALWAYS)
 
 **Memoization**
+
+- When working with recursive solution, the function is called many times but with
+  identical arguments
+- A way to avoid additional function calls is to use memoization
+
+**Memoization involves storing the arguments of each function call along with the result. If the function is called again with the SAME ARGUMENTS, return the precomputed result, rather than than running the function again**
+
