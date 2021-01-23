@@ -95,3 +95,17 @@ The 'handshake problem', basically imagine a group of people standing in a room.
 - Create a new empty queue ---> `const q = new Queue()`
 - Add a record to a queue ---> `q.add(1)`
 - Remove record at the end of a queue ---> g.remove()`
+
+2. Stacks:
+  - It is similar to a queue
+  - FILO is the big DIFFERENCE of the two
+  - Adding a record is pushing
+  - Removing from the stack is popping
+  - Last record in, is first record out
+  
+  **How to implement a stack?**
+
+  - Use three methods: Push, pop, peek
+  - Pop removes from the top of the stack
+  - Push adds to the stack
+  - Peek returns just the top record without removing it from stack

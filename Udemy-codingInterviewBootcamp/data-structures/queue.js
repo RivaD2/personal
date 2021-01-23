@@ -20,7 +20,7 @@ class Queue {
   }
 }
 
-/* Implement a weave function. Weave receives two queues as args and combines
+/* Weave: Implement a weave function. Weave receives two queues as args and combines
 the contents of each into a new, third queue. The third queue should contain
 the alternating content of the two queues. The function should handles queues of 
 different lengths without inserting 'undefined' into the new one.
@@ -38,4 +38,6 @@ const weave = (sourceOne, sourceTwo) => {
     }
   }
   return q;
-}
+};
+
+
