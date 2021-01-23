@@ -8,7 +8,7 @@ Ex: fib(4) === 3
 */
 
 // Iterative: O(n)
-const fib = n => {
+const iterativeFib = n => {
  const result = [0, 1];
  for(let i = 2; i <= n; i++) {
    // Have to get previous two 
@@ -53,6 +53,8 @@ const memoize = fn => {
 
 const slowFib = n => {
  if(n < 2) return n;
- return slowFib(n - 1) + slowFib(n - 2);
+ return fib(n - 1) + fib(n - 2);
 };
+
+const fib = memoize(slowFib);
 

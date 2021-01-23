@@ -73,3 +73,25 @@ The 'handshake problem', basically imagine a group of people standing in a room.
 
 **Memoization involves storing the arguments of each function call along with the result. If the function is called again with the SAME ARGUMENTS, return the precomputed result, rather than than running the function again**
 
+### Data structures
+
+- Data structure is a way of organizing info with optimal 'runtime complexity' for adding or removing records
+- JS natively implements several core data structures
+
+1. Queue: 
+   - It is like a container. Records enter on one end and exit on another
+   - FIFO operation
+   - Enqueuing is adding a record into a queue
+   - Dequeueing is removing a record out from other end
+   - When we remove a record, the first thing to come out is the first record entered
+   - In JS, we have arrays, which are hyper functional
+   - To implement a queue, we can take an array and restrict methods that interact with that array
+   - We can make a Queue Class
+   - And then to add, we use `unshift()`
+   - To remove, we use `pop()`
+
+**How to make a queue**
+
+- Create a new empty queue ---> `const q = new Queue()`
+- Add a record to a queue ---> `q.add(1)`
+- Remove record at the end of a queue ---> g.remove()`
