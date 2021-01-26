@@ -46,7 +46,7 @@
          - **React.PureComponent:** I don't have to use the previous method if I use this one.This compares previous state to new state. If they are the same, rendering stops.I can use this when I am defining the Class on a Class-based component.
          - **React.memo:** This works with function components and uses memoization.
 
-## Questions on the DOM:
+## Questions on the DOM/More on React:
 
 1. Differentiate between the Virtual DOM and the Real DOM(Document Object Model):
    - Virtual DOM: 
