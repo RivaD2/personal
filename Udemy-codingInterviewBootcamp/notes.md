@@ -109,3 +109,17 @@ The 'handshake problem', basically imagine a group of people standing in a room.
   - Pop removes from the top of the stack
   - Push adds to the stack
   - Peek returns just the top record without removing it from stack
+
+3. Linked lists:
+   - A linked list is just an ordered collection of data
+   - Collection contains a number of different nodes
+   - Each node contains some amount of data along with a reference to next node
+   - It is also referred to as a chain
+   - The list of nodes has an order that is always maintained
+   - In every list, there are two special nodes:
+       - The head node, the very first node in list
+       - The tail node: the very last node
+       - The tail does not have a reference to any other node
+   - The data contained in the node can be anything (any valid JS value)
+   - The other part of the node, is the reference to next node
+   - linked lists will have a data property and a next property
