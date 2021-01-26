@@ -123,3 +123,85 @@ The 'handshake problem', basically imagine a group of people standing in a room.
    - The data contained in the node can be anything (any valid JS value)
    - The other part of the node, is the reference to next node
    - linked lists will have a data property and a next property
+
+**Code reuse in linked lists:**
+- getAt(), , getFirst(), and getLast() separately, might not be the best idea
+- I could have written these three methods alone and they would
+  have achieved the same results as writing all the other methods
+
+**List traversal through forEach()/Generators**
+
+- Generators simplify iterator-authoring using `function*` and `yield`
+- They are subtypes of iterators
+
+```javascript
+
+function *numbers() {
+  // Star can go to left of function name or right of function keyword
+  const result = 1 + 1;
+  return 20 + (yield result);
+}
+// Returns generator object
+// I can use this object to manipulate/walk through segments of data
+// Define generator and call .next()
+// code inside generator executes until yield statement is found
+// Yield statement pauses execution of code
+// Calling generator.next(10) will replace yield with the num
+
+const gen = numbers();
+console.log(gen.next()); // {"value": 2, "done":false}
+console.log(gen.next(10)) // {"value":30, "done": true}
+
+```
+
+```javascript
+function *list() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+  yield 5;
+}
+const generator = list();
+const numbers = [];
+for(let value of generator) {
+  numbers.push(value);
+}
+numbers;
+```
+
+```javascript
+
+// Function to iterate over tree and collect values of tree in array
+// DFS, expecting result [1, 2, 4, 3];
+
+class Tree {
+  constructor(value = null, children = []) {
+    this.value = value;
+    this.children = children;
+  }
+  // Yields value of head
+  *printValues() {
+    yield.this.value;
+    for(let child of this.children) {
+      // If I call this on single node, I will yield node's value
+      // The next time next() is called, I enter for loop
+      // For each child of head node, I walk through children and call printValues()
+      yield* child.printValues();
+    }
+  }
+}
+
+const tree = new Tree(1, [
+  new Tree(2, [new Tree(4)]),
+  new Tree(3)
+]);
+
+const values = [];
+for(let value of tree.printValues()) {
+  values.push(value);
+}
+values;
+// returns [1, 2, 4, 3]
+// There is practical use in generators as we can see here, walking through a tree!
+```
