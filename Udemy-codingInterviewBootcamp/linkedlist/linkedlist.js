@@ -97,10 +97,33 @@ class LinkedList {
     return null;
   }
 
-  
-  
+  removeAt(index) {
+    if(!this.head) return;
+    if(index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+    // Node before the one I want to remove
+    const prev = this.getAt(index - 1);
+    // Handling out of bounds index
+    if(!prev || !prev.next) return;
+    prev.next = prev.next.next;
+  }
 
-
+  insertAt(data, index) {
+    if(!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+    if(index === 0) {
+      // Create new node then move pointer to head to new node
+      this.head = new Node(data, this.head);
+      return;
+    }
+    const prev = this.getAt(index - 1) || this.getLast();
+    let node = new Node(data, prev.next);
+    prev.next = node;
+  }
 }
 
 module.exports = {Node, LinkedList};
