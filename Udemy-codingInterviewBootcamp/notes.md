@@ -226,3 +226,18 @@ values;
        - Inorder Traversal (Left-Root-Right)
        - Preorder Traversal (Root-Left-Right)
        - Postorder Traversal (Left-Right-Root)
+  
+5. Binary Search Trees:
+    - Every node can have at most, two children
+    - We refer to these two children by their position relative to parent
+    - So, on the left, is the left node, to the right, the right node
+    - We also start to validate every node in the structure
+    - Every node to the left of the parent has values less than the parent
+    - Every node to the right of the parent has values greater than the parent
+    - `value > left.value` and `value < right.value`
+    - Data inside node is sometimes referred to as a key
+    - Common questions are how to add new nodes in to a tree, add up all nodes etc.
+    - Binary tree is a NORMAL tree that just has two nodes underneath each parent and is not the same as BST. WIth Binary Tree I no longer have values on left as less than and values on right as greater than parent.
+    - In an interview setting, when dealing with BST's, I should confirm that I am working with a BST and not a Binary Tree.
+    - Another common interview question is to validate a BST to see if it is well formed
+    - Trees are recursive in nature
