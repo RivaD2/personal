@@ -241,3 +241,68 @@ values;
     - In an interview setting, when dealing with BST's, I should confirm that I am working with a BST and not a Binary Tree.
     - Another common interview question is to validate a BST to see if it is well formed
     - Trees are recursive in nature
+
+**What is an eventing system challenge**
+
+- Look at the following code:
+
+```javascript
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"/>
+</head>
+<body>
+  <h1> Click me!</h1>
+  <button>Me!</button>
+  <script>
+    $('button').on('click', () => {
+      console.log('Hello');
+    });
+  
+    $('button').on('click', () => {
+      console.log('There!")
+    });
+    
+    // Manually triggering event without clicking on button
+    $('button').trigger('click');
+
+    // Turning event off
+    $('button').off('click');
+    
+  </script>
+</body>
+
+
+/*Create eventing library out of the Events class. The Events class should have methods 'on', 'trigger', and 'off'.*/
+
+class Events {
+  constructor() {
+    this.events = {};
+  }
+  // Register an event handler
+  on(eventName, callback) {
+    if(this.events[eventName]) {
+      this.events[eventName].push(callback);
+    } else {
+      this.events[eventName] = [callback];
+    }
+  }
+
+  // Trigger all callbacks associated with a given eventName
+  trigger(eventName) {
+    if(this.events[eventName]) {
+      for(let callback of this.events[eventName]) {
+        callback();
+      }
+    }
+  }
+
+  //Remove all event handlers associated with the given eventName
+  off(eventName) {
+    // Remove entire key and value that exist or entire array of callbacks
+    delete this.events[eventName];
+  }
+}
+```
+
+**This is a common problem seen, and it a good challenge as it tests how we understand the callback libraries we use on a regular basis**
