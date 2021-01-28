@@ -206,3 +206,23 @@ values;
 // There is practical use in generators as we can see here, walking through a tree!
 ```
 **Many linked list challenges can be solved by utilizing dual pointers**
+
+4. Trees:
+
+- Trees are made up of nodes
+- The top node is called the root node
+- Each node holds some amount of data and a reference to all of its children
+- A child is a node directly underneath a given node
+- There is a parent-child relationship in a tree
+- Data can be made up of different values, strings, integers etc.
+- Nodes on the same level are called siblings
+- However, nodes with different parents, but on the same level are not siblings
+- Traversing a tree is a common question, we really care about iterating through all the different elements
+
+**Iterating through Tree/ Order in which we iterate:**
+  1. Breadth-First Traversal: Iterating each level of tree from left to right. Start at the root and then work our way from left to right, or level by level.
+  2. Depth-First Traversal: Iterating top down, starting at the root node and then go down left hand side. Once I hit bottom, return to the closest parent, then go down again.
+    - With depth first, there are several ways to approach the traversal:
+       - Inorder Traversal (Left-Root-Right)
+       - Preorder Traversal (Root-Left-Right)
+       - Postorder Traversal (Left-Right-Root)
