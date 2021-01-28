@@ -205,3 +205,4 @@ values;
 // returns [1, 2, 4, 3]
 // There is practical use in generators as we can see here, walking through a tree!
 ```
+**Many linked list challenges can be solved by utilizing dual pointers**
