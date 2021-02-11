@@ -1006,6 +1006,20 @@ const shuffle = arr => {
    return arr;
 }
 
+/*Write a function that takes in two strings as arguments, and returns the number of times the first string, a single 
+character, is found in the second string 
+*/
 
+const isIncluded = (str1, str2) => {
+  let count = 0;
+  for(let letter of str2) {
+    if(letter === str1) {
+      count ++
+    }
+  }
+  return count;
+}
+
+console.log(isIncluded('a', 'Riva'))
 
    
