@@ -54,3 +54,29 @@ const selectionSort = arr => {
   }
   return arr;
 };
+
+// Takes input arr and divides it up into smallest chunk possible
+// Splits array into halves, then splits those halves
+// Once array is of length 1, mergeSort stops trying to recursively subdivide and then decides to call merge function
+const mergeSort = arr => {
+  if(arr.length === 1) return arr;
+  const center = Math.floor(arr.length / 2);
+  const left = arr.slice(0, center);
+  const right = arr.slice(center);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+// Works on sorted arrays
+// If there is only one element in either array, the array is sorted!
+const merge = (left, right) => {
+  const results = [];
+  while(left.length && right.length) {
+    if(left[0] < right[0]){
+      results.push(left.shift());
+    } else {
+      results.push(right.shift());
+    }
+  }
+  return [...results, ...left, ...right];
+}
