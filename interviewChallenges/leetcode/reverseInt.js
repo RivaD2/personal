@@ -5,16 +5,17 @@ Example 1:
 Input: x = 123
 Output: 321 */
 
-const reverseInt = x => {
-  const numToString = x.toString();
-  return numToString.split('').reverse().join("");
-};
+const reverseInt = x => parseFloat(x.toString().split('').reverse().join('')) * Math.sign(x);
+console.log(reverseInt(-123));
 
-var reverse = x => {
-  let newString = ""
-  const numToString = x.toString();
+const reverse = x => {
+  const numToString = Math.abs(x).toString();
+  let newString = '';
+  
   for(let i = numToString.length - 1; i >= 0; i--) {
      newString += numToString[i];
+     console.log('in loop newString', newString)
   }
-    return newString;
+  return newString * Math.sign(x)
 };
+console.log(reverse(-123));
