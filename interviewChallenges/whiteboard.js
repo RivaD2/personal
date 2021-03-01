@@ -575,7 +575,7 @@ const mergeTwoLists = function(list1,list2) {
 the list is circular:*/
 
 const isCircular = linkedList => {
-    let currentNode = linkedlist.head;
+    let currentNode = linkedList.head;
     if(currentNode === null) return false;
 
     // Rather than use an array, using object keeps Big O at O(n)
