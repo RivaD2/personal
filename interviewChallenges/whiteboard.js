@@ -1023,3 +1023,21 @@ const isIncluded = (str1, str2) => {
 console.log(isIncluded('a', 'Riva'))
 
    
+// Replace every occurance of a given character in a string with another character.
+// Replace "l" with "X"
+//'hello world' ---> 'heXXo worXd'
+
+const replaceChars = (str, char, charToBeReplaced) => {
+    let charStorage = [];
+    
+    for(let i= 0; i < str.length; i++) {
+      if(str[i] === charToBeReplaced) {
+        charStorage.push(char);
+      } else {
+        charStorage.push(str[i])
+      }
+    }
+    return charStorage.join('')
+  }
+  
+  console.log(replaceChars('Riva', 'b', 'v'));
