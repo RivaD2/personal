@@ -19,17 +19,18 @@ Output: [1]
   - I know that the index starts from 1, rather than 0
   - I know that this is a singly linked list
   - What if I have to delete from front of list?
-     - I could traverse list twice, but this would increase time
+     - I could traverse list twice, once to get length, and second
+     iteration to go towards nth (len - n) and cut it off (but this would increase time)
   - Instead, I can use the two-pointer method
      - Create a dummyNode in front of head to prepare for removing reference of node to be deleted
     - create start/front (fast) pointer
     - create end/back (slow) pointer
       -set each pointer to dummyNode
-      - We create these pointers so that slow is 2 behind fast
+        - keep each pointer at distance of n
     - These would move at same speed until front pointer hits end of list
     - Run a for loop
   - I need to remember that I can't simply move to node I want to delete
-    - I have to change the reference of the previous node to node.next.next
+    - I have to change the reference of the previous node from n (slow.next.next)
 */
 // space O(1), space O(l)
 const removeNthFromEnd = (head, n) => {
