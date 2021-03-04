@@ -40,5 +40,5 @@ const twoSum = (nums, target) => {
     if(storage[num] !== undefined) return [storage[num], index];
     storage[target - num] = index;
   }
-
 }
+console.log(twoSum([1, 2, 3, 4], 5))
