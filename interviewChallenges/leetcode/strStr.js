@@ -18,3 +18,27 @@ Example 2:
 Input: haystack = "aaaaa", needle = "bba"
 Output: -1
 */
+
+const strStr = (haystack, needle) => {
+  if(needle.length === 0) return 0;
+  if(needle === '') return 0;
+
+  for(let i = 0; i <= haystack.length - needle.length; i++) {
+    if(needle === haystack.substring(i,i + needle.length)){
+      return i;
+    }
+  }
+  return -1;
+}
+
+
+const stringSearch = (haystack, needle) => {
+  for(let i = 0; i <haystack.length; i++) {
+    for(let j = 0; j < needle.length; j++){
+      if(haystack[i + j] !== needle[j]) break;
+      if(j + 1 === needle.length) return i;
+    }
+  }
+  return -1;
+}
+
