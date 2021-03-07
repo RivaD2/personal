@@ -1118,3 +1118,22 @@ const mostRepeatedWords = str => {
   }
   console.log(mostRepeatedWords('duck duck goose ragnar duck kitty ragnar'));
   
+
+  /*
+  Given the challenge above, provide a solution 
+  that includes ONLY one iteration*/
+
+  const mostRepeats = str => {
+      let repeatedWords = str.split(' ');
+      let storage = {};
+      let repeats = [];
+      for(let word of repeatedWords) {
+        if(!storage[word]) {
+            storage[word] = 1
+        } else {
+            repeats.push(word);
+        }
+      }
+      return repeats.join(', ');
+  }
+  console.log(mostRepeats('riva riva ragnar kitty cat kitty'));
