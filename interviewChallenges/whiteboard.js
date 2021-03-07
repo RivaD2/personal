@@ -1039,5 +1039,61 @@ const replaceChars = (str, char, charToBeReplaced) => {
     }
     return charStorage.join('')
   }
-  
   console.log(replaceChars('Riva', 'b', 'v'));
+
+  
+  const replaceTheChar = (str, char, charToBeReplaced) => {
+    let result = str.split('')
+    while(result.indexOf(charToBeReplaced) !== -1) {
+      result.splice(result.indexOf(charToBeReplaced), 1, char);
+    }
+    return result.join('');
+  }
+
+  console.log(replaceTheChar('Banana', 'o', 'a'))
+
+/*
+Given a string, that includes a bunch of words, return a new string,
+with only the words that appeared multiple times
+
+input: str
+output: str
+
+- Assign a variable to empty object to hold values
+- Split the string where there is whitespace, so individual words would be
+  separated out
+  - Original str: 'duck duck goose ragnar duck kitty ragnar'
+    - after split: ['duck', 'duck', 'goose', 'ragnar']etc.
+- Iterate using for of loop
+  - as I iterate, if the word is not in obj, obj[word]++
+    else - set the obj[word] = 1
+  - Basically, this iteration is to add words to obj and set count
+- Assign max variable to 0 (this will keep track of any NEw max as I go)
+- Assign new variable, mostRepeats = ''
+- Iterate again using separate for loop
+  - TThis time I will be checking for duplicate words
+- Return mostRepeats
+*/
+
+const findRepeatedWord = str => {
+  let splitString = str.split(' ')
+  let storage = {};
+
+  for(let word of splitString){
+   if(!storage[word]){
+       storage[word] = 1
+   } else {
+       storage[word]++
+   }
+  }
+  let max = 0;
+  let mostRepeated = '';
+  for(let word in storage){
+      if(storage[word] > max){
+          max = storage[word];
+          mostRepeated = word;
+      } 
+  }
+  return mostRepeated; 
+}
+console.log(findRepeatedWord('duck duck goose ragnar duck kitty ragnar'));
