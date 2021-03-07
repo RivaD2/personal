@@ -1053,8 +1053,7 @@ const replaceChars = (str, char, charToBeReplaced) => {
   console.log(replaceTheChar('Banana', 'o', 'a'))
 
 /*
-Given a string, that includes a bunch of words, return a new string,
-with only the words that appeared multiple times
+Given a string, that includes a bunch of words, return the MOST repeated word.
 
 input: str
 output: str
@@ -1075,7 +1074,7 @@ output: str
 - Return mostRepeats
 */
 
-const findRepeatedWord = str => {
+const repeatedWord = str => {
   let splitString = str.split(' ')
   let storage = {};
 
@@ -1096,4 +1095,26 @@ const findRepeatedWord = str => {
   }
   return mostRepeated; 
 }
-console.log(findRepeatedWord('duck duck goose ragnar duck kitty ragnar'));
+console.log(repeatedWord('duck duck goose ragnar duck kitty ragnar'));
+
+const mostRepeatedWords = str => {
+    let splitString = str.split(' ')
+    let storage = {};
+    let repeats = [];
+    for(let word of splitString){
+     if(!storage[word]){
+         storage[word] = 1
+     } else {
+         storage[word]++
+     }
+    }
+    
+    for(let word in storage){
+        if(storage[word] > 1){
+           repeats.push(word);
+        } 
+    }
+    return repeats.join(', '); 
+  }
+  console.log(mostRepeatedWords('duck duck goose ragnar duck kitty ragnar'));
+  
