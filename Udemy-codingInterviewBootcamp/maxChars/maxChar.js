@@ -20,6 +20,8 @@ character out of source string, add it to key and the value for each key is numb
 the letter has been found in the string.
 */
 
+// THe only difference in maxChar vs maxWord, is I don't have 
+// split the string...
 const maxChar = str => {
  let charMap = {};
  // Iterate throgh map, if char has more uses than max, set max to new value
