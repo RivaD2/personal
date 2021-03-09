@@ -43,13 +43,13 @@ const maxSubArray = nums => {
 // Big O(n)
 // Space: constant
 const maxSubArraySum = nums => {
- let sum = arr[0];
- let max = arr[0];
+ let sum = nums[0];
+ let max = nums[0];
 
  for(let i = 1; i < nums.length; i++){
    // On each iteration, recalculate sum
    // Sum is equal to max of sum plus current value and current
-   sum = Math.max(sum + arr[i], arr[i]);
+   sum = Math.max(sum + nums[i], nums[i]);
    max = Math.max(max, sum)
  }
  return max;
