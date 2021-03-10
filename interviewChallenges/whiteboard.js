@@ -1138,4 +1138,31 @@ const mostRepeatedWords = str => {
   }
   console.log(mostRepeats('riva riva ragnar kitty cat kitty'));
 
+  /*
+  /*Given a number, return an array containing the two halfs of the number. 
+  If the number is odd, then make rightmost number higher. 
+  All nums will be integers and I can expect negative nums.
 
+input: num
+output: array with two halfs of num
+
+numberSplit(4) ➞ [2, 2]
+numberSplit(10) ➞ [5, 5]
+numberSplit(-9) ➞ [-5, -4]
+
+*/
+  const numberSplit = n => {
+    let arrOfHalves = [];
+    
+    if(n % 2 === 0) {
+      arrOfHalves[0, 1] = n / 2;
+      return arrOfHalves
+      
+    } else if (n % 2 !== 0) {
+      arrOfHalves[0] = Math.floor(n / 2)
+      arrOfHalves[1] = Math.ceil(n / 2 ) 
+    } 
+  
+    return arrOfHalves;
+  }
+  

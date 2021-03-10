@@ -15,7 +15,7 @@ Input: digits = [1,2,3]
 Output: [1,2,4]
 Explanation: The array represents the integer 123.
 
-Example 2:
+Example 2:  [1,0,0]
 Input: digits = [4,3,2,1]
 Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
@@ -37,7 +37,7 @@ const plusOne = digits => {
         digits[i] = 0;
       }
     }
-    // if digits are all 9's, add change them to 0's
+    // if digits are all 9's, change them to 0's
     // add one to front of array
     digits.unshift(1);
     return digits;
