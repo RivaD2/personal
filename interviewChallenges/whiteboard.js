@@ -1206,6 +1206,51 @@ console.log(largestOfFour([[4, 5, 1, 3],
                            [32, 35, 37, 39], 
                            [1000, 1001, 857, 1]]));
 
+/*
+Given an array of 1's and 0's find the longest running count of 1's.
+ 
+ input: arr [0, 1, 1, 0, 0, 1, 1, 1, 1]
+ output: [1, 1, 1, 1]
+
+ PseudoCode:
+ - Maintain two counters
+   - Create currentMax 
+   - Create finalMax;
+
+- Use for loop to read each num from start to end
+  - IF nums[i] === 1
+    - increment currentMax 
+    - Math.max(currentMax, finalMax)
+  - Every time I see a 0, exit out of if condition and reset currentMax to 0
+
+
+*/
+const longestStreak = arr => {
+  let currentMax = 0;
+  let finalMax = 0;
+
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] === 1){
+        console.log(arr[i])
+        currentMax++;
+        finalMax = Math.max(currentMax, finalMax);
+        console.log('what is finalMax',finalMax)
+    } else {
+        currentMax = 0;
+    }
+  }
+
+  let result = [];
+    for(let i = 0; i < finalMax; i++){
+        result.push(1)
+    }
+    return result;
+  }
+
+console.log(longestStreak([1, 1, 1, 0, 1, 0, 1, 1, 1, 1]))
+         
+         
+         
 
 
 
