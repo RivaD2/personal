@@ -1248,9 +1248,46 @@ const longestStreak = arr => {
   }
 
 console.log(longestStreak([1, 1, 1, 0, 1, 0, 1, 1, 1, 1]))
-         
-         
-         
+
+/*
+Truncate a string (first argument) if it is longer than the given maximum string length (second argument). 
+Return the truncated string with a ... ending.
+
+- if str.length > num ---truncate or reduce the size?
+- But how? I can use slice().
+  - Starting at 0 and up to the num, 
+  - add '...' after slicing 
+
+*/
+
+const truncateString = (str, num) => {
+    if (str.length > num) {
+     return str.slice(0, num) + "...";
+   } else {
+     return str;
+   }
+ }
+ 
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+
+/*
+- First, create an empty array called 'chunked' to store the ‘chunks’ of arr
+- For loop will start at zero and increments by size each time through the loop
+   - It stops when it reaches arr.length.
+   - The loop is not looping through arr, but instead, generates numbers I can use as indices to slice the array .
+   - Inside our loop,I can create each chunk using arr.slice(i, i+size)
+       - I can then add this value to chunked arr with chunked.push().
+   - return value of chunked
+*/
+const chunkArrayInGroups = (arr, size) => {
+    let chunked = [];
+    for(let i =0; i < arr.length; i += size){
+      chunked.push(arr.slice(i, i + size));
+  }
+  return chunked;
+  }
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);     
 
 
 
