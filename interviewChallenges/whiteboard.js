@@ -1344,3 +1344,32 @@ const getIndexToIns = (arr, num) => {
   
 console.log(getIndexToIns([40, 60], 50));
 console.log(getIndexToIns([1, 2, 4, 5], 3))
+
+/*
+Return true if the string in the first element of the array contains all of the letters 
+of the string in the second element of the array.
+
+Ex 1: ["hello", "Hello"],returns true because all of the letters in the second string are present in the first, 
+ignoring case.
+
+Ex 2: ["hello", "hey"] returns false because the string hello does not contain a y.
+
+- Declare two variables to hold the first element and second element of arr
+  - I know there is only a first and a second element
+- Loop using for loop over the second string.length
+- I can use the .indexOf() method to tell me whether something doesn't exist (indexOf returns -1 or 1 depending...)
+  - If current letter does not exist in first word, then return false
+*/
+
+const mutation = arr => {
+  let first = arr[0].toLowerCase();
+  let second = arr[1].toLowerCase();
+
+  for(let i = 0; i < second.length; i++){
+    if(first.indexOf(second[i]) === -1) return false;
+  }
+  return true;
+}
+
+console.log(mutation(['hello', 'hey']))
+

@@ -11,7 +11,7 @@ capitalize('a lazy fox') ---> 'A Lazy Fox'
 /*
 Solution 1:
 Make and empty array 'words'
-Split the input string by spaces to get an array
+Split the input string by spaces to get arr,  and .toLowerCase() it 
 For each word in array
   - Uppercase the first letter of each word
   - join the first letter with the rest of the string using slice
@@ -20,7 +20,7 @@ For each word in array
 */
 const capitalize = str => {
   const words = [];
-  for(let word of str.split(' ')) {
+  for(let word of str.toLowerCase().split(' ')) {
     words.push(word[0].toUpperCase() + word.slice(1));
   }
   return words.join(' ');
