@@ -1156,13 +1156,12 @@ numberSplit(-9) ➞ [-5, -4]
     
     if(n % 2 === 0) {
       arrOfHalves[0, 1] = n / 2;
-      return arrOfHalves
+      return arrOfHalves;
       
     } else if (n % 2 !== 0) {
       arrOfHalves[0] = Math.floor(n / 2)
       arrOfHalves[1] = Math.ceil(n / 2 ) 
     } 
-  
     return arrOfHalves;
   }
   
@@ -1222,9 +1221,8 @@ Given an array of 1's and 0's find the longest running count of 1's.
     - increment currentMax 
     - Math.max(currentMax, finalMax)
   - Every time I see a 0, exit out of if condition and reset currentMax to 0
-
-
 */
+
 const longestStreak = arr => {
   let currentMax = 0;
   let finalMax = 0;
@@ -1253,7 +1251,7 @@ console.log(longestStreak([1, 1, 1, 0, 1, 0, 1, 1, 1, 1]))
 Truncate a string (first argument) if it is longer than the given maximum string length (second argument). 
 Return the truncated string with a ... ending.
 
-- if str.length > num ---truncate or reduce the size?
+- if str.length > num ---truncate or reduce the size
 - But how? I can use slice().
   - Starting at 0 and up to the num, 
   - add '...' after slicing 
@@ -1272,6 +1270,10 @@ truncateString("A-tisket a-tasket A green and yellow basket", 8);
 
 
 /*
+Write a function that splits an array (first argument) 
+into groups the length of size (second argument) 
+and returns them as a two-dimensional array.
+
 - First, create an empty array called 'chunked' to store the ‘chunks’ of arr
 - For loop will start at zero and increments by size each time through the loop
    - It stops when it reaches arr.length.
@@ -1289,6 +1291,56 @@ const chunkArrayInGroups = (arr, size) => {
   }
   chunkArrayInGroups(["a", "b", "c", "d"], 2);     
 
+/* 
+Remove all falsy values from arr: What are falsy values?
+- False, NaN, 0, "", Null, undefined
 
+- Create a new empty array.
+- Use for loop to cycle and iterate over all elements of the provided array (arr).
+- If the current element is truthy or falsy...do something
+   - If the element is truthy, push it into new array. 
+   - The new arr contains only truthy elements.
+- Return the new array.
+*/
+ const removeFalsyValues = arr => {
+    let newArray = [];
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i]) newArray.push(arr[i]);
+    }
+    return newArray;
+  }
 
+/*
+Return the lowest index at which a value (second argument) 
+should be inserted into an array (first argument) once it has been sorted.
+ The returned value should be a number.
 
+Ex 1: getIndexToIns([1,2,3,4], 1.5)
+returns 1 because it is greater than 1 (index 0), but less than 2 (index 1)
+
+getIndexToIns([20,3,5], 19) 
+Should return 2 because once the array has been sorted it will look like [3,5,20] 
+and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+- First step here would be to sort the arr so that nums are in ascending order
+  - sort() works alphabetically so if I have nums, it will look at first digit of the num!! 
+  - So, I can use the sort function instead
+  - Loop through the arr 
+    - I have to check if the num less than or equal to arr[i]
+*/
+
+const getIndexToIns = (arr, num) => {
+  arr.sort((a, b) => {
+    return a - b
+  });
+
+  for(let i = 0; i < arr.length; i++) {
+    if(num <= arr[i]) {
+        return i;
+    }
+  }
+  return arr.length;
+}
+  
+console.log(getIndexToIns([40, 60], 50));
+console.log(getIndexToIns([1, 2, 4, 5], 3))
