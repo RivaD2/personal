@@ -1416,3 +1416,57 @@ const covertToRomanNum = num => {
 }
 
 convertToRomanNum(36);
+
+/*
+Find the missing letter
+
+Write a function that takes in an arr of consecutive (increasing) letters
+as an input, and returns the missing letter in the arr.
+
+You will always get a valid arr and there will always be one letter missing.
+The length of the arr will always be atleast 2.
+The arr will always contain letters in only one case.
+
+Ex: 'abce' ---> 'd'
+
+- I need to create two variables
+  - One called 'letterTrack' to store the charCode for the first letter in the str
+  - A second variable 'missingLetter' to store whatever the missing letter is
+- I can turn the str into an arr by using str.split()
+  - I can then map over the charCodes in arr and compare it 
+  with one that should be in that particular place
+   - If the curr letter matches, move letterTrack to next position
+   - If no match, then assign missing letter to missingLetter
+     which will be the return value once map has completed
+- Return undefined if there are no missing characters
+*/
+
+const findMissingLetter = str => {
+  let letterTrack = str.charCodeAt(0);
+  let missing;
+
+  str.split('').map((letter,idx) => {
+    if(str.charCodeAt(idx) === letterTrack) {
+        letterTrack++
+    } else {
+        // Returns a str created from the specified sequence of UTF-16 code units.
+        missing = String.fromCharCode(letterTrack);
+    }
+  });
+  return missing;
+}
+console.log(findMissingLetter('abce'))
+
+// Same challenge as above but using for loop
+const returnMissingLetter = str => {
+  let startCode = str.charCodeAt(0);
+
+  for (let i = 0; i < str.length; i++){
+    if (str.charCodeAt(i) !== startCode) {
+      return String.fromCharCode(startCode)
+    } else {
+      startCode++
+    }
+  }
+}
+console.log(returnMissingLetter('efghj'));
