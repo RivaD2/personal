@@ -1373,3 +1373,46 @@ const mutation = arr => {
 
 console.log(mutation(['hello', 'hey']))
 
+/*
+Convert the given number into a roman numeral.
+
+- Well, this requires us to know roman numerals, and certain patterns 
+that make up various numerals.
+- Input: num, Output: string representing roman num equivalent of num
+- I have to create a map of sorts where the keys are the roman nums 
+and the values are the regular nums.
+- Create a variable and assign to empty string (this is the return value)
+- Loop through list of keys in map/storage obj
+  - while num is >= storage[key], add key to roman
+  - If something is added to roman, I have to delete something from the num...
+     - Here the replacement would the value added
+*/
+
+const covertToRomanNum = num => {
+  let numeralStorage = {
+    M:1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC:90,
+    L: 50,
+    XL: 40,
+    X:10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1
+  };
+
+  let romanNum = '';
+  for(let key in numeralStorage){
+    while(num >= numeralStorage[key]){
+      romanNum += key;
+      num -= numeralStorage[key]
+    }
+  }
+  return romanNum;
+}
+
+convertToRomanNum(36);
