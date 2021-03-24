@@ -45,11 +45,17 @@ const longestCommonPrefix = strs => {
 
  // Loop through characters in first string
  for(let i = 0; i < strs[0].length; i++) {
+   console.log('length of string', strs[0].length);
   const character = strs[0][i];
+  console.log('character = ', character);
   for(let j = 0; j < strs.length; j++) {
+    console.log('what is j', j)
     if(strs[j][i] !== character) return prefix;
+    console.log('what is strs[j][i] and character', strs[j][i], character)
   }
   prefix = prefix + character;
+  console.log('what is prefix and character', prefix, character)
  }
  return prefix;
 }
+console.log(longestCommonPrefix('flower', 'flow', 'florist'));
