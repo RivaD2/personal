@@ -5,6 +5,9 @@ Sliding Window Technique:
   until you find a solution
 - O(n) time, space: O(1)
 - I can identify Sliding Window problems amongst subarray/substring releated questions
+- They usually involve arr or string challenges, if I am asked to find a segment, 
+subarray etc.
+
 
 // Basic example of how it works
 
@@ -26,7 +29,6 @@ Common challenges where I can use Sliding Window:
 1) Given an arr of integers, find the maximum subarray of the 
 required size.
 
-
 Example input: [-1, 2, 3, 1, -3, 2] Subarray size: 2
 Requirements: Subarrays are contiguous
               Input size could be anything
@@ -43,7 +45,6 @@ Brute Force: Calculate all subarrays with 2 members and store them in
 Sliding Window/PseudoCode: O(n) time, space: O(1)
 1) Start by calculating window sum starting with first two elements
 2) Slide the window by one element at a time
-
 
 
 2) Given an arr of positive integers, find the subarrays
@@ -91,3 +92,56 @@ const maxSum = (arr, k) => {
   return maxSumResult;
 }
 console.log(maxSum([1, 5, 10, 60, 50, 30], 2))
+
+/* Minimum size Subarray Sum
+Given an array of  n positive integers, and a positive integer s,
+find the minimal length of a contiguous subarray of which the sum >= s. 
+If there isn't one, return 0;
+
+ input: [2, 3, 1, 2, 4, 3], s = 7
+ - The shortest section would be [4, 3], so output would be 2
+ - naive approach would be nested for loops
+
+ How to do it:
+  - Create start and end pointer
+      - Set both pointers at start of arr
+  - Move end pointer to next spot and keep moving until I form a valid window
+    [2, 3, 1, 2, 4, 3]
+     s
+     e
+    [2, 3, 1, 2, 4, 3]
+     s  e --->
+     - A window is valid if elements sum to 7 or more
+  - Once end pointer reaches index 3, sum = 8
+     - Now that sum is larger than s, move start pointer to next index
+     [2, 3, 1, 2, 4, 3]
+         s     e
+         - Now sum is 6, so window does not satisfy condition
+         - We now move back to step two, where end pointer moves up again...
+  - Repeat until solution is found
+    [ 4, 3]
+*/
+
+const minArraySum = (nums, s) => {
+ if(nums == null || nums.length == 0) return 0;
+
+ let left = 0
+ let right = 0;
+
+ // Variable to hold running sum
+ let sum = 0;
+ // Return value, set at very large value
+ let result = Number.MAX_VALUE;
+ // Iteration of right pointer representing end of window
+ for(right = 0; right < nums.length; right++){
+   // Adding number to running sum, window increases in size
+   sum += nums[right];
+   // Sum exceeds s, shrink window without moving right pointer and update sum
+   while(sum >= s) {
+     result = Math.min(result, right + 1 - left);
+     sum -= nums[left++];
+   }
+ }
+ return (result != Number.MAX_VALUE) ? result : 0
+}
+console.log(minArraySum([2, 3, 1, 2, 4, 3], 7))
