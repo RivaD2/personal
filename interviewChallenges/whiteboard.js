@@ -1471,4 +1471,30 @@ const returnMissingLetter = str => {
 }
 console.log(returnMissingLetter('efghj'));
 
+/*
+Create a function 'removeVowels()' that takes a string and returns a new string
+with all the vowels removed.
+
+input: str
+output: str(vowels removed)
+
+Pseudocode:
+
+- Get the input as a string
+- Define or initialize a string containing the vowels a, e,i, o, u.
+- Traverse through the input string, if the vowel is encountered, it should be removed from the string.
+  - Or, initialize another string and copy each non-vowel character to this string from the input string.
+- Return the final result string.
+*/
+const removeVowels = str => {
+ let vowels = ['a', 'e', 'i', 'o', 'u'];
+ newString = ''
+ for(let char of str) {
+    if(vowels.indexOf(char) == -1) {
+     newString += char;
+   }
+ }
+ return newString
+}
+console.log(removeVowels('Riva'))
 
