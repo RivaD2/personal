@@ -1498,3 +1498,38 @@ const removeVowels = str => {
 }
 console.log(removeVowels('Riva'))
 
+/*Array Operation:
+
+Create a function that takes three parameters:
+  x is start of the range, inclusive
+  y is the end of the range, inclusive
+  n is the divisor to be checked against
+  
+ Return an ordered array with numbers in the range that are divisible
+ by n. Return an empty arr if there are no numbers divisible by n.
+                      x, y, n
+ Ex 1: arrayOperation(1, 10, 3) ➞ [3, 6, 9]
+   (1, 2, 3, 4, 5, 6, 7, 8, 9 ,10)
+ Ex 2: arrayOperation(7, 9, 2) ➞ [8]
+ Ex 3: arrayOperation(15, 20, 7) ➞ []
+const arrayOps = (x, y, n) => {
+*/
+const arrayOps = (x, y, n) => {
+let numbers = [];
+  for(let x = 1; x <= y; x++) {
+    numbers.push(x);
+  }
+
+  let divisibleNums = [];
+  for(let i = x; i <= numbers.length; i++) {
+    if (numbers[i] % n === 0) {
+      divisibleNums.push(numbers[i]);
+      } else {
+        continue;
+    }
+  }
+  return divisibleNums;
+} 
+
+console.log(arrayOps(1, 10, 3));
+console.log(arrayOps(7, 9, 2));
