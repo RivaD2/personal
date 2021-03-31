@@ -55,25 +55,61 @@ const threeSum = nums => {
 
 /*
 - Assign variable 'results' to empty array to hold combinations of nums
-- Start by sorting array of nums
+- Start by sorting array of nums from negative to positive
+- I can use two pointer technique here
+ - Create left and set to 0;
+ - Create right and set to nums.length - 1;
+  
 - Iterate over array using for loop
-  - define three pointers:
-    - left is assigned to current + 1
-    - current = 0; (current index I'm on in loop)
-    - right is assigned to last position in arr
-- While iterating, I have sum which is curr + left + right
-  - Is current greater or less than target?
-    - If less than:
-      - left++
-    - If less reaches end of array and is still less than target:
-      - current++
-      - left = current + 1
-    - If I find a solution, move both pointers:
-        - push solution into results array
-        - left++
-        - right--
-    - When left and right pointers meet:
-      - reset current, current++
-    - To cover duplicates:
-        
+  - If i > 0 and the current element is equal to the one before, continue
+    (this covers duplicates, it will pass over value if two are equal)
+  - Reassign left and right pointers
+    - i is current index I start from
+    - i, left and right would be three pointers
+  - Use while loop to iterate, checking if left is less than right
+    - while that is the case, if sum is zero, then I can push the 
+      current element, the left element and the right element
+      - otherwise I will move left up and then decrement right pointer
+  - I will need to check if there are duplicates
+    then return the results array
+- Need to get return value showing as a set of nums
 */
+const threeSumChanged = nums => {
+  nums.sort((a, b) => a - b);
+  let result = [];
+
+  let left = 0;
+  let right = nums.length - 1;
+
+  for(let i = 0; i < nums.length - 2; i++) {
+    if(nums[i] === nums[i - 1]) continue;
+    
+    left = i + 1;
+    right = nums.length - 1;
+    let sum = 0;
+
+    while(left < right) {
+      sum = nums[i] + nums[left] + nums[right];
+      if(sum === 0){
+        result.push(nums[i], nums[left] + nums[right]);
+        left++;
+        right--;
+
+        //check dupes
+        while(left < right && nums[left] === nums[left -1]) {
+          left++;
+        }
+        while(left < right && nums[right] === nums[right - 1]){
+          right--;
+        } 
+      } else if(sum < 0) {
+        right++;
+      } else {
+        left++;
+      }
+    }
+  }
+  return result;
+}
+
+console.log(threeSumChanged([-1,0,1,2,-1,-4]));
