@@ -26,6 +26,12 @@ Output:
 - Return dupes
 */
 
+/* The second solution will also work for the challenge 
+`containsDuplicates`. For that challenge, I don't need any variable 
+to hold the values to return at the end as I return true or false
+if duplicates exist. Instead, if storage[num] > 0, I can just return true.
+*/
+
 const findDuplicates = arr => {
  let duplicates = [];
  let compare = [];
@@ -50,7 +56,7 @@ const findDupes = arr => {
  for(let num of arr) {
    storage[num] = storage[num] + 1 || 1;
  }
- 
+
  for(let num in storage){
    if(storage[num] > 1){
      duplicates.push(num);
