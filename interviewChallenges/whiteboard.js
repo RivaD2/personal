@@ -17,12 +17,12 @@ To generate the next number in the sequence, we sum the previous two nums
 // Memoization cuts down our recursive calls
 
 const fib = (n, memo = {}) => {
-    // Is arg in memo?
-    if(n in memo) return memo(n);
-    if(n <= 2) return 1;
-    // Recursive calls here 
-    memo(n) = fib(n - 1, memo) + fib( n - 2 , memo);
-    return memo(n);
+  // Is arg in memo?
+  if(n in memo) return memo(n);
+  if(n <= 2) return 1;
+  // Recursive calls here 
+  memo(n) = fib(n - 1, memo) + fib( n - 2 , memo);
+  return memo(n);
 }
 
 /* Challenge 2: gridTraveler
@@ -68,41 +68,41 @@ the targetSum using the nums from the arr.
 // m = target sum, n = arr length
 // Big O time: O(m * n), space: O(m)
 const canSum = (targetSum, nums, memo ={}) => {
-    if(targetSum in memo) return memo[targetSum];
-    // Base cases: If targetSum reaches value 0 (in my tree) then I can always generate 0 by taking no nums from array
-    if(targetSum === 0) return true;
-    if(targetSum < 0) return false;
-    // Iterating through every element of nums arr
-    for(let num of nums) {
-        // I need branching logic (transiting from one node of tree to next)
-        const remainder = targetSum - num;
-        // I can resuse nums of arr as many times as I like
-        // This function should return boolean 
-        // If it is possible to generate reminder with nums of arr, then return true for targetSum
-        if(canSum(remainder,nums, memo) === true) {
-            memo[targetSum] = true;
-            return true;
-        }
-    }
-    memo[targetSum] = false;
-    return false;
+  if(targetSum in memo) return memo[targetSum];
+  // Base cases: If targetSum reaches value 0 (in my tree) then I can always generate 0 by taking no nums from array
+  if(targetSum === 0) return true;
+  if(targetSum < 0) return false;
+  // Iterating through every element of nums arr
+  for(let num of nums) {
+      // I need branching logic (transiting from one node of tree to next)
+      const remainder = targetSum - num;
+      // I can resuse nums of arr as many times as I like
+      // This function should return boolean 
+      // If it is possible to generate reminder with nums of arr, then return true for targetSum
+      if(canSum(remainder,nums, memo) === true) {
+          memo[targetSum] = true;
+          return true;
+      }
+  }
+  memo[targetSum] = false;
+  return false;
 };
 
 /*FindSome: Write a function that will pair up the arr element whose sum
 is equal to a given num* (similar to canSum recursive, but this is 
 an iterative approach */
 const findSumPairs = (arr, value) => {
-    let sumsLookup = {};
-    let output = [];
-    for(let i = 0; i < arr.length; i++) {
-      let targetVal = value - arr[i];
-      if(sumsLookup[targetVal]) {
-        output.push([arr[i], targetVal]);
-      }  
-      sumsLookup[arr[i]] = true;
-    }
-    return output;
+  let sumsLookup = {};
+  let output = [];
+  for(let i = 0; i < arr.length; i++) {
+    let targetVal = value - arr[i];
+    if(sumsLookup[targetVal]) {
+      output.push([arr[i], targetVal]);
+    }  
+    sumsLookup[arr[i]] = true;
   }
+  return output;
+}
  
 
 // Challenge 4: howSum
@@ -116,27 +116,27 @@ If there are multiple combinations, just return a single one.
 // Big O: Time is O(n^m * m) brute force without memo, space is O(m) 
 // With memo: Time is O(n * m^2), space is O(m^2)(m keys and each key has a value)
 const howSum = (targetSum, nums, memo = {}) => {
-    if(targetSum in memo) return memo[targetSum]
-    // Base cases
-    // 0 means that it is possible to generate targetSum
-    if(targetSum === 0) return [];
-    // Nums are only positive in this challenge
-    if(targetSum < 0) return null;
-    // Recursive call for every num in array
-    for(let num of nums) {
-        const remainder = targetSum - num;
-        // Recursive call on howSum
-        // Assigned to variable as we can return two different results
-        const remainderResult = howSum(remainder, nums, memo);
-        // In the tree, we wanted to return as soon as it is possible to generate remainder
-        if(remainderResult !== null) {
-            // The nums are the edges from the tree diagram(which are the nums in arr)
-            memo[targetSum] = [...remainderResult, num];
-            return memo[targetSum]
-        }
-    }
-    memo[targetSum] = null;
-    return null;
+  if(targetSum in memo) return memo[targetSum]
+  // Base cases
+  // 0 means that it is possible to generate targetSum
+  if(targetSum === 0) return [];
+  // Nums are only positive in this challenge
+  if(targetSum < 0) return null;
+  // Recursive call for every num in array
+  for(let num of nums) {
+      const remainder = targetSum - num;
+      // Recursive call on howSum
+      // Assigned to variable as we can return two different results
+      const remainderResult = howSum(remainder, nums, memo);
+      // In the tree, we wanted to return as soon as it is possible to generate remainder
+      if(remainderResult !== null) {
+          // The nums are the edges from the tree diagram(which are the nums in arr)
+          memo[targetSum] = [...remainderResult, num];
+          return memo[targetSum]
+      }
+  }
+  memo[targetSum] = null;
+  return null;
 };
 
 //Challenge 5: howSum
@@ -159,20 +159,19 @@ const bestSum = (targetSum, nums, memo = {}) => {
   let shortestCombo = null;
 
   for(let num of nums) {
-      const remainder = targetSum - num;
-      // Reminder combo is shortest way to generate remainder
-      const remainderCombo = bestSum(remainder, nums, memo);
-      if(remainderCombo !== null) {
-          // Created combo that gives me targetSum
-        const combination = [...remainderCombo, num];
-        // If combination is shorter than current shortest combo
-        if(shortestCombo === null || combination.length < shortestCombo.length) {
-            // The shorter combination wins out and can stay
-            shortestCombo = combination;
-        }
+    const remainder = targetSum - num;
+    // Reminder combo is shortest way to generate remainder
+    const remainderCombo = bestSum(remainder, nums, memo);
+    if(remainderCombo !== null) {
+        // Created combo that gives me targetSum
+      const combination = [...remainderCombo, num];
+      // If combination is shorter than current shortest combo
+      if(shortestCombo === null || combination.length < shortestCombo.length) {
+          // The shorter combination wins out and can stay
+          shortestCombo = combination;
       }
- }
-
+    }
+   }
   memo[targetSum] = shortestCombo;
   return shortestCombo;
 };
@@ -213,10 +212,10 @@ const canConstruct = (target, wordBank, memo = {}) => {
             memo[target] = true;
             return true;
         }
-     }
-  }
-  memo[target] = false;
-  return false;
+      }
+    }
+    memo[target] = false;
+    return false;
 };
 
 // Challenge 6: countConstruct
@@ -231,23 +230,23 @@ number of ways I can construct the target.
 // m = target.length, n = wordBank.length
 // Big O time: O(n * m^2), and space: O(m^2)
 const countConstruct = (target, wordBank, memo = {}) => {
-    if(target in memo) return memo[target];
-    if(target === '') return 1;
-    
-    // Whenever I get a way to construct the word, I add it to the count
-    let totalCount = 0;
-    for(let word of wordBank) {
-        // Check if word is a prefix
-        // If if statement is never true, then the count will be 0, so I just return it
-        if(target.indexOf(word) === 0) {
-            // Take suffix and call recursively on it
-            // Num of ways I can construct suffix 
-            const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
-            totalCount += numWaysForRest; 
-        }
+  if(target in memo) return memo[target];
+  if(target === '') return 1;
+  
+  // Whenever I get a way to construct the word, I add it to the count
+  let totalCount = 0;
+  for(let word of wordBank) {
+    // Check if word is a prefix
+    // If if statement is never true, then the count will be 0, so I just return it
+    if(target.indexOf(word) === 0) {
+        // Take suffix and call recursively on it
+        // Num of ways I can construct suffix 
+        const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
+        totalCount += numWaysForRest; 
     }
-    memo[target] = totalCount;
-    return totalCount;
+  }
+  memo[target] = totalCount;
+  return totalCount;
 }
 console.log('avenger',countConstruct('avenger', ['aven', 'a', 'ven', 'ger', 'er']));
 console.log('string enter pot',countConstruct('enterapotentpot', ['a', 'p', 'ent', 'enter', 'ot', 'o', 't']));
@@ -269,50 +268,50 @@ console.log('string enter pot',countConstruct('enterapotentpot', ['a', 'p', 'ent
 */
 
 const BFSDepth = root => {
-    if(root === null) return 0;
+  if(root === null) return 0;
 
-    let queue = [];
-    queue.push(root);
-    // Instiantiate depth var
-    let depthCount = 0;
-    
-    while(queue.length !== 0) {
-        let numOfNodes = queue.length;
-        while(numOfNodes > 0) {
-            // Grab nodes that are in queue
-            // FIFO
-            let currentNode = queue.shift();
-            // Checking if node has children
-            if(currentNode.left === null && currentNode.right === null) {
-                depthCount++
-                return depthCount;
-            }
-            if(currentNode.left !== null) {
-                queue.push(currentNode.left);
-            }
-            if(currentNode.right !== null) {
-                queue.push(currentNode.right);
-        }
-        return numOfNodes--
-     }
-     depth++
-   }
+  let queue = [];
+  queue.push(root);
+  // Instiantiate depth var
+  let depthCount = 0;
+  
+  while(queue.length !== 0) {
+      let numOfNodes = queue.length;
+      while(numOfNodes > 0) {
+          // Grab nodes that are in queue
+          // FIFO
+          let currentNode = queue.shift();
+          // Checking if node has children
+          if(currentNode.left === null && currentNode.right === null) {
+              depthCount++
+              return depthCount;
+          }
+          if(currentNode.left !== null) {
+              queue.push(currentNode.left);
+          }
+          if(currentNode.right !== null) {
+              queue.push(currentNode.right);
+      }
+      return numOfNodes--
+    }
+    depth++
+  }
 }
 
 // Second way to solve find Max depth of binary tree using recursion
 // BFS
 // Assuming I am given a tree with a root node that represents tree
 const maxDepth = root => {
-    const depth = 0;
+  const depth = 0;
 
-    let BFS = (node, level) => {
-        if(node === null) return 0;
-        if(level > maxDepth) maxDepth = level;
-        BFS(node.left, level +1);
-        BFS(node.right, level +1);
-    }
-    BFS(root, 1);
-    return depth;
+  let BFS = (node, level) => {
+    if(node === null) return 0;
+    if(level > maxDepth) maxDepth = level;
+    BFS(node.left, level +1);
+    BFS(node.right, level +1);
+  }
+  BFS(root, 1);
+  return depth;
 }
 
 
@@ -320,38 +319,38 @@ const maxDepth = root => {
 // Essentially Using two pointers
 // Assumes I am given a root
 function inOrderTraversal(root) {
-    // Tourist pointer starts at root
-    let tourist = root;
-    let solution = [];
+  // Tourist pointer starts at root
+  let tourist = root;
+  let solution = [];
 
-    while(tourist !== null) {
-        // Create guide to look at tourists left subtree
-        let guide = tourist.left;
+  while(tourist !== null) {
+    // Create guide to look at tourists left subtree
+    let guide = tourist.left;
 
-        // This all runs as long as tourist is not on the edge
-        // As long as guide has a right to go to and that right is not null or equal to tourist
-        if(tourist.left !== null) {
-            while(guide.right !== null && guide.right !== tourist) {
-                // Walk to rightmost point
-                guide = guide.right
-            }
-            // Create a bridge to tourist
-            if(guide.right === null) {
-                guide.right = tourist;
-                tourist = tourist.left;
-            } else {
-                // What if rightmost element is bridge? Destroy the bridge as that means tourist has traveled there.
-                guide.right = null;
-                solution.push(tourist.val);
-                tourist = tourist.right;
-            }
-        }
-         else {
-            solution.push(tourist.val);
-            tourist = tourist.right;
-        }
+    // This all runs as long as tourist is not on the edge
+    // As long as guide has a right to go to and that right is not null or equal to tourist
+    if(tourist.left !== null) {
+      while(guide.right !== null && guide.right !== tourist) {
+        // Walk to rightmost point
+        guide = guide.right
+      }
+      // Create a bridge to tourist
+      if(guide.right === null) {
+        guide.right = tourist;
+        tourist = tourist.left;
+      } else {
+        // What if rightmost element is bridge? Destroy the bridge as that means tourist has traveled there.
+        guide.right = null;
+        solution.push(tourist.val);
+        tourist = tourist.right;
+      }
     }
-    return solution;
+    else {
+      solution.push(tourist.val);
+      tourist = tourist.right;
+    }
+  }
+  return solution;
 };
 
 // twoSum Challenge (Web Dev Simplified Youtube)
@@ -366,19 +365,19 @@ Ex: [2, 7, 11, 15], target = 9
 // Store array inside a hash instead
 // No nested for loops
 const twoSum = (nums, target) => {
-    let previousValues = {};
-    for(let i = 0; i< nums.length; i++) {
-      const currentNum = nums[i];
-      const neededValue = target - currentNum;
-      // Check object to see if it has something for the key at neededValue
-      const index2 = previousValues[neededValue];
-      // This means I have something for that object
-      if(index2 !== null) {
-          return [index2, index]
-      } else {
-          previousValues[currentNum] = i;
-      }
+  let previousValues = {};
+  for(let i = 0; i< nums.length; i++) {
+    const currentNum = nums[i];
+    const neededValue = target - currentNum;
+    // Check object to see if it has something for the key at neededValue
+    const index2 = previousValues[neededValue];
+    // This means I have something for that object
+    if(index2 !== null) {
+        return [index2, index]
+    } else {
+        previousValues[currentNum] = i;
     }
+  }
 }
 
 // TechLead Youtube LeetCode Challenges
@@ -388,77 +387,39 @@ of the Pascal's Triangle. The row index starts from 0.
 */
 
 const getItem = (row, j) =>{
-    if(j< 0 || j>= row.length) {
-        return 0;
-    }
-    return row[j];
+  if(j< 0 || j>= row.length) {
+      return 0;
+  }
+  return row[j];
 }
 
 const getRow = rowIndex => {
-    let row = [1];
-    for(let i = 0; i<= rowIndex; i++) {
-        let newRow = new Array(i + 1);
-        for(let j = 0; j<= i + 1; j++) {
-            let digit = getItem(row, j -1) + getItem(row, j);
-            newRow[j] = digit;
-        }
+  let row = [1];
+  for(let i = 0; i<= rowIndex; i++) {
+    let newRow = new Array(i + 1);
+    for(let j = 0; j<= i + 1; j++) {
+      let digit = getItem(row, j -1) + getItem(row, j);
+      newRow[j] = digit;
+    }
     row = newRow;
   }   
   return row;
 };
 
-// Insert val into BST
-/* Given the root node of a binary search tree(BST) and a value to be inserted, 
-insert the value into the BST. Return the root node of the BST after the insertion.
-It is guaranteed that the new value does not exist in the original BST.
-*/
-
-// Traverse tree and check each node
-// If value is greater, traverse down right side 
-// If value is less than, traverse down left side
-// If there is no node, create one/insert the value
-// BIG O: time is O(log(n)) space, worst case is O(n)
-const insertIntoBST = function(root, val) {
-    node = root;
-    // While true... (that is while(1) as 1 is truthy)
-    // Loop will run forever until something calls break;
-    // InOrder Traversal left --root---right
-    while(1) {
-        if(val >= node.val) {
-            if(node.right) {
-                node = node.right;
-                continue;
-            } else {
-                node.right = new TreeNode(val);
-                break;
-            }
-        } else {
-            if(node.left) {
-                node = node.left;
-                continue;
-            } else {
-                node.left = newTreeNode(val);
-                break;
-            }
-        }
-    }
-    return root;
-}
-
 // Insert into BST recursive solution (not as efficient)
 const bstInsert = function(root, val) {
-    if(val >= root.val) {
-        if(root.right) {
-            bstInsert(root.right, val);
-        } else {
-            if(root.left) {
-                bstInsert(root.left, val)
-            } else {
-                root.left = new TreeNode(val);
-            }
-        }
+  if(val >= root.val) {
+    if(root.right) {
+      bstInsert(root.right, val);
+    } else {
+      if(root.left) {
+        bstInsert(root.left, val)
+      } else {
+        root.left = new TreeNode(val);
+      }
     }
-    return root;
+  }
+  return root;
 }
 
 
@@ -481,23 +442,23 @@ const longestPalindrome = s => {
  let letters = {};
  // Create hashmap
  for(let i = 0; i < s.length; i++) {
-     let si = s[i];
-     if(letters[si]) {
-         letters[si]++;
-     } else {
-         letters[si] = 1;
-     }
-  }
+    let si = s[i];
+    if(letters[si]) {
+      letters[si]++;
+    } else {
+      letters[si] = 1;
+    }
+ }
   // Scan hashmap for pairs
   let totalPairs = 0;
   let hasOdd = false;
   for(let l in letters) {
-      let c = letters[l];
-      let pairs = Math.floor(c/2);
-      if(!hasOdd && c - pairs * 2 >=1) {
-          hasOdd = true;
-      }
-      totalPairs += pairs;
+    let c = letters[l];
+    let pairs = Math.floor(c/2);
+    if(!hasOdd && c - pairs * 2 >=1) {
+      hasOdd = true;
+    }
+    totalPairs += pairs;
   }
   return totalPairs * 2 + (hasOdd ? 1:0);
 }
@@ -519,18 +480,18 @@ arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitar
     */
 
 function palindromeChecker(arr){
-     arr.forEach(element => {
-        element = element.toLowerCase().replace(/\s/g,'');
-        // creating an array then turn it back to string
-        let newElement = element.split('').reverse().join('');
-        if(newElement === element) {
-            console.log('this is a palindrome')
-            return true;
-        } else {
-            console.log('this is not a palindrome')
-            return false;
-        }
-    })
+    arr.forEach(element => {
+    element = element.toLowerCase().replace(/\s/g,'');
+    // creating an array then turn it back to string
+    let newElement = element.split('').reverse().join('');
+    if(newElement === element) {
+      console.log('this is a palindrome')
+      return true;
+    } else {
+      console.log('this is not a palindrome')
+      return false;
+    }
+  })
 }
 let arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitary zoo","Carla loves chocolate"];
 console.log(palindromeChecker(arr));
@@ -540,12 +501,12 @@ console.log(palindromeChecker(arr));
 /* Merge two sorted Linked Lists and return it as a new list. The new list should be made
 by splicing together the nodes of the first two lists.*/
 class ListNode {
-    // A node I can use for the below function
-    // I have to create a dummy node below
-    constructor(val = null, next = null) {
-        this.val = val;
-        this.next = next;
-    }
+  // A node I can use for the below function
+  // I have to create a dummy node below
+  constructor(val = null, next = null) {
+    this.val = val;
+    this.next = next;
+  }
 }
 const mergeTwoLists = function(list1,list2) {
   let dummyNode = new ListNode(-1);
@@ -555,45 +516,45 @@ const mergeTwoLists = function(list1,list2) {
   let head = dummyNode;
   while(list1 !== null && list2 !== null) {
     if(list1.val <= list2.val) {
-        dummyNode.next = list1;
-        list1 = list1.next;
+      dummyNode.next = list1;
+      list1 = list1.next;
     } else {
-        dummyNode.next = list2;
-        list2 = list2.next;
+      dummyNode.next = list2;
+      list2 = list2.next;
     }
     dummyNode = dummyNode.next;
   }
-    if(list1 !== null) {
-        dummyNode.next = list1;
-    } else {
-        dummyNode.next = list2;
-    }
-    return head.next;
+  if(list1 !== null) {
+    dummyNode.next = list1;
+  } else {
+    dummyNode.next = list2;
+  }
+  return head.next;
 }
 
 /* Given a linkedlist, return a boolean indicating whether or not
 the list is circular:*/
 
 const isCircular = linkedList => {
-    let currentNode = linkedList.head;
-    if(currentNode === null) return false;
+  let currentNode = linkedList.head;
+  if(currentNode === null) return false;
 
-    // Rather than use an array, using object keeps Big O at O(n)
-    let previousNodes = {};
-    // Traverse
-    // As we traverse, track visited
-    while(currentNode !== null) {
-        // Check previousNodes
-        if(previousNodes[currentNode]) {
-            // List is circular
-            return true;
-        } else {
-            // What about nodes not visited yet?
-            previousNodes[currentNode] = currentNode;
-            currentNode = currentNode.next;
-        }
+  // Rather than use an array, using object keeps Big O at O(n)
+  let previousNodes = {};
+  // Traverse
+  // As we traverse, track visited
+  while(currentNode !== null) {
+    // Check previousNodes
+    if(previousNodes[currentNode]) {
+      // List is circular
+      return true;
+    } else {
+      // What about nodes not visited yet?
+      previousNodes[currentNode] = currentNode;
+      currentNode = currentNode.next;
     }
-    return false;
+  }
+  return false;
 }
 
 // Write a function that deduplicates a linkedlist:
@@ -601,56 +562,56 @@ const removeDuplicates = linkedlist => {
   let currNode = linkedlist.head;
   let listOfValues = [];
   while(currNode !== null) {
-      // On first iteration, currNode goes into list
-    listOfValues.push(currNode.val);
-    if(listOfValues.indexOf(currentNode.next.val) === -1) {
-        currentNode = currentNode.next;
-       } else {
-           // There is a duplicate, so change next pointer to remove it
-        currentNode.next = currentNode.next.next;
-       }
-     }
-     return linkedlist;
+  // On first iteration, currNode goes into list
+  listOfValues.push(currNode.val);
+  if(listOfValues.indexOf(currentNode.next.val) === -1) {
+    currentNode = currentNode.next;
+    } else {
+    // There is a duplicate, so change next pointer to remove it
+    currentNode.next = currentNode.next.next;
+    }
+  }
+  return linkedlist;
 }
 
 // Binary Search Recursive: For Binary Search, data has to be sorted already
 const binarySearchRecursive = (arr, num, left, right) => {
-    if(left > right) {
-        // Error, can't find num;
-        return false;
-    }
-    // Pick midpoint
-    let mid = left + ((right - left)/ 2);
-    // If I've found element, then I need to return true
-    if(arr[mid] === num) {
-        return true;
-        // Otherwise, if num is on left side of mid, search left side
-    } else if(num < arr[mid]) {
-        return binarySearchRecursive(arr, num, left, mid -1);
-        // Otherwise search the right side
-        // Left point moves up to mid plus 1, right stays as is
-    } else {
-        return binarySearchRecursive(arr, num, mid +1, right);
-    }
+  if(left > right) {
+    // Error, can't find num;
+    return false;
+  }
+  // Pick midpoint
+  let mid = left + ((right - left)/ 2);
+  // If I've found element, then I need to return true
+  if(arr[mid] === num) {
+    return true;
+    // Otherwise, if num is on left side of mid, search left side
+  } else if(num < arr[mid]) {
+    return binarySearchRecursive(arr, num, left, mid -1);
+    // Otherwise search the right side
+    // Left point moves up to mid plus 1, right stays as is
+  } else {
+    return binarySearchRecursive(arr, num, mid +1, right);
+  }
 }
 
 // Binary Search Iterative Approach
 const binarySearchIterative = (num, arr) => {
-    let left = 0;
-    // Start off right at rightmost position in arr
-    let right =  arr.length - 1;
-    while(left <= right) {
-        let mid = left + ((right -left) / 2);
-        if(arr[mid] === num) {
-            return true;
-        }else if(num < arr[mid]) {
-            right = mid -1;
-        } else {
-            left = mid + 1;
-        }
+  let left = 0;
+  // Start off right at rightmost position in arr
+  let right =  arr.length - 1;
+  while(left <= right) {
+    let mid = left + ((right -left) / 2);
+    if(arr[mid] === num) {
+      return true;
+    }else if(num < arr[mid]) {
+      right = mid -1;
+    } else {
+      left = mid + 1;
     }
-    // Num has not been found
-    return false;
+  }
+  // Num has not been found
+  return false;
 }
 
 // Hanker Rank: Left Rotate an Array of integers
@@ -659,13 +620,13 @@ const binarySearchIterative = (num, arr) => {
 const rotateLeft = (arr, rotations) => {
   const rotatedArray = arr.concat();
   for(let i = 0; i < rotations; i++) {
-      // Pop off item from front
-      const frontItem = rotatedArray.shift();
-      // Push front item to back
-      rotatedArray.push(frontItem);
+    // Pop off item from front
+    const frontItem = rotatedArray.shift();
+    // Push front item to back
+    rotatedArray.push(frontItem);
   }
-    // One rotation done
-    return rotatedArray;
+  // One rotation done
+  return rotatedArray;
 }
 console.log(rotateLeft([1, 2, 3, 4, 5], 4));
 
@@ -675,23 +636,23 @@ as an input and returns a decoded string*/
 // Letters will be shifted 13 places
 // The input will be decoded
 const cipherString = str => {
-    let result = '';
-    // Loop through the string
-    for(let i = 0; i < str.length; i++) {
-     // Use charCodeAt (for ASCII value, numerical representation of characters on keyboard)
-     // This takes a letter and gives me ASCII value
-     let asciiValue = str[i].charCodeAt();
-     // Move num to left 13 spaces
-     if(asciiValue >= 65 && asciiValue <= 77) {
-         result += String.fromCharCode(asciiValue + 13);
-     } else if (asciiValue >= 78 && asciiValue <= 90) {
-         // FromCharCode differs from charCodeAt, this one takes ASCII num and gives me a letter
-        result += String.fromCharCode(asciiValue - 13);
-     } else {
-         result += str[i];
-     }
-   }
-   return result;
+  let result = '';
+  // Loop through the string
+  for(let i = 0; i < str.length; i++) {
+    // Use charCodeAt (for ASCII value, numerical representation of characters on keyboard)
+    // This takes a letter and gives me ASCII value
+    let asciiValue = str[i].charCodeAt();
+    // Move num to left 13 spaces
+    if(asciiValue >= 65 && asciiValue <= 77) {
+      result += String.fromCharCode(asciiValue + 13);
+    } else if (asciiValue >= 78 && asciiValue <= 90) {
+      // FromCharCode differs from charCodeAt, this one takes ASCII num and gives me a letter
+      result += String.fromCharCode(asciiValue - 13);
+    } else {
+      result += str[i];
+    }
+  }
+  return result;
 }
 console.log('in cipher',cipherString("SERR PBQR PNZC"));
 cipherString('AZ'); // ASCII value is 65
@@ -703,15 +664,15 @@ that are the same value as the arguments
 Ex: destroyer([1, 2, 3, 1, 2, 3], 2,3) -----> output: [1, 1]*/
 
 const destroyer = arr => {
-    // Remove all values
-    let args = Array.from(arguments);
-    // Give me everything from index 1 and on and remove first element
-    args.splice(0, 1);
-    let targets = args;
-    arr.filter(num => {
-          // If num is not in targets
-      return targets.indexOf(num) === -1;
-    })
+  // Remove all values
+  let args = Array.from(arguments);
+  // Give me everything from index 1 and on and remove first element
+  args.splice(0, 1);
+  let targets = args;
+  arr.filter(num => {
+        // If num is not in targets
+    return targets.indexOf(num) === -1;
+  })
 }
 console.log('in destroyer',destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 
@@ -732,24 +693,24 @@ Ex: [5, 3, 4, 1, 2]
      If min is not the index I began with, swap two values
      Repeat this with next element until arr is sorted
      (I have to shrink window of what I am comparing on iteration)
-     */
+*/
 
 // BIG O time: O^n2
 const selectionSort = arr => {
-    const swap = (arr, index1, index2) => {
-        ([arr[index1], arr[index2]] = [arr[index2], arr[index1]]);
+  const swap = (arr, index1, index2) => {
+    ([arr[index1], arr[index2]] = [arr[index2], arr[index1]]);
 
-        for(let i = 0; i < arr.length; i++) {
-            let minIndex = i;
-            for(let j = i + 1; j < arr.length; j++) {
-                if(arr[minIndex] > arr[j]) {
-                    minIndex = j;
-                }
-            }
-            if(i !== minIndex) swap(arr, i, minIndex);
-        }
-        return arr;
+    for(let i = 0; i < arr.length; i++) {
+      let minIndex = i;
+      for(let j = i + 1; j < arr.length; j++) {
+          if(arr[minIndex] > arr[j]) {
+              minIndex = j;
+          }
+      }
+      if(i !== minIndex) swap(arr, i, minIndex);
     }
+    return arr;
+  }
 }
 selectionSort([0, 2, 1, 7, 15, 4, 9]);
 
@@ -772,16 +733,16 @@ PseudoCode:
 
 // BIG O: Time: O(n^2): It is good when data is coming in 
 const insertionSort = arr => {
-    for( let i = 1; i < arr.length; i++) {
-        let currentVal = arr[i];
-        // Work backwards
-        // Start figuring out where inserted value needs to go
-        for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
-            arr[j + 1] = arr[j];
-        }
-        arr[j + 1] = currentVal;
+  for( let i = 1; i < arr.length; i++) {
+    let currentVal = arr[i];
+    // Work backwards
+    // Start figuring out where inserted value needs to go
+    for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
+        arr[j + 1] = arr[j];
     }
-    return arr;
+    arr[j + 1] = currentVal;
+  }
+  return arr;
  }
 
 insertionSort([2, 1, 9, 76, 4]);
@@ -794,58 +755,58 @@ Ex: generateRange(2, 10, 2) // should return an arr of [2, 4, 6, 8, 10]
     generateRange(1, 10, 3) // should return an rr of [1, 4, 7, 10]*/
 
 const generateRange = (min, max, step) => {
-    let results = [];
-    for(let i = min; i <= max; i += step) {
-        results.push(i);
-    }
-    return results;
+  let results = [];
+  for(let i = min; i <= max; i += step) {
+    results.push(i);
+  }
+  return results;
 };
 
 /* Write a function that acccepts a string parameter and reverses each word
 in the string. All spaces in the string should be retained*/
 const reverseWords = str => {
-    return str.split('').map(word => word.split('').reverse().join(''));
+  return str.split('').map(word => word.split('').reverse().join(''));
 }
 
 /* Count the number of divisors of a positive integer n. Random tests go up to n = 5000000.*/
 const getDivisors = n => {
-    let count = 0;
-    for(let i = 1; i <= n; i++) {
-        if(n % i === 0) count ++
-    }
-    return count;
+  let count = 0;
+  for(let i = 1; i <= n; i++) {
+    if(n % i === 0) count ++
+  }
+  return count;
 }
 
 /* Write a function that returns the first word with the greatest number of
 repeated letters*/
 
 const countLetters = str => {
-    // Splitting at words
-    let tempArr = str.split(' ');
-    tempArr = tempArr.map(word => {
-        // Split at letters
-        let tempWord = word.toLowerCase().split('');
-        return tempWord.reduce((acc, curr) => {
-            // Creating properties on the object
-            acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
-            if(acc[curr] > acc.max) {
-                acc.max = acc[curr];
-            }
-            return acc;
-        }, {max: 1, word: item})
-    })
-    let amount = 1;
-    let word = '';
-    for(let item of tempArr) {
-        if(item.max > amount) {
-            amount = item.max;
-            word = item.word;
+  // Splitting at words
+  let tempArr = str.split(' ');
+  tempArr = tempArr.map(word => {
+      // Split at letters
+      let tempWord = word.toLowerCase().split('');
+      return tempWord.reduce((acc, curr) => {
+        // Creating properties on the object
+        acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+        if(acc[curr] > acc.max) {
+          acc.max = acc[curr];
         }
+        return acc;
+      }, {max: 1, word: item})
+  })
+  let amount = 1;
+  let word = '';
+  for(let item of tempArr) {
+    if(item.max > amount) {
+      amount = item.max;
+      word = item.word;
     }
-    if(amount > 1) {
-        return word;
-    }
-    return -1;
+  }
+  if(amount > 1) {
+    return word;
+  }
+  return -1;
 }
 
 /* Given a function, confirmEnding which takes two args, a str and a target,
@@ -855,7 +816,7 @@ Ex: confirmEnding("Bastian", "n")*/
 const confirmEnding = (str, target) => {
 // can also use slice return str.slice(-target.length === target)
   if(str.substr(-target.length) === target) {
-      return true;
+    return true;
   }
   return false;
 }
@@ -888,12 +849,12 @@ const partialKeys = obj => {
   const newObj = {};
   Object.keys(obj).sort().reverse().forEach(key => {
     const value = obj[key];
-    for(let i = 0; i < key.length; i++){
+    for (let i = 0; i < key.length; i++) {
       const newKey = key.substring(0, i + 1);
       newObj[newKey] = value;
     }
   });
-    return newObj;
+  return newObj;
 };
 
 // What are the data types supported by JS?
@@ -936,18 +897,18 @@ I would skip over all the code for example.
 // 'trick' question regarding syntax
 // What does each return?
 function foo1() {
-    return {
-        // return hello
-        bar:'hello'
-    }
+  return {
+      // return hello
+      bar:'hello'
+  }
 }
 
 function foo1() {
-    return 
-    { //dead code, return undefined
-     // opening curly is not on the return line
-        bar:'hello'
-    }
+  return 
+  { //dead code, return undefined
+    // opening curly is not on the return line
+      bar:'hello'
+  }
 }
 // Youtube Frontend Interview Question Peter Elbaum:
 
@@ -1003,7 +964,7 @@ const shuffle = arr => {
    arr[currentIndex] = arr[randomIndex]
    arr[randomIndex] = tempValue
   }
-   return arr;
+  return arr;
 }
 
 /*Write a function that takes in two strings as arguments, and returns the number of times the first string, a single 
@@ -1028,29 +989,29 @@ console.log(isIncluded('a', 'Riva'))
 //'hello world' ---> 'heXXo worXd'
 
 const replaceChars = (str, char, charToBeReplaced) => {
-    let charStorage = [];
-    
-    for(let i= 0; i < str.length; i++) {
-      if(str[i] === charToBeReplaced) {
-        charStorage.push(char);
-      } else {
-        charStorage.push(str[i])
-      }
+  let charStorage = [];
+  
+  for(let i= 0; i < str.length; i++) {
+    if(str[i] === charToBeReplaced) {
+      charStorage.push(char);
+    } else {
+      charStorage.push(str[i])
     }
-    return charStorage.join('')
   }
-  console.log(replaceChars('Riva', 'b', 'v'));
+  return charStorage.join('')
+}
+console.log(replaceChars('Riva', 'b', 'v'));
 
   
-  const replaceTheChar = (str, char, charToBeReplaced) => {
-    let result = str.split('')
-    while(result.indexOf(charToBeReplaced) !== -1) {
-      result.splice(result.indexOf(charToBeReplaced), 1, char);
-    }
-    return result.join('');
+const replaceTheChar = (str, char, charToBeReplaced) => {
+  let result = str.split('')
+  while(result.indexOf(charToBeReplaced) !== -1) {
+    result.splice(result.indexOf(charToBeReplaced), 1, char);
   }
+  return result.join('');
+}
 
-  console.log(replaceTheChar('Banana', 'o', 'a'))
+console.log(replaceTheChar('Banana', 'o', 'a'))
 
 /*
 Given a string, that includes a bunch of words, return the MOST repeated word.
@@ -1080,68 +1041,89 @@ const repeatedWord = str => {
 
   for(let word of splitString){
    if(!storage[word]){
-       storage[word] = 1
+      storage[word] = 1
    } else {
-       storage[word]++
+      storage[word]++
    }
   }
   let max = 0;
   let mostRepeated = '';
   for(let word in storage){
-      if(storage[word] > max){
-          max = storage[word];
-          mostRepeated = word;
-      } 
+    if(storage[word] > max){
+      max = storage[word];
+      mostRepeated = word;
+    } 
   }
   return mostRepeated; 
 }
 console.log(repeatedWord('duck duck goose ragnar duck kitty ragnar'));
 
 const mostRepeatedWords = str => {
-    let splitString = str.split(' ')
-    let storage = {};
-    let repeats = [];
-    for(let word of splitString){
-     if(!storage[word]){
-         storage[word] = 1
-     } else {
-         storage[word]++
-     }
+  let splitString = str.split(' ')
+  let storage = {};
+  let repeats = [];
+  for(let word of splitString){
+    if(!storage[word]){
+      storage[word] = 1
+    } else {
+      storage[word]++
     }
-    
-    for(let word in storage){
-        if(storage[word] > 1){
-           repeats.push(word);
-        } 
-    }
-    return repeats.join(', '); 
   }
-  console.log(mostRepeatedWords('duck duck goose ragnar duck kitty ragnar'));
+  
+  for(let word in storage){
+    if(storage[word] > 1){
+      repeats.push(word);
+    } 
+  }
+  return repeats.join(', '); 
+}
+console.log(mostRepeatedWords('duck duck goose ragnar duck kitty ragnar'));
   
 
   /*
   Given the challenge above, provide a solution 
   that includes ONLY one iteration*/
 
-  const mostRepeats = str => {
-      let repeatedWords = str.split(' ');
-      let storage = {};
-      let repeats = [];
-      for(let word of repeatedWords) {
-        if(!storage[word]) {
-            storage[word] = 1
-        } else {
-            repeats.push(word);
-        }
-      }
-      return repeats.join(', ');
+const mostRepeats = str => {
+  let repeatedWords = str.split(' ');
+  let storage = {};
+  let repeats = [];
+  for(let word of repeatedWords) {
+    if(!storage[word]) {
+      storage[word] = 1
+    } else {
+      repeats.push(word);
+    }
   }
-  console.log(mostRepeats('riva riva ragnar kitty cat kitty'));
+  return repeats.join(', ');
+}
+console.log(mostRepeats('riva riva ragnar kitty cat kitty'));
 
-  /*
-  /*Given a number, return an array containing the two halfs of the number. 
-  If the number is odd, then make rightmost number higher. 
-  All nums will be integers and I can expect negative nums.
+  /*Write a JS program to find first non repeated char in a str.
+  Input: "cbcbdde"
+  Output: e
+  */
+
+ 
+const findRepeat = str => {
+  if(str.length === 1) return str;
+
+  const strToArr = str.split('');
+  let solution = {};
+
+  for (let char of strToArr) {
+    solution[char] = solution[char] + 1 || 1;
+  }
+  for (let key in solution) {
+    if(solution[key] === 1) {
+      return key;
+    }
+  }
+}
+
+/*Given a number, return an array containing the two halfs of the number. 
+If the number is odd, then make rightmost number higher. 
+All nums will be integers and I can expect negative nums.
 
 input: num
 output: array with two halfs of num
@@ -1149,7 +1131,6 @@ output: array with two halfs of num
 numberSplit(4) ➞ [2, 2]
 numberSplit(10) ➞ [5, 5]
 numberSplit(-9) ➞ [-5, -4]
-
 */
   const numberSplit = n => {
     let arrOfHalves = [];
@@ -1169,16 +1150,17 @@ numberSplit(-9) ➞ [-5, -4]
 Return the length of the longest word in the provided sentence.
 Your response should be a number.
 */
+
 const findLongestWordLength = str => {
-    let newString = str.split(' ');
-    let maxLength = 0;
-   
-    for(let i = 0; i < newString.length; i++){
-      if(newString[i].length > maxLength){
-        maxLength = newString[i].length;
-      }
+  let newString = str.split(' ');
+  let maxLength = 0;
+  
+  for(let i = 0; i < newString.length; i++){
+    if(newString[i].length > maxLength){
+      maxLength = newString[i].length;
     }
-    return maxLength;
+  }
+  return maxLength;
 }
 
 /*
@@ -1196,7 +1178,7 @@ const largestOfFour = arr => {
         }
       }
     largestNums[i] = largestNumber;
-   }
+  }
   return largestNums;
 }
   
@@ -1242,8 +1224,8 @@ const longestStreak = arr => {
     for(let i = 0; i < finalMax; i++){
         result.push(1)
     }
-    return result;
-  }
+  return result;
+}
 
 console.log(longestStreak([1, 1, 1, 0, 1, 0, 1, 1, 1, 1]))
 
@@ -1259,12 +1241,12 @@ Return the truncated string with a ... ending.
 */
 
 const truncateString = (str, num) => {
-    if (str.length > num) {
-     return str.slice(0, num) + "...";
-   } else {
-     return str;
-   }
- }
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}
  
 truncateString("A-tisket a-tasket A green and yellow basket", 8);
 
@@ -1283,13 +1265,13 @@ and returns them as a two-dimensional array.
    - return value of chunked
 */
 const chunkArrayInGroups = (arr, size) => {
-    let chunked = [];
-    for(let i =0; i < arr.length; i += size){
-      chunked.push(arr.slice(i, i + size));
+  let chunked = [];
+  for(let i =0; i < arr.length; i += size){
+    chunked.push(arr.slice(i, i + size));
   }
   return chunked;
-  }
-  chunkArrayInGroups(["a", "b", "c", "d"], 2);     
+}
+chunkArrayInGroups(["a", "b", "c", "d"], 2);     
 
 /* 
 Remove all falsy values from arr: What are falsy values?
@@ -1302,13 +1284,13 @@ Remove all falsy values from arr: What are falsy values?
    - The new arr contains only truthy elements.
 - Return the new array.
 */
- const removeFalsyValues = arr => {
-    let newArray = [];
-    for(let i = 0; i < arr.length; i++) {
-      if(arr[i]) newArray.push(arr[i]);
-    }
-    return newArray;
+const removeFalsyValues = arr => {
+  let newArray = [];
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i]) newArray.push(arr[i]);
   }
+  return newArray;
+}
 
 /*
 Return the lowest index at which a value (second argument) 
@@ -1336,7 +1318,7 @@ const getIndexToIns = (arr, num) => {
 
   for(let i = 0; i < arr.length; i++) {
     if(num <= arr[i]) {
-        return i;
+      return i;
     }
   }
   return arr.length;
@@ -1447,10 +1429,10 @@ const findMissingLetter = str => {
 
   str.split('').map((letter,idx) => {
     if(str.charCodeAt(idx) === letterTrack) {
-        letterTrack++
+      letterTrack++
     } else {
-        // Returns a str created from the specified sequence of UTF-16 code units.
-        missing = String.fromCharCode(letterTrack);
+      // Returns a str created from the specified sequence of UTF-16 code units.
+      missing = String.fromCharCode(letterTrack);
     }
   });
   return missing;
@@ -1486,13 +1468,14 @@ Pseudocode:
   - Or, initialize another string and copy each non-vowel character to this string from the input string.
 - Return the final result string.
 */
+
 const removeVowels = str => {
  let vowels = ['a', 'e', 'i', 'o', 'u'];
  newString = ''
  for(let char of str) {
-    if(vowels.indexOf(char) == -1) {
-     newString += char;
-   }
+  if(vowels.indexOf(char) == -1) {
+    newString += char;
+  }
  }
  return newString
 }
@@ -1524,8 +1507,8 @@ let numbers = [];
   for(let i = x; i <= numbers.length; i++) {
     if (numbers[i] % n === 0) {
       divisibleNums.push(numbers[i]);
-      } else {
-        continue;
+    } else {
+      continue;
     }
   }
   return divisibleNums;
