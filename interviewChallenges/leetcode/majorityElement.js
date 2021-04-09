@@ -32,4 +32,4 @@ const majority = nums => {
       return key;
     }
   }
- }
+}
