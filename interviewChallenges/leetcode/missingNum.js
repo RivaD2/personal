@@ -24,7 +24,7 @@ How can I do this? The steps:
       [0, 1, 2, 3] ---> Total: 6
       - Difference here is 2, which is the missing num
   - Create a variable to hold sum if no num is missing
-    - Ex: [0, 1, 3], i = 0, 1, 2
+    - Ex: [0, 1 3], i = 0, 1, 2
       If no nums are missing, I would have one more index, i = 3 
       3 is the same as length of the arr, so sum = length + sum of indices
   - Create a variable to hold ACTUAL sum
@@ -33,7 +33,7 @@ How can I do this? The steps:
   - Calculate diff between sumWithNoNumMissing and actual sum (2)
   - Return diff
 */
-
+   
 const missingNum = function(nums) {
   let sumIfNoNumMissing = nums.length;
   let actualSum = 0;
@@ -44,6 +44,6 @@ const missingNum = function(nums) {
     // Actual Sum is all nums in arr 
     actualSum += nums[i];
   }
-  return sumIfNoNumMissing - actualSum
+  return sumIfNoNumMissing - actualSum;
 }
 

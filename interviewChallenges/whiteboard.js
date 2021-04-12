@@ -1516,3 +1516,37 @@ let numbers = [];
 
 console.log(arrayOps(1, 10, 3));
 console.log(arrayOps(7, 9, 2));
+
+/*
+Given a string, create a function to reverse the case.
+All lowercase letters should be uppercase and vice-versa/
+
+Ex 1:reverseCase("Happy Birthday") ➞ "hAPPY bIRTHDAY"
+Ex 2:reverseCase("MANY THANKS") ➞ "many thanks"
+
+- string---> Immutable...have to return new variable at end--string
+- create variable and set to empty string
+- Use a for of loop to iterate through string
+- IF letter is not == letter.toLowerCase(), letter.toLowerCase()
+  variable += letter
+- Else, letter = letter.toUpperCase(0;
+  variable += letter;
+- return variable holding str with new values
+*/
+
+const reverseCase = str => {
+  let splitString = str.split("");
+  let caseString = ''
+
+  for(let letter of splitString) {
+    if(letter !== letter.toLowerCase()) {
+        letter = letter.toLowerCase();
+        caseString += letter;
+      } else {
+          letter = letter.toUpperCase();
+        caseString += letter
+      }
+    }
+  return caseString;
+}
+console.log(reverseCase('Many Thanks'))
