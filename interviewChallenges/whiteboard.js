@@ -1535,18 +1535,18 @@ Ex 2:reverseCase("MANY THANKS") ➞ "many thanks"
 */
 
 const reverseCase = str => {
-  let splitString = str.split("");
+  let splitString = str.split('');
   let caseString = ''
 
   for(let letter of splitString) {
     if(letter !== letter.toLowerCase()) {
-        letter = letter.toLowerCase();
-        caseString += letter;
-      } else {
-          letter = letter.toUpperCase();
-        caseString += letter
-      }
+      letter = letter.toLowerCase();
+      caseString += letter;
+    } else {
+      letter = letter.toUpperCase();
+      caseString += letter
     }
+  }
   return caseString;
 }
 console.log(reverseCase('Many Thanks'))
