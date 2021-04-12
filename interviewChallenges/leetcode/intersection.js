@@ -60,9 +60,11 @@ const arrayIntersection = (nums1, nums2) => {
   }
   let storageTwo = {};
   for(let num of nums2) {
+    storageTwo[num] = storageTwo[num] + 1 || 1;
     if(storageTwo[num] === storageOne[num]) {
       result.push(num);
     }
   }
+  return result;
 }
 console.log(arrayIntersection([1,2,2,1], [2,2]));
