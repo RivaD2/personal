@@ -57,7 +57,9 @@ const arrayIntersection = (nums1, nums2) => {
 
   for(let num of nums1){
     storageOne[num] = storageOne[num] + 1 || 1;
+    if(storageOne[num] > 1) result.push(num);
   }
+
   let storageTwo = {};
   for(let num of nums2) {
     storageTwo[num] = storageTwo[num] + 1 || 1;
