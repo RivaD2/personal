@@ -1550,3 +1550,30 @@ const reverseCase = str => {
   return caseString;
 }
 console.log(reverseCase('Many Thanks'))
+
+/*
+Write a function that returns true if first arr is a subset of the second arr. 
+Return false otherwise.
+   
+   isSubset([3, 2, 5], [5, 3, 7, 9, 2]) ➞ true
+   isSubset([8, 9], [7, 1, 9, 8, 4, 5, 6]) ➞ true
+   isSubset([1, 2], [3, 5, 9, 1]) ➞ false
+*/
+
+const isSubset = (arr1, arr2) => {
+  let storage = {};
+
+  for(let num of arr1) {
+   storage[num] = storage[num] + 1 || 1;
+  }
+  
+  let storage2 = {};
+  for(let num of arr2) {
+     storage2[num] = storage2[num] + 1 || 1;
+    if(storage2[num] === storage[num]) {
+     return true; 
+    } else {
+      return false; 
+    }
+  }
+}
