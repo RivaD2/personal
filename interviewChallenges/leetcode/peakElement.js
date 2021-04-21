@@ -25,7 +25,7 @@ Pseudocode:
      - Set 'end' to mid
      - ELSE the peak is on the right half of arr so
        I set 'start' to mid + 1;
-
+ - return start
 */
 
 const findPeakElement = nums => {
