@@ -1577,3 +1577,54 @@ const isSubset = (arr1, arr2) => {
     }
   }
 }
+
+/*
+Given two arrays, find their median and return which median is higher.
+
+Ex 1: [1, 2, 3, 4], [4, 5, 6]  
+arr1 = 10, arr 2 = 15 
+arr 1 total = 10/4 --> 2.5 , arr2 total = 15/3--> 5
+2.5 < 5
+return 5
+
+- Iterate over first arr of nums using reduce
+  - add up nums using reduce
+  - total sum of elements / total number of elements in arr 1
+- Iterate over second arr of nums using reduce
+  - do same things as above
+  
+- One I have the median value of each arr
+  - Compare those values against each other
+  - Return the highest number
+*/
+
+const firstSum = (arr1) => {
+  const sumOfArr1 = arr1.reduce((acc, curr) => {
+      return acc + curr
+    }, 0)
+    return sumOfArr1;
+  }
+
+  const secondSum = (arr2) => {
+    const sumOfArr2 = arr2.reduce((acc, curr) => {
+      return acc + curr
+    }, 0)
+    return sumOfArr2;
+  }
+
+const highestMedian = (arr1, arr2) => {
+  let sumOfFirst = firstSum(arr1);
+  let median = sumOfFirst/arr1.length;
+ 
+  let sumOfSecond = secondSum(arr2);
+  let medianOfSecond = sumOfSecond/arr2.length;
+
+  if (median > medianOfSecond) {
+    return median;
+  } else if(median < medianOfSecond) {
+    return medianOfSecond;
+  }
+}
+ 
+console.log(highestMedian([1, 2, 3, 4], [4, 5, 6]));
+ 
