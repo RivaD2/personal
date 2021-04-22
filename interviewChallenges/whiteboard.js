@@ -74,15 +74,15 @@ const canSum = (targetSum, nums, memo ={}) => {
   if(targetSum < 0) return false;
   // Iterating through every element of nums arr
   for(let num of nums) {
-      // I need branching logic (transiting from one node of tree to next)
-      const remainder = targetSum - num;
-      // I can resuse nums of arr as many times as I like
-      // This function should return boolean 
-      // If it is possible to generate reminder with nums of arr, then return true for targetSum
-      if(canSum(remainder,nums, memo) === true) {
-          memo[targetSum] = true;
-          return true;
-      }
+    // I need branching logic (transiting from one node of tree to next)
+    const remainder = targetSum - num;
+    // I can resuse nums of arr as many times as I like
+    // This function should return boolean 
+    // If it is possible to generate reminder with nums of arr, then return true for targetSum
+    if(canSum(remainder,nums, memo) === true) {
+      memo[targetSum] = true;
+      return true;
+    }
   }
   memo[targetSum] = false;
   return false;
@@ -124,16 +124,16 @@ const howSum = (targetSum, nums, memo = {}) => {
   if(targetSum < 0) return null;
   // Recursive call for every num in array
   for(let num of nums) {
-      const remainder = targetSum - num;
-      // Recursive call on howSum
-      // Assigned to variable as we can return two different results
-      const remainderResult = howSum(remainder, nums, memo);
-      // In the tree, we wanted to return as soon as it is possible to generate remainder
-      if(remainderResult !== null) {
-          // The nums are the edges from the tree diagram(which are the nums in arr)
-          memo[targetSum] = [...remainderResult, num];
-          return memo[targetSum]
-      }
+    const remainder = targetSum - num;
+    // Recursive call on howSum
+    // Assigned to variable as we can return two different results
+    const remainderResult = howSum(remainder, nums, memo);
+    // In the tree, we wanted to return as soon as it is possible to generate remainder
+    if(remainderResult !== null) {
+      // The nums are the edges from the tree diagram(which are the nums in arr)
+      memo[targetSum] = [...remainderResult, num];
+      return memo[targetSum]
+    }
   }
   memo[targetSum] = null;
   return null;
@@ -167,11 +167,11 @@ const bestSum = (targetSum, nums, memo = {}) => {
       const combination = [...remainderCombo, num];
       // If combination is shorter than current shortest combo
       if(shortestCombo === null || combination.length < shortestCombo.length) {
-          // The shorter combination wins out and can stay
-          shortestCombo = combination;
+        // The shorter combination wins out and can stay
+        shortestCombo = combination;
       }
     }
-   }
+  }
   memo[targetSum] = shortestCombo;
   return shortestCombo;
 };
@@ -197,25 +197,25 @@ console.log(bestSum(8, [2, 3, 5]));
 // Big O: time is O(n * m^2) as I don't have to explore duplicate subtrees
 // Big O space is O(m^2)
 const canConstruct = (target, wordBank, memo = {}) => {
-    if(target in memo) return memo[target];
-    if(target === '') return true;
+  if(target in memo) return memo[target];
+  if(target === '') return true;
 
-    // Iterating through wordBank
-    for(let word of wordBank) {
-      // When is it ok to make recursive call using that word
-      // Have to make sure word is a prefix of target (I have a prefix, use it to shrink target)
-      if(target.indexOf(word === 0)) {
-        const suffix = target.slice(word.length);
-        // Make recursive call on suffix, can I construct the suffix?
-        // If suffix can be made and word is in wordBank, then target can be made
-        if(canConstruct(suffix, wordBank, memo) === true) {
-            memo[target] = true;
-            return true;
-        }
+  // Iterating through wordBank
+  for(let word of wordBank) {
+    // When is it ok to make recursive call using that word
+    // Have to make sure word is a prefix of target (I have a prefix, use it to shrink target)
+    if(target.indexOf(word === 0)) {
+      const suffix = target.slice(word.length);
+      // Make recursive call on suffix, can I construct the suffix?
+      // If suffix can be made and word is in wordBank, then target can be made
+      if(canConstruct(suffix, wordBank, memo) === true) {
+        memo[target] = true;
+        return true;
       }
     }
-    memo[target] = false;
-    return false;
+  }
+  memo[target] = false;
+  return false;
 };
 
 // Challenge 6: countConstruct
@@ -239,10 +239,10 @@ const countConstruct = (target, wordBank, memo = {}) => {
     // Check if word is a prefix
     // If if statement is never true, then the count will be 0, so I just return it
     if(target.indexOf(word) === 0) {
-        // Take suffix and call recursively on it
-        // Num of ways I can construct suffix 
-        const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
-        totalCount += numWaysForRest; 
+      // Take suffix and call recursively on it
+      // Num of ways I can construct suffix 
+      const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
+      totalCount += numWaysForRest; 
     }
   }
   memo[target] = totalCount;
@@ -276,21 +276,21 @@ const BFSDepth = root => {
   let depthCount = 0;
   
   while(queue.length !== 0) {
-      let numOfNodes = queue.length;
-      while(numOfNodes > 0) {
-          // Grab nodes that are in queue
-          // FIFO
-          let currentNode = queue.shift();
-          // Checking if node has children
-          if(currentNode.left === null && currentNode.right === null) {
-              depthCount++
-              return depthCount;
-          }
-          if(currentNode.left !== null) {
-              queue.push(currentNode.left);
-          }
-          if(currentNode.right !== null) {
-              queue.push(currentNode.right);
+    let numOfNodes = queue.length;
+    while(numOfNodes > 0) {
+      // Grab nodes that are in queue
+      // FIFO
+      let currentNode = queue.shift();
+      // Checking if node has children
+      if(currentNode.left === null && currentNode.right === null) {
+        depthCount++
+        return depthCount;
+      }
+      if(currentNode.left !== null) {
+        queue.push(currentNode.left);
+      }
+      if(currentNode.right !== null) {
+        queue.push(currentNode.right);
       }
       return numOfNodes--
     }
@@ -373,9 +373,9 @@ const twoSum = (nums, target) => {
     const index2 = previousValues[neededValue];
     // This means I have something for that object
     if(index2 !== null) {
-        return [index2, index]
+      return [index2, index]
     } else {
-        previousValues[currentNum] = i;
+      previousValues[currentNum] = i;
     }
   }
 }
@@ -388,7 +388,7 @@ of the Pascal's Triangle. The row index starts from 0.
 
 const getItem = (row, j) =>{
   if(j< 0 || j>= row.length) {
-      return 0;
+    return 0;
   }
   return row[j];
 }
@@ -480,7 +480,7 @@ arr = ["The quick brown fox jumped over the sleeping dog","oozy rat in a sanitar
     */
 
 function palindromeChecker(arr){
-    arr.forEach(element => {
+  arr.forEach(element => {
     element = element.toLowerCase().replace(/\s/g,'');
     // creating an array then turn it back to string
     let newElement = element.split('').reverse().join('');
@@ -562,13 +562,13 @@ const removeDuplicates = linkedlist => {
   let currNode = linkedlist.head;
   let listOfValues = [];
   while(currNode !== null) {
-  // On first iteration, currNode goes into list
-  listOfValues.push(currNode.val);
-  if(listOfValues.indexOf(currentNode.next.val) === -1) {
-    currentNode = currentNode.next;
+    // On first iteration, currNode goes into list
+    listOfValues.push(currNode.val);
+    if(listOfValues.indexOf(currentNode.next.val) === -1) {
+      currentNode = currentNode.next;
     } else {
-    // There is a duplicate, so change next pointer to remove it
-    currentNode.next = currentNode.next.next;
+      // There is a duplicate, so change next pointer to remove it
+      currentNode.next = currentNode.next.next;
     }
   }
   return linkedlist;
@@ -670,7 +670,7 @@ const destroyer = arr => {
   args.splice(0, 1);
   let targets = args;
   arr.filter(num => {
-        // If num is not in targets
+    // If num is not in targets
     return targets.indexOf(num) === -1;
   })
 }
@@ -679,20 +679,20 @@ console.log('in destroyer',destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 /*Selection Sort: Instead of first placing large values in sorted position, 
 it places small values into sorted position
 Ex: [5, 3, 4, 1, 2]
-     Compare 5 and 3, 3 is min, so set 3 to min
-     Compare 5 and 4, 3 is still min
-     Compare 5 and 1, so now 1 is new min
-     Compare 1 and 2, 1 is still min
-     Now I swap min with whatever the starting num was
-     Repeat the process, now starting at next index which is 3
-     
-     PseudoCode:
-     Make var to store min value
-     Compare this item to net item in the arr until I find another min
-     If I find new min, save index of where the value is found in var
-     If min is not the index I began with, swap two values
-     Repeat this with next element until arr is sorted
-     (I have to shrink window of what I am comparing on iteration)
+  Compare 5 and 3, 3 is min, so set 3 to min
+  Compare 5 and 4, 3 is still min
+  Compare 5 and 1, so now 1 is new min
+  Compare 1 and 2, 1 is still min
+  Now I swap min with whatever the starting num was
+  Repeat the process, now starting at next index which is 3
+  
+  PseudoCode:
+  Make var to store min value
+  Compare this item to net item in the arr until I find another min
+  If I find new min, save index of where the value is found in var
+  If min is not the index I began with, swap two values
+  Repeat this with next element until arr is sorted
+  (I have to shrink window of what I am comparing on iteration)
 */
 
 // BIG O time: O^n2
@@ -703,9 +703,9 @@ const selectionSort = arr => {
     for(let i = 0; i < arr.length; i++) {
       let minIndex = i;
       for(let j = i + 1; j < arr.length; j++) {
-          if(arr[minIndex] > arr[j]) {
-              minIndex = j;
-          }
+        if(arr[minIndex] > arr[j]) {
+            minIndex = j;
+        }
       }
       if(i !== minIndex) swap(arr, i, minIndex);
     }
@@ -738,7 +738,7 @@ const insertionSort = arr => {
     // Work backwards
     // Start figuring out where inserted value needs to go
     for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
-        arr[j + 1] = arr[j];
+      arr[j + 1] = arr[j];
     }
     arr[j + 1] = currentVal;
   }
@@ -784,16 +784,16 @@ const countLetters = str => {
   // Splitting at words
   let tempArr = str.split(' ');
   tempArr = tempArr.map(word => {
-      // Split at letters
-      let tempWord = word.toLowerCase().split('');
-      return tempWord.reduce((acc, curr) => {
-        // Creating properties on the object
-        acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
-        if(acc[curr] > acc.max) {
-          acc.max = acc[curr];
-        }
-        return acc;
-      }, {max: 1, word: item})
+    // Split at letters
+    let tempWord = word.toLowerCase().split('');
+    return tempWord.reduce((acc, curr) => {
+      // Creating properties on the object
+      acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+      if(acc[curr] > acc.max) {
+        acc.max = acc[curr];
+      }
+      return acc;
+    }, {max: 1, word: item})
   })
   let amount = 1;
   let word = '';
@@ -814,7 +814,7 @@ check if a str ends with the given target string, target. Use a substr() method.
 
 Ex: confirmEnding("Bastian", "n")*/
 const confirmEnding = (str, target) => {
-// can also use slice return str.slice(-target.length === target)
+  // can also use slice return str.slice(-target.length === target)
   if(str.substr(-target.length) === target) {
     return true;
   }
@@ -1211,18 +1211,18 @@ const longestStreak = arr => {
 
   for(let i = 0; i < arr.length; i++){
     if(arr[i] === 1){
-        console.log(arr[i])
-        currentMax++;
-        finalMax = Math.max(currentMax, finalMax);
-        console.log('what is finalMax',finalMax)
+      console.log(arr[i])
+      currentMax++;
+      finalMax = Math.max(currentMax, finalMax);
+      console.log('what is finalMax',finalMax)
     } else {
-        currentMax = 0;
+      currentMax = 0;
     }
   }
 
   let result = [];
     for(let i = 0; i < finalMax; i++){
-        result.push(1)
+      result.push(1)
     }
   return result;
 }
@@ -1498,7 +1498,7 @@ Create a function that takes three parameters:
 const arrayOps = (x, y, n) => {
 */
 const arrayOps = (x, y, n) => {
-let numbers = [];
+  let numbers = [];
   for(let x = 1; x <= y; x++) {
     numbers.push(x);
   }
@@ -1600,14 +1600,14 @@ return 5
 
 const firstSum = (arr1) => {
   const sumOfArr1 = arr1.reduce((acc, curr) => {
-      return acc + curr
+      return acc + curr;
     }, 0)
     return sumOfArr1;
   }
 
   const secondSum = (arr2) => {
     const sumOfArr2 = arr2.reduce((acc, curr) => {
-      return acc + curr
+      return acc + curr;
     }, 0)
     return sumOfArr2;
   }
