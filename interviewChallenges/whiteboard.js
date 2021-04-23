@@ -1600,17 +1600,17 @@ return 5
 
 const firstSum = (arr1) => {
   const sumOfArr1 = arr1.reduce((acc, curr) => {
-      return acc + curr;
-    }, 0)
-    return sumOfArr1;
-  }
+    return acc + curr;
+  }, 0)
+  return sumOfArr1;
+}
 
-  const secondSum = (arr2) => {
-    const sumOfArr2 = arr2.reduce((acc, curr) => {
-      return acc + curr;
-    }, 0)
-    return sumOfArr2;
-  }
+const secondSum = (arr2) => {
+  const sumOfArr2 = arr2.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0)
+  return sumOfArr2;
+}
 
 const highestMedian = (arr1, arr2) => {
   let sumOfFirst = firstSum(arr1);
