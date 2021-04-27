@@ -1628,3 +1628,43 @@ const highestMedian = (arr1, arr2) => {
  
 console.log(highestMedian([1, 2, 3, 4], [4, 5, 6]));
  
+/*
+FirstVowelIndex
+
+Challenge: 
+  Create a function that returns the index of the first vowel in a string.
+  - Input will always be single words
+  - Character and words will either be uppercase or lowercase
+  - Y IS NOT considered to be a vowel
+  - Input will always contain a vowel
+  
+  firstVowel("apple") ➞ 0
+  firstVowel("hello") ➞ 1
+  firstVowel("STRAWBERRY") ➞ 3
+  firstVowel("pInEaPPLe") ➞ 1
+
+  Input: string
+  Output: integer
+
+  Pseudocode:
+    - Declare a variable called 'vowels' to hold all vowel examples, minus y
+      - let vowels = 'a, e, i, o, u, A, E, I , O, U';
+    - Split input string to array ['a', 'p', p, l, e]
+      - ... syntax to spread string
+    - Loop through splitString using for loop
+        - pInEaPPLe, does it include a vowel?
+          - Use includes/ method() check whether input string has a given vowels
+          - IF it does, then return indexOf(given vowel[i]);
+*/
+
+const firstVowel = string => {
+  let splitString = string.split('');
+  let vowels = ['a','e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  for(let i = 0; i < splitString.length; i++) {
+   if(splitString.includes(vowels[i])) {
+     return splitString.indexOf(vowels[i]);
+    }
+  }
+}
+
+console.log(firstVowel('STRAWBERRY'));
