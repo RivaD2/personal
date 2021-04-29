@@ -45,6 +45,6 @@ const lengthOfLast = s => {
       }
     }
   }
-  return lastWordLength
+  return lastWordLength;
 }
 console.log(lengthOfLast("Hello World"));
