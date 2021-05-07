@@ -13,7 +13,7 @@ Explanation: Your function should return length = 5, with the first five element
 */
 
 const removeDuplicates = nums => {
-  // If arr is sorted, any dupes would right after the one I'm currently on
+  // If arr is sorted, any dupes would be right after the one I'm currently on
   // I have to compare two elements next to another ALWAYS
   // Keep track of index of where I am placing things
   // First number is always unique, meaning it will never be a duplicate

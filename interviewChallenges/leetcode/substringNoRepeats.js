@@ -74,7 +74,7 @@ const findLengthOfLongestSubstring = s => {
   for(let i = 0; i < s.length; i++){
     let char = s[i];
     if(char in storage) {
-      // Increment index if I;ve seen letter before
+      // Increment index if I've seen letter before
       start = Math.max(start, storage[char] + 1)
     }
     // Otherwise, keep adding char at particular index 

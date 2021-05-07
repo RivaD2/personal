@@ -1417,3 +1417,18 @@ const firstVowel = string => {
 }
 
 console.log(firstVowel('STRAWBERRY'));
+
+/*
+Create a function that concatenates 'n' input arrays, where n is a variable.
+
+concat([1, 2, 3], [4, 5], [6, 7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+concat([1], [2], [3], [4], [5], [6], [7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+concat([1, 2], [3, 4]) ➞ [1, 2, 3, 4]
+
+*/
+function concat(...args) {
+  let newArray = [...args];
+    return newArray.flat();
+}
+  
+console.log(concat([1, 2, 3], [4, 5, 6]));

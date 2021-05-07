@@ -24,6 +24,11 @@ Psedocode:
   - Elements that have value of 1 are unique 
   - Loop through elements in object using for in
    - I can use destructuring and Object.entries
+    - Here I know that if val of storage is equal to one, then I need to add the val
+      to totalSum;
+    - Since Object.entries will turn keys into strings into an array, I need to turn
+     the key back into a number (use Number)
+    - return totalSum
 */
 
 let sumOfUnique = function(nums){
@@ -46,3 +51,18 @@ let sumOfUnique = function(nums){
 }
 console.log(sumOfUnique([2, 2, 4, 4, 1, 6]));
 
+var sumOfUniqueNums = function(nums) {
+  let sum = 0;
+  const storage = {};
+  
+  for (let i = 0; i < nums.length; i++) {
+    storage[nums[i]] = (storage[nums[i]] || 0) + 1;
+    if (storage[nums[i]] === 2){
+      sum -= nums[i];
+    }
+    if (storage[nums[i]] === 1) {
+      sum += nums[i];
+    }
+  }
+  return sum;
+};
