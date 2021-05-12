@@ -1327,6 +1327,42 @@ const isSubset = (arr1, arr2) => {
   }
 }
 
+/* Given two non-empty array of integers, write a function that would determine 
+whether the second array is a sub-sequence of the first. 
+Return a boolean indicating the result.
+
+sub-sequence: [1, 10, 50, 100] , [10, 100]
+
+input: integer arrays
+output: boolean
+
+
+- Start with arr1
+  - Create variable 'pointer' and set it 0
+    - if pointer === arr.length, then return true as 
+  - Loop over arr1
+    - if current element of arr1 is equal to element that is being pointed at
+      in arr 2, increment pointer
+  
+*/
+
+// This is similar to challenge above but order matters here
+const subSequenceArrays = (arr1, arr2) => {
+  let pointer = 0;
+
+  for (let int of arr1) {
+    if (arr2[pointer] === int){
+      pointer++; 
+    } 
+    if (pointer === arr2.length){
+      return true;
+    }
+  }
+  return false;
+}
+console.log(subSequenceArrays([1, 2, 3, 4, 5], [2, 3]));
+
+
 /*
 Given two arrays, find their median and return which median is higher.
 
