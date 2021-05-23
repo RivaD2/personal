@@ -1220,7 +1220,7 @@ Pseudocode:
 
 const removeVowels = str => {
  let vowels = ['a', 'e', 'i', 'o', 'u'];
- newString = ''
+ newString = '';
  for(let char of str) {
   if(vowels.indexOf(char) == -1) {
     newString += char;
@@ -1468,3 +1468,63 @@ function concat(...args) {
 }
   
 console.log(concat([1, 2, 3], [4, 5, 6]));
+
+/*
+
+Given an array of temperatures from a given week, calculate the average temperature for n days. 
+List the average temperatures for n days for the whole week.
+
+ - Refactored first solution from sliding window techniques.
+ - If the input array if of n length and the output
+ would be an arr of n length, then I can use map().
+
+ Input: [98.1, 99.5, 90.2, 81.2, 99.3, 94.5]
+Output: [no data, no data, 95.9, 90.3, 90.2, 91.6]
+n = 3
+
+input: array of length n
+output: array of length n
+
+
+pseudocode:
+ - if index is less than n - 1, return a string 'no data'
+ - Calc average of n days 
+   - When index is 2 in output arr, days averaged cover indexes 0-2
+   - When index is 3 in output arr, days averaged cover indexes 1-3
+   - When index is 4 in output arr, days averaged cover indexes 2-4
+   - When index is 5 in output arr, days averaged cover indexes 3-5
+      - three days are always calculated at a time
+      - This range is always going to be n days long
+      - Last item/index in the range always matches the current index
+      - First item is always index - (n - 1);
+
+ - To get average: 
+      - Use reduce to average items 
+      - I have to take range of the array and calc average of that particular range
+      - I will have to slice particular days to average. 
+        - Create a variable and save index - (n- 1) to it
+        - Pass variable to slice as the starting arg, along with index to slice up to as second arg
+          - slice second arg will slice up to but not including the index passsed in, so I go one index further
+        - To average: acc + curr / arr.length ( or n);
+*/ 
+
+const findAverageTemps = (arr, n) => {
+  return arr.map((temp, index) => {
+    if(index < (n - 1)) {
+      return 'no data';
+    }
+
+    const lastIndex = index;
+    const firstIndex = index - (n - 1);
+
+    let rangeToAverage = arr.slice(firstIndex, lastIndex + 1);
+    let sumOfRange = rangeToAverage.reduce((acc, curr) => {
+      return acc + curr;
+    });
+
+    // average
+    return sumOfRange / n;
+  });
+};
+
+console.log(findAverageTemps([98.1, 99.5, 90.2, 81.2, 99.3, 94.5, 100.4, 46.2], 4));

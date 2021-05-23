@@ -145,3 +145,61 @@ const minArraySum = (nums, s) => {
  return (result != Number.MAX_VALUE) ? result : 0
 }
 console.log(minArraySum([2, 3, 1, 2, 4, 3], 7))
+
+/*
+Given an array of temperatures from a given week, calculate the average temperature for n days. 
+List the average temperatures for n days for the whole week.
+
+Input: [98.1, 99.5, 90.2, 81.2, 99.3, 94.5]
+Output: [no data, no data, 95.9, 90.3, 90.2, 91.6]
+n = 3
+
+input: array of length n
+output: array of length n
+
+- for loop to iterate over temps from a given week
+- if i < n, console.log or push string of 'no data'
+  - if i < n - 1 (2), account for no data and 
+
+- Use sliding window technique...
+  - The window is a sum and the pointer points to first value in arr
+    - As I iterate, last value is added to sum, average is taken, the first value is removed
+    from the sum, and the pointer increments. This ensures averages are only from n number of days.
+
+- This makes it so I would be going through each element in the array
+  - Create three variables:
+     - averageTemps to hold array of averages, the return value
+     - sumOfThreeDays to hold sum of days from which average is calculated
+     - pointer is the beginning of the range of the nums to be summed
+  - As I iterate over arr, the temp at end of range is added to sum
+    - It is then averaged and added to averageTempsArr
+    - The value at beginning of range is subtracted and pointer moves up to next temp;
+- return array with average temps for n days
+- This solution was written to only cover if n = 3.
+*/
+
+const findAverageTemps = (arr, n) => {
+  let averageTemps = [];
+  let sumOfThreeDays = 0;
+  let pointer = 0;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if(i < n - 1) {
+    sumOfThreeDays += arr[i];
+    } 
+
+    if(i < n) {
+      averageTemps.push('no data');
+    } else {
+      sumOfThreeDays += arr[i];
+      let averages = sumOfThreeDays / n;
+      averageTemps.push(averages);
+      sumOfThreeDays -= arr[pointer];
+      pointer++;
+    }
+  }
+  return averageTemps;
+};
+
+console.log(findAverageTemps([98.1, 99.5, 90.2, 81.2, 99.3, 94.5],3));
+
