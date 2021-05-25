@@ -13,9 +13,39 @@ const reverse = x => {
   let newString = '';
   
   for(let i = numToString.length - 1; i >= 0; i--) {
-     newString += numToString[i];
-     console.log('in loop newString', newString)
+    newString += numToString[i];
+    console.log('in loop newString', newString)
   }
   return newString * Math.sign(x)
 };
 console.log(reverse(-123));
+
+/*
+  Given an integer, determine whether it is a palindrome.
+  
+  Ex: 12 ---> 21
+  Ex: 123 ----> 321
+  
+  input: int
+  output: boolean, true if palindrome
+  
+  1. change int to string using toString..
+     123 ---> '123'
+  2. Loop through the ol string and reverse it...
+      - save logic to split string and reverse to variable called splitAndReversed = str.split('').reverse().join('');
+      ['3', '2', '1']
+  3. Compare two strings...if they are not equal return false
+     
+*/
+
+const isPalindromeString = int => {
+  let stringInt = int.toString();
+  console.log('stringInt is a now', stringInt);
+  let splitAndReversedString = stringInt.split('').reverse().join('');
+  if(splitAndReversedString !== stringInt) {
+    return false;
+  } 
+  return true;
+}
+
+console.log(isPalindromeString(1001001));
