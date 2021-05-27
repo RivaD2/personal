@@ -203,3 +203,64 @@ const findAverageTemps = (arr, n) => {
 
 console.log(findAverageTemps([98.1, 99.5, 90.2, 81.2, 99.3, 94.5],3));
 
+/*
+3SUM Challenge:
+
+Given a non-empty array of distinct integers and an integer representing a target sum, 
+write a function that finds all triplets in the array that add up to the target sum and return a two-dimensional array containing the triplets.
+If no numbers can be found that add up to the target sum, return an empty array.
+
+Example:
+Input array: [8, 10, -2, 49, 14]
+Target sum: 57
+Output: [[-2, 10, 49]]
+
+Pseudocode:
+
+- I can use two pointers/ or the sliding window
+- I can first sort the numbers in the array in ascending order
+- Create a variable, 'result', to store integers that add up to target (triplet nums)
+- Iterate over the array using for loop
+- Create two pointers, 'left' and 'right'
+  - Set 'left' to i + 1, initial value is one index after the CURRENT numbers index/ 
+    the one I'm currently looking at
+  - Set right to 'arr.length - 1'/ last element in array
+- These pointers will of course change as I traverse through the arr
+   - I have to check if the three numbers I'm looking at,
+     (current index, left pointer, and right pointer) ===  target sum. 
+      - If they satisfy the condition
+         results.push(arr[i], arr[left], arr[right])
+      - I will then increment the left pointer,left ++ 
+      - I will also need to decrement the right pointer, right-- 
+      - This is what shifts the positions of the three numbers I'm looking at, the triplets
+-  If the current triplet sum is less than the target sum (currentSum < target) 
+  - left pointer one index to the right (left++) 
+- If the current sum is larger than the target, (currentSum > target)
+  - I move the right pointer one index to the left (right --) 
+  - I continue this process of comparing the sums until I've checked all possible triplets in arr
+- Return result
+*/
+
+const threeSum = (arr, target) => {
+  arr.sort((a, b) => a - b);
+	const numsThatAddToTarget = [];
+	for (let i = 0; i < arr.length - 2; i++) {
+		let left = i + 1;
+		let right = arr.length - 1;
+		while (left < right) {
+			const currentSum = arr[i] + arr[left] + arr[right];
+			if (currentSum === target) {
+				numsThatAddToTarget.push([arr[i], arr[left], arr[right]]);
+				left++;
+				right--;
+			} else if (currentSum < target) {
+				left++;
+			} else if (currentSum > target) {
+				right--;
+			}
+		}
+	}
+	return numsThatAddToTarget; 
+}
+
+console.log(threeSum([4, 23, 20, 10, -5, 12], 25));
