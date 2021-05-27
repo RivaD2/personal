@@ -1528,3 +1528,49 @@ const findAverageTemps = (arr, n) => {
 };
 
 console.log(findAverageTemps([98.1, 99.5, 90.2, 81.2, 99.3, 94.5, 100.4, 46.2], 4));
+
+/*
+Challenge with Matt:
+Given a sorted arr, return a matrix which will hold each unique integer and how many times it occured in the array (as part of the matrix);
+
+input: arr
+output: matrix holding each integer from input arr
+        
+Ex: [2, 2, 3, 4]--> input of ints sorted, ascending
+
+output: [[2, 1],     
+          [3, 1],     
+          [4, 1]]
+          
+Pseudocode:
+- Create variable 'matrix' which is the return value
+  - This holds the key values pairs that should be pushed in
+- Create a variable called 'counts' and set it to object literal
+- loop through input arr using for of loop, use frequency counter (an object) to count how many times each int is in arr.
+
+- Loop through 'counts' object 
+ - Create new variable 'numbers' that holds ints (parseInt on string key from object) to get string to int again
+ - Create another variable, 'timesCounted' to hold values (or counts) of ints from object
+ -push numbers and timesCounted into matrix 
+ - return matrix;
+
+*/
+
+let matrixWithCounts = arr => {
+  // Object is storing every num with count of occurrances 
+  const matrix = [];
+  const counts = {};
+  for(let int of arr) {
+   counts[int] = counts[int] + 1 || 1; 
+  }
+
+  // Taking keys and values from object, and push them into the matrix array
+  for(let key in counts) {
+    let numbers = parseInt(key);
+    let timesCounted = counts[key];
+    matrix.push([numbers, timesCounted]);
+  }
+  return matrix;
+  
+}
+console.log(matrixWithCounts([2, 2, 3, 4]));
