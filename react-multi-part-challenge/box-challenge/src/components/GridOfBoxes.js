@@ -1,12 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import './GridOfBoxes.css';
 
-const GridOfBoxes = (props) => {
- 
+const GridOfBoxes = props => {
+const [boxColorChange, setBoxColorChange] = useState('');
+useEffect(() => {
+  setBoxColorChange("white");
+},[boxColorChange]);
+
   let boxes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   let boxesColumn = [];
   boxes.forEach((box, index) => {
-    boxesColumn.push(<div key={index} className="new-box">{"Box " + box}</div>)
+    boxesColumn.push(
+    <div 
+      key={index} 
+      className="new-box"
+      style={{backgroundColor:boxColorChange}} 
+      onClick={()=>setBoxColorChange("green")}>{"Box " + box}</div>)
     return box;
   });
 
