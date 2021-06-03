@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
+import GridOfBoxes from './components/GridOfBoxes';
 import './App.css';
 
 
 export default class App extends Component {
   state = {
-
+    color:'green',
+    selectedBox: true
   }
 
   render() {
     return (
-      <div>
-        I'm a new React challenge!
+      <div className="App-container">
+        <GridOfBoxes />
       </div>
     )
   }
