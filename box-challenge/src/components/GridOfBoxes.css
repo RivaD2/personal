@@ -3,28 +3,3 @@
   flex-direction:column;
   justify-content: center;
 }
-
-.new-box {
-  border: 1px solid black;
-  height:100px;
-  width:100px;
-  cursor:pointer;
-  text-align:center;
-  background-color:white;
-  
-}
-
-.box-1 {
- display:flex;
- flex-direction:row;
-}
-
-.box-2 {
-  display:flex;
-  flex-direction:row;
-}
-
-.box-3 {
-  display:flex;
-  flex-direction:row;
-}

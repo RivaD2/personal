@@ -12,7 +12,13 @@ const GridOfBoxes = props => {
   const boxes = [];
   const boxCount = 9;
   for(let i = 0; i < boxCount; i++) {
-    boxes.push(<Box selectedBoxIndex={selectedBox} index={i} />);
+    boxes.push(
+      <Box 
+        selectedBoxIndex={selectedBox} 
+        index={i} 
+        onBoxClicked={onBoxClicked}
+      />
+    );
   }
 
   return (
