@@ -1,5 +1,14 @@
-.box-container {
+.grid-container {
   display:flex;
   flex-direction:column;
   justify-content: center;
+  align-items:center;
+}
+
+.grid-content {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:399px;
+  justify-content: space-between;
 }

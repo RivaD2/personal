@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Box from './Box';
 import './GridOfBoxes.css';
 
@@ -16,14 +16,15 @@ const GridOfBoxes = props => {
       <Box 
         selectedBoxIndex={selectedBox} 
         index={i} 
+        key={i}
         onBoxClicked={onBoxClicked}
       />
     );
   }
 
   return (
-    <div className="box-container">
-      <div className="grid-container">
+    <div className="grid-container">
+      <div className="grid-content">
         {boxes}
       </div>
     </div>
