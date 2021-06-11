@@ -1574,3 +1574,38 @@ let matrixWithCounts = arr => {
   
 }
 console.log(matrixWithCounts([2, 2, 3, 4]));
+
+/*
+Challenge with Matt:
+
+Given an array, find the longest repeating subArray in the array. 
+Return the subArray.
+
+Ex: [1, 2, 3, 4, 5, 5] 
+output: [5, 5]
+*/
+
+const longestDuplicateArr = arr => {
+  // 1st: Create an obj and loop through array of nums
+  // Initalize nums if not there, otherwise increment by 1
+  let numberStorage = {};
+  for(let num of arr) {
+   numberStorage[num] = numberStorage[num] + 1 || 1; 
+
+  }
+  
+  //2nd pt: Look into storage obj, and see which numb has highest count
+  // the highest count would be the return value
+  // Remember: I need to return an ARR - spread operator?
+  let current = 0;
+  let subArray= '';
+    for(let key in numberStorage) {
+      if(numberStorage[key] > current){
+        current = numberStorage[key];
+        subsArray = key.repeat(numberStorage[key]);
+      }
+    }
+   return subsequence.split('');
+}
+
+console.log(longestDuplicateArr([1, 1, 1, 2, 3, 4, 5, 5, 5, 5]));
