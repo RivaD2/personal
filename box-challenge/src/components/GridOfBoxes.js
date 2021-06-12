@@ -6,7 +6,12 @@ const GridOfBoxes = props => {
   const [selectedBox, setSelectedBox] = useState(0);
 
   const onBoxClicked = index => {
-    setSelectedBox(index);
+    if(selectedBox === index) {
+      setSelectedBox(-1);
+    } else {
+      setSelectedBox(index);
+      console.log('who is selected', index)
+    }
   }
   
   const boxes = [];

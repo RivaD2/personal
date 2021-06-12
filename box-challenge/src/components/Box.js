@@ -6,19 +6,20 @@ const Box = props => {
   const {selectedBoxIndex, index, onBoxClicked} = props;
 
   const onClickedBox = () => {
-    console.log('which box is clicked?', index);
     onBoxClicked(index);
   }
-
+ 
   // If box 5 is selected, that is the selectBox index, but not the index
   // If index is box 5, and box 5 is the selectedBox index, then THIS box is selected!
   // If selectedBox index is equal to the index, then THIS box is selected
   const isSelected = selectedBoxIndex === index;
+
+
   // Choose a class based on whether this box is selected 
   const containerClass = isSelected ? 'selected-box' :'not-selected-box';
 
   return (
-    <div className={`box-container ${containerClass}`} onClick={onClickedBox}>
+    <div className={`box-container ${containerClass}`} onClick={onClickedBox} >
       <div className="box">Box {index}</div>
     </div>
   )
