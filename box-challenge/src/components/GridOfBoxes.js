@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from 'react'
+import React, {useState} from 'react'
 import Box from './Box';
 import './GridOfBoxes.css';
 
@@ -15,7 +15,7 @@ const GridOfBoxes = props => {
        return selectedBox !== index;
      });
 
-     // I tell React to remember the box that I want to deselect using thte index from above
+     // I tell React to remember the box that I want to deselect using the index from above
       setSelectedBoxes(newBoxesSelected);
      // If two boxes are selected, clicking on a new box will deselect the previous two boxes.
     } else if (selectedBoxes.length >= 2) {
@@ -27,7 +27,14 @@ const GridOfBoxes = props => {
       console.log('selectedBoxes is', selectedBoxes)
       setSelectedBoxes(newBoxesSelected);
       console.log('who is selected', newBoxesSelected)
+      randomColorGenerated();
     }
+  }
+
+  const randomColorGenerated = () => {
+    let colors = ['#ff3300', '#ff9933', '#ffff66', '#66ff66', '#0099ff', '#3333ff', '#944dff'];
+    let randomColors = colors[Math.floor(Math.random() * colors.length)];
+    console.log('what is randomColors', randomColors);
   }
  
   const boxes = [];
@@ -39,6 +46,7 @@ const GridOfBoxes = props => {
         index={i} 
         key={i}
         onBoxClicked={onBoxClicked}
+        randomColor={randomColorGenerated}
       />
     );
   }

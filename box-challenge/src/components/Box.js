@@ -3,7 +3,7 @@ import './Box.css';
 
 const Box = props => {
   // Index is the index of THIS box, selectedBoxes is the index of a box selected
-  const {selectedBoxes, index, onBoxClicked} = props;
+  const {selectedBoxes, index, onBoxClicked, randomColorGenerated} = props;
 
   const onClickedBox = () => {
     onBoxClicked(index);
@@ -14,13 +14,12 @@ const Box = props => {
   // If index not equal -1, then I know I have a box selected
   const isSelected = selectedBoxes.indexOf(index) !== -1;
 
-
   // Choose a class based on whether this box is selected 
   // If a box is selected, I will show green based off class of .selected-box else, white
   const containerClass = isSelected ? 'selected-box' :'not-selected-box';
 
   return (
-    <div className={`box-container ${containerClass}`} onClick={onClickedBox} >
+    <div className={`box-container ${containerClass}`} onClick={onClickedBox}>
       <div className="box">Box {index}</div>
     </div>
   )
