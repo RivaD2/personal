@@ -10,10 +10,10 @@
   cursor:pointer;
 }
 
-.selected-box {
+/* .selected-box {
   background-color: rgb(99, 199, 99);
   color:rgb(245, 240, 240);
-}
+} */
 
 .not-selected-box {
   background-color:rgb(240, 235, 235);
