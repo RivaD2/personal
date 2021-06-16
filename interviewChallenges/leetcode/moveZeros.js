@@ -37,3 +37,24 @@ const moveZeros = nums => {
     nums[i] = 0;
   }
 }
+
+const moveTheZeros = arr => {
+  let secondPointer = arr.length - 1;
+  for(let i = arr.length - 1; i >= 0; i--) {
+    if(arr[i] === 0) {
+      continue;
+    } else {
+      arr[secondPointer] = arr[i];
+      secondPointer--
+    }
+  }
+
+  for(let i = 0; i <= secondPointer; i++) {
+    arr[i] = 0; 
+  }
+  
+  return arr;
+
+}
+
+console.log(moveTheZeros([1, 0, 2, 2, 5, 10, 20, 4, 0 ,6, 0]));

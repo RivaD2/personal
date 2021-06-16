@@ -1598,14 +1598,14 @@ const longestDuplicateArr = arr => {
   // the highest count would be the return value
   // Remember: I need to return an ARR - spread operator?
   let current = 0;
-  let subArray= '';
+  let result = '';
     for(let key in numberStorage) {
       if(numberStorage[key] > current){
         current = numberStorage[key];
-        subsArray = key.repeat(numberStorage[key]);
+        result = key.repeat(numberStorage[key]);
       }
     }
-   return subsequence.split('');
+   return result.split('');
 }
 
 console.log(longestDuplicateArr([1, 1, 1, 2, 3, 4, 5, 5, 5, 5]));
