@@ -21,10 +21,18 @@ How do I break this down?
 **2nd Phase:**
 
 - First, if a box is selected, and clicked on, it should become unselected. In the first phase, the only way to deselect a box is to select a different one.
-- Second, if one box (or no box) is selected, clicking on a box will select it
-- Third, if two boxes are selected, clicking on a new box will deselect the previous two boxes
+- Second, if one box (or no box) is selected, clicking on a box will select it.
+- Third, if two boxes are selected, clicking on a new box will deselect the previous two boxes.
 
 **3rd Phase:**
 
   - Make a list of nine colors and randomly assign them to the boxes. When a box is selected, it turns it's own unique color.
   - The random assignment should happen upon initial page load. Each a time a box is selected then deselected, the colors remains the same.
+
+**4th phase:**
+
+**This next phase is a fun one!**
+
+- First, extend the grid to be 3x4. 
+- Second, choose 6 random colors and apply each color to *two* boxes. 
+  - There should be 12 boxes, 6 colors, and each color appears exactly twice.

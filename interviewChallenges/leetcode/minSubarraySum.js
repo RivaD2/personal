@@ -24,7 +24,7 @@ Pseudocode:
  - Loop through the array and increment sum
     - while the sum is >= target, (I am over the sum I want)
     - set result to hold value from min value calcuated 
-    - set sum to be the value from -= nums[pointerTwo]
+    - set sum to be the value from -= nums[pointerTwo] (decrement sum)
     - move PointerTwo
 
   As i iterate, I am moving on from elements in the front of array and adding them
@@ -33,18 +33,23 @@ Pseudocode:
 const minSubarraySum = (arr, target) => {
   let pointerTwo = 0;
   let runningSum = 0;
+  // Want to set result to largest number I can as I will assign this to smallest subarray
+  // Could use Number.MAX_SAFE_INTEGER
   let result = Infinity;
 
   for (let i = 0; i < arr.length; i++) {
     runningSum += arr[i];
     // Once I am over the sum I want, I need to update the min subarray length
-    // remove value present and move pointerTwo 
     while (runningSum >= target) {
+      // Compare current result vs the length of subarray I am dealing with
+      // Get minimum value by comparing result to i -pointerTwo + 1;
       result = Math.min(result, i - pointerTwo + 1);
       runningSum -= arr[pointerTwo];
       pointerTwo++;
     }
   }
+  // If result is not reassigned, that means I did not find contiguous subarray that is 
+  // greater than or equal to the target
   if (result === Infinity) {
     return 0;
   } else {
