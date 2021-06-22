@@ -25,29 +25,35 @@ const GridOfBoxes = props => {
       // Else, I want to select another box, and remember it's index, in addition to previous box(es) selected
       // and then store those additional box indexes in state
       let newBoxesSelected = [index, ...selectedBoxes];
-      console.log('what is index after newBoxesSelected', index)
       setSelectedBoxes(newBoxesSelected);
-      console.log('selectedBoxes is', selectedBoxes)
     }
   }
  
   // On page load, I need the random colors set at a different order each time
   useEffect(() => {
-    let colors = ['#ff3300', '#ff9933', '#ffff66', '#66ff66', '#0099ff', '#3333ff', '#944dff', '#ff22ee', '#bb6644'];
-    shuffleArray(colors);
-    setRandomBackgroundColor(colors);
+    let colors = [ 
+      '#66ff66', 
+      '#0099ff', 
+      '#3333ff',
+      '#00ffff',
+      '#cc0099',
+      '#ff3300',
+    ];
+    let newColors = [...colors,...colors]
+    shuffleArray(newColors);
+    setRandomBackgroundColor(newColors);
   }, [])
 
   // Shuffling my array of colors
   const shuffleArray = arr => {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
 
   const boxes = [];
-  const boxCount = 9;
+  const boxCount = 12;
   for(let i = 0; i < boxCount; i++) {
     boxes.push(
       <Box 

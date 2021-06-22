@@ -4,7 +4,7 @@ import './Box.css';
 const Box = props => {
   // Index is the index of THIS box, selectedBoxes is the index of a box selected
   const {selectedBoxes, index, onBoxClicked, randomColor} = props;
-  console.log('what is selected boxes in box.js', selectedBoxes)
+  console.log(randomColor, index)
 
   const onClickedBox = () => {
     onBoxClicked(index);
