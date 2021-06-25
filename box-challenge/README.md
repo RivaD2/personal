@@ -36,3 +36,9 @@ How do I break this down?
 - First, extend the grid to be 3x4. 
 - Second, choose 6 random colors and apply each color to *two* boxes. 
   - There should be 12 boxes, 6 colors, and each color appears exactly twice.
+
+**5th phase:**
+
+- Create a counter that tracks box clicks, but only the first of the two. So each time the selection resets, the timer increments.
+  - Show the counter at the bottom of the page
+- When two boxes are selected at the same time, if they are the same color, they become invisible and are no longer clickable.
