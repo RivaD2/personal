@@ -163,6 +163,14 @@ TDD: Writing tests before writing code. Then writing code according to 'spec' se
   - I getByRole() and pass the string as the first arg that represents the role, and the second argument is the options
 - I find the element by role to make sure app is accessible
 - To test color, I need to see what options are in `jest-dom`. On github repo for `jest-dom` all custom matchers are listed
+- I have to test whether button starts as enabled and that checkbox starts out as unchecked
+  - I know how to find the button, using the global screen object
+  - That has a method  `getByRole()`
+  - I know that the button has a role of 'button' and a name of 'Change to blue'
+  - To check if it is enabled, I have to reference `jest-dom` and look at what options I have for matchers. `toBeEnabled()` is found.
+  - For the checkbox, I first have to find it, using `getByRole()`
+  - The role for checkbox would be found on W3.org. The role here is `checkbox`
+  - I expect that it starts out as unchecked, so I can go back to `jest-dom` and I find the matcher `toBeChecked()`. I throw a `.not` in there to negate the assertion.
 
 ```
 test('button has correct initial color', () => {
@@ -174,7 +182,23 @@ test('button has correct initial color', () => {
   expect(colorButton.textContent).toBe('Change to red');
 });
 
+test('initial conditions', () => {
+  render(<App />);
+  // Check button starts as enabled
+  const colorButton = screen.getByRole('button', {name: 'Change to blue'});
+  expect(colorButton).toBeEnabled();
+  // Check that checkbox starts out unchecked
+  const checkBox = screen.getByRole('checkbox');
+  expect(checkBox).not.toBeChecked();
+
+testing follows format of:
+    first arg describes the test, second arg is a function to run to see if errors are thrown
+test('describes test', () => {
+// what you expect to happen + matcher
+expect(element you are focusing on).matcher();
+})
 ```
 
 - To find proper role, there is always the option to give a non existent role.Testing library will complain that it can't find accessible element with that role. It will then tell me what roles there are! That output is very useful and helps us to figure out what roles are available for use.
+
 

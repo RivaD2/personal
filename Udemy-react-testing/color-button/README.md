@@ -20,7 +20,11 @@
   - The color starts off as red
   - Text says, "Change to blue", button is changed to blue when clicked on
   - When button changes to blue, text is, "Change to red" and changes to red when clicked on
+  - A checkbox that disables button when it is selected, and is enabled when checkbox is deselected
+
 - I will test:
   - That the button has the correct initial color
   - That the button has correct initial text
   - That when clicked, the button turns blue
+  - That button starts off as enabled and checkbox starts as unchecked
+
