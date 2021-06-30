@@ -134,6 +134,7 @@ TDD: Writing tests before writing code. Then writing code according to 'spec' se
 - **It is more difficult to debug failing tests**
 
 **TDD vs BDD**
+
 - Testing Library encourages testing behavior over implementation
 - BDD involves collaboration between lots of roles(developers, QA, business partners etc.)
 - In this course, I am learning TDD!
