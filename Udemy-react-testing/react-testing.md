@@ -151,3 +151,30 @@ TDD: Writing tests before writing code. Then writing code according to 'spec' se
   - Test ID's: `getByTestId()`, the user can't see or hear, so these are only to be used if necessary
   - Using `getByRole()` over `getByText()` makes sure that our elements our accessible to screen readers
 - We can add a role to any element, although some elements have built in roles
+- **W3.org** gives us a breakdown of all the roles
+
+**So how do we start testing?**
+
+- We first need to know what we want to test
+- For the first app of this tutorial, I need to test that the button has correct initial color and text
+- I also need to test functionality, that when button is clicked it turns blue
+- I always start with `render()` passing it the component that that I am focusing on, or the one that I am rendering
+- Next, I have to find element I'm interested in, so I use the global object `screen`
+  - I getByRole() and pass the string as the first arg that represents the role, and the second argument is the options
+- I find the element by role to make sure app is accessible
+- To test color, I need to see what options are in `jest-dom`. On github repo for `jest-dom` all custom matchers are listed
+
+```
+test('button has correct initial color', () => {
+  render(<App />);
+  const colorButton = screen.getByRole('button', {name: 'Change to blue'});
+  expect(colorButton).toHaveStyle({backgroundColor: 'red'});
+  fireEvent.click(colorButton);
+  expect(colorButton).toHaveStyle({backgroundColor:'blue'});
+  expect(colorButton.textContent).toBe('Change to red');
+});
+
+```
+
+- To find proper role, there is always the option to give a non existent role.Testing library will complain that it can't find accessible element with that role. It will then tell me what roles there are! That output is very useful and helps us to figure out what roles are available for use.
+
