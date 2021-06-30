@@ -202,4 +202,37 @@ expect(element you are focusing on).matcher();
 
 - To find proper role, there is always the option to give a non existent role.Testing library will complain that it can't find accessible element with that role. It will then tell me what roles there are! That output is very useful and helps us to figure out what roles are available for use.
 
+**Unit Testing Functions**
+
+- Often in React, we have functions separate from components
+  - This can be because functions are used by several components
+  - The logic is complex, so it is separated out
+- We should unit test these types of functions if the logic is complicated enough
+that is hard to test with functional tests
+  - If there are too many edge cases, unit testing the function is more beneficial
+
+**Ex: Customers want medium violet red and midnight blue for colors of buttons**
+
+  - I can make a function that separates the characters from camelCase to spaces
+  - I will combine test into `describe()` statement which is a way to group tests
+  - Describe takes a function and test globals go inside.
+  - So, I want to test that the function works for a color name that doesn't have any capital letters, it works for one inner capital letter, and for multiple inner capital letters.
+  - The test will call the function, so it will need to be imported into the test file
+  - Then I can run it, by running the `expect()` directly on the output of the function
+
+```
+
+describe('spaces before camel case capital letters', () => {
+  test('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSpaces('Red')).toBe('Red');
+  });
+  test('Works for one inner capital letter', () => {
+    expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue');
+  });
+  test('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red')
+  });
+});
+
+```
 
