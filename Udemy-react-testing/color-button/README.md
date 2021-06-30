@@ -13,7 +13,7 @@
  - Use a mock server to mock responses with Mock Service worker
  - Learn how to test asynchronous code
 
-## Start Color Button App**
+## Color Button App
 
 - This is for getting familiar with testing again
 - There is a button
@@ -28,3 +28,13 @@
   - That when clicked, the button turns blue
   - That button starts off as enabled and checkbox starts as unchecked
 
+**Breakdown/Review of Color Button App**
+
+- Tested interactivity using the object `fireEvent()`
+- Used new `jest-dom` assertions:
+  - `toBeEnabled()`
+  - `toBeDisabled()`
+  - `toBeChecked()`
+- Used `getByRole()` option, name option to identify which button and checkbox I was referring to on the page `getByRole() option {name : }`
+- Used Jest `describe()` global to group tests into logical groups
+- Discussed unit testing functions, how to do this and when it is appropriate

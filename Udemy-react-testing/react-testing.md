@@ -236,3 +236,11 @@ describe('spaces before camel case capital letters', () => {
 
 ```
 
+**When to unit test**
+
+- The function used in the example above is very simple and it could be covered with functional tests on the button
+- For more complicated functions, unit tests are better at covering all possible edge cases
+- They are awesome at determining what caused functional tests to fail
+- Functional test issues:
+  - They are resistant to failing when we've refactored, when we've changed the implementation but not the behavior, this is great! However...
+  - This means they can be difficult to diagnose. When a test fails, it covers a broad section of our functionality.

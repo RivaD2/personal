@@ -14,7 +14,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const newButtonColor = buttonColor === 'red' ? 'blue': 'red';
 
-  const onCheckBoxChange = e => {
+  const onCheckboxChange = e => {
    setDisabled(e.target.checked)
   };
 
@@ -32,7 +32,7 @@ function App() {
         id="disable-button-checkbox"
         defaultChecked={disabled}
         aria-checked={disabled}
-        onChange={onCheckBoxChange}
+        onChange={onCheckboxChange}
       />
       <label htmlFor="disable-button-checkbox"> Disable button </label>
     </div>
