@@ -2,6 +2,14 @@
 
 ## Sundaes on Demand Intro:
 
+## Tools used:
+
+- React-testing-library
+- jest-dom
+- react-bootstrap
+- bootstrap
+- A cloned backend server provided by the course instructor
+
 **This application is used as a backdrop to test**
 
 - This application allows me to:
@@ -13,6 +21,7 @@
 - I WAIT for a particular change in the DOM before making an assertion (I test for async app updates)
 - I will not test context implementation. I want to test behavior as seen by the user so tests will not be any different that if I used Redux or other state management system.
 - One difference is in test set up, as I have to make sure component has access to the context for tests to function properly
+
 
 ## How it works
 
@@ -26,6 +35,12 @@
 1) Order Entry: The order is entered here, and it will show scoop options (come from server),toppings (images), number of scoops, subtotal, grandtotal, and submit order button
 2) Order Summary: A summary is given of above information in addition to agreeing to terms and conditions (mouseover pop up), order confirmation button
 3) Order Confirmation Page: Provides and order confirmation number from server
+
+
+### Tests:
+
+- Each page has a directory and each test subdirectory includes the tests
+- Jest will find and run any files that end in `test.js`
 
 **Breakdown/Review of the app:**
 
