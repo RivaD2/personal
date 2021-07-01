@@ -244,3 +244,16 @@ describe('spaces before camel case capital letters', () => {
 - Functional test issues:
   - They are resistant to failing when we've refactored, when we've changed the implementation but not the behavior, this is great! However...
   - This means they can be difficult to diagnose. When a test fails, it covers a broad section of our functionality.
+
+**Summary Form for Sundae app**
+
+- The form in this app is where user accepts terms and conditions
+- The form helps me to review form interactions:
+  - checking a checkbox will enable a button
+  - testing disappearance of element
+- This involves the order summary component (the entire page) and an internal component for summary form
+- I first test/code:
+  - That checkbox enables button
+  - Test and code terms and conditions popover to see if element has been removed
+  - test code and summary text
+  - test code and button functionality
