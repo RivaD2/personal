@@ -257,3 +257,79 @@ describe('spaces before camel case capital letters', () => {
   - Test and code terms and conditions popover to see if element has been removed
   - test code and summary text
   - test code and button functionality
+
+**Popover from React-Bootstrap**
+
+- What styling is used makes a difference in how I do the tests
+- I first have to inspect the popover element from Bootstrap so I can see how it is implemented
+- I will need to search by text to find the popover
+- The popover is a div, and when it goes away, the div is just gone.
+  - The other possibility would be that it remains on the page but remains hidden
+  - That difference determines how I test that the popover goes away when a user uses mouse to navigate away from terms and conditions
+
+**So how do I simulate the mouse over?**
+
+-  If I go to `testing-library.com/api-events/` , it tells me that `fireEvent` is ok, but that `userEvent` is better in most cases as it simulates user events in a more realistic way.
+- Under 'user-events' section here, I can see many choices:
+  - `hover` and `unhover` look good for the mouseover
+- To use user events, I have to install `npm install --save-dev @testing-library/user-event`
+
+**Screen Query Methods:**
+
+- parts of query method -----> command[ALL]ByQueryType
+- **command**:
+  - get: expect element to be in DOM
+  - query: expect element to not be in DOM
+  - find: expect element to appear async (waiting for an event to occur before assertion)
+- **[ALL]**:
+  - (exclude) expect only one match
+  - (include) expect more than one match (provides an array of all matches)
+- **QueryType**:
+  - Role: (most preferred)
+  - AltText(images)
+  - Text(display elements)
+  - Form Elements:
+    - PlaceholderText
+    - LabelText
+    - DisplayValue
+- I can of course mix and match these to construct query method
+- Pages for reference:
+  - `https://testing-library.com/docs/dom-testing-library/api-queries`
+  - `https://testing-library.com/docs/react-testing-library/cheatsheet/`
+  - `https://testing-library.com/docs/guide-which-query/`
+
+**Notes for popover async error**
+- After the first initial tests for popover, I receive an error:
+
+```
+ Warning: An update to Overlay inside a test was not wrapped in act(...).
+
+    When testing, code that causes React state updates should be wrapped into act(...):
+
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+
+    **and**
+
+     expected document not to contain element, found <div class="popover-body">No ice cream will actually be delivered</div> instead
+
+```
+
+- The first error is common to see when there are async updates going on. It suggests wrapping the code in act().
+- What it means is that the element was updated in the DOM AFTER the test was finished, some async update occurred after test function exited
+- In this case, I do NOT want to follow testing-libaries advice. In the docs, it says "all renders and events being fired are wrapped in act()"
+- To fix this error:
+  - First figure out what async changes are happening after the test is over
+  - Account for the change in the test by awaiting the change and asserting on it
+- The tests initially failed because the disappearance of the popover was happening asynchronously so it was happening after test function had completed. By making the assertion asynchronous the problem is solved.
+
+**Review SummaryForm review**:
+
+- Tested flow where checkbox controls whether button is disabled
+- mouseover for terms and conditions
+  - `userEvent.hover()` and `userEvent.unhover()` methods
+  - `queryByText()` and `expect().not.toBeInTheDocument()` for element that starts out NOT on the page
+- async `waitForElementToBeRemoved()` for element that was there and then disappeared
+- found that `test not wrapped in act(...)` warning and that I need to look at all async work being done

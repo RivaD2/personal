@@ -8,7 +8,7 @@
 - jest-dom
 - react-bootstrap
 - bootstrap
-- A cloned backend server provided by the course instructor
+- A backend server provided by the course
 
 **This application is used as a backdrop to test**
 
@@ -23,7 +23,7 @@
 - One difference is in test set up, as I have to make sure component has access to the context for tests to function properly
 
 
-## How it works
+## How the app works
 
 - People can choose icecream flavors and toppings and submit and order
 - Flavors and toppings come from a server
@@ -32,7 +32,7 @@
 
 **There will be three main pages for this app:**
 
-1) Order Entry: The order is entered here, and it will show scoop options (come from server),toppings (images), number of scoops, subtotal, grandtotal, and submit order button
+1) Order Entry: The order is entered here, and it will show scoop options (come from server),toppings (images), number of scoops, subtotal, grand total, and submit order button
 2) Order Summary: A summary is given of above information in addition to agreeing to terms and conditions (mouseover pop up), order confirmation button
 3) Order Confirmation Page: Provides and order confirmation number from server
 
@@ -41,6 +41,3 @@
 
 - Each page has a directory and each test subdirectory includes the tests
 - Jest will find and run any files that end in `test.js`
-
-**Breakdown/Review of the app:**
-
