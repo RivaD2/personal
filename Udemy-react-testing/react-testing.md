@@ -392,3 +392,11 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
 
 - This might be useful in some instances when it can't find a certain role by name. In this case, I am dealing with async code again. I am using axios and populating items on page in an asynchronous way.
 - Anytime I am waiting for something to appear asynchronously on the page, I must use `await` and `findBy()` in my tests.
+
+**Server Errors Planning**
+
+- I will display an alert banner component if axios throws an err, instead of content from server
+- Since I will be using Alert from Bootstrap, I need to inspect it to see what I can expect for the test
+- It is a div, with a role of 'alert'. I will be finding it by this role in the tests.
+- By default, the server that is set up to handle all requests, uses the handlers.js file. Those handlers return non error response. For these particular tests, I want and error response, so I will override those responses in these tests.
+- I can use jest debugging tools, like running one test file at a time and running one test within a file.
