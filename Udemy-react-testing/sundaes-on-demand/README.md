@@ -5,9 +5,10 @@
 ## Tools used:
 
 - React-testing-library
-- jest-dom
 - react-bootstrap
+- jest-dom
 - MSW (Mock Service Worker)
+- Axios
 - bootstrap
 - A backend server provided by the course
 

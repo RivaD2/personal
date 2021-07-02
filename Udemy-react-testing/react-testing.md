@@ -365,3 +365,30 @@ describe('spaces before camel case capital letters', () => {
   -  First, I give the handler type (rest or graphql imported from msw), then the method I want to mock, the full URL to mock, and the response resolver function.
   -  The response resolver function holds req, res, ctx
 
+**Notes on Options.test.js**
+
+- There is no mention of mock service worker in these tests
+- The test itself deals with mock service worker in setupTest.js as that is where the service worker is configured to intercept requests.
+- The place I make network request is in the options component
+- The tests in this file will run the Options component, and then component makes get request to server.
+- That request never happens, instead MSW intercepts it and sends back handler response to options component in the tests.
+
+**First initial tests for Options.js**
+
+```
+TestingLibraryElementError: Unable to find an accessible element with the role "image" and name `/scoop$/i`
+
+    There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+    <body>
+      <div>
+        <div
+          class="row"
+        />
+      </div>
+    </body>
+
+```
+
+- This might be useful in some instances when it can't find a certain role by name. In this case, I am dealing with async code again. I am using axios and populating items on page in an asynchronous way.
+- Anytime I am waiting for something to appear asynchronously on the page, I must use `await` and `findBy()` in my tests.
