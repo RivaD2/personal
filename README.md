@@ -2,7 +2,7 @@
 
 **This repo holds personal projects, Udemy courses, coding challenges and is really a playground for trying fun and interesting code experiments!**
 
-![learning is fun](https://media.giphy.com/media/1kenyYNFG9wTUyHMjk/giphy.gif)
+![learning is fun](https://media.giphy.com/media/yDYAHbqe5DfyM/giphy.gif)
 
 I started this repo early on in my code journey. This was the beginning stage of learning HTML, CSS and JS. I started to build out some projects. As small as they were they gave me the boost I needed to join a coding bootcamp.
 
