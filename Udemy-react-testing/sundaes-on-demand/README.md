@@ -7,6 +7,7 @@
 - React-testing-library
 - jest-dom
 - react-bootstrap
+- MSW (Mock Service Worker)
 - bootstrap
 - A backend server provided by the course
 

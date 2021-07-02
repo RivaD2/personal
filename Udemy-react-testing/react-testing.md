@@ -333,3 +333,35 @@ describe('spaces before camel case capital letters', () => {
   - `queryByText()` and `expect().not.toBeInTheDocument()` for element that starts out NOT on the page
 - async `waitForElementToBeRemoved()` for element that was there and then disappeared
 - found that `test not wrapped in act(...)` warning and that I need to look at all async work being done
+
+
+**Mock Service Worker and Handlers**
+
+- For the OrderEntry component, I will test components that show scoop options and toppings
+- I am testing that option images render
+- I mock the response that I get from the server using mock service worker, specifically mocking responses for scoops and toppings
+- I want to intercept network calls and return specified response
+  - I will prevent any network calls from happening and set up test conditions based on server response
+  - If the server had responded with response I am telling mock service worker to respond with, what would I expect the page to look like...that is what I am testing.
+- **Mock service worker setup:**
+  - Run `npm install msw`
+  - Create handlers, functions that determine what is returned for URL
+  - Create a test server to handle requests
+    - Make sure test server listens during all tests
+    - Reset server handlers after each test
+  - In `src` created folder `mocks`, and a file `server.js`
+    - `import { setupServer } from 'msw/node'`
+    - `import { handlers } from './handlers'`
+    - `export const server = setupServer(...handlers)` to create server
+  - Configure react app so mock service worker with intercept network request and return responses established in handlers. This is done in `setupTests.js`
+    - This is shown on msw's getting started with node guide
+- **Creating handlers:**
+  - Make a file in `src` make a folder called `mocks` and create a file called `handlers.js`
+  -  `import { rest } from 'msw'`
+  -  Visit MSW site and check out rest-api section
+-  **How the rest handlers work:**
+  -  Express.js uses similar request/response context function for handlers
+  -  Ex: `rest.get('http://localhost:3030/scoops', (req, res, ctx) => {})`
+  -  First, I give the handler type (rest or graphql imported from msw), then the method I want to mock, the full URL to mock, and the response resolver function.
+  -  The response resolver function holds req, res, ctx
+
