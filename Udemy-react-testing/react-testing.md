@@ -400,3 +400,30 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
 - It is a div, with a role of 'alert'. I will be finding it by this role in the tests.
 - By default, the server that is set up to handle all requests, uses the handlers.js file. Those handlers return non error response. For these particular tests, I want and error response, so I will override those responses in these tests.
 - I can use jest debugging tools, like running one test file at a time and running one test within a file.
+
+**Review of Alert Testing**
+
+- First, I overrode MSW response handler for individual tests that were testing error conditions
+- I got a strange error `Unable to find role="alert"` error
+  - I isolated file by typing `p` in Jest watchmode
+  - Allows me to type a pattern for test file
+  - Isolated test within file using `test.only` and `test.skip`
+  - Removed `name` option to get more data on what was going on
+  - Learned that it was not waiting for BOTH server calls to return
+    - Used `waitFor` for tests where `await findBy` isn't enough
+
+**Intro to Subtotals and Totals**
+
+- This section tests that totals update when options are updated
+- Options will be stored in React Context
+- Subtotals for scoops and toppings will be tested in Options component
+- Grand totals will be tested in OrderEntry component
+
+- For the React code, I have a Context file
+  - I will use a pattern where I can have a context that has embedded state
+  - The context file creates a context using `createContext()` hook
+  - I use the `useContext()` hook to make a custom hook that returns the context as long as it is within a Provider
+  - The Provider will have `useState()` statement that creates internal state so that context provider has state built in
+  - The value for the Provider will be an array, a getter and setter for state [state, setState]
+  - Anytime the custom hook is run, the context value can be grabbed and it can be destructured so that the value of the state and setter can be obtained
+  - custom hook will be exported along with Provider and any components that need it will be wrapped in the Provider (the OrderEntry and OrderSummary components)
