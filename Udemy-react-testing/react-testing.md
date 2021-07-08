@@ -436,3 +436,13 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
 - Instead of importing {render, fireEvent} from `@testing-library/react`, I import from `../test/utils`
 - This overrides the render
 - It provides an example that provides several Providers, although mine will only use my Provider from the context
+
+**Review of Tests for Scoops Subtotal with Context**
+
+- Used `getByText()` to find subtotal
+- Since `getByText()` was passed a partial string, I used `exact` option to set it to false. I wanted to match even with a partial match.
+- For number inputs for scoops, I needed `await` and `findBy()` because options would not be rendered until I got them from the server (async action)
+-  They had a `spinbutton` role (found through docs)
+-  Used `userEvent.clear()` to clear existing text and `userEvent.type()` to enter numbers as strings
+- Coded the context and added  `wrapper` option to `render()`to wrap whatever I am rendering in Provider so Provider could be accessed in tests
+- Redefined the Testing Library `render` so I could access Provider anywhere and didn't have to use the  `wrapper()` option in all my tests.
