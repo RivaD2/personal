@@ -1,11 +1,16 @@
 import React from 'react';
-import './App.css';
+import Container from 'react-bootstrap/Container';
+import OrderEntry from './pages/entry/OrderEntry';
+import { OrderDetailsProvider } from './context/OrderDetails';
 
 const App = () => {
   return (
-    <div className="App">
-      Sundaes
-    </div>
+    <Container >
+      <OrderDetailsProvider>
+        {/* Summary page and entry page need provider */}
+        <OrderEntry />
+      </OrderDetailsProvider>
+    </Container>
   );
 }
 

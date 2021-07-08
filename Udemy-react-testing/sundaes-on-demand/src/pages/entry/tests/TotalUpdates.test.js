@@ -1,9 +1,10 @@
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Options from '../Options';
+import { OrderDetailsProvider } from '../../../context/OrderDetails';
 
 test('Update scoop subtotal when scoops change', async () => {
-  render(<Options optionType="scoops" />);
+  render(<Options optionType="scoops" />, {wrapper: OrderDetailsProvider});
 
   // Make sure total starts out as $0.00
   const scoopSubtotal = screen.getByText('Scoops total: $', {exact: false});
@@ -12,7 +13,7 @@ test('Update scoop subtotal when scoops change', async () => {
   const vanillaInput = await screen.findByRole('spinbutton', {name:'Vanilla'});
   userEvent.clear(vanillaInput);
   userEvent.type(vanillaInput, '1');
-  expect(vanillaInput).toHaveTextContent('2.00');
+  expect(scoopSubtotal).toHaveTextContent('2.00');
 
   // Update chocolate scoops to 2 and check subtotal
   const chocolateInput = await screen.findByRole('spinbutton', {name: 'Chocolate'});

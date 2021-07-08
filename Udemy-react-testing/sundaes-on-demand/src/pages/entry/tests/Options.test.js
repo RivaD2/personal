@@ -1,10 +1,11 @@
 import { expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../../test-utils/testing-library.utils";
 import Options from '../Options';
+import { OrderDetailsProvider } from '../../../context/OrderDetails';
 
 
 test('displays images for each scoop from the server', async () => {
-  render(<Options optionType="scoops" />);
+  render(<Options optionType="scoops" /> );
   //find images
   // Since there are multiple images, I use await findAllByRole() due to async work
   // Name option is the alt text

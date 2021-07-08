@@ -1,8 +1,15 @@
 import { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { pricePerItem } from '../constants';
 
+//Format number as currency
+const formatCurrency = amount => {
+  return new Intl.NumberFormat('en-US', {
+    style:'currency',
+    currency:'USD',
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
 const OrderDetails = createContext();
-
 // Custom hook to check whether I am inside a Provider
 export const useOrderDetails = () => {
   const context = useContext(OrderDetails);
@@ -20,16 +27,17 @@ const calculateSubtotal = (optionType, optionCounts) => {
   return optionCount * pricePerItem[optionType];
 }
 
-export const OrderDetailsProvider = (props) => {
+export const OrderDetailsProvider = props => {
   const [optionCounts, setOptionCounts] = useState({
     scoops: new Map(),
     toppings: new Map()
   });
 
+  const zeroCurrency = formatCurrency(0);
   const [totals, setTotals] = useState({
-    scoops: 0,
-    toppings: 0,
-    grandTotal: 0
+    scoops: zeroCurrency,
+    toppings: zeroCurrency,
+    grandTotal: zeroCurrency
   })
 
   useEffect(() => {
@@ -37,9 +45,9 @@ export const OrderDetailsProvider = (props) => {
     const toppingsSubtotal = calculateSubtotal("toppings", optionCounts);
     const grandTotal = scoopsSubtotal + toppingsSubtotal;
     setTotals({
-      scoops: scoopsSubtotal,
-      toppings: toppingsSubtotal,
-      grandTotal
+      scoops: formatCurrency(scoopsSubtotal),
+      toppings: formatCurrency(toppingsSubtotal),
+      grandTotal: formatCurrency(grandTotal)
     })
   }, [optionCounts]);
 

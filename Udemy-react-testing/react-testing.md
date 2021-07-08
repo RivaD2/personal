@@ -427,3 +427,12 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
   - The value for the Provider will be an array, a getter and setter for state [state, setState]
   - Anytime the custom hook is run, the context value can be grabbed and it can be destructured so that the value of the state and setter can be obtained
   - custom hook will be exported along with Provider and any components that need it will be wrapped in the Provider (the OrderEntry and OrderSummary components)
+
+**How to apply context Provider globally for all components rendered in tests**
+
+- Go to `testing-library.com` ---> docs ---> frameworks ---> React Testing Library --> Setup
+- I need to override default React Testing library render with my own render that includes the wrapper
+- Docs recommend I create a file called `test/utils.js`
+- Instead of importing {render, fireEvent} from `@testing-library/react`, I import from `../test/utils`
+- This overrides the render
+- It provides an example that provides several Providers, although mine will only use my Provider from the context
