@@ -442,7 +442,31 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
 - Used `getByText()` to find subtotal
 - Since `getByText()` was passed a partial string, I used `exact` option to set it to false. I wanted to match even with a partial match.
 - For number inputs for scoops, I needed `await` and `findBy()` because options would not be rendered until I got them from the server (async action)
--  They had a `spinbutton` role (found through docs)
--  Used `userEvent.clear()` to clear existing text and `userEvent.type()` to enter numbers as strings
+- They had a `spinbutton` role (found through docs)
+- Used `userEvent.clear()` to clear existing text and `userEvent.type()` to enter numbers as strings
 - Coded the context and added  `wrapper` option to `render()`to wrap whatever I am rendering in Provider so Provider could be accessed in tests
 - Redefined the Testing Library `render` so I could access Provider anywhere and didn't have to use the  `wrapper()` option in all my tests.
+
+**What should Functional tests catch?**
+
+- Functional tests test how the code functions, test code processes and not static cosmetics on the site
+- They test elements that might change with future coding
+
+**App orderPhase State**
+- The app is going to have an orderPhase State
+- It will pass a setter (`setOrderPhase`) to components as a prop
+- The components will then call `setOrderPhase` to move on to next phase
+- The flow is as follows:
+   -  I start out on OrderEntry page with state in progress
+   -  I move to review phase to the `OrderSummary page
+   -  I then move on to the complete phase which is the `OrderConfirmation` page
+   -  I then move back to the in progress page
+- So what do I test?
+  - I am testing the "Happy Path"
+  - This is a test that works with the customer flow without any errors (tests that execute flow without errors)
+  - **For this app this means the steps are**:
+    - An order is first created
+    - I then move on to the Summary page and accept terms and submit
+    - I land on Confirmation page, and click 'new order' to get back to order entry page
+    - I don't need to test different combos of orders, as that is covered in order page testing
+    - I really need to add scoops/toppings and move on
