@@ -56,7 +56,13 @@ export const OrderDetailsProvider = props => {
     // Getter: value of internal state, an object that contains option counts
     // for scoops and counts, but also subtotals and totals
     // Setter: updateOptionCount
-    return [{...optionCounts, totals}, updateItemCount];
+    const resetOrder = () => {
+      setOptionCounts({
+        scoops: new Map(),
+        toppings: new Map()
+      });
+    }
+    return [{...optionCounts, totals}, updateItemCount, resetOrder];
   }, [optionCounts, totals]);
   return <OrderDetails.Provider value={value} {...props} />
 };
