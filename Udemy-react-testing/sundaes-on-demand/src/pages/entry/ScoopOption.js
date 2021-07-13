@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 const ScoopOption = ({name, imagePath, updateItemCount}) => {
+  // State to let react bootstrap know whether input is valid
+  const [isValid, setIsValid] = useState(true);
+
   const handleChange = e => {
-    updateItemCount(name, e.target.value);
+    const currentValue = e.target.value;
+    updateItemCount(name, currentValue);
+
+    // Make sure I'm using a number and not string to validate
+    const currentValueFloat = parseFloat(currentValue);
+    const valueIsValid =
+     // Checking decimal removed is same as without decimal removed
+     0 <= currentValueFloat &&
+     currentValueFloat <= 10 &&
+     Math.floor(currentValueFloat) === currentValueFloat;
+
+    // Validate
+    setIsValid(valueIsValid);
+    // Only update context if the value is valid
+    if(valueIsValid) updateItemCount(name, currentValue);
   };
 
   return (
@@ -28,6 +45,7 @@ const ScoopOption = ({name, imagePath, updateItemCount}) => {
             type="number"
             defaultValue={0}
             onChange={handleChange}
+            isInvalid={!isValid}
           />
         </Col>
       </Form.Group>
