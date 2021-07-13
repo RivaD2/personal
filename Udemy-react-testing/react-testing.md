@@ -470,3 +470,47 @@ TestingLibraryElementError: Unable to find an accessible element with the role "
     - I land on Confirmation page, and click 'new order' to get back to order entry page
     - I don't need to test different combos of orders, as that is covered in order page testing
     - I really need to add scoops/toppings and move on
+
+**Jest Mocks as Props**
+
+**When and why to pass a Jest mock as a function prop for a component in a test**
+
+- In **OrderPhases** I added a prop to top level page components called `setOrderPhase`. This is a function that the component needs to move the app along to the next order phase
+- There are other components that have functions as props, like `updateItemCount` for the ScoopOption and ToppingOption component
+- I may need to pass as a prop when rendering in tests
+- TypeScript or any other prop validator will require that prop to be there OR the function might get called in the test but it won't matter for the test
+- Ex: If I am testing the ScoopOption component and I want to make sure the right thing happens if someone enters invalid count for scoop option (like -1). I will call `updateItemCount` as that gets updated when scoop count changes. If this prop is missing, the test will error out. However, for these particular tests, nothing needs to happen when `updateItemCount` is called. I just need a placeholder so test won't error out.
+
+ **The solution is passing a jest mock function as a prop**
+
+- The mock function looks like this:
+  `jest.fn()`
+- It doesn't do anything, it is just a placeholder to avoid errors
+- When the component uses that jest mock function as a prop, it is run like a function, but nothing actually happens
+- Ex:
+
+  ```js
+
+  <ScoopOption
+    name="Vanilla",
+    imagePath="/images/vanilla.jpg",
+    updateItemCount={jest.fn()} />
+
+```js
+
+**Standard questions to ask when adding a new test**
+- What to render?
+  - What is the smallest component that encompasses everything needed for tests
+  - That might be App or something smaller
+- Do I need to pass any props?
+- Do I need to wrap the component in a Provider?
+  - I will first need to know if the Provider is used
+  - If it is used, is it already wrapped within the component?
+- Where should the tests go?
+  - Which files should I put them in?
+  - Are they unit tests for particular component or functional tests?
+  - Do I need a new file or do they belong in existing file?
+- What am I going to test, what is the behavior that needs testing?
+  - What queries and events will I use?
+- Do I need to use `await` to await the queries?
+  - Is there anything async happening?
