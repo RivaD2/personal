@@ -18,13 +18,16 @@ test('order phases for happy path', async () => {
   const cherriesCheckbox = await screen.findByRole('checkbox', {name: 'Cherries'});
   userEvent.click(cherriesCheckbox);
 
-  // Find and click order button on orderentry page
+  // Find and click order button on order entry page
   const orderSummaryButton = screen.getByRole('button', {name: /order sundae/i});
   userEvent.click(orderSummaryButton);
 
   // Check summary info based on order
   const summaryHeading = screen.getByRole('heading', {name: 'Order Summary'});
   expect(summaryHeading).toBeInTheDocument();
+
+  // const scoopsHeading = screen.getByRole('heading', {name: 'Toppings: $1.50'});
+  // expect(scoopsHeading).toBeInTheDocument();
 
   const toppingsHeading = screen.getByRole('heading', {name: 'Toppings: $1.50'});
   expect(toppingsHeading).toBeInTheDocument();
@@ -96,4 +99,4 @@ test('Toppings header is not on summary page if no toppings ordered', async () =
 
   const toppingsHeading = screen.queryByRole('heading', {name: /toppings/i});
   expect(toppingsHeading).not.toBeInTheDocument();
-}
+});

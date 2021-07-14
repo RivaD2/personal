@@ -17,11 +17,11 @@ const OrderSummary = ({setOrderPhase}) => {
 
   if(hasToppings) {
     const toppingsArray = Array.from(orderDetails.toppings.keys());
-    const toppingsList =- toppingsArray.map(key => <li key={key}>{key}</li>);
+    const toppingList = toppingsArray.map(key => <li key={key}>{key}</li>);
     toppingsDisplay = (
       <>
         <h2>Toppings: {orderDetails.totals.toppings}</h2>
-        <ul>{toppingsList}</ul>
+        <ul>{toppingList}</ul>
       </>
     );
   }

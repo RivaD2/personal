@@ -11,7 +11,7 @@ As time has passed, this repo now holds the code from Udemy courses and addition
 **Courses Completed**
 
 - Udemy: Modern React with Redux(52.5hrs)
-- Udemy: Testing React with Jest and Testing Library (**In Progress**)
+- Udemy: Testing React with Jest and Testing Library(7.5 hrs)
 - Udemy: TypeScript: The Complete Developer's Guide (**In Progress**)
 - Udemy: The Coding Interview Bootcamp: Algorithms and Data Structures(13 hrs) 
 - freeCodeCamp: JavaScript Data Structures and Algorithms Certification(300 hrs)
