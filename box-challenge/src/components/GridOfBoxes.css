@@ -12,3 +12,7 @@
   width:399px;
   justify-content: space-between;
 }
+
+.page-title {
+  padding-bottom: 20px;
+}

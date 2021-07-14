@@ -4,8 +4,6 @@ import './Box.css';
 const Box = props => {
   // Index is the index of THIS box, selectedBoxes is the index of a box selected
   const {selectedBoxes, index, onBoxClicked, randomColor} = props;
-  console.log(randomColor, index)
-
   const onClickedBox = () => {
     onBoxClicked(index);
   }
@@ -15,13 +13,14 @@ const Box = props => {
   // If index not equal -1, then I know I have a box selected
   const isSelected = selectedBoxes.indexOf(index) !== -1;
   let style;
-  if(isSelected) {
-    // Single object that is passed into style attribute
+  if(randomColor === null) {
+    style = {visibility :'hidden'}
+  } else if(isSelected) {
     style = {backgroundColor: randomColor}
   } else {
     style = {};
   }
-  
+
   return (
     <div className='box-container' onClick={onClickedBox} style={style}>
       <div className="box">Box {index}</div>

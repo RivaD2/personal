@@ -5,31 +5,41 @@ import './GridOfBoxes.css';
 const GridOfBoxes = props => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [randomBackgroundColor, setRandomBackgroundColor] = useState([]);
-
-  const onBoxClicked = index => {
-    console.log('index for colors', index)
-    // When I am dealing with indexes, -1 means that nothing is selected
+  const [count, setCount] = useState(0);
+ 
+  const onBoxClicked = (index, randomColor) => {
+    let newBoxesSelected;
     if (selectedBoxes.indexOf(index) !== -1) {
       // Creating a new arr to hold all new boxes selected 
-      // Selected boxes is an arr of indexes, to get the indexes I want to remove, I can 
+      // Selected boxes is an arr of indexes, to get the indexes I want to remove, I can
       // just return selectedBoxes that don't equal the index
-     let newBoxesSelected = selectedBoxes.filter(selectedBox => {
+     newBoxesSelected = selectedBoxes.filter(selectedBox => {
        return selectedBox !== index;
      });
-     // I tell React to remember the box that I want to deselect using the index from above
-      setSelectedBoxes(newBoxesSelected);
      // If two boxes are selected, clicking on a new box will deselect the previous two boxes.
     } else if (selectedBoxes.length >= 2) {
-      setSelectedBoxes([index]);
+      console.log('selectedBoxes', selectedBoxes)
+      newBoxesSelected = [index];
     } else {
-      // Else, I want to select another box, and remember it's index, in addition to previous box(es) selected
-      // and then store those additional box indexes in state
-      let newBoxesSelected = [index, ...selectedBoxes];
-      setSelectedBoxes(newBoxesSelected);
+      // Else, select another box, and remember it's index, in addition to previous box(es) selected
+      // Store those additional box indexes in state
+      newBoxesSelected = [...selectedBoxes, index];
+      // randomBackgroundColor is an array of strings
+      // newBoxesSelected is an arr, with 2 indexes
+      if(randomBackgroundColor[newBoxesSelected[0]] === randomBackgroundColor[newBoxesSelected[1]]) {
+        randomBackgroundColor[newBoxesSelected[0]] = null;
+        randomBackgroundColor[newBoxesSelected[1]] = null;
+        setRandomBackgroundColor([...randomBackgroundColor]);
+      }
     }
+      // Remember the box that I want to deselect using the index from above
+      setSelectedBoxes(newBoxesSelected);
+      if(newBoxesSelected.length === 1) {
+        setCount(count + 1);
+      }
   }
- 
-  // On page load, I need the random colors set at a different order each time
+
+  // On page load,random colors are set at a different order each time
   useEffect(() => {
     let colors = [ 
       '#66ff66', 
@@ -58,6 +68,7 @@ const GridOfBoxes = props => {
     boxes.push(
       <Box 
         selectedBoxes={selectedBoxes} 
+        count={count}
         index={i} 
         key={i}
         onBoxClicked={onBoxClicked}
@@ -68,8 +79,12 @@ const GridOfBoxes = props => {
 
   return (
     <div className="grid-container">
+      <h1 className="page-title">BOX CHALLENGE</h1>
       <div className="grid-content">
         {boxes}
+      </div>
+      <div className="count-of-clicks">
+        <p>You're going click crazy! The boxes were clicked {count} times! </p>
       </div>
     </div>
   )

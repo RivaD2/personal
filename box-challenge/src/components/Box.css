@@ -1,7 +1,7 @@
 .box-container {
   display:flex;
   flex-direction:column;
-  border:1px solid black;
+  border:2px solid rgb(65, 63, 63);
   height:100px;
   width:100px;
   margin-bottom:33px;
