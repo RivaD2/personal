@@ -152,3 +152,26 @@ What happens if we delete additional properties from interface in `interfaces.ts
 
 1. Create functions that accept arguments that are typed with interfaces
 2. Objects/classes can decide to 'implement' a given interface to work with a function
+
+**Classes in TS:**
+
+Classes: Blueprint to create an object with some fields (values), and methods(functions) to represent a 'thing'
+
+Differences between ES2015 Classes and Classes in TS:
+
+Modifiers: Keywords placed on different methods and properties in a class and include:
+
+  - public: This method can be called anywhere, any time
+  - private This method can only be called by OTHER METHODS in THIS class
+  - protected: This method can be called by other methods in child classes
+
+The goal of these modifiers is to restrict access to different functions or different variables. By default every different method and property we add to class with have public property on it.
+
+In a typical TS app, there will be many Classes and they work together through use of interfaces.
+
+**Parcel**
+
+Parcel Bundler is an awesome tool to run TS code in the browser. When I start up the tool, I feed it a file, it sees the script tag with src of filename.ts and it knows it needs to parse
+code inside the file, compile it, turn it into JS and then load it into browser.
+
+`npm i -g parcel-bundler`
