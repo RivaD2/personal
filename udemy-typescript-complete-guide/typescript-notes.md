@@ -107,3 +107,48 @@ When we talk about Type Inference for functions we talk about TS trying to figur
 
   - One big difference is that it only works for the return value
   - There is no type inference for arguments, so we will always add in annotations
+
+**Arrays in TS**
+
+- Working with arrays in TS means we are essentially working with plain JS arrays. We can push, pop, use for loops etc.
+- The big difference is that we only stick elements with a consistent type in the array (we don't have to though)
+- If we want to add in elements with inconsistent types, we have to add in a special type annotation (see `arrays.ts`)
+- **We can used typed arrays any time we nee to represent a collection of records with some arbitrary sort order**
+
+When we work with arrays in TS:
+
+1. TS can do type inference when we extract values from an arr
+2. TS can prevent us from adding incompatible values to the array
+3. We can get help with 'map', 'forEach', 'reduce', functions
+4. Flexible - arrays can still contain multiple different types
+
+**Tuples in TS:**
+
+There is a very similar data structure in TS similar to arrays called Tuples (they look similar but have some distinct differences)
+
+A Tuple is: An array-like structure where each element represents some property of a record. Usually inside, we will mix and match many types of data
+
+**Interfaces:**
+
+Interfaces + Classes = How we get really strong code reuse in TS
+
+Interfaces: Creates a new type, describing the property names and value types of an object (see `interfaces.ts`)
+
+Inside interfaces I am not limited to just primitive values, I can use any type I want. That also includes functions.
+
+What happens if we delete additional properties from interface in `interfaces.ts`?
+ - When TS tries to decided if `oldCivic` is a Vehicle, it doesn't matter that there are extra properties on the object that are not listed in the interface. TS will look at whatever is in the interface.
+
+**I can use a single interface to describe the shape or different properties of VERY DIFFERENT objects**
+
+- When we do so, I can have objects implement different properties and functions
+- I can make these very different objects interact with different functions that are created (this encourages generic named functions such as printSummary())
+- In `interface.ts`:
+  - Interface `Reportable` is a gatekeeper to printSummary function
+  - If I ever have any value inside app and I want to use those values with the printSummary() function, I have to make sure values implement `Reportable` interface
+  - The interface for gatekeeping is how we get code reuse using TS
+
+**General Strategy for Reusable Code in TS:**
+
+1. Create functions that accept arguments that are typed with interfaces
+2. Objects/classes can decide to 'implement' a given interface to work with a function
