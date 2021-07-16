@@ -175,3 +175,16 @@ Parcel Bundler is an awesome tool to run TS code in the browser. When I start up
 code inside the file, compile it, turn it into JS and then load it into browser.
 
 `npm i -g parcel-bundler`
+
+**Default statements in TS**
+
+- It is common convention to avoid default statements in TS, and just use `export` so we can safely export multiple variables from files and not even worry about whether or not curlies are included. (This varies from place to place).
+
+- This is of course different from React where `export default` is used often
+
+**Google Maps Integration Notes**
+
+-Usually with TS, we install dependencies using NPM and use import statements.
+-However, in `maps` project I have inserted a `<script>` tag directly to html file so that script will be added in as a global variable.
+- The issue at first was that I got error called `can not find any name 'google'` as TS does not know that there is a global variable available in the project
+- So to fix this, I had to install another type definition file for a JS third party library

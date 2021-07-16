@@ -11,8 +11,11 @@
 - I use this location to show them as markers on a Google Map
 
 ### Tools Used: 
+
 - Parcel bundler to run TS in browser
 - Google Maps API
+- faker (to randomly generate data)
+- @types/faker (for type definitions for faker)
 
 ### How to use maps:
 
