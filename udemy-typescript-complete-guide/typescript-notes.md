@@ -215,3 +215,27 @@ code inside the file, compile it, turn it into JS and then load it into browser.
 
 - `typeof`: If I want to set type guard for primitive type, I use this operator
 - `instanceof`: Use this when I want to narrow down every other type of value/ every other value that is created with a constructor function
+
+**Abstract Classes:**
+
+- An abstract class can not be used to create an object directly
+- For example, thinking of `NumbersCollection`, in index.ts I used this class to create an instance out of it
+- When I create an abstract class, I can no longer do this. This works fine for the `Sorter` class
+- Abstract classes can only be used as a parent class
+- They can contain some real implementation for some methods. The implemented methods can refer to other methods that don't actually exist yet (although I still have to provide names and types for the un-implemented methods)
+- Abstract classes can make child classes promise to implement some other method
+- When `Sorter` becomes the abstract class, it has real implementation for `sort()`. It is then used as a parent class for `CharactersCollection`. TS then tries to evaulate `Sorter` in isolation. Inside that class, I provide info about `length()`, `compare()`, and `swap()` methods.
+- TS then evaluates the `sort()` method and evaluates whether it is correct or not
+- When I extend `CharactersCollection` with `Sorter` TS will look at it and say, " You can copy the `sort()` method over, but you better have all the other methods too."
+
+**Abstract Classes vs Interfaces:**
+
+- In my sorting app, I didn't really need the interface as I was using Abstract classes
+- **Interfaces:**
+  1. Set up a contract between different classes
+  2. Are used when we have very different objects that we want to work together
+  3. Promote loose coupling
+- **Inheritance/Abstract Classes:**
+  1. Sets up a contract between different classes
+  2. Used when we are trying to build up a definition of an object
+  3. Strongly couples classes together
