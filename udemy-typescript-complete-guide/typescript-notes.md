@@ -192,9 +192,9 @@ code inside the file, compile it, turn it into JS and then load it into browser.
 **How TypeScript Compliler works:**
 
 - IN the sorting app, inside the directory I ran `tsc + name of file`
-- TS compliles the file and spits out index.js file
+- TS compiles the file and spits out index.js file
 - Index.js contains JS equivalent of TS code
-- Everytime I compile the file, I will end up with another js file
+- Every time I compile the file, I will end up with another js file
 - If I had all source code in root project folder, things get a bit messy
 - So all TS code was moved to `src` folder and all compiled js files went in a `build` folder. The build directory just organizes the compiled code
 
@@ -208,3 +208,10 @@ code inside the file, compile it, turn it into JS and then load it into browser.
   - `"rootDir": A relative path reference to directory that holds source code. I added `./src` here to indicate source code is in src
 - I can then just run `tsc`
 - To make things easier, I can run `tsc - w` which means watch all files in rootDir, or src directory (in the sort app) and compile everything and stick it in build for me. Then I don't have to run `tsc` over and over again.
+
+**What is a Type Guard?:**
+
+- A Type Guard is technique where TS gets type information of a variable after making a type check using a conditional
+
+- `typeof`: If I want to set type guard for primitive type, I use this operator
+- `instanceof`: Use this when I want to narrow down every other type of value/ every other value that is created with a constructor function
