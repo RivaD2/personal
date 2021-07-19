@@ -188,3 +188,23 @@ code inside the file, compile it, turn it into JS and then load it into browser.
 -However, in `maps` project I have inserted a `<script>` tag directly to html file so that script will be added in as a global variable.
 - The issue at first was that I got error called `can not find any name 'google'` as TS does not know that there is a global variable available in the project
 - So to fix this, I had to install another type definition file for a JS third party library
+
+**How TypeScript Compliler works:**
+
+- IN the sorting app, inside the directory I ran `tsc + name of file`
+- TS compliles the file and spits out index.js file
+- Index.js contains JS equivalent of TS code
+- Everytime I compile the file, I will end up with another js file
+- If I had all source code in root project folder, things get a bit messy
+- So all TS code was moved to `src` folder and all compiled js files went in a `build` folder. The build directory just organizes the compiled code
+
+**Configuring TypeScript Compiler:**
+
+- To configure TS compiler to work with the two separate directories, I have to create a `tsconfig.json` file
+- To create one, I run `tsc --init`
+- This file I see a ton of different options that I can use to customize the compliler. If I run the compiler in the terminal, it will check to see if I have `tsconfig` file. If I do, it will use those settings to customize the compiler.
+- To tell the compiler to get all code out of `src` and place results in `build` directory, I need to locate two settings:
+  - `"outDir"` : Place where compiled code lives. Added `./build` here
+  - `"rootDir": A relative path reference to directory that holds source code. I added `./src` here to indicate source code is in src
+- I can then just run `tsc`
+- To make things easier, I can run `tsc - w` which means watch all files in rootDir, or src directory (in the sort app) and compile everything and stick it in build for me. Then I don't have to run `tsc` over and over again.
