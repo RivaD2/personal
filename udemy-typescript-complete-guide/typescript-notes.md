@@ -303,3 +303,10 @@ holdString.data = 'fjsdfkfkj';
 - Inheritance: Characterized by an **'is a'** relationship between two classes
 - Composition: Characterized by a **'has a'** relationship between two classes
 
+**A Huge Misconception around Composition:**
+
+- In the JS community there is this quote that is used a lot, "Favor object composition over class inheritance."
+- This quote is very misunderstood. The quote itself is correct and in the book where it is used, the authors go on and give a strong argument for why this is the case.
+- The issue is if you search for, "JS composition vs inheritance", the definition of the composition is incorrect in the JS community
+- This quote is from 'Design Patterns, Elements of Reusable Object-Oriented Software". This book was not written specifically for JS. ON page 20, the authors speak about **Delegation**.They say specifically that delegation is favored as a pattern to implement composition. With this pattern, we have some class (Window is the class in the book)that has a reference to another object. Any time a request comes in to get area of Window, this class delegates calculations off to outside object. **Composition here means one object has reference to another object, or possibly multiple objects**
+- Online, most blog posts say, "Hey,let's build up the definition of an object by using methods." This is not the same as how it is defined in the book. Really this is Multiple Inheritance!

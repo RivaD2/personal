@@ -7,6 +7,7 @@
 - Parse the data into some usable data structure. The data is an array of strings, so I have to change the data to some appropriate value.
 - Update the types that these different values will be stored as in data array/ update the type definition inside the `CsvFileReader` class
 - Run a statistical analysis on it and generate a report
+- Learn how to dramatically change behavior of application (without making dramatic changes to code) using interfaces and object composition
 
 **Tools Used:**
 
