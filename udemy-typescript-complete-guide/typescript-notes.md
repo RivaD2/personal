@@ -239,3 +239,20 @@ code inside the file, compile it, turn it into JS and then load it into browser.
   1. Sets up a contract between different classes
   2. Used when we are trying to build up a definition of an object
   3. Strongly couples classes together
+
+**Using Enums:**
+
+- In `stats` app, instead of using an object, I used an Enum
+- Enum (Enumeration) has a purpose similar to an object, but it stores closely related values. The values usually are numbers or strings.
+- All the different properties are closely releated values, so in stats the properties were `HomeWin`, `AwayWin`, and `Draw`
+- So why use them over an object? The purpose is for signaling to other engineers that this is a collection of very closely related values
+- In order to reference values in an `enum`, we write out: `name of enum.name of option to reference`
+- When a new enum is created, another type is created. In `stats` the enum is `MatchResult`, and the type is `MatchResult`
+
+**When to use Enums:**
+
+- When we make use of enums, we can work with them with syntax similar to objects
+- Enums can be defined without values inside
+- They create an object with same keys and values when converted from TS to JS
+- We use them whenever we have a small fixed set of values that are all closely related and known at compile time
+- Enums are not used when data is unknown while I am running my code
