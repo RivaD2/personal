@@ -256,3 +256,50 @@ code inside the file, compile it, turn it into JS and then load it into browser.
 - They create an object with same keys and values when converted from TS to JS
 - We use them whenever we have a small fixed set of values that are all closely related and known at compile time
 - Enums are not used when data is unknown while I am running my code
+
+**What are Generics:**
+
+- Generics are like function arguments, but for types in class/function definitions
+- They allow us to define the type of a property/argument/return value at a future point
+- They are used heavily when writing reusable code
+
+```
+
+const addOne = (a: number): number => {
+  return a + 1;
+};
+
+I could write new functions when I want to change each value...that is silly! A better way would be to build one function called add(). Rather than hardcoding the number, I can add it as an arg:
+
+const add = (a: number, b: number): number => {
+  return a + b;
+}
+add(10, 1);
+add(10, 2);
+
+// Generics are similar to how these args work in functions:
+// Generic will customize the definition of this class
+// Generics are usually short by convention so <TypeOfData> would be <T> instead
+const HoldAnything<TypeOfData> {
+  data:TypeOfData;
+}
+
+// When I create the instance, I pass in the type that is used inside class body
+// Number here is doing what a function arg does
+
+const holdNumber = new HoldAnything<number>();
+holdNumber.data = 123;
+
+const holdString = new HoldAnything<string>();
+holdString.data = 'fjsdfkfkj';
+```
+
+**Inheritance vs Composition:**
+
+- In `stats` project, I did two refactors for code reuse. Once focused on Inheritance and the other Composition.
+- Inheritance: I had the` abstract class CsvFileReader`. I extended this class and have a child class called `MatchReader`. I customized behavior by implementing `mapRow(string[]): MatchData`
+- Composition: class `MatchReader` has a reference to some other object `reader: DataReader`, and `load():void`
+- This reader property had to be any object that met `DataReader` Interface. Then any time the `load()` method was called, I delegated action of loading data to the outside `DataReader`. I could easily swap in different kinds of readers this way.
+- Inheritance: Characterized by an **'is a'** relationship between two classes
+- Composition: Characterized by a **'has a'** relationship between two classes
+

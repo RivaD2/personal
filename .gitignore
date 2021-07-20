@@ -34,3 +34,9 @@ bower_components
 # node-waf configuration
 .lock-wscript
 node_modules
+CharactersCollection.js
+index.js
+utils.js
+MatchResult.js
+CsvFileReader.js
+LinkedList.js
