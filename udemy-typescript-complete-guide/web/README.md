@@ -8,14 +8,18 @@
 
 **Tools Used:**
 
-- Express.js
+- JSON server
+- Axios
 - nodemon (executes code once compiled)
-- concurrently (helps run multiple scripts at one time)
+- parcel
 - @types/node (Type Definitions for Node.js)
 
 **How to use Web:**
 
 - Run `npm i` to install all dependencies
+- Run `json-server -w db.json` to run json-server
+- Run `parcel index.html` to start parcel
+- Alternatively, run `npm run start: db` in one window, in second window run `npm run start: parcel`
 
 **Designing User:**
 
