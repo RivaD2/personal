@@ -42,3 +42,26 @@ const twoSum = (nums, target) => {
   }
 }
 console.log(twoSum([1, 2, 3, 4], 5))
+
+
+// Two Sum Challenge with Britt
+// Two pointers
+const numsSumToTarget = (arr, target) => {
+  arr.sort();
+  let left = 0;
+  let right = arr.length - 1;
+
+  while(left < right) {
+    let sum = arr[left] + arr[right];
+    if (sum == target)  {
+      return [arr[left], arr[right]];
+    } else if (sum < target) {
+      left ++;
+    } else {
+      right--;
+    }
+  }
+};
+
+console.log(numsSumToTarget([1, 2, 5, 6, 10, 12, 14], 17));
+
