@@ -33,4 +33,27 @@
  - fetch(); Promise --> Fetches data from the server about a particular user
  - save():Promise --> Saves some data about this user to the server
 
+**Building UserForm:**
 
+```js
+
+class UserForm {
+  parent: Element;
+  template(): string;
+  render():void;
+}
+
+```
+
+- Render calls template,  and template returns a string that contains some amount of HTML
+- Template returns a form
+- The render method takes HTML and appends it as a child to parent property
+- The parent property is a reference to some HTML element already in the DOM
+
+**Rendering Timeline:**
+
+- Render method is called
+- Render calls 'template', gets HTML string
+- Render inserts HTML string into a template element
+- Event handlers are bound to the HTML inside template element
+- Render inserts content of template into DOM

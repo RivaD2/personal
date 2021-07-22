@@ -15,11 +15,12 @@
 
 1st: We need to learn the syntax and features
 
-  - What is an interface?
-  - What is the syntax for defining the interface?
+- What is an interface?
+- What is the syntax for defining the interface?
 
 2nd: Design Patters with TS
-  - How do we use interfaces to write reusable code?
+
+- How do we use interfaces to write reusable code?
 
 **What is an Interface?**
 
@@ -45,20 +46,20 @@ Ex: Imagine a box with the word "red" inside. What is in the box?
 
 1st: Primitives:
 
-  - number
-  - string
-  - boolean
-  - symbol
-  - void
-  - null
-  - undefined
+- number
+- string
+- boolean
+- symbol
+- void
+- null
+- undefined
 
 2nd: Object Types:
 
-  - functions
-  - classes
-  - arrays
-  - objects
+- functions
+- classes
+- arrays
+- objects
 
 Types are used by the TypeScript Compiler to analyze our code for errors. They also allow other engineers to understand what values are flowing around our codebase.
 
@@ -105,8 +106,8 @@ Code we add to tell TypeScript **what type of arguments a function will receive 
 
 When we talk about Type Inference for functions we talk about TS trying to figure out what type of value a function will return
 
-  - One big difference is that it only works for the return value
-  - There is no type inference for arguments, so we will always add in annotations
+- One big difference is that it only works for the return value
+- There is no type inference for arguments, so we will always add in annotations
 
 **Arrays in TS**
 
@@ -137,7 +138,8 @@ Interfaces: Creates a new type, describing the property names and value types of
 Inside interfaces I am not limited to just primitive values, I can use any type I want. That also includes functions.
 
 What happens if we delete additional properties from interface in `interfaces.ts`?
- - When TS tries to decided if `oldCivic` is a Vehicle, it doesn't matter that there are extra properties on the object that are not listed in the interface. TS will look at whatever is in the interface.
+
+- When TS tries to decided if `oldCivic` is a Vehicle, it doesn't matter that there are extra properties on the object that are not listed in the interface. TS will look at whatever is in the interface.
 
 **I can use a single interface to describe the shape or different properties of VERY DIFFERENT objects**
 
@@ -161,9 +163,9 @@ Differences between ES2015 Classes and Classes in TS:
 
 Modifiers: Keywords placed on different methods and properties in a class and include:
 
-  - public: This method can be called anywhere, any time
-  - private This method can only be called by OTHER METHODS in THIS class
-  - protected: This method can be called by other methods in child classes
+- public: This method can be called anywhere, any time
+- private This method can only be called by OTHER METHODS in THIS class
+- protected: This method can be called by other methods in child classes
 
 The goal of these modifiers is to restrict access to different functions or different variables. By default every different method and property we add to class with have public property on it.
 
@@ -263,7 +265,7 @@ code inside the file, compile it, turn it into JS and then load it into browser.
 - They allow us to define the type of a property/argument/return value at a future point
 - They are used heavily when writing reusable code
 
-```
+```js
 
 const addOne = (a: number): number => {
   return a + 1;
@@ -310,3 +312,12 @@ holdString.data = 'fjsdfkfkj';
 - The issue is if you search for, "JS composition vs inheritance", the definition of the composition is incorrect in the JS community
 - This quote is from 'Design Patterns, Elements of Reusable Object-Oriented Software". This book was not written specifically for JS. ON page 20, the authors speak about **Delegation**.They say specifically that delegation is favored as a pattern to implement composition. With this pattern, we have some class (Window is the class in the book)that has a reference to another object. Any time a request comes in to get area of Window, this class delegates calculations off to outside object. **Composition here means one object has reference to another object, or possibly multiple objects**
 - Online, most blog posts say, "Hey,let's build up the definition of an object by using methods." This is not the same as how it is defined in the book. Really this is Multiple Inheritance!
+
+**View Classes for web App:**
+
+- Each view must produce HTML
+- I should be able to nest one view's HTML in another
+- I need to have a good way to handle user events
+- There will most likely be tight coupling between a view and a model
+- I need to be able to reach into the HTML produced by a view and get a specific element
+- View Classes will be: `UserEdit, UserShow and UserForm`
