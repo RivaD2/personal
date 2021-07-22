@@ -37,18 +37,20 @@
 
 ```js
 
-class UserForm {
-  parent: Element;
-  template(): string;
-  render():void;
+class UserForm extends View {
+  template(): string,
+  eventsMap(): { key:() => void }
+  onSetNameClick(): void,
+  onSetAgeClick(): void,
+  renderer: View
 }
 
 ```
 
-- Render calls template,  and template returns a string that contains some amount of HTML
 - Template returns a form
-- The render method takes HTML and appends it as a child to parent property
-- The parent property is a reference to some HTML element already in the DOM
+- eventsMap is the method that returns object that describes events and elements to bind those events to inside a specific view
+- OnSetNameClick and onSetAgeClick are both methods that are custom for a user form so they stay with the UserForm class
+- instance of View is present so anytime I want to render class UserForm, UserForm would delegate rendering responsibility off to instance of View
 
 **Rendering Timeline:**
 
@@ -57,3 +59,23 @@ class UserForm {
 - Render inserts HTML string into a template element
 - Event handlers are bound to the HTML inside template element
 - Render inserts content of template into DOM
+
+```js
+abstract class View {
+  parent: Element,
+  model: User,
+  render(): void,
+  bindEvents(): void,
+  bindModel(): void,
+  abstract template(): string,
+  abstract eventsMap(): { key: () => void}
+}
+
+```
+
+- The parent property is a reference to some HTML element already in the DOM
+- The render method takes HTML and appends it as a child to parent property
+- Render calls template, and template returns a string that contains some amount of HTML
+- bindEvents holds the event binding logic
+- Every view created will need to bind to a Model, so bindModel is part of View class
+- A reference to template() and eventsMap() will exist, but class View will be an abstract class. I will not instantiate View directly, it is used to extend another.
