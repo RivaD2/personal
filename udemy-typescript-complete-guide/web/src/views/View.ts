@@ -1,13 +1,23 @@
 import { User } from "../models/User";
+import { Model } from "../models/Model";
 
+// Passing in type (T) of model and second type (K), which are attributes that exist in model
+export abstract class View<T extends Model<K>, K> {
+  regions: { [key: string]: Element } = {};
 
-export abstract class View<T> {
   constructor(public parent: Element, public model: T){
     this.bindModel();
   }
 
-  abstract eventsMap(): { [key: string]: () => void};
   abstract template(): string;
+  // Not required to be implemented in child class
+  eventsMap(): { [key: string]: () => void } {
+    return {};
+  }
+
+  regionsMap(): { [key: string]: string } {
+    return {};
+  }
 
   bindModel(): void {
     this.model.on('change', () => {
@@ -28,6 +38,22 @@ export abstract class View<T> {
     }
   }
 
+  mapRegions(fragment: DocumentFragment): void {
+    const regionsMap = this.regionsMap();
+    for (let key in regionsMap) {
+      const selector = regionsMap[key];
+      const element = fragment.querySelector(selector);
+      // Populate empty object with all regions found
+      if (element) {
+        this.regions[key] = element;
+      }
+    }
+  }
+
+  onRender(): void {
+
+  }
+
   render():void {
     this.parent.innerHTML = '';
 
@@ -35,6 +61,9 @@ export abstract class View<T> {
     templateElement.innerHTML = this.template();
 
     this.bindEvents(templateElement.content);
+    this.mapRegions(templateElement.content);
+
+    this.onRender();
     this.parent.append(templateElement.content);
   }
 }

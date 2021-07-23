@@ -5,6 +5,8 @@
 - To build a web framework to get real world experience using TS
 - It is a client-side web framework which won't have the same functionality as React or Angular, but it will have the same purpose: Fetch data, render content on the screen and handle user events
 - This is a framework that can be extended to make something much more complicated
+- To juxtapose Composition vs Inheritance
+- To see how frameworks were built before React and Angular
 
 **Tools Used:**
 
@@ -58,6 +60,9 @@ class UserForm extends View {
 - Render calls 'template', gets HTML string
 - Render inserts HTML string into a template element
 - Event handlers are bound to the HTML inside template element
+- regionMap is called for list of regions that need to be created
+- Render method populates values in 'regions'
+- Child views are inserted into those regions
 - Render inserts content of template into DOM
 
 ```js
@@ -69,6 +74,8 @@ abstract class View {
   bindModel(): void,
   abstract template(): string,
   abstract eventsMap(): { key: () => void}
+  regionMap(): void
+  regions: {}
 }
 
 ```
@@ -78,4 +85,5 @@ abstract class View {
 - Render calls template, and template returns a string that contains some amount of HTML
 - bindEvents holds the event binding logic
 - Every view created will need to bind to a Model, so bindModel is part of View class
-- A reference to template() and eventsMap() will exist, but class View will be an abstract class. I will not instantiate View directly, it is used to extend another.
+- A reference to template() and eventsMap() will exist, but class View will be an abstract class. I will not instantiate View directly, it is used to extend another
+- regionMap is an optional method to be implemented when View is extended

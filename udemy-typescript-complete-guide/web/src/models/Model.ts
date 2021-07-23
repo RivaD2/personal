@@ -20,6 +20,8 @@ interface HasId {
   id?: number;
 }
 
+// Anytime Model is referenced, I pass in set of properties I would expect Model to have
+// These properties are id, name, age
 export class Model<T extends HasId> {
   constructor(
     private attributes: ModelAttributes<T>,
