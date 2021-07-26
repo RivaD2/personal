@@ -321,3 +321,20 @@ holdString.data = 'fjsdfkfkj';
 - There will most likely be tight coupling between a view and a model
 - I need to be able to reach into the HTML produced by a view and get a specific element
 - View Classes will be: `UserEdit, UserShow and UserForm`
+
+**Issues with Type Definition Files (in Server app)**
+
+Cons:
+
+ - Type definintion files alone can't express what is going in the JS world accurately (example: middleware)
+ - Type definition files provided to us aren't always accurate
+ - Inputs to a server (or any program with external inputs) are not guaranteed to exist, or be of the correct type
+
+Pros:
+
+- Addressing these type issues with TS can force us to write better code
+
+**Dealing with Poor Type Defs**
+
+- In server app, I created an interface that extends type requests
+- This borrows all type definitions that are defined inside the interface, and overrides them (in the server app's case, I wanted to override the body property)
