@@ -11,6 +11,13 @@
 - This includes bare minimum TS, type annotations where possible
 - A refactor will be done to use a TS adapter library that has helpers for using the library with TS
 
+**Second version**
+
+- Uses a decorator to read methods and associate it with a router
+- Uses a decorator to automate checking properties in body of request
+- Uses a decorator that marks a class as a Controller
+- Uses yet another decorator to set up middleware
+
 **How to run server**
 
 - Run `npm i` to install dependencies

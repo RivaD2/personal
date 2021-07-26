@@ -338,3 +338,26 @@ Pros:
 
 - In server app, I created an interface that extends type requests
 - This borrows all type definitions that are defined inside the interface, and overrides them (in the server app's case, I wanted to override the body property)
+
+**Decorators:**
+
+- Decorators are functions that can be used to modify/change anything, different properties/methods in the class
+- Decorators tied to TS are not the same as JS decorators
+- They are used inside/on classes only
+- Understanding the order in which decorators are ran is the key to understanding them
+- They are experimental (in TS)!
+
+**Decorators on a property, method or accessor**
+
+- First argument is the prototype of the object
+- Second arg is the key of the property/method/accessor on the object
+- Third arg is the property descriptor
+- Decorators are applied w hen the code for this class is rand (not when an instance is created)
+- In `decorators.ts` I have a property, an accessor and a method, so I can use the decorator on each of those things
+
+**Property descriptor for Methods:**
+
+1. writable: Whether or not this property can be changed
+2. enumerable: Whether or not this property can get looped over
+3. value: Current value
+4. configurable: Property definition can be changed and property can be deleted
