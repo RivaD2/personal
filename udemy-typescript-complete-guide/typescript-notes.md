@@ -361,3 +361,20 @@ Pros:
 2. enumerable: Whether or not this property can get looped over
 3. value: Current value
 4. configurable: Property definition can be changed and property can be deleted
+
+**Refactor for Server, how it works:**
+
+- Node executes the code
+- Class definition read in -- decorators are executed
+- Decorators associate route configuration info with the method by using metadata
+- All method decorators run
+- Class decorator of `@controller` runs last
+- Class decorator reads metadata from each method, adds complete route definitions to router
+
+**What is metadata?**
+
+- A proposed feature to be added to JS (and thus TS) (been around awhile)
+- It is a snippet of information that can be tied to a method, property, or class definition
+- Can be used for custom stuff
+- TS will (optionally) provide type information as metadata
+- Read and written using the reflect-metadata package

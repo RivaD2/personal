@@ -29,3 +29,4 @@
 - nodemon
 - Express
 - cookie-session
+- reflect-metadata
