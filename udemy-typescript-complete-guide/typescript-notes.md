@@ -378,3 +378,15 @@ Pros:
 - Can be used for custom stuff
 - TS will (optionally) provide type information as metadata
 - Read and written using the reflect-metadata package
+
+**React and Redux with TS Overview:**
+
+1. Pros:
+   - Far, far easier to avoid extremely common typos, like incorrect action types
+   - Gives dev's far better understanding of the type of data flowing around
+   - Much easier to refactor just about anything
+2. Cons:
+   - Not the best type definition files (especially for Redux)
+   - Tons of generics flying around
+   - Tons of imports, as just about everything (action creator, action, reducer, store, component) need to be aware of different types
+   - Redux is inherently functional in nature, so this can be tough to integrate with TS classes
