@@ -14,6 +14,7 @@
 - React-redux
 - Redux thunk
 - Axios
+- @types/react-redux
 
 **How to use:**
 
