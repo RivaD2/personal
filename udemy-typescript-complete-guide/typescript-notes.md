@@ -390,3 +390,15 @@ Pros:
    - Tons of generics flying around
    - Tons of imports, as just about everything (action creator, action, reducer, store, component) need to be aware of different types
    - Redux is inherently functional in nature, so this can be tough to integrate with TS classes
+
+In ts-react app, as we use Redux and TS together, the index.ts file would keep growing larger as I would keep having to define many different interfaces. With this in mind, it is helpful to break the action creators apart into separate files. The benefit was that index.ts in the `actions` folder became a central export point for everything inside actions directory.
+
+**React, Redux and TS App Review:**
+
+- Anytime I created a component, I also defined an interface that defined different props I expected the component to receive (in `App.tsx`, list of Todos, fetchTodos and deleteTodo).
+- I learned that that there are several ways to initialize state inside the component:
+   1. Define an interface to set up structure of state and then pass that in as second arg to generic
+   2. Define and initialize state object inside constructor
+   3. If not using a constructor, I do not need second interface, i can just initalize state object right inline
+- In `actions`, I had types listed out with actions inside ActionTypes enum (however Redux recommends using type alias with hard coded strings). I also exported type union between all different action types I expected to have (the actual action object itself). Anytime I added in reducer, I imported in action type and used it to annotate `action` arg
+- In `reducers` TS knew that action was possibly any of the different actions, so to figure out which one it was, a type guard in the form of a switch statement (narrowing down the type to fetchTodos or deleteTodos).
