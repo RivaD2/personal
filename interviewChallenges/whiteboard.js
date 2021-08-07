@@ -1609,3 +1609,18 @@ const longestDuplicateArr = arr => {
 }
 
 console.log(longestDuplicateArr([1, 1, 1, 2, 3, 4, 5, 5, 5, 5]));
+
+// Validate subsequence on AlgoExpert
+function isValidSubsequence(array, sequence) {
+	let sequenceIndex = 0;
+  for (let int of array) {
+	  if(sequenceIndex === sequence.length) {
+      break;
+		}
+		if(sequence[sequenceIndex] === int) {
+			sequenceIndex++;
+		}
+	}
+	return sequenceIndex === sequence.length;
+}
+
