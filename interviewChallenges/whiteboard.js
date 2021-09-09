@@ -1624,3 +1624,59 @@ function isValidSubsequence(array, sequence) {
 	return sequenceIndex === sequence.length;
 }
 
+/*
+
+HackerRank Team Formation: Mock Interview/Mentor session with Steven
+
+Pseudocode:
+
+- if score.length <= k then do something (Math.max(score));
+- Create variable  'firstArrScores' and initialize to value that slice returns
+   - I want first k elements here
+- Create variable 'secondArrScores'
+    - Want last k elements and initialize to value that slice returns
+- Create sum variable, inialize to 0
+-  Iterate over team_size:
+    - Choose the first and last k elements [10, 20, 10]  [5, 30, 20]
+          firstArrayScores =  score.slice(0, k)
+          secondArrayScores = score.slice(score.length - k)
+    - Next step, find max from firstArrayScores and secondArrayScores
+        // let firstMaxValues = Math.max(...firstArrayScores);
+        // let secondMaxValues = Math.max(...secondArrayScores);
+    - Next,Compare max values, if firstMaxValues >= secondMaxValues,
+        - Add greater value to the sum
+        - Remove greater value from scores arr
+        If scores are equal, then I need to remove the score at the lowest index from scores arr
+   - Return sum
+*/
+
+function teamFormation(score, team_size, k) {
+  // One possible edge case
+  if (score.length <= k)  {
+    return Math.max(...score);
+  }
+
+  let sum = 0;
+  for (let i = 0; i < team_size; i++) {
+    let firstArrayScores = score.slice(0, k);
+    let secondArrayScores = score.slice(score.length - k);
+
+    let firstMaxValues = Math.max(...firstArrayScores);
+    let secondMaxValues = Math.max(...secondArrayScores);
+
+    if (firstMaxValues >= secondMaxValues) {
+      sum += firstMaxValues;
+      const index =  score.indexOf(firstMaxValues);
+      score.splice(index, 1);
+    } else {
+      sum += secondMaxValues;
+      const index = score.indexOf(secondMaxValues);
+      score.splice(index, 1);
+    }
+  }
+  return sum;
+}
+
+
+
+
