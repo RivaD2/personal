@@ -26,3 +26,24 @@ The querySelector() method of the Element interface returns the first element th
 - Iterate element list with forEach()
 
 **Element Manipulation**
+
+- Update inner content
+- Update element attributes
+   - `getAttribute`
+   - `setAttribute`
+- Update element style attribute
+- Select an element, se its innerHTML
+- Set current contents as JS variable value
+- Update current contents with variable value:
+  - `innerContent`
+  - `innerText`
+  - `innerHTML`
+- Get element id , set element id/update it
+- Update element image and url path by using getAttribute/setAttribute
+- Remove an element using childnode.remove() method
+
+**Element Classes**
+
+- Better way to update and manipulate classes
+- I can use JS and remove, toggle, replace, add etc using `classList` method
+- Check if class exists ---> `console.log(i.classList.contains('first));`

@@ -23,4 +23,34 @@ elementList.forEach((element, idx) => {
   element.textContent = `${idx}: Updated`
 });
 
-// Review # 3 Element Manipulation
+
+/*
+Review # 3 Element Manipulation
+- Update all list items with ids in sequence and content with count.
+- Get class attribute output to console
+- Remove first div with class of pickme
+*/
+const tempItem = document.querySelector('h1');
+tempItem.innerHTML = "Well Hello There!"
+tempItem.id = "test-id";
+
+const finalText = document.querySelector('h4');
+finalText.setAttribute('class', 'final-text');
+const finalTextAttr = finalText.getAttribute('class');
+
+const allLinks = document.querySelectorAll('a');
+allLinks.forEach(linkElement => {
+  console.log(linkElement.getAttribute('href'));
+  linkElement.setAttribute('href', 'http://wwww.discoveryvip.com');
+});
+
+// Overrides ahref
+const allListItems = document.querySelectorAll('li');
+allListItems.forEach((item, index) => {
+  item.textContent = "list item #" + index;
+  item.id = "li" + index;
+});
+
+const divToRemove = document.querySelector('.pickme');
+divToRemove.remove();
+
