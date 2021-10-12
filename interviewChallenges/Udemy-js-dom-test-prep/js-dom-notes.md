@@ -47,3 +47,30 @@ The querySelector() method of the Element interface returns the first element th
 - Better way to update and manipulate classes
 - I can use JS and remove, toggle, replace, add etc using `classList` method
 - Check if class exists ---> `console.log(i.classList.contains('first));`
+- This method will return boolean value
+- This lets me check if classes exist
+- I can use this in a condition of course, if it is true, I can execute a block of code
+
+**Element Children and Traversing**
+
+- Get element child nodes
+- element children
+- parent element
+- parent node
+- siblings
+- next and previous siblings
+- ParentNode property children is read-only property that returns a live HTML collection which contains all of the child elements of the node upon which it was called
+- HTMLCollection vs NodeList
+   - Can use length property with both
+   - There is a difference between the two in that one is live and and one is static
+   - HTMLCollection: Methods like `getElementsByClassName()` and `getElementsByTagName()` return a live collection
+   - These do not include text nodes
+- NodeList: The element `querySelectorAll()` returns static NodeList. They look like arrays but aren't. They have `forEach()` method as well as other methods including item, entries, keys and values.
+  - If I access elements using childNodes, the returned list is live and will update as more elements are added to node.
+  - If it's accessed through using `querySelectorAll()`, the returned list is static and will not update if more elements are added
+
+**Create element**
+
+- In HTML doc, the `document.createElement()` method creates HTML element specified by tagname, or an HTMLUnknownElement if tagName isn't recognized.
+- `createElement()` allows us to create a new element and then with `document.createTextNode('text in here')` I can give it content.
+- Using `appendChild(newContentToAdd)` I can add the text node to the newly created element
