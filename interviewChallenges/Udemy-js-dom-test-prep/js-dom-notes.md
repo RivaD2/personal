@@ -74,3 +74,11 @@ The querySelector() method of the Element interface returns the first element th
 - In HTML doc, the `document.createElement()` method creates HTML element specified by tagname, or an HTMLUnknownElement if tagName isn't recognized.
 - `createElement()` allows us to create a new element and then with `document.createTextNode('text in here')` I can give it content.
 - Using `appendChild(newContentToAdd)` I can add the text node to the newly created element
+
+**Event Listeners**
+
+- I can select a target element and then add event listener methods to elements
+- `target.addEventListener(type, listener[, options]);`
+- Attach listeners and can remove listeners
+- Lots of events (click being most common)
+- Sometimes there is an option where I can add a boolean value at the end of the function. This is for the capture phase. If it is true, events execute top down and when false, it bubbles bottom to top. When it is not specified, it defaults to false. Newer versions this is an option. It is a way to specify the order of the click, it helps to determine order in which events are fired.

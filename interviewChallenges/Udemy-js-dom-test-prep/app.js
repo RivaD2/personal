@@ -117,3 +117,62 @@ const textInside = document.createTextNode('Hello header');
 headerForList.style.color = 'blue';
 headerForList.appendChild(textInside);
 document.body.appendChild(headerForList);
+
+
+/* Challenge 8: event listeners:
+- Add ability to click on elements with class = list-item
+- Toggle class to red
+*/
+
+// Refresher
+const containerDiv = document.getElementById('challenge-five');
+containerDiv.addEventListener('click', () => {
+ console.log('click');
+});
+
+//Other way is to use event listener is to create a function and add it in
+containerDiv.addEventListener('click', myClickFunction);
+
+function myClickFunction() {
+  console.log('clicked')
+}
+
+// Challenge
+const itemsToClickOn = document.querySelectorAll('.fruits');
+for(let i = 0; i < itemsToClickOn.length; i++) {
+  itemsToClickOn[i].style.backgroundColor = 'yellow';
+  itemsToClickOn[i].style.padding = '26px';
+  itemsToClickOn[i].addEventListener('click', makeListItemsRed);
+}
+function makeListItemsRed() {
+  console.log(this);
+  let toggle = this.classList.toggle('red');
+  console.log(toggle);
+}
+
+/*Challenge 9:
+- Add a popup image when any image on the page is clicked
+- Popup should show the full size image from the weblink
+*/
+
+// Select all images on page
+const imageList = document.querySelectorAll("img");
+// Loop through and add event listener on each element
+// Can create named function or use anonymose
+for(let i = 0; i < imageList.length; i++) {
+  imageList[i].addEventListener('click', function() {
+    // Src gives path to where image is located
+    // I can use this in window.open to create the popup
+    // All these params are regular for popup window
+    window.open(this.src, "myImg", "resizable=yes, width=500, height=500");
+  });
+}
+/*could have also use onClick to directly apply event listener to the element
+although this is not supported in all browsers. I can't as easily remove it either as I can
+when I use addEventListener. They do work the same way.
+
+Ex: after loop:
+  imageList[i].onClick = function() {
+    window.open(this.src, "myImg", "resizable=yes, width=500, height=500");
+  });
+*/
