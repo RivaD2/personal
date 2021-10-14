@@ -32,7 +32,7 @@ The querySelector() method of the Element interface returns the first element th
    - `getAttribute`
    - `setAttribute`
 - Update element style attribute
-- Select an element, se its innerHTML
+- Select an element, set its innerHTML
 - Set current contents as JS variable value
 - Update current contents with variable value:
   - `innerContent`
@@ -82,3 +82,36 @@ The querySelector() method of the Element interface returns the first element th
 - Attach listeners and can remove listeners
 - Lots of events (click being most common)
 - Sometimes there is an option where I can add a boolean value at the end of the function. This is for the capture phase. If it is true, events execute top down and when false, it bubbles bottom to top. When it is not specified, it defaults to false. Newer versions this is an option. It is a way to specify the order of the click, it helps to determine order in which events are fired.
+
+**Event Object**
+
+- The target property of the Event interface is a reference to the object that dispatched the event
+
+```js
+document.querySelector('div').addEventListener("click", function(e) {
+  console.log(e);
+  console.log(e.type);
+  console.log(e.target);
+});
+```
+
+- Whatever item I've clicked on and added event listener on, I can get that information
+- Some browsers (Chrome) by default will pass event object directly in function
+- The best way is to pass in event object, and then use target whenever element is clicked (as above);
+
+**Add Event Key Press Listeners**
+
+- Keydown listener: fired when key is pressed down
+- Keyup listener: Fired when key is released
+- Key press tracking
+- These can be added to inputs and then we can do stuff once key is pressed etc
+  or use different key codes (key codes tell me which key was pressed)
+- By taking in event key value, I can track any key that is pressed at any time
+- `e.prevent.default` prevents default action on elements that already have some sort of action associated with it
+
+
+```js
+function pressKeyOff(event) {
+  console.dir(event.key);
+}
+```

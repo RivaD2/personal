@@ -145,7 +145,6 @@ for(let i = 0; i < itemsToClickOn.length; i++) {
   itemsToClickOn[i].addEventListener('click', makeListItemsRed);
 }
 function makeListItemsRed() {
-  console.log(this);
   let toggle = this.classList.toggle('red');
   console.log(toggle);
 }
@@ -167,7 +166,7 @@ for(let i = 0; i < imageList.length; i++) {
     window.open(this.src, "myImg", "resizable=yes, width=500, height=500");
   });
 }
-/*could have also use onClick to directly apply event listener to the element
+/*Could have also use onClick to directly apply event listener to the element
 although this is not supported in all browsers. I can't as easily remove it either as I can
 when I use addEventListener. They do work the same way.
 
@@ -176,3 +175,112 @@ Ex: after loop:
     window.open(this.src, "myImg", "resizable=yes, width=500, height=500");
   });
 */
+
+/*Challenge 10:
+  - Show a list of items and give the ability to add new items to list
+    by submitting content from an input form.
+  - Bonus if I can check that the input field has content with length of more than 3 characters
+*/
+
+const showsAndMoviesList = document.querySelector('ul');
+const inputForMoviesList = document.querySelector('input');
+const showsAndMoviesButton = document.querySelector('button');
+
+// When button is clicked, create a new element and append to the list with contents of input
+showsAndMoviesButton.addEventListener('click', function() {
+  if (inputForMoviesList.value.length > 3) {
+    let listItem = document.createElement('li');
+    // value of text node comes from input
+    let textForListItem = document.createTextNode(inputForMoviesList.value);
+    listItem.appendChild(textForListItem);
+    showsAndMoviesList.appendChild(listItem);
+  }
+});
+
+/*Challenge 11: Background color changer:
+  - Add a button that will change body background color
+  - Clicking on button will change body background
+*/
+
+// Need random num first and then to get usable number, muliply random by num I want to use
+function random(number) {
+  return Math.floor(Math.random() * (number + 1));
+}
+
+const changeColorButton = document.querySelector('.change-color-button');
+changeColorButton.addEventListener('click', function() {
+  // Random color value
+ let newColor = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+ document.body.style.backgroundColor = newColor;
+});
+
+/* Challenge 12: Any div that gets clicked will
+change its background color. Bonus is to update text color as well randomly on click*/
+
+
+const divs = document.querySelectorAll('div');
+divs.forEach((div, index) => {
+  console.log(div);
+  div.style.padding = '35px';
+  div.style.border = '1px solid black';
+  div.style.display = 'block';
+  div.addEventListener('click', function(e) {
+    console.log(e);
+    e.target.style.backgroundColor = randomColor();
+  });
+});
+
+function randomColor() {
+  return 'rgb(' + randomNumber(255) + ',' + randomNumber(255) + ',' + randomNumber(255) + ')';
+}
+function randomNumber(num) {
+  return Math.floor(Math.random() * (num + 1));
+}
+
+/* Key Press Listeners
+Set up keys object
+This can be black and then I can use add event listener on document
+*/
+let keys = {};
+
+document.addEventListener("keydown", pressKeyOn);
+document.addEventListener("keyup", pressKeyOff);
+
+function pressKeyOn(event){
+  console.dir(event.key);
+  console.dir(event);
+  event.preventDefault();
+  keys[event.key] = true;
+  console.log(keys);
+
+}
+
+function pressKeyOff(event) {
+  console.dir(event.key);
+  keys[event.key] = false;
+  console.log(keys);
+}
+
+
+// I can of course track what is happening with input element
+const input = document.querySelector('input');
+input.addEventListener('keypress', addItem);
+
+function addItem(event) {
+  console.log(event);
+  document.querySelector('.challenge-title').textContent = input.value;
+  if (input.value.length > 5) {
+    input.style.backgroundColor = 'red';
+  } else {
+    input.style.backgroundColor = 'white';
+  }
+  if(event.keyCode === 13 && input.value.length > 1) {
+    document.querySelector('.challenge-title').style.backgroundColor = 'yellow';
+  }
+}
+
+/*Challenge 13:
+ - Add to an element all keys that get pressed
+ - I can just append a div with new content.
+ - I will track event and event key code.
+ */
