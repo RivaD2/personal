@@ -104,8 +104,7 @@ document.querySelector('div').addEventListener("click", function(e) {
 - Keydown listener: fired when key is pressed down
 - Keyup listener: Fired when key is released
 - Key press tracking
-- These can be added to inputs and then we can do stuff once key is pressed etc
-  or use different key codes (key codes tell me which key was pressed)
+- These can be added to inputs and then we can do stuff once key is pressed
 - By taking in event key value, I can track any key that is pressed at any time
 - `e.prevent.default` prevents default action on elements that already have some sort of action associated with it
 
@@ -115,3 +114,16 @@ function pressKeyOff(event) {
   console.dir(event.key);
 }
 ```
+
+**Mouse Events**
+
+- mouseover: This event is fired when a pointing device is moved onto the element that has the listener attached or onto one of its children
+- mouseout: This event is fired when a pointing device (usually a mouse :)) is moved off the element that has the listener attached or off one of its children.
+- There are also mouseenter, mouseleave (and more)
+
+**Event bubbling and capturing**
+
+- When there are two events on the same element, we care about this. I can capture or bubble.
+- With capturing, event is first captured by the outermost element and propagated to the inner elements.
+- With bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements.
+

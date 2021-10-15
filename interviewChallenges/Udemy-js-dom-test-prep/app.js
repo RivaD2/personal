@@ -166,6 +166,7 @@ for(let i = 0; i < imageList.length; i++) {
     window.open(this.src, "myImg", "resizable=yes, width=500, height=500");
   });
 }
+
 /*Could have also use onClick to directly apply event listener to the element
 although this is not supported in all browsers. I can't as easily remove it either as I can
 when I use addEventListener. They do work the same way.
@@ -241,25 +242,25 @@ function randomNumber(num) {
 Set up keys object
 This can be black and then I can use add event listener on document
 */
-let keys = {};
+// let keys = {};
 
-document.addEventListener("keydown", pressKeyOn);
-document.addEventListener("keyup", pressKeyOff);
+// document.addEventListener("keydown", pressKeyOn);
+// document.addEventListener("keyup", pressKeyOff);
 
-function pressKeyOn(event){
-  console.dir(event.key);
-  console.dir(event);
-  event.preventDefault();
-  keys[event.key] = true;
-  console.log(keys);
+// function pressKeyOn(event){
+//   console.dir(event.key);
+//   console.dir(event);
+//   event.preventDefault();
+//   keys[event.key] = true;
+//   console.log(keys);
 
-}
+// }
 
-function pressKeyOff(event) {
-  console.dir(event.key);
-  keys[event.key] = false;
-  console.log(keys);
-}
+// function pressKeyOff(event) {
+//   console.dir(event.key);
+//   keys[event.key] = false;
+//   console.log(keys);
+// }
 
 
 // I can of course track what is happening with input element
@@ -282,5 +283,40 @@ function addItem(event) {
 /*Challenge 13:
  - Add to an element all keys that get pressed
  - I can just append a div with new content.
- - I will track event and event key code.
  */
+
+ const unorderedPlantList = document.querySelector('.plant-list');
+ document.addEventListener("keydown", function (e){
+   let newPlantItem = document.createElement('li');
+   let temp = `${e.key})`;
+   let textContent = document.createTextNode(temp);
+   newPlantItem.appendChild(textContent);
+   unorderedPlantList.appendChild(newPlantItem);
+ });
+
+ /*Challenge 14:
+ - Highlight list item to different color when mouse is over item and remove
+ once mouse is off.
+ */
+
+ const unorderedTricksList = document.querySelectorAll('li');
+ for (let i = 0; i < unorderedTricksList.length; i++) {
+  unorderedTricksList[i].addEventListener('mouseover', function (e) {
+    this.style.color = 'magenta';
+    this.style.backgroundColor = 'black';
+  });
+  unorderedTricksList[i].addEventListener('mouseout', function (e) {
+    this.style.color = 'black';
+    this.style.backgroundColor = 'white';
+  });
+ }
+
+ /*Challenge 15:
+ */
+
+
+
+
+
+
+

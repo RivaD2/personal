@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <!-- Challenge 15 -->
+   <div>1
+     <div>2
+       <div>3
+         <div>4
+           <div>5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="output"></section>
+    <script>
+      const outputElement = document.querySelector('section');
+      const allElements = document.querySelectorAll('div');
+      for(let i = 0; i < allElements.length; i++) {
+        let currentElement = allElements[i];
+        currentElement.style.border = '2px solid black';
+        currentElement.style.width = '100px';
+        currentElement.style.padding = '20px';
+        currentElement.value = (i + 1);
+        currentElement.addEventListener('click', capture, true);
+        currentElement.addEventListener('click', bubble, false);
+      }
+      function output(message) {
+        outputElement.innerHTML += `${message}<br>`;
+      }
+
+      function bubble() {
+        output('bubble:' + this.value);
+      }
+
+      function capture() {
+        output('capture:' + this.value);
+      }
+    </script>
+</body>
+</html>
