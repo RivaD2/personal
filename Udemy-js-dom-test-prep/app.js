@@ -311,8 +311,6 @@ function addItem(event) {
   });
  }
 
- /*Challenge 15:
- */
 
 
 
