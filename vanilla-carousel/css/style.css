@@ -32,6 +32,9 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  position: relative;
+  height: 100%;
+  transition: tranform 250ms ease-in;
 }
 
 .carousel-slide {
