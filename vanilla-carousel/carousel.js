@@ -2,9 +2,6 @@
 
 /*
  What do I start with/what do I know?
- - I will have to create variables for all elements I need
- - When I click on nav indicators, I  need to move that slide etc.
-
   1. Start with grabbing the track
   2. Then grab the slides ( I can grab these individually or use array)
   3. Create variables for each button (left and right buttons)
@@ -18,6 +15,9 @@
     - Then I can create a function to set positions of each slide
   7. - When I click left, I need to move slides left
      - When I click right, I need to move slides right
+     - Create a moveSlides function --> takes in track, currentSlide, targetSlide
+  8. When nav indicators are clicked on, I need to move to that slide
+    - use an event listener, listening for click event
 */
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children);
@@ -28,21 +28,19 @@ console.dir(slides);
 const leftButton = document.querySelector('.carousel-button-left');
 const rightButton = document.querySelector('.carousel-button-right');
 
-const navDotContainer = document.querySelector('.carousel-nav');
+const dotIndicatorContainer = document.querySelector('.carousel-nav');
 // Used for when I need to click on dots individually
-const navDotChildren = Array.from(navDotContainer.children);
+const dotIndicatorChildren = Array.from(dotIndicatorContainer.children);
 
 // All slides should have same width
 // I just need to grab one for now so I can get width
 // I can get width height, dimensions using getBoundingClientRect();
 const slideSize = slides[0].getBoundingClientRect();
-console.log(slideSize);
 const widthOfSlide = slideSize.width;
 
 // Unstack slides, put them next to one another
 //  What if we want more slides, I don't want
 // to manually have to change this each time :)
-
 
 /* Create a function that sets position of the slides dynamically
   Then use a ForEach:
@@ -56,27 +54,50 @@ const setPositionOfSlide = (slide, index) => {
 }
 slides.forEach(setPositionOfSlide);
 
-// Move slides left when user clicks left
-leftButton.click('click', e => {
+const moveSlides = (track, currentSlide, targetSlide) => {
+    // Move to next slide, but I need to grab track and transform it
+    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+    // current-slide will need to be updated as I move through slides
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+}
 
+// When left button clicked, move slides left
+leftButton.addEventListener('click', e => {
+  const currentSlide = track.querySelector('.current-slide');
+  // Find sibling elements as this will show the previous slide (previousElementSibling)
+  const previousSlide = currentSlide.previousElementSibling;
+  // Target slide is the previousSlide
+  moveSlides(track, currentSlide, previousSlide);
 });
 
-// Move slides right when user clicks right
-// Find current slide
-// Find next slide
+// When right button clicked, move slides right
 rightButton.addEventListener('click', e => {
+  // Find current slide
   const currentSlide = track.querySelector('.current-slide');
-  // Look for sibling elements and find next slide (nextElementsSibling)
+  // Look for sibling elements and find next slide (nextElementSibling)
   console.dir(currentSlide);
   const nextSlide = currentSlide.nextElementSibling;
-  // I need to know how much to move to next slide
-  const amountToMove = nextSlide.style.left;
-  // move to next slide, but I need to grab track and transform it
-  track.style.transform = 'translateX(-' + amountToMove + ')';
+  // Target slide will be nextSlide
+  // When I click, currentSlide changes etc.
+  moveSlides(track, currentSlide, nextSlide);
 });
 
-
-
+// When indicators clicked, move to that slide
+// Track which indicator was clicked! (I don't want just e, but also target)
+// If user clicks outside of indicators, nothing should happen
+dotIndicatorContainer.addEventListener('click', e => {
+  const targetIndicator = e.target.closest('button');
+  console.log(targetIndicator)
+  if (!targetIndicator) return;
+  const currentSlide = track.querySelector('.currrent-slide');
+  const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
+  // Lets me find the target slide
+  const targetIndex = dotIndicatorChildren.findIndex(dot => dot === targetIndicator);
+  // If I am on slide three and click on 1st dot, I want to go to slide 1
+  const targetSlide = slides[targetIndex];
+  moveSlides(track, currentSlide, targetSlide);
+});
 
 
 
