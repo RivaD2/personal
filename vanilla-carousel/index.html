@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla Carousel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1 class="credit-header">Credit to Kevin Powell - How to Code a Carousel with
+    HTML, CSS and JS
+  </h1>
+  <!-- Carousel components:
+     - create carousel main container
+     - I need 2 buttons, one outside of carousel track container
+     - I need a carousel track container
+     - The track holds slides as a list (how ever many we want, could use divs instead of
+       ul's (keep accessibility in mind))
+     - Inside track, add list items which are the slides
+     - Each slide will need an image, so add images in li's. I can just add image,
+       or I can use links, or text with background image, lots of ways here
+     - Second button rests outside the track container
+     - I need two images to sit inside buttons(left and right arrows)
+     - Create indicators that tell user what slide they are (carousel nav)
+       Typically sits at bottom, mayyyybe top??
+   -->
+  <div class="carousel">
+      <button class="carousel-button carousel-button-left">
+        <img src="img/leftarrow.png" alt="left arrow to scroll carousel images left">
+      </button>
+   <div class="carousel-track-container">
+     <ul class="carousel-track">
+       <li class="carousel-slide">
+         <img
+           src="img/swedish-rolls-1.jpg"
+           class="slide-image"
+           alt="Swedish Cinnamon rolls with icing">
+       </li>
+       <li class="carousel-slide">
+         <img
+           src="img/swedish-waffle-2.jpg"
+           class="slide-image"
+           alt="Swedish Waffle with sweet cream and jam">
+       </li>
+       <li class="carousel-slide">
+         <img
+           src="img/swedish-meatballs-3.jpg"
+           class="slide-image"
+           alt="Swedish meatballs with gravy, potatoes, and lingonberry jam">
+       </li>
+     </ul>
+   </div>
+   <button class="carousel-button carousel-button-right">
+     <img src="img/rightarrow.png" alt="right arrow to scroll carousel images right">
+   </button>
+   <div class="carousel-nav">
+     <button class="carousel-indicator current" ></button>
+     <button class="carousel-indicator"></button>
+     <button class="carousel-indicator"></button>
+   </div>
+  </div>
+</body>
+</html>
