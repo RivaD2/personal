@@ -13,7 +13,7 @@
 }
 
 .accordion {
-  margin: 10px;
+  margin: 0 auto;
   max-width: 1000px;
   width: 90%;
 }
@@ -29,9 +29,11 @@
 
 /* parent set to relative, header after will be absolute */
 .accordion-item-header {
+  cursor: pointer;
   display: flex;
   font-weight: bold;
   justify-content: center;
+  margin: 10px;
   position: relative;
 }
 
@@ -46,7 +48,8 @@
   content: "+";
   font-size: 22pt;
   position: absolute;
-  right: 1rem;
+  top: -10px;
+  right: 10px;
 }
 
 /* - When accordion item is open, active class is added to accordion-item-added
@@ -57,5 +60,19 @@
 }
 
 .accordion-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-item-body-content {
   padding: 10px;
+  border-top: 2px solid rgb(117, 69, 131);
+  border-image: linear-gradient(
+      to right,
+      rgb(86, 20, 129),
+      rgb(173, 105, 173),
+      rgb(238, 175, 247)
+    )
+    1;
 }
