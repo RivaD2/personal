@@ -1,5 +1,3 @@
-// Break down steps into pieces:
-
 /*
  What do I start with/what do I know?
   1. Start with grabbing the track
@@ -18,6 +16,12 @@
      - Create a moveSlides function --> takes in track, currentSlide, targetSlide
   8. When nav indicators are clicked on, I need to move to that slide
     - use an event listener, listening for click event
+  9. Create updateIndicatorDot Function (takes in currentIndicator and targetIndicator):
+     - When indicator dots are clicked, move indicator dot
+     - When arrows are clicked on, I need to move indicator dot
+  10. Have arrow buttons dissapear if user has scrolled all the way to left or right
+      - left arrow hidden from the start as user can't scroll left
+      - I can use the targetIndex for indicator to help
 */
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children);
@@ -42,16 +46,17 @@ const widthOfSlide = slideSize.width;
 //  What if we want more slides, I don't want
 // to manually have to change this each time :)
 
-/* Create a function that sets position of the slides dynamically
-  Then use a ForEach:
-  For each slide and index of slide:
-    - first slide gets index 0 with pixels
-    - second slide will be index 1 with pixels
-    - third slide index 3 etc.
-*/
+// Create a function that sets position of the slides dynamically
 const setPositionOfSlide = (slide, index) => {
   slide.style.left = widthOfSlide * index + 'px';
 }
+
+/*
+For each slide and index of slide:
+  - first slide gets index 0 with pixels
+  - second slide will be index 1 with pixels
+  - third slide index 3 etc.
+*/
 slides.forEach(setPositionOfSlide);
 
 const moveSlides = (track, currentSlide, targetSlide) => {
@@ -60,27 +65,58 @@ const moveSlides = (track, currentSlide, targetSlide) => {
     // current-slide will need to be updated as I move through slides
     currentSlide.classList.remove('current-slide');
     targetSlide.classList.add('current-slide');
+};
+
+const updateIndicatorDots = (currentIndicator,targetIndicator) => {
+   // Want to move the current dot indicator to move when clicked
+   currentIndicator.classList.remove('current-slide');
+   targetIndicator.classList.add('current-slide');
 }
+
+// const hideShowArrowButtons = (slides,leftButton,rightButton,targetIndex) => {
+//   if(targetIndex === 0) {
+//     // First slide, hide left arrow,show right
+//     leftButton.classList.add('is-hidden');
+//     rightButton.classList.remove('is-hidden');
+//   } else if (targetIndex === slides.length - 1) {
+//      // Last slide, show left arrow hide right
+//       leftButton.classList.remove('is-hidden');
+//       rightButton.classList.add('is-hidden');
+//     } else {
+//       // For middle indicator, show both arrows
+//       leftButton.classList.remove('is-hidden');
+//       rightButton.classList.remove('is-hidden');
+//     }
+//   }
 
 // When left button clicked, move slides left
 leftButton.addEventListener('click', e => {
   const currentSlide = track.querySelector('.current-slide');
   // Find sibling elements as this will show the previous slide (previousElementSibling)
   const previousSlide = currentSlide.previousElementSibling;
+
+  const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
+  const previousIndicator = currentIndicator.previousElementSibling;
+
   // Target slide is the previousSlide
   moveSlides(track, currentSlide, previousSlide);
+  updateIndicatorDots(currentIndicator, previousIndicator);
 });
 
 // When right button clicked, move slides right
 rightButton.addEventListener('click', e => {
-  // Find current slide
   const currentSlide = track.querySelector('.current-slide');
   // Look for sibling elements and find next slide (nextElementSibling)
   console.dir(currentSlide);
   const nextSlide = currentSlide.nextElementSibling;
+
+  const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
+  const nextIndicator = currentIndicator.nextElementSibling;
+
   // Target slide will be nextSlide
   // When I click, currentSlide changes etc.
   moveSlides(track, currentSlide, nextSlide);
+  updateIndicatorDots(currentIndicator, nextIndicator);
 });
 
 // When indicators clicked, move to that slide
@@ -90,13 +126,18 @@ dotIndicatorContainer.addEventListener('click', e => {
   const targetIndicator = e.target.closest('button');
   console.log(targetIndicator)
   if (!targetIndicator) return;
+
   const currentSlide = track.querySelector('.currrent-slide');
   const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
+
   // Lets me find the target slide
   const targetIndex = dotIndicatorChildren.findIndex(dot => dot === targetIndicator);
   // If I am on slide three and click on 1st dot, I want to go to slide 1
   const targetSlide = slides[targetIndex];
+
   moveSlides(track, currentSlide, targetSlide);
+  updateIndicatorDots(currentIndicator, targetIndicator);
+  // hideShowArrowButtons(slides, leftButton, rightButton, targetIndex);
 });
 
 
