@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+.accordion-body {
+  background-color: rgb(221, 145, 223);
+}
+
+.accordion-page-header,
+.accordion-description {
+  display: flex;
+  justify-content: center;
+}
+
+.accordion {
+  margin: 10px;
+  max-width: 1000px;
+  width: 90%;
+}
+
+.accordion-item {
+  background-color: antiquewhite;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(10, 10, 10, 1);
+  color: rgb(26, 25, 25);
+  margin: 10px;
+  padding: 14px;
+}
+
+/* parent set to relative, header after will be absolute */
+.accordion-item-header {
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+}
+
+.accordion-item-header::after {
+  /*
+   - could use css entity code found on W3schools
+   - absolute will take element out of normal doc flow
+   - To use absolute, parent or element must have position specified,
+    which I did above
+  */
+
+  content: "+";
+  font-size: 22pt;
+  position: absolute;
+  right: 1rem;
+}
+
+/* - When accordion item is open, active class is added to accordion-item-added
+    and plus sign is changed to minus */
+.accordion-item-header.active::after {
+  content: "-";
+  font-size: 22pt;
+}
+
+.accordion-item-body {
+  padding: 10px;
+}
