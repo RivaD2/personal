@@ -8,7 +8,6 @@
      - I need to create a variable for slide size, grab size from children array
 
   6. Slides are stacked, so I need to get them unstacked and be next to one another
-    - I can do this with CSS but here we are using
     - I first need to grab width of one slide
     - Then I can create a function to set positions of each slide
   7. - When I click left, I need to move slides left
@@ -59,7 +58,7 @@ For each slide and index of slide:
 */
 slides.forEach(setPositionOfSlide);
 
-const moveSlides = (track, currentSlide, targetSlide) => {
+const moveSlide = (track, currentSlide, targetSlide) => {
     // Move to next slide, but I need to grab track and transform it
     track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
     // current-slide will need to be updated as I move through slides
@@ -73,21 +72,21 @@ const updateIndicatorDots = (currentIndicator,targetIndicator) => {
    targetIndicator.classList.add('current-slide');
 }
 
-// const hideShowArrowButtons = (slides,leftButton,rightButton,targetIndex) => {
-//   if(targetIndex === 0) {
-//     // First slide, hide left arrow,show right
-//     leftButton.classList.add('is-hidden');
-//     rightButton.classList.remove('is-hidden');
-//   } else if (targetIndex === slides.length - 1) {
-//      // Last slide, show left arrow hide right
-//       leftButton.classList.remove('is-hidden');
-//       rightButton.classList.add('is-hidden');
-//     } else {
-//       // For middle indicator, show both arrows
-//       leftButton.classList.remove('is-hidden');
-//       rightButton.classList.remove('is-hidden');
-//     }
-//   }
+const hideShowArrowButton = (slides,leftButton,rightButton,targetIndex) => {
+  if(targetIndex === 0) {
+    // First slide, hide left arrow,show right
+    leftButton.classList.add('is-hidden');
+    rightButton.classList.remove('is-hidden');
+  } else if (targetIndex === slides.length - 1) {
+     // Last slide, show left arrow hide right
+      leftButton.classList.remove('is-hidden');
+      rightButton.classList.add('is-hidden');
+    } else {
+      // For middle indicator, show both arrows
+      leftButton.classList.remove('is-hidden');
+      rightButton.classList.remove('is-hidden');
+    }
+  }
 
 // When left button clicked, move slides left
 leftButton.addEventListener('click', e => {
@@ -98,9 +97,12 @@ leftButton.addEventListener('click', e => {
   const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
   const previousIndicator = currentIndicator.previousElementSibling;
 
+  const previousIndex = slides.findIndex(slide => slide === previousSlide);
+
   // Target slide is the previousSlide
-  moveSlides(track, currentSlide, previousSlide);
+  moveSlide(track, currentSlide, previousSlide);
   updateIndicatorDots(currentIndicator, previousIndicator);
+  hideShowArrowButton(slides, leftButton, rightButton, previousIndex);
 });
 
 // When right button clicked, move slides right
@@ -113,10 +115,13 @@ rightButton.addEventListener('click', e => {
   const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
   const nextIndicator = currentIndicator.nextElementSibling;
 
+  const nextIndex = slides.findIndex(slide => slide === nextSlide);
+
   // Target slide will be nextSlide
   // When I click, currentSlide changes etc.
-  moveSlides(track, currentSlide, nextSlide);
+  moveSlide(track, currentSlide, nextSlide);
   updateIndicatorDots(currentIndicator, nextIndicator);
+  hideShowArrowButton(slides, leftButton, rightButton, nextIndex);
 });
 
 // When indicators clicked, move to that slide
@@ -124,20 +129,19 @@ rightButton.addEventListener('click', e => {
 // If user clicks outside of indicators, nothing should happen
 dotIndicatorContainer.addEventListener('click', e => {
   const targetIndicator = e.target.closest('button');
-  console.log(targetIndicator)
   if (!targetIndicator) return;
 
-  const currentSlide = track.querySelector('.currrent-slide');
+  const currentSlide = track.querySelector('.current-slide');
   const currentIndicator = dotIndicatorContainer.querySelector('.current-slide');
 
-  // Lets me find the target slide
+  // Lets me find the target slide, loops and finds truthy thing
   const targetIndex = dotIndicatorChildren.findIndex(dot => dot === targetIndicator);
   // If I am on slide three and click on 1st dot, I want to go to slide 1
   const targetSlide = slides[targetIndex];
 
-  moveSlides(track, currentSlide, targetSlide);
+  moveSlide(track, currentSlide, targetSlide);
   updateIndicatorDots(currentIndicator, targetIndicator);
-  // hideShowArrowButtons(slides, leftButton, rightButton, targetIndex);
+  hideShowArrowButton(slides, leftButton, rightButton, targetIndex);
 });
 
 
