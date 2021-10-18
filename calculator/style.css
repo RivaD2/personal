@@ -7,12 +7,16 @@
 }
 
 .calc-container {
-  box-shadow: 0px 0px 20px 10px rgb(209, 182, 182);
+  border-radius: 10px;
+  border: 2px solid rgb(238, 195, 88);
+  box-shadow: 0px 0px 30px 8px rgb(96, 188, 193);
   margin: 10vh auto 0 auto;
   max-width: 400px;
 }
 
 #calc-display {
+  border: 1px solid rgb(238, 195, 88);
+  border-radius: 3px;
   text-align: right;
   height: 70px;
   line-height: 70px;
@@ -21,7 +25,8 @@
 }
 
 .calc-button {
-  border: 0.5px solid rgb(53, 28, 28);
+  border-radius: 3px;
+  border: 1px solid rgb(238, 195, 88);
   line-height: 100px;
   text-align: center;
   font-size: 25px;
@@ -30,8 +35,6 @@
 
 .calc-button-container {
   display: grid;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
@@ -41,13 +44,13 @@
 }
 
 .calc-button:hover {
-  background-color: rgb(188, 196, 193);
-  color: rgb(148, 55, 55);
+  background-color: rgb(180, 147, 13);
+  color: rgb(13, 205, 235);
   font-weight: bold;
   transition: 0.5s ease-in-out;
 }
 
 #equal {
-  background-color: rgb(172, 120, 120);
+  background-color: rgb(67, 187, 179);
   color: whitesmoke;
 }
