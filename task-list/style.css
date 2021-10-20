@@ -27,9 +27,15 @@ body {
   border: none;
   border-radius: 5px;
   box-shadow: 3px 2px 20px 2px rgb(214, 163, 67);
-  height: 36px;
+  height: 44px;
   position: relative;
   width: 40%;
+}
+
+.task-input::placeholder,
+.task-input[type="text"] {
+  font-size: 14pt;
+  padding-left: 12px;
 }
 
 .task-button {
@@ -37,7 +43,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  height: 36px;
+  height: 44px;
   position: absolute;
   right: 503px;
   width: 42px;
@@ -58,5 +64,53 @@ body {
 .task-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.task-list {
+  list-style: none;
+  min-width: 40%;
+}
+
+.task {
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin: 24px;
+}
+
+.new-task-item {
+  flex-grow: 1;
+  color: #0f9393;
+  display: flex;
+  font-size: 18pt;
+  padding: 5px 5px;
+}
+
+.todo-button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(11, 124, 126, 0.852);
+  color: rgb(211, 110, 33);
+  cursor: pointer;
+  font-size: 11pt;
+  font-weight: bold;
+  padding: 10px;
+  margin: 2px;
+}
+
+.done-button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(209, 107, 29, 0.852);
+  color: rgb(11, 124, 126);
+  cursor: pointer;
+  font-size: 11pt;
+  font-weight: bold;
+  padding: 10px;
+  margin: 2px;
+}
+
+.done-button:hover {
+  background-color: rgb(219, 74, 12);
 }
