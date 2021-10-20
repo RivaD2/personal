@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>My Task List</title>
+</head>
+<body id="task-body">
+  <header class="task-page-header">
+    <h1>Riva's Task List</h1>
+  </header>
+  <form class="task-form">
+    <input class="task-input" type="text">
+    <button class="task-button" type="submit">
+      <div class="add-icon">+</div>
+    </button>
+  </form>
+  <div class="task-container">
+  <!-- The todo list will include separate task divs
+  that hold each:
+    - li of the task
+    - two buttons, one for task that still needs to be done,
+      other for the tasks that are done (todo and done)
+  -->
+    <ul class="task-list"></ul>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

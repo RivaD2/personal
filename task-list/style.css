@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: radial-gradient(#e0e7e7, #2eb3b3);
+  color: black;
+  min-height: 100vh;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16pt;
+}
+
+.task-page-header,
+.task-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 20vh;
+}
+
+.task-page-header {
+  color: rgb(200, 147, 48);
+}
+
+.task-input {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 2px 20px 2px rgb(214, 163, 67);
+  height: 36px;
+  position: relative;
+  width: 40%;
+}
+
+.task-button {
+  background-color: rgba(238, 204, 140, 0.469);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 36px;
+  position: absolute;
+  right: 503px;
+  width: 42px;
+}
+
+.task-button:hover {
+  background-color: #aadfdf;
+}
+
+.add-icon {
+  font-size: 18pt;
+  font-weight: bold;
+  color: rgb(71, 2, 2);
+}
+
+/* Styles for task container and new tasks */
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
