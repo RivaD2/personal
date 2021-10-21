@@ -14,9 +14,13 @@ body {
 .task-page-header,
 .task-form {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   min-height: 20vh;
+}
+
+.task-form {
+  flex: 1;
+  position: relative;
 }
 
 .task-page-header {
@@ -28,35 +32,34 @@ body {
   border-radius: 5px;
   box-shadow: 3px 2px 20px 2px rgb(214, 163, 67);
   height: 44px;
-  position: relative;
+  padding: 10px;
   width: 40%;
 }
 
 .task-input::placeholder,
 .task-input[type="text"] {
   font-size: 14pt;
-  padding-left: 12px;
 }
 
 .task-button {
-  background-color: rgba(238, 204, 140, 0.469);
+  background-color: rgba(238, 189, 97, 0.551);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   height: 44px;
   position: absolute;
-  right: 503px;
+  right: 30%;
   width: 42px;
 }
 
 .task-button:hover {
-  background-color: #aadfdf;
+  background-color: rgba(235, 159, 18, 0.695);
 }
 
 .add-icon {
   font-size: 18pt;
   font-weight: bold;
-  color: rgb(71, 2, 2);
+  color: #0f9393;
 }
 
 /* Styles for task container and new tasks */
@@ -68,7 +71,7 @@ body {
 
 .task-list {
   list-style: none;
-  min-width: 40%;
+  min-width: 35%;
 }
 
 .task {
@@ -90,12 +93,12 @@ body {
 .todo-button {
   border: none;
   border-radius: 5px;
-  background-color: rgba(11, 124, 126, 0.852);
-  color: rgb(211, 110, 33);
+  background-color: rgb(235, 159, 18);
+  color: rgb(11, 124, 126);
   cursor: pointer;
   font-size: 11pt;
   font-weight: bold;
-  padding: 10px;
+  padding: 12px;
   margin: 2px;
 }
 
