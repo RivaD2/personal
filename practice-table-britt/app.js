@@ -6,20 +6,22 @@ const tableHeader = document.getElementById('table-header');
 // Create TableBody
 const tableBody = document.createElement('tbody');
 tableBody.classList = 'table-body';
-tableHeader.append(tableBody);
-
-// Create TableRow
-const tableBodyRow = document.createElement('tr');
-tableBodyRow.classList = 'table-body-rows';
+table.append(tableBody);
 
 // Adds rows to table
 function addRow() {
   const plantForm = document.querySelector('.plant-form');
+
   plantForm.addEventListener('submit', e => {
     e.preventDefault();
 
+    // Create TableRow
+    const tableBodyRow = document.createElement('tr');
+    tableBodyRow.classList = 'table-body-rows';
+
     // Removal button input because I just need input values for plant data
     const plantFormElements = [...plantForm.elements].slice(0, 3);
+
     plantFormElements.forEach(element => {
       const plantFormValue = element.value;
 
@@ -29,23 +31,19 @@ function addRow() {
 
       tableBodyData.append(tableBodyText);
       tableBodyRow.append(tableBodyData);
-      tableBody.append(tableBodyRow);
-
-      const buttonData = document.createElement('td');
-      const innerText = 'X';
-
-      const removeRowButtonText = document.createTextNode(innerText);
-      const removeRowButton = document.createElement('button');
-      removeRowButton.classList = 'remove-button'
-      removeRowButton.append(removeRowButtonText);
-
-      buttonData.append(removeRowButton);
-      const tableBodyRowChildren = Array.from(tableBodyRow.children);
-      console.log(tableBodyRowChildren);
-      tableBodyRowChildren[2].append(buttonData);
-
-      table.append(tableBodyRow);
     });
+
+    const buttonData = document.createElement('td');
+    const innerText = 'X';
+
+    const removeRowButtonText = document.createTextNode(innerText);
+    const removeRowButton = document.createElement('button');
+    removeRowButton.classList = 'remove-button'
+    removeRowButton.append(removeRowButtonText);
+
+    buttonData.append(removeRowButton);
+    tableBodyRow.appendChild(buttonData);
+    tableBody.append(tableBodyRow);
   });
 }
 

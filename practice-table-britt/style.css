@@ -51,18 +51,15 @@ input[type="text"] {
 }
 
 #table {
+  width: 400px;
   border: 1px solid black;
-  width: 500px;
   margin-left: 40px;
 }
 
 .table-header-data {
   border: 1px solid black;
+  height: 50px;
   padding: 5px;
-}
-
-.table-body-rows {
-  width: 500px;
 }
 
 .table-body-data {
@@ -70,5 +67,9 @@ input[type="text"] {
   text-align: center;
   width: 100px;
   padding: 10px;
-  font-weight: bold;
+}
+
+.remove-button {
+  width: 86px;
+  height: 40px;
 }
