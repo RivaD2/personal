@@ -57,11 +57,9 @@ function addNewTask(event) {
 // I need to see what e.target is :)
 // I have to go to parent element rather than individual button (which is div class="task")
 function removeTask(event) {
-  console.log(event.target);
   const targetButton = event.target;
   if (targetButton.classList[0] === 'done-button') {
     const itemToRemove = targetButton.parentElement;
-    console.log('shoe me item to remvoe', itemToRemove);
     itemToRemove.remove();
   }
 }

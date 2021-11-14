@@ -1,0 +1,13 @@
+.triangle-container {
+  display: flex;
+  justify-content: center;
+  margin: 30vh;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-top: 0;
+  border-bottom: 200px solid blue;
+}
