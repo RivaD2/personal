@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-size: 32pt;
+  font-weight: bold;
+  padding: 20px;
+  margin: 26px;
+}
+
+h3 {
+  margin: 0 0 20px 42px;
+}
+
+.plant-form {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin: 0 0 20px 42px;
+}
+
+.label {
+  text-align: left;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.plant-input {
+  height: 40px;
+  margin: 10px;
+}
+
+input[type="text"] {
+  font-size: 12pt;
+  padding: 5px;
+}
+
+.submit-plant {
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  height: 38px;
+  font-size: 14pt;
+}
+
+#table {
+  border: 1px solid black;
+  width: 500px;
+  margin-left: 40px;
+}
+
+.table-header-data {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.table-body-rows {
+  width: 500px;
+}
+
+.table-body-data {
+  border: 1px solid black;
+  text-align: center;
+  width: 100px;
+  padding: 10px;
+  font-weight: bold;
+}
