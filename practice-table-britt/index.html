@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>TABLE</title>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1> A Basic Table</h1>
+      <h2>Make New Plants</h2>
+    </div>
+  </header>
+
+  <h3>Enter Plant Details</h3>
+  <form class="plant-form">
+    <label for="plant-name" class="label">Name</label>
+    <input type="text" placeholder="Enter plant name" class="plant-name plant-input">
+    <label for="plant-type" class="label">Type</label>
+    <input type="text" placeholder="Enter plant type" class="plant-type plant-input">
+    <label for="plant-cost" class="label">Cost</label>
+    <input type="text" placeholder="Enter plant cost" class="plant-cost plant-input">
+
+    <button type="submit" class="submit-plant" value="submit">Submit</button>
+  </form>
+
+  <table id="table">
+    <thead id="table-header">
+      <tr class="table-header-rows">
+        <th class="table-header-data">Plant Name</td>
+        <th class="table-header-data">Type</td>
+        <th class="table-header-data">Cost</td>
+      </tr>
+    </thead>
+  </table>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
