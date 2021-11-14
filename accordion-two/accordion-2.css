@@ -1,0 +1,82 @@
+body {
+  background-color: rgb(221, 207, 209);
+}
+
+h1 {
+  text-align: center;
+}
+
+.accordion {
+  width: 800px;
+  margin: 20vh auto;
+  color: black;
+  background-color: rgb(246, 240, 240);
+  border: 2px solid black;
+  box-shadow: 4px 5px 2px 2px black;
+  border-radius: 10px;
+  padding: 45px 45px;
+}
+
+/* Have to set position of all containers and everything inside to relative */
+
+.accordion .accordion-container {
+  position: relative;
+  margin: 10px 10px;
+}
+
+.accordion .accordion-label {
+  position: relative;
+  padding: 10px 0;
+  font-size: 14pt;
+  color: black;
+  cursor: pointer;
+}
+
+.accordion-label {
+  font-weight: bold;
+}
+
+/* append + and minus to each list  using selector
+::before and ::after. So insert + before. Sets
+position to absolute.*/
+
+.accordion .accordion-label::before {
+  content: "+";
+  color: black;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  font-size: 30px;
+  transform: translateY(-50%);
+}
+
+.accordion .accordion-content {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+  font-size: 14pt;
+  /* width: 780px; */
+}
+
+.accordion hr {
+  border: 2px solid rgb(171, 89, 102);
+  border-radius: 5px;
+  margin-left: 0;
+  width: 100%;
+}
+
+/* active class */
+
+.accordion .accordion-container.active .accordion-content {
+  height: 80px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* change from plus to minus */
+
+.accordion .accordion-container.active .accordion-label::before {
+  content: "-";
+  font-size: 30px;
+}
