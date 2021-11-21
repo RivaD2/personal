@@ -1,0 +1,22 @@
+.carousel-container {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 400px;
+  margin-top: 80px;
+  position: relative;
+  overflow-x: auto;
+  width: 100vw;
+}
+
+.carousel-track {
+  border: 2px solid hotpink;
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  position: absolute;
+}
+
+.carousel-image {
+  width: 40vw;
+  background-size: cover;
+}
