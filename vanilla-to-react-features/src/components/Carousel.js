@@ -7,10 +7,15 @@ const Carousel = props => {
   return (
     <div className="carousel-container">
       <div className="carousel-track">
+        {/* Some images from unsplash have no description
+            Need to filter out images that ONLY have description */}
           {props.images.map((image, index) => (
             <div
-              style={{backgroundImage:`url(${image})`}}
-              key={image}
+              role="img"
+              aria-label={image.alt_description}
+              title={image.description}
+              style={{backgroundImage:`url(${image.urls.small})`}}
+              key={image.id}
               src={image}
               className={index === activeImage ? "active carousel-image" : "carousel-image"}>
             </div>
