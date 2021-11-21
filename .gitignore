@@ -40,3 +40,5 @@ utils.js
 MatchResult.js
 CsvFileReader.js
 LinkedList.js
+udemy-typescript-complete-guide/server/build
+udemy-typescript-complete-guide/stats/build
