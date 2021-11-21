@@ -41,7 +41,7 @@ body {
   font-size: 14pt;
 }
 
-.task-button {
+.task-input-button {
   background-color: rgba(238, 189, 97, 0.551);
   border: none;
   border-radius: 5px;
@@ -52,7 +52,7 @@ body {
   width: 42px;
 }
 
-.task-button:hover {
+.task-input-button:hover {
   background-color: rgba(235, 159, 18, 0.695);
 }
 
@@ -87,14 +87,12 @@ body {
   color: #0f9393;
   display: flex;
   font-size: 18pt;
-  padding: 5px 5px;
+  padding: 5px 20px 2px 10px;
 }
 
-.todo-button {
+.task-button {
   border: none;
   border-radius: 5px;
-  background-color: rgb(235, 159, 18);
-  color: rgb(11, 124, 126);
   cursor: pointer;
   font-size: 11pt;
   font-weight: bold;
@@ -102,16 +100,14 @@ body {
   margin: 2px;
 }
 
+.todo-button {
+  background-color: rgb(235, 159, 18);
+  color: rgb(11, 124, 126);
+}
+
 .done-button {
-  border: none;
-  border-radius: 5px;
   background-color: rgba(209, 107, 29, 0.852);
   color: rgb(11, 124, 126);
-  cursor: pointer;
-  font-size: 11pt;
-  font-weight: bold;
-  padding: 10px;
-  margin: 2px;
 }
 
 .done-button:hover {
