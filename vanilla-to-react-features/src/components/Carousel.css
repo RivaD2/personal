@@ -1,22 +1,54 @@
-.carousel-container {
-  border: 2px solid black;
+.carousel {
+  border: 3px solid black;
   border-radius: 10px;
   height: 400px;
-  margin-top: 80px;
-  position: relative;
+  margin: 140px 0px 0px 140px;
   overflow-x: auto;
-  width: 100vw;
+  position: relative;
+  width: 80vw;
+}
+
+.carousel-track-container {
+  /* overflow: hidden; */
+  height: 100%;
+  position: relative;
 }
 
 .carousel-track {
-  border: 2px solid hotpink;
   display: flex;
-  height: 100%;
   flex-direction: row;
-  position: absolute;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
 }
 
 .carousel-image {
-  width: 40vw;
   background-size: cover;
+  width: 40vw;
+}
+
+.carousel-button {
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+  position: absolute;
+  top: 46%;
+}
+
+.carousel-button img {
+  width: 40px;
+}
+
+.carousel-button-left {
+  left: 70px;
+}
+
+.carousel-button-right {
+  right: 70px;
 }
