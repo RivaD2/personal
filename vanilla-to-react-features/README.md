@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Carousel in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Author: Riva Davidowski**
 
-## Available Scripts
+**Goal:** The goal here is to take a feature I practiced building using Vanilla JS and
+build the same feature using React. Things are different, things are getting crazy...hang in there with me.
 
-In the project directory, you can run:
+## Tools:
+ - React
+ - JS
+ - CSS
+ - Unsplash API (for Carousel images)
 
-### `npm start`
+**Process:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Breaking down the Carousel: What is a Carousel really? What pieces does it hold? Here we go!
+   - A button pointing right that sits outside the carousel container/component. When clicked on, the slide should move right (we start on left and move to right)
+   - A carousel container (main container holding all elements related to carousel)
+   - A carousel track container (what is a track you ask? I'm getting there :))
+      - A carousel track (holds the image slides. The slides hold the image. The tutorial I followed (using vanilla JS) to help me understand how this is put together used ul --> li and each li was the slide container. Inside each li there was a img tag. I'm taking a different approach for now.
+      - A carousel slide (acts as a container for each img)
+      - Images (in this case, I wrapped a div around my image so I could use backgroundImage property)
+    - Last but not least, a button pointing left that sits outside the carousel container or component
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. So using the above as a model, I created three components:
+    1. A CarouselButtonLeft component
+    2. A CarouselButtonRight component
+    3. A Carousel component
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. I decided to use Unsplash API to fill my Carousel full of images
+   - I used the: `GET /photos/random` endpoint
+   - I limited amount of images to 6 passing query param of `count` (how many images do we REALLY need inside a carousel?)

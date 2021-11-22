@@ -9,7 +9,8 @@ const Carousel = props => {
       <div className="carousel-track-container">
         <div className="carousel-track">
             {/* Some images from unsplash have no description
-              Need to filter out images that ONLY have description */}
+              Need to filter out images that ONLY have description.
+              Need to also look into accessiblity for div holding image*/}
             {props.images.map((image, index) => (
               <div className="carousel-slide current-slide"key={image.id}>
                 <div
