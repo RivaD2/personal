@@ -2,10 +2,10 @@
   border: 3px solid black;
   border-radius: 10px;
   height: 400px;
-  margin: 140px 0px 0px 140px;
+  margin: 146px auto;
   overflow-x: auto;
   position: relative;
-  width: 80vw;
+  width: 64vw;
 }
 
 .carousel-track-container {
@@ -30,7 +30,9 @@
 
 .carousel-image {
   background-size: cover;
-  width: 40vw;
+  width: 100%;
+  background-position: center;
+  flex-shrink: 0;
 }
 
 .carousel-button {
@@ -39,16 +41,18 @@
   cursor: pointer;
   position: absolute;
   top: 46%;
+  transform: translateY(-50%);
 }
 
 .carousel-button img {
   width: 40px;
 }
 
+/* Move buttons outside of Carousel */
 .carousel-button-left {
-  left: 70px;
+  left: 100px;
 }
 
 .carousel-button-right {
-  right: 70px;
+  right: 100px;
 }
