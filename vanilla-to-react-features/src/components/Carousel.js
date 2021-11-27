@@ -1,26 +1,49 @@
 import React, { useState } from 'react';
-import CarouselButtonLeft from './CarouselButtonLeft'
-import CarouselButtonRight from './CarouselButtonRight';
+import CarouselButton from './CarouselButton'
 import './Carousel.css';
 
 const Carousel = ({ images }) => {
   let [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [widthOfSlide, setWidthOfSlide] = useState(0);
 
-  console.log('active Index',activeSlideIndex);
-
-  const onRightButtonClicked = () => {
-    setActiveSlideIndex(activeSlideIndex + 1);
+  const getWidthOfSlide = () => {
+    const carouselTrack = document.getElementById('carousel-track');
+    const trackChildrenSlides = Array.from(carouselTrack.children);
+    const slideSize = trackChildrenSlides[0].getBoundingClientRect();
+    setWidthOfSlide(slideSize.width);
   }
 
-  const onLeftButtonClicked = () => {
-    setActiveSlideIndex(activeSlideIndex - 1);
+  // Sets position of slide
+  const setSlidePosition = () => {
+    const carouselTrack = document.getElementById('carousel-track');
+    carouselTrack.style.transform = `translateX(-${widthOfSlide * activeSlideIndex}px`;
   }
+
+  // Takes in direction, so direction can be set dynamically
+  const onButtonClicked = direction => {
+    const changeSlideIndex = direction === 'left' ? -1 : 1;
+    let nextSlideIndex = activeSlideIndex + changeSlideIndex;
+
+    // If user has reached end of Carousel, show them the beginning of Carousel
+    if(nextSlideIndex === images.length) {
+      nextSlideIndex = 0;
+    }
+    // If User has reached beginning, and clicks left, show them end of Carousel
+    if(nextSlideIndex === -1) {
+      nextSlideIndex = images.length - 1;
+    }
+
+    setActiveSlideIndex(nextSlideIndex)
+    getWidthOfSlide();
+    setSlidePosition();
+  }
+
   return (
     <>
-      <CarouselButtonLeft />
+      <CarouselButton direction='left' onClick={onButtonClicked} />
         <div className="carousel">
           <div className="carousel-track-container">
-            <div className="carousel-track">
+            <div id="carousel-track">
               {/* Some images from unsplash have no description
                 Need to filter out images that ONLY have description.
                 Need to also look into accessiblity for div holding image*/}
@@ -37,7 +60,7 @@ const Carousel = ({ images }) => {
             </div>
           </div>
         </div>
-      <CarouselButtonRight />
+      <CarouselButton direction='right' onClick={onButtonClicked} />
     </>
   )
 }
