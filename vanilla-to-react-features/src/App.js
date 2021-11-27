@@ -7,8 +7,8 @@ const App = () => {
   const [images, setImages] = useState([]);
 
   const onImagesFetched = async () => {
-    const smallImagesArr = await fetchImages();
-    setImages(smallImagesArr);
+    const imageDataArray = await fetchImages();
+    setImages(imageDataArray);
   }
 
   useEffect(() => {
