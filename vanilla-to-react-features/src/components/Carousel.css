@@ -3,7 +3,7 @@
   border-radius: 10px;
   height: 400px;
   margin: 146px auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   position: relative;
   width: 64vw;
 }
