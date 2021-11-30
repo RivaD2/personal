@@ -42,3 +42,28 @@ build the same feature using React. Things are different, things are getting cra
      - What happens if user is at the start of the Carousel and clicks left? In that case, I need to show them the end of the carousel.
    - Third step is to hook up the individual buttons to increase or decrease the index (button right increases, button left decreases)
      - In this case, I used a ternary to use the `direction` dynamically. If the direction is left, then decrement. If direction is not left ( but right) increment.
+
+**Process for Accordion :**
+
+What is an accordion? I am paraphrasing [sliderevolution.com](sliderevolution.com) when I say that accordions are really a set of horizontally or vertically stacked headings that display collapsible items/panels. Each panel contains a section of content.
+
+We use them when we want to feature several sections of content at a time which helps to reduce the amount of scrolling the user has to do.
+
+The accordion header and panel are the two parts that are fundamental to the accordion. The header provides interactivity, allowing us to reveal or hide given pieces of content in the panel. The panel itself is collapsible.
+
+Before building this in React, I tried two different ways (with guidance from tutorials), which as it turns out are the two typical approaches using HTML, CSS and JS:
+- The first is to use hidden form elements
+- The second makes use of CSS pseudo selectors
+
+Breaking down the steps:
+
+- First I created a JSON file to hold my headings and content for the accordion (the content is shown inside the panel)
+- I Imported the JSON data into `App` and passed the accordion data in its entirety as props to the `Accordion` component.
+- I set up the basic structure for the Accordion and took in the props passed from `App`. I mapped over the JSON data, displaying each accordion header and content accordingly.
+  - This structure works for now, but I might want to consider mapping over the data in App.js instead. Then I could pass props for the `header` and `content` from the JSON data to the Accordion component.
+- When thinking of how I want to open and close the accordion panel, I know that by default it is open. Since I am using React to build this feature, I will make use of state to determine whether the panel is open or closed setting the initial value to be a boolean. This state will live inside the `Accordion` component.
+- I also know I will need some sort of click handler on the icon in the accordion title since that is where my icon to open the panel lives. When clicked on, it should do the following:
+   - When the user clicks on the icon in the accordion title, I want to open the panel.
+   - I also want to dynamically change the icon depending on whether the state is set to true or false.
+   - `+` to open panel and reveal content, perhaps state of `isOpen` set to false
+   - `-` to close the panel, `isOpen` set to true (- will show only when panel is open)

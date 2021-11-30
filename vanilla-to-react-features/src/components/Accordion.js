@@ -13,8 +13,8 @@ export default function Accordion({accordionData}) {
             </h2>
             <div className="accordion-open">+</div>
           </div>
-         <div className="accordion-item-body">
-           <div className="accordion-item-content">
+         <div className="accordion-item-panel">
+           <div className="accordion-panel-content">
             {accordionItem.content}
            </div>
          </div>
