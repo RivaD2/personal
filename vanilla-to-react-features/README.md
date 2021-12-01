@@ -66,4 +66,5 @@ Breaking down the steps:
    - When the user clicks on the icon in the accordion title, I want to open the panel.
    - I also want to dynamically change the icon depending on whether the state is set to true or false.
    - `+` to open panel and reveal content, perhaps state of `isOpen` set to false
-   - `-` to close the panel, `isOpen` set to true (- will show only when panel is open)
+   - `-` to close the panel, `openPanel` set to true (- will show only when panel is open)
+- If the state variable `openPanel` is true, then I can show the accordion content div. In other words, we can use the same state to manage the icon switch and the rendering of the content div.
