@@ -68,12 +68,15 @@ Before building this in React, I tried two different ways (with guidance from tu
 
 - First I created a JSON file to hold my headings and content for the accordion (the content is shown inside the panel)
 - I Imported the JSON data into `App` and passed the accordion data in its entirety as props to the `Accordion` component.
-- I set up the basic structure for the Accordion and took in the props passed from `App`. I mapped over the JSON data, displaying each accordion header and content accordingly.
+- I set up the basic structure for the Accordion and took in the props passed from `App`. I mapped over the JSON data, tracking the index for each item, and displayed each accordion header and content accordingly.
   - This structure works for now, but I might want to consider mapping over the data in App.js instead. Then I could pass props for the `header` and `content` from the JSON data to the Accordion component.
-- When thinking of how I want to open and close the accordion panel, I know that by default it is open. Since I am using React to build this feature, I will make use of state to determine whether the panel is open or closed setting the initial value to be a boolean. This state will live inside the `Accordion` component.
-- I also know I will need some sort of click handler on the icon in the accordion title since that is where my icon to open the panel lives. When clicked on, it should do the following:
-   - When the user clicks on the icon in the accordion title, I want to open the panel.
-   - I also want to dynamically change the icon depending on whether the state is set to true or false.
-   - `+` to open panel and reveal content, perhaps state of `isOpen` set to false
-   - `-` to close the panel, `openPanel` set to true (- will show only when panel is open)
-- If the state variable `openPanel` is true, then I can show the accordion content div. In other words, we can use the same state to manage the icon switch and the rendering of the content div.
+- When thinking of how I want to open and close the accordion panel, I know that by default it is closed. Since I am using React to build this feature, I will make use of state (`openPanelIndex`)to determine which panel is open setting the initial value to be a -1. -1 is never going to be index in the array of data. This state will live inside the `Accordion` component.
+- I also know I will need some sort of click handler on the accordion title since that is where my icon to open the panel lives. When clicked on, it should do the following:
+   - update the state to be whatever index (panel) has been clicked on
+   - If a panel is open, then I need to set the state value to be -1 again (close it), otherwise I will set the state to be the index of the panel that is clicked on.
+- When the icon is clicked, If `openPanelIndex` is equal to the current index I am on,
+   then that means the accordion is open (that particular panel is open).
+- I also want to dynamically change the icon depending on the state.
+   - `+` to open panel and reveal content
+   - `-` to close the panel
+   - I can use a ternary to change the icons, `openPanelIndex === index ?` then panel is open, so show the `'-' : '+'`
