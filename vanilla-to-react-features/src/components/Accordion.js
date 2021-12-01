@@ -19,10 +19,11 @@ export default function Accordion({accordionData}) {
             </h2>
             <div className="accordion-open">{openPanel ? '-' : '+'}</div>
           </div>
-         <div className="accordion-item-panel">
-           <div className="accordion-panel-content">
-            {accordionItem.content}
-           </div>
+          <div className="accordion-item-panel">
+            {openPanel &&
+              <div className="accordion-panel-content">
+                {accordionItem.content}
+              </div>}
          </div>
         </div>
        ))}
