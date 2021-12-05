@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CarouselButton from './CarouselButton'
 import './Carousel.css';
 
 const Carousel = ({ images }) => {
   let [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [widthOfSlide, setWidthOfSlide] = useState(0);
+
+  useEffect(() => {
+    // Won't call setSlidePosition until activeSlideIndex is updated
+    setSlidePosition();
+  },[activeSlideIndex]);
+
 
   const getWidthOfSlide = () => {
     const carouselTrack = document.getElementById('carousel-track');
@@ -25,17 +31,16 @@ const Carousel = ({ images }) => {
     let nextSlideIndex = activeSlideIndex + changeSlideIndex;
 
     // If user has reached end of Carousel, show them the beginning of Carousel
-    if(nextSlideIndex === images.length) {
+    if (nextSlideIndex === images.length) {
       nextSlideIndex = 0;
     }
     // If User has reached beginning, and clicks left, show them end of Carousel
-    if(nextSlideIndex === -1) {
+    if (nextSlideIndex === -1) {
       nextSlideIndex = images.length - 1;
     }
 
-    setActiveSlideIndex(nextSlideIndex)
     getWidthOfSlide();
-    setSlidePosition();
+    setActiveSlideIndex(nextSlideIndex);
   }
 
   return (
