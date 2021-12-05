@@ -45,14 +45,14 @@ build the same features using React. Things are different, things are getting cr
 **Roadblocks I hit:**
 
 - I have six images and if I clicked on the right button to increment, I would reach the end of the slides at the 6th image. If I clicked on the left button, I should've seen the last image in the Carousel. This worked fine and dandy if I was incrementing. However, when I started on the first image for the second run through, clicking the left button to decrement, the last image in the Carousel was **NOT** the same! The image at that index is no longer the same image that was there prior, the order was off.
-  - Solution/Fix:
+  - Solution/Fix: Added in `useEffect` hook, called `setSlidePosition()` and added `activeSlideIndex` as dependency. Before I was calling it in the click handler after calling `setActiveSlideIndex` with the new index. At some point in time React will update the index (state), but not immediately. This was causing the above symptoms because I was not taking into account the `setActiveSlideIndex` is asynchronous.
 
-- Another obstacle I faced  was when I first attempted to click on the arrow right button.Upon first click of the button, nothing happened. On the second click, success! I was able to cycle through images. Why would I not be able to move the track on first click?
-  - Solution/Fix:
+- Another obstacle I faced was when I first attempted to click on the arrow right button.Upon first click of the button, nothing happened. On the second click, success! I was able to cycle through images. Why would I not be able to move the track on first click?
+  - Solution/Fix: This fix was the same as above. This was a symptom of the same problem. The displayed slide was always off by one because `activeSlideIndex` is not immediately updated.
 
 **Scalability:** This approach can work for now since I want to show only 6 images (but I can show any amount passed in as props) and to understand a bit more how the carousel can be built. Using other techniques and approaches such as virtualization in React, I could scale this better.
 
-### Process for Accordion :
+### Process for Accordion:
 
 What is an accordion? I am paraphrasing [sliderevolution.com](sliderevolution.com) when I say that accordions are really a set of horizontally or vertically stacked headings that display collapsible items/panels. Each panel contains a section of content.
 
@@ -61,6 +61,7 @@ We use them when we want to feature several sections of content at a time which 
 The accordion header and panel are the two parts that are fundamental to the accordion. The header provides interactivity, allowing us to reveal or hide given pieces of content in the panel. The panel itself is collapsible.
 
 Before building this in React, I tried two different ways (with guidance from tutorials), which as it turns out are the two typical approaches using HTML, CSS and JS:
+
 - The first is to use hidden form elements
 - The second makes use of CSS pseudo selectors
 
