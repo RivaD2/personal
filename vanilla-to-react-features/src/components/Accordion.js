@@ -14,7 +14,7 @@ export default function Accordion({accordionData}) {
     <div className="accordion-container">
       <h1 className="accordion-title">COOKING STAPLES</h1>
        {accordionData.map((accordionItem, index) => (
-        <div className="accordion-item">
+        <div className="accordion-item" key={accordionItem.header}>
           <div className="accordion-item-title" onClick={() => onOpenIconClicked(index)}>
             <h2 className="accordion-item-header">
               {accordionItem.header}
