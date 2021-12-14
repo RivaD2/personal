@@ -23,7 +23,6 @@ readFile takes args:
 - Write the file back to the disc so it can load in browser
 */
 
-
 let templateFileToRead = await readFile(new URL('template.html', import.meta.url), 'utf-8');
 console.log(templateFileToRead);
 
@@ -36,4 +35,7 @@ for (const [key, value] of Object.entries(templateFileData)) {
   templateFileToRead = templateFileToRead.replace(`{${key}}`, value);
   console.log(templateFileToRead);
 }
+
+// HTML is written to disc, file is created
+await writeFile(new URL('index.html', import.meta.url), templateFileToRead);
 

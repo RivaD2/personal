@@ -10,14 +10,14 @@ One of the core concepts of Node is modules. We know modules to be blocks of reu
 
 ## Module syntax
 
-When I first learned Node, I was introduced to the CommonJS syntax for modules. By default, Node uses this syntax. Nowadays we have common modules and see keywords like: `require`, `module.exports` `exports` etc.
+When I first learned Node, I was introduced to the CommonJS syntax for modules. By default, Node uses this syntax (with these modules we use keywords like: `require`, `module.exports` `exports` etc.)
 
 Now with ES6 we can use ES modules in Node or ECMAScript Modules. This means that we now use keywords like: `export`, `import`, `export default`.
 
 In order to use the ES modules, we can tell node we want to use these specific modules by:
 
 - use `.mjs` extension (says, hey! I am using ES modules in this file)
-- in `package.json` change your type to ES modules, which means we could still use `.js` extension and use ES modules inside (slightly confusing though)
+- in `package.json` change your type to ES modules, which means we could still use `.js` extension I believe and use ES modules inside (slightly confusing though)
 
 ## What is the FS module?
 
