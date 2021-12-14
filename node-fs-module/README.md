@@ -25,3 +25,12 @@ The FS module is a not a global module in Node but it is a built in module or an
 
 The FS module gives us the power to access the file system on our OS. We can do all sorts of things (create, edit, read, stream) with this module.
 With the FS module we have many methods seen here: [FS methods](https://nodejs.org/api/fs.html)
+
+The FS module also has a way for us to use the promise-based versions of methods. We have access to them easily by using the `/promises` path seen here under File System: [Promise-based methods](https://nodejs.org/api/fs.html#promise-example).
+
+Because I used ES modules, as well as `readFile` and `writeFile` asynchronous methods, the previous approaches I've used to reading and writing a file using CommonJS modules in a synchronous fashion did not apply (makes sense right?).
+
+For this I used the URL object seen here: [URL object in Node](https://nodejs.org/api/url.html#new-urlinput-base) to get around the `__dirname` and `filename`.
+
+To complete this exercise I also had to make use of `import.meta` object to get the absolute file path of the module: `import.meta.url` seen here:
+[import.meta Object in Node](https://nodejs.org/docs/latest-v15.x/api/esm.html#esm_import_meta)
