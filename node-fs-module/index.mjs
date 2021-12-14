@@ -33,6 +33,7 @@ const templateFileData = {
 
 for (const [key, value] of Object.entries(templateFileData)) {
   templateFileToRead = templateFileToRead.replace(`{${key}}`, value);
+  // Keeping log to show updated variables
   console.log(templateFileToRead);
 }
 

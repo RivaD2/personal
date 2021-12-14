@@ -12,7 +12,7 @@ One of the core concepts of Node is modules. We know modules to be blocks of reu
 
 When I first learned Node, I was introduced to the CommonJS syntax for modules. By default, Node uses this syntax (with these modules we use keywords like: `require`, `module.exports` `exports` etc.)
 
-Now with ES6 we can use ES modules in Node or ECMAScript Modules. This means that we now use keywords like: `export`, `import`, `export default`.
+Now, thanks to Frontend Masters, I learned that with ES6 we can use ES modules in Node or ECMAScript Modules. This means that we now use keywords like: `export`, `import`, `export default` in Node.
 
 In order to use the ES modules, we can tell node we want to use these specific modules by:
 
@@ -23,7 +23,7 @@ In order to use the ES modules, we can tell node we want to use these specific m
 
 The FS module is a not a global module in Node but it is a built in module or an internal module. Other modules you have most likely seen are: `http` and `path`.
 
-The FS module gives us the power to access the file system on our OS. We can do all sorts of things (create, edit, read, stream) with this module.
+The FS module gives us the power to access the file system on our OS. We can do all sorts of cool things (create, edit, read, stream) with this module.
 With the FS module we have many methods seen here: [FS methods](https://nodejs.org/api/fs.html)
 
 The FS module also has a way for us to use the promise-based versions of methods. We have access to them easily by using the `/promises` path seen here under File System: [Promise-based methods](https://nodejs.org/api/fs.html#promise-example).
@@ -34,3 +34,7 @@ For this I used the URL object seen here: [URL object in Node](https://nodejs.or
 
 To complete this exercise I also had to make use of `import.meta` object to get the absolute file path of the module: `import.meta.url` seen here:
 [import.meta Object in Node](https://nodejs.org/docs/latest-v15.x/api/esm.html#esm_import_meta)
+
+## Credit:
+
+Credit to Frontend Masters for the guidance on how to do this is an async fashion! :)
