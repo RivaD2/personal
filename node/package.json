@@ -1,15 +1,16 @@
 {
-  "name": "fs-module",
+  "name": "node",
   "version": "1.0.0",
-  "description": "## Why practice with the FS module?",
-  "main": "index.js",
+  "description": "mini api for morgan and httpie",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "riva davidowski",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.2",
-    "morgan": "^1.10.0"
-  }
+  "license": "ISC"
 }
