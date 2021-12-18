@@ -1,4 +1,6 @@
-# FS module exercise: Render html on page after it is processed
+# Node
+
+## FS module exercise: Render html on page after it is processed
 
 ## Why practice with the FS module?
 
@@ -38,3 +40,46 @@ To complete this exercise I also had to make use of `import.meta` object to get 
 ## Credit:
 
 Credit to Frontend Masters for the guidance on how to do this is an async fashion! :)
+
+# Mini Task API using Express, Morgan, and HTTPie
+
+I wanted to refresh my memory on working with an API testing tool in terminal and get reacquainted with Morgan, which is a HTTP request logger middleware for Node.js.
+
+ I was somewhat familiar with Morgan in the past, but wanted to get more practice using it. I had used HTTPie once in the past, so I already had it installed. To install HTTPie for terminal, see the installation guide [here](https://httpie.io/cli).
+ I set up a simple Express server and only two routes (GET, POST) so I could practice logging.
+
+**Tools used**
+
+- Morgan (for logging)
+- HTTPie (API testing tool)
+- Express
+- Node
+
+I decided to use [url shortcuts in HTTPie for localhost](https://httpie.io/docs/cli/url-shortcuts-for-localhost).
+
+Sample POST request in terminal:
+
+`http POST :3000/task text="make xmas cookies and nog"`
+
+Output for the result of the request:
+
+```js
+HTTP/1.1 201 Created
+Connection: keep-alive
+Content-Length: 55
+Content-Type: application/json; charset=utf-8
+Date: Sat, 18 Dec 2021 20:43:53 GMT
+ETag: W/"37-o731Gg2ShMXg6TJ9zl5pmGj2bDU"
+Keep-Alive: timeout=5
+X-Powered-By: Express
+
+{
+    "id": 1639860233550,
+    "text": "make xmas cookies and nog"
+}
+
+```
+
+I can then view the log in `server.js` which shows:
+
+`{ id: 1639860233550, text: 'make xmas cookies and nog' },`
