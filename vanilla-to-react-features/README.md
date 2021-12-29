@@ -89,10 +89,11 @@ Before building this in React, I tried two different ways (with guidance from tu
    - Inside the clock container, sits the clock face.
    - The clock face is what displays hours, minutes and seconds and the clock hands
    - Am I displaying time zones or just the clock/the time? That is something to think about. For this I will display just the time (displaying time zones can come later)
-2. I know I can create one stateful component, a `Clock` component which includes several pieces:
+2. I know I can create two components, a `Clock` component which includes several pieces:
    - A container div aka the `clock`.
    - The container or the 'clock' div will hold a child div, the `clock-face`.
-   - The clock-face will house 3 child divs:
+   - The clock-face will instantiate the `Hand` component (3 of them, one for each hand)
+ - A `Hand` component will include a div that holds three children divs:
      - One for the hour hand, second hand, and minute hand.
 3. What CSS can I use to make my clock well, look like a clock?
    - My analog clock container will be circular which means I for sure need to use the border as well as border radius properties to make it circular. I will also need to set a width and height.
@@ -113,13 +114,16 @@ Before building this in React, I tried two different ways (with guidance from tu
        - I can either create a new function for setting degrees of the second, hour and minute hands since it is not enough to merely get the seconds, hours and minutes, since I have to change the degree of where the hands sit. Another option is that I just do these operations inside the function that calculates seconds, minutes and hours.
      -  Additional thoughts: In my vanilla JS function, I called the Date constructor using `new Date()`, initializing a new Date object (to help calculate the time) and then passed that function to `setInterval` along with the milliseconds that I want the code to execute in (passed in 1000 for every second).
      -  Since I am building the clock in React, I can use the `useEffect` hook and make use of `setInterval()` or `setTimeout()` inside since I need the function to run every second. I may need to think about using a cleanup function here. I did this once in another tutorial for React and remember that we can do this when we need to prevent memory leaks/unwanted behavior.
-5. What does the component need to remember? What is stored in state?
-   - The time of course! I can use the `useState` hook and set the initial value to be the Date object that is returned from `new Date`.
-   - The Clock component should be responsible for this detail and since the time will update over time, state is a good choice here.
+5. What does the component need to remember? What is stored in state? What props will the components take?
+   - Nothing will be stored in state for now, although I could store the time in state if I wanted to (or rather the date object from `new Date`). It is not necessary here.
+   - For the `Hand` component I need to think about what props I need. I can choose which component calculates the time and degrees. Here are options:
+   - Option 1: Clock calculates everything and passes degrees and time to hand. Hand then rotates itself.
+   - Option 2: Clock calculates numeric values of time for each hand and passes them to the Hand. The Hand calculates degrees from that value and rotates itself.
+   - Option 3: The Hand calculates the time and degrees and also rotates itself.
 6. Ok, quick recap. What is the Clock component responsible for?
    - setting up a timer
+   - generating times (for now, most likely will change)
    - updating UI
-   - Storing the time in State
 7. Who will consume the Clock component? For now, `App` will show the `Clock`.
 
 **Improvements that could be made:**
