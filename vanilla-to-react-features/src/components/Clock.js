@@ -3,7 +3,7 @@ import Hand from './Hand';
 import './Clock.css';
 
 const Clock = () => {
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState({});
   // Instead of using setInterval in this way, remember
   // to view Dan Abrovmov's article on making setInterval declarative (if it will work nicely here)
   // https://overreacted.io/making-setinterval-declarative-with-react-hooks/
@@ -24,14 +24,14 @@ const Clock = () => {
       seconds, minutes, hours
     });
   }
- console.log(time);
+
   return (
     <div className="analog-clock-wrapper">
       <div className="analog-clock">
         <div className="analog-clock-face">
-          <Hand time={time}/>
-          <Hand time={time}/>
-          <Hand time={time} />
+          <Hand id="second-hand" time={time.seconds}/>
+          <Hand id="minute-hand" time={time.minutes}/>
+          <Hand id="hour-hand" time={time.hours}/>
         </div>
       </div>
     </div>

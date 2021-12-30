@@ -1,7 +1,10 @@
 .analog-clock-wrapper {
+  display: flex;
+  flex-direction: row;
   background-color: black;
-  height: 40rem;
-  width: 100%;
+  border-radius: 10px;
+  width: 70%;
+  margin: 20% auto;
 }
 
 .analog-clock {
@@ -9,11 +12,11 @@
   background-color: black;
   border-radius: 50%;
   box-shadow: 2px 2px 20px 8px rgb(128, 206, 230);
-  height: 26rem;
-  margin: 50% auto;
+  height: 20rem;
+  margin: 10% auto;
   position: relative;
   top: 15%;
-  width: 26rem;
+  width: 20rem;
 }
 
 .analog-clock-face {
