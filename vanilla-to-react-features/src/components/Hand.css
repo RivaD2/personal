@@ -1,0 +1,13 @@
+.analog-clockhand {
+  background-color: black;
+  border: 2px solid rgb(128, 206, 230);
+  border-radius: 10px;
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  width: 50%;
+}

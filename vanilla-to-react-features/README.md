@@ -120,6 +120,7 @@ Before building this in React, I tried two different ways (with guidance from tu
    - Option 1: Clock calculates everything and passes degrees and time to hand. Hand then rotates itself.
    - Option 2: Clock calculates numeric values of time for each hand and passes them to the Hand. The Hand calculates degrees from that value and rotates itself.
    - Option 3: The Hand calculates the time and degrees and also rotates itself.
+   - Option 4: Have NO Hand component and just do everything in Clock component.
 6. Ok, quick recap. What is the Clock component responsible for?
    - setting up a timer
    - generating times (for now, most likely will change)
