@@ -10,7 +10,7 @@ const Clock = () => {
     return () => {
       clearInterval(timer);
     }
-  });
+  },[]);
 
   const generateTime = () => {
     const newTime = new Date();
