@@ -4,10 +4,7 @@ import './Clock.css';
 
 const Clock = () => {
   const [time, setTime] = useState({});
-  // Instead of using setInterval in this way, remember
-  // to view Dan Abrovmov's article on making setInterval declarative (if it will work nicely here)
-  // https://overreacted.io/making-setinterval-declarative-with-react-hooks/
-  // I need to make setInterval and the Hook work well together
+
   useEffect(() => {
     const timer = setInterval(generateTime, 1000);
     return () => {

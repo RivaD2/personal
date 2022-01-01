@@ -137,3 +137,11 @@ Before building this in React, I tried two different ways (with guidance from tu
     - Because each hand needs to take on different styles, I used the `hand` prop to determine which type of hand I was dealing with and passed it in as a `className`. I added in the additional classes in my stylesheet so I could change styles accordingly
 
 **Improvements that could be made:**
+After reading more on `setInterval`and Dan Abramov's `useInterval` Hook, it seems a possible improvement I could make or experiment with is updating the code for setting the interval and the cleanup function. Why would I do this?
+
+Well, according to the article (and others out there on using `setInterval` in React) there are some pitfalls to using the setInterval() API with Hooks, primarily that, "...setInterval does not describe a process in time — once you set the interval, you can’t change anything about it except clearing it" and that there is a mismatch between the React model and the setInterval API.
+
+For smaller scale projects it seems `setInterval` works fine, but understanding more about how it works with React and going a bit deeper into this subject seems like a good idea.
+
+Read Dan Abramov's article here:
+[Make setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
