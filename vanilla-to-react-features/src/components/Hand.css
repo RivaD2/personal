@@ -9,5 +9,16 @@
   transform: rotate(90deg);
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-  width: 50%;
+  width: 47%;
+}
+
+.hourHand {
+  width: 29%;
+  top: 68%;
+  transform-origin: 158%;
+}
+
+.secondHand {
+  height: 2px;
+  border-color: red;
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import './Hand.css';
 
-const Hand = ({time}) => {
-  const handDegrees = ((time / 60) * 360) + 90;
+const Hand = ({ time, hand }) => {
+  const minAndSecondDegrees = ((time / 60) * 360) + 90;
+  const hourDegrees = ((time / 12) * 360) + 90;
+  const handDegrees = hand === 'hourHand' ? hourDegrees : minAndSecondDegrees;
 
-  // Styling for individual hands needed
-  // props is 3 numbers (seconds, minutes, hours)
   return (
     <div className="hand-container">
       <div
-        className="analog-clockhand"
+        className={`analog-clockhand ${hand}`}
         style={{transform: `rotate(${handDegrees}deg)`}}>
       </div>
     </div>
