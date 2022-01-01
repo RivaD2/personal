@@ -25,13 +25,20 @@ const Clock = () => {
     });
   }
 
+  const {seconds, minutes, hours} = time;
+  const clockDetails = [
+    {hand: 'secondHand', time: seconds},
+    {hand: 'minuteHand', time: minutes },
+    {hand: 'hourHand', time: hours}
+  ]
+
   return (
     <div className="analog-clock-wrapper">
       <div className="analog-clock">
         <div className="analog-clock-face">
-          <Hand id="second-hand" time={time.seconds}/>
-          <Hand id="minute-hand" time={time.minutes}/>
-          <Hand id="hour-hand" time={time.hours}/>
+          {clockDetails.map((details, index) => (
+            <Hand time={details.time} hand={details.hand} key={index}/>
+          ))}
         </div>
       </div>
     </div>

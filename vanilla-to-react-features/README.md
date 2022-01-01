@@ -115,7 +115,7 @@ Before building this in React, I tried two different ways (with guidance from tu
      -  Additional thoughts: In my vanilla JS function, I called the Date constructor using `new Date()`, initializing a new Date object (to help calculate the time) and then passed that function to `setInterval` along with the milliseconds that I want the code to execute in (passed in 1000 for every second).
      -  Since I am building the clock in React, I can use the `useEffect` hook and make use of `setInterval()` or `setTimeout()` inside since I need the function to run every second. I may need to think about using a cleanup function here. I did this once in another tutorial for React and remember that we can do this when we need to prevent memory leaks/unwanted behavior.
 5. What does the component need to remember? What is stored in state? What props will the components take?
-   - Nothing will be stored in state for now, although I could store the time in state if I wanted to (or rather the date object from `new Date`). It is not necessary here.
+   - For the `Clock` component, I decided to store time in state with an initial value set to an empty object (there are other ways to approach this of course). I know I will need to update the state to be the seconds, minutes, and hours that are calculated.
    - For the `Hand` component I need to think about what props I need. I can choose which component calculates the time and degrees. Here are options:
    - Option 1: Clock calculates everything and passes degrees and time to hand. Hand then rotates itself.
    - Option 2: Clock calculates numeric values of time for each hand and passes them to the Hand. The Hand calculates degrees from that value and rotates itself.
@@ -123,8 +123,17 @@ Before building this in React, I tried two different ways (with guidance from tu
    - Option 4: Have NO Hand component and just do everything in Clock component.
 6. Ok, quick recap. What is the Clock component responsible for?
    - setting up a timer
-   - generating times (for now, most likely will change)
+   - generating time (seconds, minutes, and hours)
    - updating UI
 7. Who will consume the Clock component? For now, `App` will show the `Clock`.
+8. I chose Option 2:
+    - Since I chose option 2 from above, I had to think about the following:
+      - How could I teach the `Hand` component how to be a second hand, a minute hand, or an hour hand?
+      - How will the `Clock` component tell each of the three `Hand` components which type of hand it is? I decided to initialize a variable named `clockDetails` and set the value to be an object that holds key value pairs of `hand` and `time`. The `hand` is of type `string` and the `time` is of type number (the seconds, minutes, or hours from state).
+     - From there, I can pass `time` and `hand` as a prop and set the value accordingly using the `clockDetails` object.
+     - The `Hand` component takes in the props of time and hands. The `Hand` component then has to be responsible for calculating the degrees for the seconds, minutes and hours. I know the following:
+        - The degrees for seconds and minutes will be the same since there are 60 minutes in an hour and 60 seconds to 1 min. However, the hour degree calculation will be different, because there are 12 hours on the clock.
+    - The `Hand` component also has to set the degrees accordingly based off which hand it is. So if `hand` is === 'hourHand` then I show the degrees for the hourHand etc.
+    - Because each hand needs to take on different styles, I used the `hand` prop to determine which type of hand I was dealing with and passed it in as a `className`. I added in the additional classes in my stylesheet so I could change styles accordingly
 
 **Improvements that could be made:**
