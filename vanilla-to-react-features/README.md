@@ -93,8 +93,8 @@ Before building this in React, I tried two different ways (with guidance from tu
    - A container div aka the `clock`.
    - The container or the 'clock' div will hold a child div, the `clock-face`.
    - The clock-face will instantiate the `Hand` component (3 of them, one for each hand)
- - A `Hand` component will include a div that holds three children divs:
-     - One for the hour hand, second hand, and minute hand.
+  A `Hand` component will include a div that holds one child div:
+     - This div will set handDegrees and style dynamically
 3. What CSS can I use to make my clock well, look like a clock?
    - My analog clock container will be circular which means I for sure need to use the border as well as border radius properties to make it circular. I will also need to set a width and height.
    - The next thought here is how can I position the clock face as well as the hands?
