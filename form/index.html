@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="form.css">
+  <title>Signup Form</title>
+</head>
+<body>
+  <div class="page-body-container">
+    <form id="signup-form">
+      <header>
+        <h1 class="signup-form-header">Join Us</h1>
+      </header>
+      <div class="signup-form-body">
+        <fieldset>
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            name="username"
+            aria-placeholder="username">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            aria-placeholder="email">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            aria-placeholder="password">
+          <label for="checkbox" class="checkbox">
+            <input
+              class="checkbox"
+              type="checkbox"
+              name="checkbox"
+              aria-placeholder="checkbox">
+            <div class="checkbox-text">I accept terms and conditions</div>
+          </label>
+        </fieldset>
+      </div>
+      <footer>
+        <button class="signup-button" type="submit">SIGN UP</button>
+      </footer>
+    </form>
+  </div>
+</body>
+</html>
