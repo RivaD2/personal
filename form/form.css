@@ -1,15 +1,17 @@
 #page-body {
   background-image: linear-gradient(
-    120deg,
+    140deg,
     rgba(11, 190, 235, 0.534) 50%,
     rgba(159, 224, 198, 0.859) 50%
   );
+  min-height: 100vh;
 }
 
 .page-body-container {
   height: 30rem;
   width: 40rem;
-  margin: 20vh auto;
+  max-width: 80vw;
+  margin: 12vh auto;
 }
 
 #signup-form {
@@ -24,11 +26,13 @@
 
 .signup-form-header {
   padding-bottom: 30px;
-  font-family: ;
 }
 
-.signup-form-body > fieldset {
+fieldset {
+  display: flex;
+  flex-direction: column;
   border: none;
+  width: 60%;
 }
 
 fieldset > label {
@@ -50,8 +54,8 @@ fieldset > label {
 #username,
 #email {
   align-items: center;
+  border: 1px solid black;
   border-radius: 20px;
-  width: 380px;
   margin: 20px;
 }
 
@@ -59,6 +63,11 @@ input[type="text"],
 input[type="password"] {
   font-size: 12pt;
   padding: 10px;
+}
+
+#error-password {
+  text-align: center;
+  font-weight: bold;
 }
 
 input[type="checkbox"] {
@@ -78,11 +87,34 @@ input[type="checkbox"] {
 }
 
 .signup-button {
-  background-color: rgba(10, 149, 139, 0.859);
+  background-color: rgba(7, 210, 241, 0.66);
   border-radius: 20px;
   cursor: pointer;
   font-size: 12pt;
+  font-weight: bold;
   width: 150px;
   height: 36px;
   margin: 30px;
+}
+
+.to-login {
+  text-align: center;
+  font-size: 14pt;
+}
+
+p > :first-child {
+  padding-left: 10px;
+  color: rgba(1, 24, 29, 0.921);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p > :first-child:hover {
+  color: rgba(21, 192, 240, 0.859);
+}
+
+@media (max-width: 600px) {
+  #page-body {
+    min-height: none;
+  }
 }
