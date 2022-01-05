@@ -7,40 +7,42 @@
   <link rel="stylesheet" href="form.css">
   <title>Signup Form</title>
 </head>
-<body>
+<body id="page-body">
   <div class="page-body-container">
     <form id="signup-form">
       <header>
-        <h1 class="signup-form-header">Join Us</h1>
+        <h1 class="signup-form-header">Sign Up</h1>
       </header>
       <div class="signup-form-body">
         <fieldset>
-          <label for="username">Username</label>
+          <label for="username" class="visually-hidden">Username</label>
           <input
             id="username"
             type="text"
             name="username"
-            aria-placeholder="username">
-          <label for="email">Email</label>
+            aria-placeholder="username"
+            placeholder="Username">
+          <label for="email" class="visually-hidden">Email</label>
           <input
             id="email"
-            type="email"
+            type="text"
             name="email"
-            aria-placeholder="email">
-          <label for="password">Password</label>
+            aria-placeholder="email"
+            placeholder="Email">
+          <label for="password" class="visually-hidden">Password</label>
           <input
             id="password"
             type="password"
             name="password"
-            aria-placeholder="password">
-          <label for="checkbox" class="checkbox">
-            <input
-              class="checkbox"
-              type="checkbox"
-              name="checkbox"
-              aria-placeholder="checkbox">
-            <div class="checkbox-text">I accept terms and conditions</div>
-          </label>
+            aria-placeholder="password"
+            placeholder="Password">
+        </fieldset>
+        <fieldset class="checkbox-fieldset">
+          <input
+            class="checkbox"
+            type="checkbox"
+            name="checkbox">
+          <label for="checkbox" class="checkbox-text">I accept terms and conditions</label>
         </fieldset>
       </div>
       <footer>
