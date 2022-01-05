@@ -60,14 +60,10 @@ fieldset > label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
   font-size: 12pt;
   padding: 10px;
-}
-
-#error-password {
-  text-align: center;
-  font-weight: bold;
 }
 
 input[type="checkbox"] {
