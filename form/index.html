@@ -9,11 +9,10 @@
 </head>
 <body id="page-body">
   <div class="page-body-container">
-    <form id="signup-form">
+    <form id="signup-form" action="/" method="GET">
       <header>
         <h1 class="signup-form-header">Sign Up</h1>
       </header>
-      <div class="signup-form-body">
         <fieldset>
           <label for="username" class="visually-hidden">Username</label>
           <input
@@ -28,14 +27,17 @@
             type="text"
             name="email"
             aria-placeholder="email"
-            placeholder="Email">
+            placeholder="Email"
+            required>
           <label for="password" class="visually-hidden">Password</label>
           <input
             id="password"
             type="password"
             name="password"
             aria-placeholder="password"
-            placeholder="Password">
+            placeholder="Password"
+            required>
+          <p id="error-password"></p>
         </fieldset>
         <fieldset class="checkbox-fieldset">
           <input
@@ -44,11 +46,12 @@
             name="checkbox">
           <label for="checkbox" class="checkbox-text">I accept terms and conditions</label>
         </fieldset>
-      </div>
+        <p class="to-login">Already have an account?<a href="login.html">Login</a></p>
       <footer>
         <button class="signup-button" type="submit">SIGN UP</button>
       </footer>
     </form>
   </div>
+  <script src="form.js"></script>
 </body>
 </html>
