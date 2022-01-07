@@ -19,7 +19,6 @@
             id="username"
             type="text"
             name="username"
-            aria-placeholder="username"
             placeholder="Username"
             pattern="[A-Za-z0-9]+"
             title="Username should consist of uppercase letters,lowercase letters, and numbers 0-9"
@@ -31,7 +30,6 @@
             id="email"
             type="email"
             name="email"
-            aria-placeholder="email"
             placeholder="Email"
             required>
           <label for="password" class="visually-hidden">Password</label>
@@ -39,14 +37,12 @@
             id="password"
             type="password"
             name="password"
-            aria-placeholder="password"
             placeholder="Password"
             pattern="^(?=.*[\d\W])(?=.*[a-z])(?=.*[A-Z]).{8,100}$"
             title="Password must have at least 1 uppercase letter, 1 lowercase letter,
-            1 number or special character, and must bebetween 8 and 30 characters long"
+            1 number or special character, and must be between 8 and 30 characters long"
             required
             minlength=10>
-            <p id="password-error-message"></p>
         </fieldset>
         <fieldset class="checkbox-fieldset">
           <input

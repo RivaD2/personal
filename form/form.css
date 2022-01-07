@@ -80,6 +80,7 @@ input[type="checkbox"] {
 
 .checkbox-text {
   padding-left: 14px;
+  font-size: 14pt;
 }
 
 .signup-button {
@@ -112,5 +113,25 @@ p > :first-child:hover {
 @media (max-width: 600px) {
   #page-body {
     min-height: none;
+  }
+
+  .page-body-container {
+    height: 10rem;
+    width: 20rem;
+    max-width: 90vw;
+  }
+
+  input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+  }
+
+  .checkbox-text {
+    padding: 0px;
+  }
+
+  .to-login {
+    display: flex;
+    flex-direction: column;
   }
 }
