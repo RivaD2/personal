@@ -4,6 +4,7 @@ import Accordion from './components/Accordion';
 import accordionData from './accordion-data/accordion-data.json';
 import {fetchImages} from './api/unsplash';
 import Clock from './components/Clock';
+import Form from './components/Form';
 import './App.css';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
       <Carousel images={images} />
       <Accordion accordionData={accordionData}/>
       <Clock />
+      <Form />
     </div>
   );
 }

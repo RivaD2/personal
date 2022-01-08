@@ -1,0 +1,126 @@
+#signup-form {
+  background-image: linear-gradient(
+    140deg,
+    rgba(11, 190, 235, 0.534) 50%,
+    rgba(159, 224, 198, 0.859) 50%
+  );
+  margin: 10% auto;
+  max-width: 80vw;
+  width: 50rem;
+  align-items: center;
+  background-color: rgba(222, 242, 234, 0.366);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 2px rgba(10, 149, 139, 0.859);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-form-header {
+  padding-bottom: 30px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 60%;
+}
+
+fieldset > label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.visually-hidden {
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#password,
+#username,
+#email {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  font-size: 12pt;
+  padding: 10px;
+}
+
+input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+}
+
+.checkbox-fieldset {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.checkbox-text {
+  padding-left: 14px;
+  font-size: 14pt;
+}
+
+.signup-button {
+  background-color: rgba(7, 210, 241, 0.66);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12pt;
+  font-weight: bold;
+  width: 150px;
+  height: 36px;
+  margin: 30px;
+}
+
+.to-login {
+  text-align: center;
+  font-size: 14pt;
+}
+
+p > :first-child {
+  padding-left: 10px;
+  color: rgba(1, 24, 29, 0.921);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p > :first-child:hover {
+  color: rgba(21, 192, 240, 0.859);
+}
+
+@media (max-width: 600px) {
+  #signup-form {
+    max-width: 90vw;
+  }
+  input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+  }
+
+  .checkbox-text {
+    padding: 0px;
+  }
+
+  .to-login {
+    display: flex;
+    flex-direction: column;
+  }
+
+  p > a {
+    margin-top: 10px;
+  }
+}
