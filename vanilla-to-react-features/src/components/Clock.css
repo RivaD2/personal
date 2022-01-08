@@ -3,6 +3,7 @@
   flex-direction: row;
   background-color: black;
   border-radius: 10px;
+  height: 70%;
   width: 70%;
   margin: 20% auto;
 }
@@ -23,4 +24,14 @@
   height: 100%;
   position: relative;
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  .analog-clock-wrapper {
+    width: initial;
+  }
+  .analog-clock {
+    height: 10rem;
+    width: 10rem;
+  }
 }
