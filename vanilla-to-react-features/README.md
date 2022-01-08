@@ -1,17 +1,25 @@
 # Vanilla to React features
 
-**Author: Riva Davidowski**
+## Author: Riva Davidowski
 
 **Goal:** The goal here is to take a features I practiced building using Vanilla JS and
 build the same features using React. Things are different, things are getting crazy...hang in there with me.
 
-## Tools Used:
- - React
- - JS
- - CSS
- - Unsplash API (for Carousel images)
+**To use**:
 
-### Process for Carousel:
+- Clone this repo and run `npm-i` in your terminal.
+- For the React Responsive Form, you can view the response of the form validation in the browser console.
+
+## Responsive Carousel
+
+**Tools Used**
+
+- React
+- JS
+- CSS
+- Unsplash API (for Carousel images)
+
+### Process for Carousel
 
 1. Breaking down the Carousel: What is a Carousel really? What pieces does it hold? Here we go!
    - A button pointing left that sits outside the carousel container. When clicked on, the slide should move through previous slides shown.
@@ -52,7 +60,15 @@ build the same features using React. Things are different, things are getting cr
 
 **Scalability:** This approach can work for now since I want to show only 6 images (but I can show any amount passed in as props) and to understand a bit more how the carousel can be built. Using other techniques and approaches such as virtualization in React, I could scale this better.
 
-### Process for Accordion:
+## Responsive Accordion
+
+**Tools Used**
+
+- React
+- JS
+- CSS
+
+### Process for Accordion
 
 What is an accordion? I am paraphrasing [sliderevolution.com](sliderevolution.com) when I say that accordions are really a set of horizontally or vertically stacked headings that display collapsible items/panels. Each panel contains a section of content.
 
@@ -82,7 +98,15 @@ Before building this in React, I tried two different ways (with guidance from tu
    - `-` to close the panel
    - I can use a ternary to change the icons, `openPanelIndex === index ?` then panel is open, so show the `'-' : '+'`
 
-### Process for Analog Clock:
+## Responsive Analog Clock
+
+**Tools Used**
+
+- React
+- JS
+- CSS
+
+### Process for Responsive Analog Clock
 
 1. Breaking down the clock: What pieces/components make up a clock? Let's get to it!
    - When we look at a clock, we have the overall clock container. Ya know, the circular container that holds all the bits.
@@ -145,3 +169,42 @@ For smaller scale projects it seems `setInterval` works fine, but understanding 
 
 Read Dan Abramov's article here:
 [Make setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
+
+## Responsive Form
+
+**Tools Used**
+
+- React
+- CSS
+- JS
+- My [API server](https://github.com/advanced-javascript-Riva/api-server-)
+  - A new Mongoose schema and model will be made for the user
+  - A new route for the user signup will be added
+- Express validator for server-side data validation
+
+### Process for Form
+
+What pieces make up a Form? The first question I ask is what type of form do I want to build?
+In this case, I decided to build a simple sign up form. The form should allow the user to:
+
+- fill in a username
+- fill in a email
+- fill in a password
+- submit their form details
+- For the sake of this mini project, I just want to show a console log with the response of the form validation
+
+**The Form component State**
+
+- The form needs to remember the following:
+  - user username
+  - user email
+  - user password
+- Options here are:
+  - I could could use 3 `useState` hooks for each type of input
+  - I could use 1 `useState` hook to manage/remember input data
+
+**What type of functions might be needed?**
+
+- For a signup form, I will need a function to handle the default behavior of the form event.
+- This function should also do a `POST` request to the `signup` user endpoint that will send back the validated data to the client
+
