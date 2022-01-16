@@ -8,7 +8,7 @@ build the same features using React. Things are different, things are getting cr
 **To use**:
 
 - Clone this repo and run `npm-i` in your terminal.
-- For the React Responsive Form, you can view the response of the form validation in the browser console.
+- For the React Responsive Form, you can view the response of the form validation in the browser console. No need to clone the backend here. If you want to see a sample request using HTTPie or and what an expected failed validation output would look like, go to [Go To Responsive Form](##-responsive-form)
 
 ## Responsive Carousel
 
@@ -177,9 +177,9 @@ Read Dan Abramov's article here:
 - React
 - CSS
 - JS
+- HTTPie in terminal for API testing
 - My [API server](https://github.com/advanced-javascript-Riva/api-server-)
-  - A new Mongoose schema and model will be made for the user
-  - A new route for the user signup will be added
+  - All server side additions for user schema and model and validation are located here:[User-Validation](https://github.com/advanced-javascript-Riva/api-server-/pull/8)
 - Express validator for server-side data validation
 
 ### Process for Form
@@ -206,5 +206,33 @@ In this case, I decided to build a simple sign up form. The form should allow th
 **What type of functions might be needed?**
 
 - For a signup form, I will need a function to handle the default behavior of the form event.
-- This function should also do a `POST` request to the `signup` user endpoint that will send back the validated data to the client
+- This function should also do a `POST` request user endpoint that will send back the validated data to the client
 
+**Sample Request using HTTPie**
+
+`http POST :3001/user username="Riv" password="booboobearFace" email="rivadavidowski@user.com"`
+
+**Expected Response after username validation fails**
+
+```js
+HTTP/1.1 400 Bad Request
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+Content-Length: 87
+Content-Type: application/json; charset=utf-8
+Date: Sat, 15 Jan 2022 22:36:24 GMT
+ETag: W/"57-zgSu1JamoMp8GGRnT3ZvStn/JmE"
+Keep-Alive: timeout=5
+X-Powered-By: Express
+
+{
+    "errors": [
+        {
+            "location": "body",
+            "msg": "Invalid value",
+            "param": "username",
+            "value": "Riv"
+        }
+    ]
+}
+```
