@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import { validateInput } from '../api/validate';
+import React, { useState } from 'react';
 import { sendFormData } from '../api/validate';
 import './Form.css';
 
@@ -17,6 +16,7 @@ const Form = () => {
     e.preventDefault();
     const formDataSubmission = await sendFormData(inputValue);
     setValidationMessage(formDataSubmission.data.message);
+    // Log stays to show object of new user created and success message
     console.log(formDataSubmission.data);
   }
 
@@ -87,9 +87,9 @@ const Form = () => {
           <button className="signup-button" type="submit">SIGN UP</button>
       </form>
       {validationMessage &&
-      <div className="validation-message-container">
-        <p>{validationMessage}</p>
-      </div>
+        <div className="validation-message-container">
+          <p>{validationMessage}</p>
+        </div>
       }
     </div>
   )
