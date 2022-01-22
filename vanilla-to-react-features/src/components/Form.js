@@ -32,7 +32,7 @@ const Form = () => {
   }
 
   return (
-    <>
+    <div className="signup-container">
       <form id="signup-form" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <fieldset>
@@ -91,7 +91,7 @@ const Form = () => {
         <p>{validationMessage}</p>
       </div>
       }
-    </>
+    </div>
   )
 }
 

@@ -1,12 +1,15 @@
+.signup-container {
+  margin: 10% auto;
+  max-width: 80vw;
+  width: 50rem;
+}
+
 #signup-form {
   background-image: linear-gradient(
     140deg,
     rgba(11, 190, 235, 0.534) 50%,
     rgba(159, 224, 198, 0.859) 50%
   );
-  margin: 10% auto;
-  max-width: 80vw;
-  width: 50rem;
   align-items: center;
   background-color: rgba(222, 242, 234, 0.366);
   border-radius: 10px;
@@ -110,9 +113,7 @@ p > :first-child:hover {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 80vw;
-  width: 50rem;
-  margin: 10% auto;
+  margin-top: 30px;
 }
 
 .validation-message-container > p {
