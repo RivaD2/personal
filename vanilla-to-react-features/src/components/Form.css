@@ -1,12 +1,15 @@
+.signup-container {
+  margin: 10% auto;
+  max-width: 80vw;
+  width: 50rem;
+}
+
 #signup-form {
   background-image: linear-gradient(
     140deg,
     rgba(11, 190, 235, 0.534) 50%,
     rgba(159, 224, 198, 0.859) 50%
   );
-  margin: 10% auto;
-  max-width: 80vw;
-  width: 50rem;
   align-items: center;
   background-color: rgba(222, 242, 234, 0.366);
   border-radius: 10px;
@@ -100,6 +103,23 @@ p > :first-child {
 
 p > :first-child:hover {
   color: rgba(21, 192, 240, 0.859);
+}
+
+.validation-message-container {
+  background-color: rgba(159, 224, 198, 0.859);
+  border: 1px solid rgba(11, 190, 235, 0.534);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 2px rgba(10, 149, 139, 0.859);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.validation-message-container > p {
+  font-size: 16pt;
+  font-weight: bold;
+  color: black;
 }
 
 @media (max-width: 600px) {
