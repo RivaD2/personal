@@ -182,6 +182,8 @@ Read Dan Abramov's article here:
   - All server side additions for user schema and model and validation are located here:[User-Validation](https://github.com/advanced-javascript-Riva/api-server-/pull/8)
 - Express validator for server-side data validation
 
+**For this mini project, I just show a console log with the response of the form validation as well as render the success message**
+
 ### Process for Form
 
 **What pieces make up a Form?**
@@ -192,30 +194,10 @@ In this case, I decided to build a simple sign up form. The form should allow th
 - fill in a email
 - fill in a password
 - submit their form details
-- For the sake of this mini project, I just want to show a console log with the response of the form validation
 
-
-**After creating base structure of Form and adding state, I moved on to the server-side additions**
-
-**Schema and Collection**
-
-- This involved creating a user schema and collection in my API server
-- I know that what I am expecting from the client are all the values entered into the inputs by the user. The data coming to the server should be for `username, email and password`. This is what shapes my schema and collection.
-- I needed some way to send both the new user AND the success message to the client. In my user collection, I had to create an additional variable to first save the new user. Then I passed that value into an object holding the message. So now the client receives and object holding both (orginally I was just saving the user)
-- A roadblock I hit:
-  - I entered in my details into the form inputs and submitted. I was seeing the success message coming from the server so I thought, "Great, success!". However, I was NOT being created as a new user, there was no successful creation because I was sending the success message as a response in the middleware before I was saving my details into the database :) Oops!
-- To fix this, in my validation middleware, I had to first check for errors, if they exists, send the errors array, then immedediately call next(). This moves on to the next
-middleware. Then, the code that creates the user is executed (`req.model.create`). Success!
-- Another roadblock I hit:
-  - in my validate middleware, I was originally calling `next()` in my for of loop, but I realized I can't call next in the loop because the first `next()` call in the loop meant that I had already moved on to the next middleware, I was no longer running my validation checks! Even though I was in fact looping over the validator middlewares, I wasn't able to execute them properly because I had moved on before that could happen (see validate-user PR for more details)
-
-**Validation**
-
-- I used many docs to help me piece this together (those are listed in the user-validation PR above)
-- After creating the schema and collection, I had to create the custom middleware.This middleware cycles through all the validators from validateUser and calls them all. It
-validates the inputs first and reports any errors. If there are no errors, it just calls next() to hit the next middleware.
-- I focused here on modularizing code right off the bat, so I created a separate file to hold the validation checks and then a separate file for my middleware (which is passed of course to the post route)
-- A lesson learned here is to perhaps do things the way examples want you too first, get things working and then modularize later...
+**What else should the Form do?**
+- The form should also do client-side built-in validation using HTML5
+- By catching any invalid data client-side, the user can fix it first before submitting
 
 **The Form component State**
 
@@ -233,6 +215,36 @@ validates the inputs first and reports any errors. If there are no errors, it ju
 - For a signup form, I will need a function to handle the default behavior of the form event.
 - This function should also do a `POST` request user endpoint that will send back the validated data to the client
 - I also need a function to handle changes to the inputs
+
+**Form validation client-side**
+
+- The form should also do client-side validation checks
+- The form should use built-in form validation with HTML5 (good performance, but not customized) 
+- I can use checks for  `required`,`minLength`, `maxLength`, `pattern` to validate against Regex 
+- Form should provide user with feedback on how to properly fill out inputs when they are filled out incorrectly
+- I really struggled internally with whether I should make fields red if inputs weren't valid. I read many different takes on this approach and decided to not go this route due to accessiblity reasons. To make this even better, when validation fails client-side, I could asterisks or some other way to call attention to the inputs that need to be modified in addition to my feedback provided
+
+**After creating base structure of Form, adding state, creating method to post data, I moved on to the server-side additions**
+
+**Schema and Collection**
+
+- This involved creating a user schema and collection in my API server
+- I know that what I am expecting from the client are all the values entered into the inputs by the user. The data coming to the server should be for `username, email and password`. This is what shapes my schema and collection.
+- I needed some way to send both the new user AND the success message to the client. In my user collection, I had to create an additional variable to first save the new user. Then I passed that value into an object holding the message. So now the client receives and object holding both (orginally I was just saving the user)
+- A roadblock I hit:
+  - I entered in my details into the form inputs and submitted. I was seeing the success message coming from the server so I thought, "Great, success!". However, I was NOT being created as a new user, there was no successful creation because I was sending the success message as a response in the middleware before I was saving my details into the database :) Oops!
+- To fix this, in my validation middleware, I had to first check for errors, if they exists, send the errors array, then immedediately call next(). This moves on to the next
+middleware. Then, the code that creates the user is executed (`req.model.create`). Success!
+- Another roadblock I hit:
+  - in my validate middleware, I was originally calling `next()` in my for of loop, but I realized I can't call next in the loop because the first `next()` call in the loop meant that I had already moved on to the next middleware, I was no longer running my validation checks! Even though I was in fact looping over the validator middlewares, I wasn't able to execute them properly because I had moved on before that could happen (see validate-user PR for more details)
+
+**Server-side Validation**
+
+- I used many docs to help me piece this together (those are listed in the user-validation PR above)
+- After creating the schema and collection, I had to create the custom middleware.This middleware cycles through all the validators from validateUser and calls them all. It
+validates the inputs first and reports any errors. If there are no errors, it just calls next() to hit the next middleware.
+- I focused here on modularizing code right off the bat, so I created a separate file to hold the validation checks and then a separate file for my middleware (which is passed of course to the post route)
+- A lesson learned here is to perhaps do things the way examples want you too first, get things working and then modularize later...
 
 **Sample Request using HTTPie**
 
